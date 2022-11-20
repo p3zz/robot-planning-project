@@ -13,13 +13,11 @@ find_package(nav_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
 add_executable(publisher src/publisher.cpp)
-add_executable(subscriber src/subscriber.cpp)
 
 ament_target_dependencies(publisher rclcpp nav_msgs geometry_msgs)
-ament_target_dependencies(subscriber rclcpp nav_msgs)
 
 install(
-  TARGETS publisher subscriber
+  TARGETS publisher
   DESTINATION lib/${PROJECT_NAME}
 )
 
