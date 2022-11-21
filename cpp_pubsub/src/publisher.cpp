@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <vector>
 
+#include "lib_dubins/dubins.h"
 #include "rclcpp/rclcpp.hpp"
 #include "nav_msgs/msg/path.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
@@ -195,6 +196,7 @@ class MinimalPublisher : public rclcpp::Node
 
 int main(int argc, char * argv[])
 {
+  hello_world();
   rclcpp::init(argc, argv);
   rclcpp::spin(std::make_shared<MinimalPublisher>());
   rclcpp::shutdown();
