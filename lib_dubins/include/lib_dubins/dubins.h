@@ -31,9 +31,12 @@ struct Point //structure of point: set all 5 parameters for every point, then le
     double th;
     double v;
     double w;
-}traj[int(MAX_LENGTH_TRAJ * PRECISION_TRAJ)], mintraj[int(MAX_LENGTH_TRAJ * PRECISION_TRAJ)];
-int len_traj;
+};
 
 bool dubins_shortest_path(double xi, double yi, double angi, double xf, double yf, double angf);
+Point getTraj(int x);
+int getLenTraj();
+double mod2pi(double ang);
+double sinc(double t);
 
 #endif

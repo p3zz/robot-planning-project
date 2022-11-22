@@ -2,6 +2,9 @@
 
 using namespace std;
 
+struct Point traj[int(MAX_LENGTH_TRAJ * PRECISION_TRAJ)];
+int len_traj;
+
 struct curve{
     double x0, y0, phi0;    //initial position
     double k;               //curvature (+/- kmax for curves, 0 for straights)
@@ -19,6 +22,16 @@ struct primitive{
     bool ok;
     double sc_s1_c,sc_s2_c,sc_s3_c;
 };
+
+Point getTraj(int x)
+{
+    return traj[x];
+}
+
+int getLenTraj()
+{
+    return len_traj;
+}
 
 double sinc(double t){
     double ret;
