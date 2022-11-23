@@ -42,7 +42,18 @@ enum CurveType{
     LRL
 };
 
-bool dubins_shortest_path(double xi, double yi, double angi, double xf, double yf, double angf);
+// point (start/end of a dubin arc)
+class DubinPoint{
+    public: 
+        double x;
+        double y;
+        double th;
+         
+        DubinPoint(double x, double y, double th):x{x},y{y},th{th}{}
+
+};
+
+bool dubins_shortest_path(DubinPoint p_start, DubinPoint p_end);
 Point getTraj(int x);
 int getLenTraj();
 double mod2pi(double ang);

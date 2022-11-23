@@ -5,14 +5,6 @@ using namespace std;
 struct Point traj[int(MAX_LENGTH_TRAJ * PRECISION_TRAJ)];
 int len_traj;
 
-// point (start/end of a dubin arc)
-class DubinPoint{
-    public: 
-        double x;
-        double y;
-        double th;
-};
-
 // arc (portion of dubin curve)
 class DubinArc {
     public: 
@@ -20,23 +12,26 @@ class DubinArc {
         double length;
         double k;
 
+        DubinArc(DubinPoint source, double length, double k):source{source},length{length},k{k}{}
+
         DubinPoint get_dest(){
-            DubinPoint p;
-            p.x = this->source.x + this->length * sinc(this->k * this->length / 2.0) * cos(this->source.th + this->k * this->length / 2);
-            p.y = this->source.y + this->length * sinc(this->k * this->length / 2.0) * sin(this->source.th + this->k * this->length / 2);
-            p.th = mod2pi(this->source.th + this->k * this->length);
-            return p;
+            double x = this->source.x + this->length * sinc(this->k * this->length / 2.0) * cos(this->source.th + this->k * this->length / 2);
+            double y = this->source.y + this->length * sinc(this->k * this->length / 2.0) * sin(this->source.th + this->k * this->length / 2);
+            double th = mod2pi(this->source.th + this->k * this->length);
+            return DubinPoint(x,y,th);
         }
 };
 
 class DubinCurve {
     public:
-        vector<DubinArc> arcs;
+        DubinArc arc1;
+        DubinArc arc2;
+        DubinArc arc3;
 
-        DubinCurve(vector<DubinArc> arcs):arcs{arcs}{}
+        DubinCurve(DubinArc arc1, DubinArc arc2, DubinArc arc3):arc1{arc1},arc2{arc2},arc3{arc3}{}
 
         double get_length(){
-            return arcs[0].length + arcs[1].length + arcs[2].length; 
+            return arc1.length + arc2.length + arc3.length; 
         }
 };
 
@@ -182,24 +177,20 @@ void draw_trajectory(double xi, double yi, double angi, int t1, double len1, int
         draw_curvature(len3, VELOCITY_AVG, traj[len_traj-1].x,traj[len_traj-1].y,traj[len_traj-1].th, CURV_MAX * double(t3), false, true);
 }
 
-Eigen::Vector4d scale_to_standard(Eigen::Vector3d posin, Eigen::Vector3d posfin){    
-    double dx=posfin(0)-posin(0);
-    double dy=posfin(1)-posin(1);
-    double phi=atan2(dy,dx);
-    double lambda=hypot(dx,dy)/2;
+Eigen::Vector4d scale_to_standard(DubinPoint p_start, DubinPoint p_end){    
+    double dx = p_end.x - p_start.x;
+    double dy = p_end.y - p_start.y;
+    double phi = atan2(dy,dx);
+    double lambda = hypot(dx,dy)/2;
 
-    double scaled_th0=mod2pi(posin(2)-phi);     
-    double scaled_thf=mod2pi(posfin(2)-phi);
-    double scaled_kmax=CURV_MAX*lambda;
-    Eigen::Vector4d ret;
-    ret<<scaled_th0,scaled_thf,scaled_kmax,lambda;
-    return ret;
+    double scaled_th0 = mod2pi(p_start.th - phi);     
+    double scaled_thf = mod2pi(p_end.th - phi);
+    double scaled_kmax = CURV_MAX*lambda;
+    return Eigen::Vector4d(scaled_th0,scaled_thf,scaled_kmax,lambda);
 }
 
-Eigen::Vector3d scale_from_standard(double lambda,double sc_s1,double sc_s2,double sc_s3){
-    Eigen::Vector3d ret;
-    ret<<sc_s1*lambda,sc_s2*lambda,sc_s3*lambda;
-    return ret;
+Eigen::Vector3d scale_from_standard(double lambda, double sc_s1, double sc_s2, double sc_s3){
+    return Eigen::Vector3d(sc_s1*lambda, sc_s2*lambda, sc_s3*lambda);
 }
 
 primitive lsl(double sc_th0, double sc_thf,double sc_kmax){
@@ -364,151 +355,6 @@ primitive calculate_primitive(CurveType ct, double sc_th0, double sc_thf,double 
     return p;
 }
 
-// primitive calculate_primitive(int index, double sc_th0, double sc_thf,double sc_kmax){
-//     double invk= 1/sc_kmax;
-//     double c,s, temp1,temp2,temp3;
-//     primitive ret;
-//     switch (index){
-//     case 0:{    //LSL
-//         c=cos(sc_thf)-cos(sc_th0);
-//         s=2*sc_kmax+sin(sc_th0)-sin(sc_thf);
-//         temp1=atan2(c,s);
-//         ret.sc_s1_c=invk*mod2pi(temp1-sc_th0);
-//         temp2=2+4*(sc_kmax*sc_kmax)-2*cos(sc_th0-sc_thf)+4*sc_kmax*(sin(sc_th0)-sin(sc_thf));
-//         if(temp2<0){
-//             ret.ok=false;
-//             ret.sc_s1_c=0;
-//             ret.sc_s2_c=0;
-//             ret.sc_s3_c=0;
-//         }else{
-//             ret.ok=true;
-//             ret.sc_s2_c=invk*sqrt(temp2);
-//             ret.sc_s3_c=invk*mod2pi(sc_thf-temp1);
-//         }
-//         break;
-//     }
-//     case 1:{    //RSR
-//         c = cos(sc_th0) - cos(sc_thf);
-//         s = 2 * sc_kmax - sin(sc_th0) + sin(sc_thf);
-//         temp1 = atan2(c, s);
-//         ret.sc_s1_c=invk*mod2pi(sc_th0-temp1);
-//         temp2=2 + 4 * (sc_kmax*sc_kmax) - 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf));
-//         if(temp2<0){
-//             ret.ok=false;
-//             ret.sc_s1_c=0;
-//             ret.sc_s2_c=0;
-//             ret.sc_s3_c=0;
-//         }else{
-//             ret.sc_s2_c = invk * sqrt(temp2);
-//             ret.sc_s3_c = invk * mod2pi(temp1 - sc_thf);
-//             ret.ok = true;
-//         }
-//         break;
-//     }
-//     case 2:{    //LSR
-//         c = cos(sc_th0) + cos(sc_thf);
-//         s = 2 * sc_kmax + sin(sc_th0) + sin(sc_thf);
-//         temp1 = atan2(-c, s);
-//         temp3 = 4 * (sc_kmax*sc_kmax) - 2 + 2 * cos(sc_th0 - sc_thf) + 4 * sc_kmax * (sin(sc_th0) + sin(sc_thf));
-//         if(temp3<0){
-//             ret.ok=false;
-//             ret.sc_s1_c=0;
-//             ret.sc_s2_c=0;
-//             ret.sc_s3_c=0;
-//         }else{
-//             ret.sc_s2_c=invk*sqrt(temp3);
-//             temp2=-atan2(-2,ret.sc_s2_c*sc_kmax);
-//             ret.sc_s1_c=invk*mod2pi(temp1+temp2-sc_th0);
-//             ret.sc_s3_c=invk*mod2pi(temp1+temp2-sc_thf);
-//             ret.ok=true;
-//         }
-//         break;
-//     }
-//     case 3:{    //RSL
-//         c = cos(sc_th0) + cos(sc_thf);
-//         s = 2 * sc_kmax - sin(sc_th0) - sin(sc_thf);
-//         temp1 = atan2(c, s);
-//         temp3 = 4 * (sc_kmax*sc_kmax) - 2 + 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) + sin(sc_thf));
-//         if(temp3<0){
-//             ret.ok=false;
-//             ret.sc_s1_c=0;
-//             ret.sc_s2_c=0;
-//             ret.sc_s3_c=0;
-//         }else{
-//             ret.sc_s2_c=invk*sqrt(temp3);
-//             temp2=atan2(2,ret.sc_s2_c*sc_kmax);
-//             ret.sc_s1_c=invk*mod2pi(sc_th0-temp1+temp2);
-//             ret.sc_s3_c=invk*mod2pi(sc_thf-temp1+temp2);
-//             ret.ok=true;
-//         }
-//         break;
-//     }
-//     case 4:{    //RLR
-//         c = cos(sc_th0) - cos(sc_thf);
-//         s = 2 * sc_kmax - sin(sc_th0) + sin(sc_thf);
-//         temp1 = atan2(c, s);
-//         temp2 = 0.125 * (6 - 4 * (sc_kmax*sc_kmax) + 2 * cos(sc_th0 - sc_thf) + 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf)));
-//         if(abs(temp2)>1){
-//             ret.ok=false;
-//             ret.sc_s1_c=0;
-//             ret.sc_s2_c=0;
-//             ret.sc_s3_c=0;
-//         }else{
-//             ret.sc_s2_c=invk*mod2pi(2*PI-acos(temp2));
-//             ret.sc_s1_c=invk*mod2pi(sc_th0-temp1+0.5*ret.sc_s2_c*sc_kmax);
-//             ret.sc_s3_c=invk*mod2pi(sc_th0-sc_thf+sc_kmax*(ret.sc_s2_c-ret.sc_s1_c));
-//             ret.ok=true;
-//         }
-//         break;
-//     }
-//     case 5:{    //LRL
-//         c = cos(sc_thf) - cos(sc_th0);
-//         s = 2 * sc_kmax + sin(sc_th0) - sin(sc_thf);
-//         temp1 = atan2(c, s);
-//         temp2 = 0.125 * (6 - 4 * (sc_kmax*sc_kmax) + 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf)));
-//         if(abs(temp2)>1){
-//             ret.ok=false;
-//             ret.sc_s1_c=0;
-//             ret.sc_s2_c=0;
-//             ret.sc_s3_c=0;
-//         }else{
-//             ret.sc_s2_c=invk*mod2pi(2*PI-acos(temp2));
-//             ret.sc_s1_c=invk*mod2pi(temp1-sc_th0+0.5*ret.sc_s2_c*sc_kmax);
-//             ret.sc_s3_c=invk*mod2pi(sc_thf-sc_th0+sc_kmax*(ret.sc_s2_c-ret.sc_s1_c));
-//             ret.ok=true;
-//         }
-//         break;
-//     } 
-//     default:
-//         cout<<"An error occurred while calculating the primitive!"<<endl;
-//         break;
-//     }
-//     return ret;
-// }
-
-curve dubins_arc(double x0, double y0, double phi0, double k, double l){
-    curve ret;
-    ret.x0=x0;
-    ret.y0=y0;
-    ret.phi0=phi0;
-    ret.k=k;
-    ret.l=l;
-    ret.xf=ret.x0+l*sinc(k*l/2.0)*cos(phi0+k*l/2);
-    ret.yf=y0+l*sinc(k*l/2.0)*sin(phi0+k*l/2);
-    ret.phif=mod2pi(phi0+k*l);
-    return ret;
-}
-
-curves dubins_curve(Eigen::Vector3d posin, Eigen::Vector3d s, double k0, double k1, double k2){
-    curves ret;
-    ret.c1=dubins_arc(posin(0),posin(1),posin(2),k0,s(0));
-    ret.c2=dubins_arc(ret.c1.xf,ret.c1.yf,ret.c1.phif,k1,s(1));
-    ret.c3=dubins_arc(ret.c2.xf,ret.c2.yf,ret.c2.phif,k2,s(2));
-    ret.l=ret.c1.l+ret.c2.l+ret.c3.l;
-    ret.pidx=-1;
-    return ret;
-}
-
 // calculate every optimal curve type and returns the best, with its index as identifier  
 tuple<primitive, int> calculate_best_primitive(double th0, double thf, double kmax){
     double best_length = DOUBLE_MAX;
@@ -531,11 +377,9 @@ tuple<primitive, int> calculate_best_primitive(double th0, double thf, double km
     return make_tuple(best_prim, best_i);
 }
 
-bool dubins_shortest_path(double xi, double yi, double angi, double xf, double yf, double angf){ 
+bool dubins_shortest_path(DubinPoint p_start, DubinPoint p_end){ 
     
-    Eigen::Vector3d posin(xi,yi,angi);
-    Eigen::Vector3d posfin(xf,yf,angf);
-    Eigen::Vector4d scaled = scale_to_standard(posin,posfin);    //scale the problem to standard values
+    Eigen::Vector4d scaled = scale_to_standard(p_start, p_end);    //scale the problem to standard values
 
     Eigen::MatrixXd ksigns (6,3);
     ksigns<<1,  0,  1,  //LSL
@@ -550,13 +394,25 @@ bool dubins_shortest_path(double xi, double yi, double angi, double xf, double y
     primitive best_primitive = get<0>(best_primitive_result);
     int pidx = get<1>(best_primitive_result);
 
-    if(pidx>=0){
+    if(pidx>-1){
+
+        // get the lengths of the 3 arcs
         Eigen::Vector3d s = scale_from_standard(scaled(3), best_primitive.sc_s1_c, best_primitive.sc_s2_c, best_primitive.sc_s3_c);  //scale from the standard solution to the general one
-        curves finalcurve=dubins_curve(posin,s,ksigns(pidx,0)*CURV_MAX,ksigns(pidx,1)*CURV_MAX,ksigns(pidx,2)*CURV_MAX);    //calculate all the parameter of the selected curve
-        draw_trajectory(xi, yi, angi, ksigns(pidx, 0), finalcurve.c1.l, ksigns(pidx, 1), finalcurve.c2.l, ksigns(pidx, 2), finalcurve.c3.l);
+        
+        DubinArc arc1(p_start, s(0), ksigns(pidx,0)*CURV_MAX);
+
+        DubinArc arc2(arc1.get_dest(), s(1), ksigns(pidx,1)*CURV_MAX);
+
+        DubinArc arc3(arc2.get_dest(), s(2), ksigns(pidx,2)*CURV_MAX);
+
+        DubinCurve final_curve(arc1, arc2, arc3);
+        
+        draw_trajectory(final_curve.arc1.source.x, final_curve.arc1.source.y, final_curve.arc1.source.th,
+                        ksigns(pidx, 0), final_curve.arc1.length, ksigns(pidx, 1), final_curve.arc2.length, ksigns(pidx, 2), final_curve.arc3.length);
+        
         #if DEBUG_MOBILE
             cout << endl << endl << "*******************" << endl;
-            cout << ksigns(pidx, 0) << " " << finalcurve.c1.l << " - " << ksigns(pidx, 1) << " " <<  finalcurve.c2.l << " - " << ksigns(pidx, 2) << " " <<  finalcurve.c3.l << endl;
+            cout << ksigns(pidx, 0) << " " << final_curve.arc1.length << " - " << ksigns(pidx, 1) << " " <<  final_curve.arc2.length << " - " << ksigns(pidx, 2) << " " <<  final_curve.arc3.length << endl;
         #endif
         return true;
     }else{
