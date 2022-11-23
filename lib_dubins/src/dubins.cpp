@@ -167,127 +167,289 @@ Eigen::Vector3d scale_from_standard(double lambda,double sc_s1,double sc_s2,doub
     return ret;
 }
 
-primitive calculate_primitive(int index, double sc_th0, double sc_thf,double sc_kmax){
-    double invk= 1/sc_kmax;
-    double c,s, temp1,temp2,temp3;
+primitive lsl(double sc_th0, double sc_thf,double sc_kmax){
+    double const invk = 1/sc_kmax;
     primitive ret;
-    switch (index){
-    case 0:{    //LSL
-        c=cos(sc_thf)-cos(sc_th0);
-        s=2*sc_kmax+sin(sc_th0)-sin(sc_thf);
-        temp1=atan2(c,s);
-        ret.sc_s1_c=invk*mod2pi(temp1-sc_th0);
-        temp2=2+4*(sc_kmax*sc_kmax)-2*cos(sc_th0-sc_thf)+4*sc_kmax*(sin(sc_th0)-sin(sc_thf));
-        if(temp2<0){
-            ret.ok=false;
-            ret.sc_s1_c=0;
-            ret.sc_s2_c=0;
-            ret.sc_s3_c=0;
-        }else{
-            ret.ok=true;
-            ret.sc_s2_c=invk*sqrt(temp2);
-            ret.sc_s3_c=invk*mod2pi(sc_thf-temp1);
-        }
-        break;
-    }
-    case 1:{    //RSR
-        c = cos(sc_th0) - cos(sc_thf);
-        s = 2 * sc_kmax - sin(sc_th0) + sin(sc_thf);
-        temp1 = atan2(c, s);
-        ret.sc_s1_c=invk*mod2pi(sc_th0-temp1);
-        temp2=2 + 4 * (sc_kmax*sc_kmax) - 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf));
-        if(temp2<0){
-            ret.ok=false;
-            ret.sc_s1_c=0;
-            ret.sc_s2_c=0;
-            ret.sc_s3_c=0;
-        }else{
-            ret.sc_s2_c = invk * sqrt(temp2);
-            ret.sc_s3_c = invk * mod2pi(temp1 - sc_thf);
-            ret.ok = true;
-        }
-        break;
-    }
-    case 2:{    //LSR
-        c = cos(sc_th0) + cos(sc_thf);
-        s = 2 * sc_kmax + sin(sc_th0) + sin(sc_thf);
-        temp1 = atan2(-c, s);
-        temp3 = 4 * (sc_kmax*sc_kmax) - 2 + 2 * cos(sc_th0 - sc_thf) + 4 * sc_kmax * (sin(sc_th0) + sin(sc_thf));
-        if(temp3<0){
-            ret.ok=false;
-            ret.sc_s1_c=0;
-            ret.sc_s2_c=0;
-            ret.sc_s3_c=0;
-        }else{
-            ret.sc_s2_c=invk*sqrt(temp3);
-            temp2=-atan2(-2,ret.sc_s2_c*sc_kmax);
-            ret.sc_s1_c=invk*mod2pi(temp1+temp2-sc_th0);
-            ret.sc_s3_c=invk*mod2pi(temp1+temp2-sc_thf);
-            ret.ok=true;
-        }
-        break;
-    }
-    case 3:{    //RSL
-        c = cos(sc_th0) + cos(sc_thf);
-        s = 2 * sc_kmax - sin(sc_th0) - sin(sc_thf);
-        temp1 = atan2(c, s);
-        temp3 = 4 * (sc_kmax*sc_kmax) - 2 + 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) + sin(sc_thf));
-        if(temp3<0){
-            ret.ok=false;
-            ret.sc_s1_c=0;
-            ret.sc_s2_c=0;
-            ret.sc_s3_c=0;
-        }else{
-            ret.sc_s2_c=invk*sqrt(temp3);
-            temp2=atan2(2,ret.sc_s2_c*sc_kmax);
-            ret.sc_s1_c=invk*mod2pi(sc_th0-temp1+temp2);
-            ret.sc_s3_c=invk*mod2pi(sc_thf-temp1+temp2);
-            ret.ok=true;
-        }
-        break;
-    }
-    case 4:{    //RLR
-        c = cos(sc_th0) - cos(sc_thf);
-        s = 2 * sc_kmax - sin(sc_th0) + sin(sc_thf);
-        temp1 = atan2(c, s);
-        temp2 = 0.125 * (6 - 4 * (sc_kmax*sc_kmax) + 2 * cos(sc_th0 - sc_thf) + 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf)));
-        if(abs(temp2)>1){
-            ret.ok=false;
-            ret.sc_s1_c=0;
-            ret.sc_s2_c=0;
-            ret.sc_s3_c=0;
-        }else{
-            ret.sc_s2_c=invk*mod2pi(2*PI-acos(temp2));
-            ret.sc_s1_c=invk*mod2pi(sc_th0-temp1+0.5*ret.sc_s2_c*sc_kmax);
-            ret.sc_s3_c=invk*mod2pi(sc_th0-sc_thf+sc_kmax*(ret.sc_s2_c-ret.sc_s1_c));
-            ret.ok=true;
-        }
-        break;
-    }
-    case 5:{    //LRL
-        c = cos(sc_thf) - cos(sc_th0);
-        s = 2 * sc_kmax + sin(sc_th0) - sin(sc_thf);
-        temp1 = atan2(c, s);
-        temp2 = 0.125 * (6 - 4 * (sc_kmax*sc_kmax) + 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf)));
-        if(abs(temp2)>1){
-            ret.ok=false;
-            ret.sc_s1_c=0;
-            ret.sc_s2_c=0;
-            ret.sc_s3_c=0;
-        }else{
-            ret.sc_s2_c=invk*mod2pi(2*PI-acos(temp2));
-            ret.sc_s1_c=invk*mod2pi(temp1-sc_th0+0.5*ret.sc_s2_c*sc_kmax);
-            ret.sc_s3_c=invk*mod2pi(sc_thf-sc_th0+sc_kmax*(ret.sc_s2_c-ret.sc_s1_c));
-            ret.ok=true;
-        }
-        break;
-    } 
-    default:
-        cout<<"An error occurred while calculating the primitive!"<<endl;
-        break;
+
+    double c=cos(sc_thf)-cos(sc_th0);
+    double s=2*sc_kmax+sin(sc_th0)-sin(sc_thf);
+    double temp1=atan2(c,s);
+    ret.sc_s1_c=invk*mod2pi(temp1-sc_th0);
+    double temp2=2+4*(sc_kmax*sc_kmax)-2*cos(sc_th0-sc_thf)+4*sc_kmax*(sin(sc_th0)-sin(sc_thf));
+    if(temp2<0){
+        ret.ok=false;
+        ret.sc_s1_c=0;
+        ret.sc_s2_c=0;
+        ret.sc_s3_c=0;
+    }else{
+        ret.ok=true;
+        ret.sc_s2_c=invk*sqrt(temp2);
+        ret.sc_s3_c=invk*mod2pi(sc_thf-temp1);
     }
     return ret;
 }
+
+primitive rsr(double sc_th0, double sc_thf,double sc_kmax){
+    double const invk= 1/sc_kmax;
+    primitive ret;
+
+    double c = cos(sc_th0) - cos(sc_thf);
+    double s = 2 * sc_kmax - sin(sc_th0) + sin(sc_thf);
+    double temp1 = atan2(c, s);
+    ret.sc_s1_c=invk*mod2pi(sc_th0-temp1);
+    double temp2 = 2 + 4 * (sc_kmax*sc_kmax) - 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf));
+    if(temp2<0){
+        ret.ok=false;
+        ret.sc_s1_c=0;
+        ret.sc_s2_c=0;
+        ret.sc_s3_c=0;
+    }else{
+        ret.sc_s2_c = invk * sqrt(temp2);
+        ret.sc_s3_c = invk * mod2pi(temp1 - sc_thf);
+        ret.ok = true;
+    }
+    return ret;
+}
+
+primitive lsr(double sc_th0, double sc_thf,double sc_kmax){
+    double const invk = 1/sc_kmax;
+    primitive ret;
+
+    double c = cos(sc_th0) + cos(sc_thf);
+    double s = 2 * sc_kmax + sin(sc_th0) + sin(sc_thf);
+    double temp1 = atan2(-c, s);
+    double temp3 = 4 * (sc_kmax*sc_kmax) - 2 + 2 * cos(sc_th0 - sc_thf) + 4 * sc_kmax * (sin(sc_th0) + sin(sc_thf));
+    if(temp3<0){
+        ret.ok=false;
+        ret.sc_s1_c=0;
+        ret.sc_s2_c=0;
+        ret.sc_s3_c=0;
+    }else{
+        ret.sc_s2_c=invk*sqrt(temp3);
+        double temp2=-atan2(-2,ret.sc_s2_c*sc_kmax);
+        ret.sc_s1_c=invk*mod2pi(temp1+temp2-sc_th0);
+        ret.sc_s3_c=invk*mod2pi(temp1+temp2-sc_thf);
+        ret.ok=true;
+    }
+    return ret;
+}
+
+primitive rsl(double sc_th0, double sc_thf,double sc_kmax){
+    double const invk = 1/sc_kmax;
+    primitive ret;
+
+    double c = cos(sc_th0) + cos(sc_thf);
+    double s = 2 * sc_kmax - sin(sc_th0) - sin(sc_thf);
+    double temp1 = atan2(c, s);
+    double temp3 = 4 * (sc_kmax*sc_kmax) - 2 + 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) + sin(sc_thf));
+    if(temp3<0){
+        ret.ok=false;
+        ret.sc_s1_c=0;
+        ret.sc_s2_c=0;
+        ret.sc_s3_c=0;
+    }else{
+        ret.sc_s2_c=invk*sqrt(temp3);
+        double temp2=atan2(2,ret.sc_s2_c*sc_kmax);
+        ret.sc_s1_c=invk*mod2pi(sc_th0-temp1+temp2);
+        ret.sc_s3_c=invk*mod2pi(sc_thf-temp1+temp2);
+        ret.ok=true;
+    }
+    return ret;
+}
+
+primitive rlr(double sc_th0, double sc_thf,double sc_kmax){
+    double const invk = 1/sc_kmax;
+    primitive ret;
+
+    double c = cos(sc_th0) - cos(sc_thf);
+    double s = 2 * sc_kmax - sin(sc_th0) + sin(sc_thf);
+    double temp1 = atan2(c, s);
+    double temp2 = 0.125 * (6 - 4 * (sc_kmax*sc_kmax) + 2 * cos(sc_th0 - sc_thf) + 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf)));
+    if(abs(temp2)>1){
+        ret.ok=false;
+        ret.sc_s1_c=0;
+        ret.sc_s2_c=0;
+        ret.sc_s3_c=0;
+    }else{
+        ret.sc_s2_c=invk*mod2pi(2*PI-acos(temp2));
+        ret.sc_s1_c=invk*mod2pi(sc_th0-temp1+0.5*ret.sc_s2_c*sc_kmax);
+        ret.sc_s3_c=invk*mod2pi(sc_th0-sc_thf+sc_kmax*(ret.sc_s2_c-ret.sc_s1_c));
+        ret.ok=true;
+    }
+    return ret;
+}
+
+primitive lrl(double sc_th0, double sc_thf,double sc_kmax){
+    double const invk = 1/sc_kmax;
+    primitive ret;
+
+    double c = cos(sc_thf) - cos(sc_th0);
+    double s = 2 * sc_kmax + sin(sc_th0) - sin(sc_thf);
+    double temp1 = atan2(c, s);
+    double temp2 = 0.125 * (6 - 4 * (sc_kmax*sc_kmax) + 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf)));
+    if(abs(temp2)>1){
+        ret.ok=false;
+        ret.sc_s1_c=0;
+        ret.sc_s2_c=0;
+        ret.sc_s3_c=0;
+    }else{
+        ret.sc_s2_c=invk*mod2pi(2*PI-acos(temp2));
+        ret.sc_s1_c=invk*mod2pi(temp1-sc_th0+0.5*ret.sc_s2_c*sc_kmax);
+        ret.sc_s3_c=invk*mod2pi(sc_thf-sc_th0+sc_kmax*(ret.sc_s2_c-ret.sc_s1_c));
+        ret.ok=true;
+    }
+    return ret;
+}
+
+primitive calculate_primitive(int index, double sc_th0, double sc_thf,double sc_kmax){
+    primitive p;
+    switch(index){
+        case 0:
+            p = lsl(sc_th0, sc_thf, sc_kmax);
+            break;
+        case 1:
+            p = rsr(sc_th0, sc_thf, sc_kmax);
+            break;
+        case 2:
+            p = lsr(sc_th0, sc_thf, sc_kmax);
+            break;
+        case 3:
+            p = rsl(sc_th0, sc_thf, sc_kmax);
+            break;
+        case 4:
+            p = rlr(sc_th0, sc_thf, sc_kmax);
+            break;
+        case 5:
+            p = lrl(sc_th0, sc_thf, sc_kmax);
+            break;
+        default:
+            cout<<"An error occurred while calculating the primitive!"<<endl;
+            break;           
+    }
+    return p;
+}
+
+// primitive calculate_primitive(int index, double sc_th0, double sc_thf,double sc_kmax){
+//     double invk= 1/sc_kmax;
+//     double c,s, temp1,temp2,temp3;
+//     primitive ret;
+//     switch (index){
+//     case 0:{    //LSL
+//         c=cos(sc_thf)-cos(sc_th0);
+//         s=2*sc_kmax+sin(sc_th0)-sin(sc_thf);
+//         temp1=atan2(c,s);
+//         ret.sc_s1_c=invk*mod2pi(temp1-sc_th0);
+//         temp2=2+4*(sc_kmax*sc_kmax)-2*cos(sc_th0-sc_thf)+4*sc_kmax*(sin(sc_th0)-sin(sc_thf));
+//         if(temp2<0){
+//             ret.ok=false;
+//             ret.sc_s1_c=0;
+//             ret.sc_s2_c=0;
+//             ret.sc_s3_c=0;
+//         }else{
+//             ret.ok=true;
+//             ret.sc_s2_c=invk*sqrt(temp2);
+//             ret.sc_s3_c=invk*mod2pi(sc_thf-temp1);
+//         }
+//         break;
+//     }
+//     case 1:{    //RSR
+//         c = cos(sc_th0) - cos(sc_thf);
+//         s = 2 * sc_kmax - sin(sc_th0) + sin(sc_thf);
+//         temp1 = atan2(c, s);
+//         ret.sc_s1_c=invk*mod2pi(sc_th0-temp1);
+//         temp2=2 + 4 * (sc_kmax*sc_kmax) - 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf));
+//         if(temp2<0){
+//             ret.ok=false;
+//             ret.sc_s1_c=0;
+//             ret.sc_s2_c=0;
+//             ret.sc_s3_c=0;
+//         }else{
+//             ret.sc_s2_c = invk * sqrt(temp2);
+//             ret.sc_s3_c = invk * mod2pi(temp1 - sc_thf);
+//             ret.ok = true;
+//         }
+//         break;
+//     }
+//     case 2:{    //LSR
+//         c = cos(sc_th0) + cos(sc_thf);
+//         s = 2 * sc_kmax + sin(sc_th0) + sin(sc_thf);
+//         temp1 = atan2(-c, s);
+//         temp3 = 4 * (sc_kmax*sc_kmax) - 2 + 2 * cos(sc_th0 - sc_thf) + 4 * sc_kmax * (sin(sc_th0) + sin(sc_thf));
+//         if(temp3<0){
+//             ret.ok=false;
+//             ret.sc_s1_c=0;
+//             ret.sc_s2_c=0;
+//             ret.sc_s3_c=0;
+//         }else{
+//             ret.sc_s2_c=invk*sqrt(temp3);
+//             temp2=-atan2(-2,ret.sc_s2_c*sc_kmax);
+//             ret.sc_s1_c=invk*mod2pi(temp1+temp2-sc_th0);
+//             ret.sc_s3_c=invk*mod2pi(temp1+temp2-sc_thf);
+//             ret.ok=true;
+//         }
+//         break;
+//     }
+//     case 3:{    //RSL
+//         c = cos(sc_th0) + cos(sc_thf);
+//         s = 2 * sc_kmax - sin(sc_th0) - sin(sc_thf);
+//         temp1 = atan2(c, s);
+//         temp3 = 4 * (sc_kmax*sc_kmax) - 2 + 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) + sin(sc_thf));
+//         if(temp3<0){
+//             ret.ok=false;
+//             ret.sc_s1_c=0;
+//             ret.sc_s2_c=0;
+//             ret.sc_s3_c=0;
+//         }else{
+//             ret.sc_s2_c=invk*sqrt(temp3);
+//             temp2=atan2(2,ret.sc_s2_c*sc_kmax);
+//             ret.sc_s1_c=invk*mod2pi(sc_th0-temp1+temp2);
+//             ret.sc_s3_c=invk*mod2pi(sc_thf-temp1+temp2);
+//             ret.ok=true;
+//         }
+//         break;
+//     }
+//     case 4:{    //RLR
+//         c = cos(sc_th0) - cos(sc_thf);
+//         s = 2 * sc_kmax - sin(sc_th0) + sin(sc_thf);
+//         temp1 = atan2(c, s);
+//         temp2 = 0.125 * (6 - 4 * (sc_kmax*sc_kmax) + 2 * cos(sc_th0 - sc_thf) + 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf)));
+//         if(abs(temp2)>1){
+//             ret.ok=false;
+//             ret.sc_s1_c=0;
+//             ret.sc_s2_c=0;
+//             ret.sc_s3_c=0;
+//         }else{
+//             ret.sc_s2_c=invk*mod2pi(2*PI-acos(temp2));
+//             ret.sc_s1_c=invk*mod2pi(sc_th0-temp1+0.5*ret.sc_s2_c*sc_kmax);
+//             ret.sc_s3_c=invk*mod2pi(sc_th0-sc_thf+sc_kmax*(ret.sc_s2_c-ret.sc_s1_c));
+//             ret.ok=true;
+//         }
+//         break;
+//     }
+//     case 5:{    //LRL
+//         c = cos(sc_thf) - cos(sc_th0);
+//         s = 2 * sc_kmax + sin(sc_th0) - sin(sc_thf);
+//         temp1 = atan2(c, s);
+//         temp2 = 0.125 * (6 - 4 * (sc_kmax*sc_kmax) + 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf)));
+//         if(abs(temp2)>1){
+//             ret.ok=false;
+//             ret.sc_s1_c=0;
+//             ret.sc_s2_c=0;
+//             ret.sc_s3_c=0;
+//         }else{
+//             ret.sc_s2_c=invk*mod2pi(2*PI-acos(temp2));
+//             ret.sc_s1_c=invk*mod2pi(temp1-sc_th0+0.5*ret.sc_s2_c*sc_kmax);
+//             ret.sc_s3_c=invk*mod2pi(sc_thf-sc_th0+sc_kmax*(ret.sc_s2_c-ret.sc_s1_c));
+//             ret.ok=true;
+//         }
+//         break;
+//     } 
+//     default:
+//         cout<<"An error occurred while calculating the primitive!"<<endl;
+//         break;
+//     }
+//     return ret;
+// }
 
 curve dubins_arc(double x0, double y0, double phi0, double k, double l){
     curve ret;
