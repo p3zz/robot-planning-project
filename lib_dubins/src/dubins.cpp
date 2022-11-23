@@ -301,25 +301,25 @@ primitive lrl(double sc_th0, double sc_thf,double sc_kmax){
     return ret;
 }
 
-primitive calculate_primitive(int index, double sc_th0, double sc_thf,double sc_kmax){
+primitive calculate_primitive(CurveType ct, double sc_th0, double sc_thf,double sc_kmax){
     primitive p;
-    switch(index){
-        case 0:
+    switch(ct){
+        case CurveType::LSL:
             p = lsl(sc_th0, sc_thf, sc_kmax);
             break;
-        case 1:
+        case CurveType::RSR:
             p = rsr(sc_th0, sc_thf, sc_kmax);
             break;
-        case 2:
+        case CurveType::LSR:
             p = lsr(sc_th0, sc_thf, sc_kmax);
             break;
-        case 3:
+        case CurveType::RSL:
             p = rsl(sc_th0, sc_thf, sc_kmax);
             break;
-        case 4:
+        case CurveType::RLR:
             p = rlr(sc_th0, sc_thf, sc_kmax);
             break;
-        case 5:
+        case CurveType::LRL:
             p = lrl(sc_th0, sc_thf, sc_kmax);
             break;
         default:
@@ -497,7 +497,8 @@ bool dubins_shortest_path(double xi, double yi, double angi, double xf, double y
     double sc_s1,sc_s2,sc_s3;
 
     for(int i=0;i<6;i++){
-        primitive tmp=calculate_primitive(i,scaled(0),scaled(1),scaled(2)); 
+        CurveType ct = static_cast<CurveType>(i);
+        primitive tmp=calculate_primitive(ct,scaled(0),scaled(1),scaled(2)); 
         lcur=tmp.sc_s1_c+tmp.sc_s2_c+tmp.sc_s3_c;   //for every given curve type, calculate the length of the relative curve
         if(tmp.ok && lcur<l){
             l=lcur;

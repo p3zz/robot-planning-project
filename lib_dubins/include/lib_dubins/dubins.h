@@ -33,6 +33,15 @@ struct Point //structure of point: set all 5 parameters for every point, then le
     double w;
 };
 
+enum CurveType{
+    LSL,
+    RSR,
+    LSR,
+    RSL,
+    RLR,
+    LRL
+};
+
 bool dubins_shortest_path(double xi, double yi, double angi, double xf, double yf, double angf);
 Point getTraj(int x);
 int getLenTraj();
