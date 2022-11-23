@@ -5,6 +5,41 @@ using namespace std;
 struct Point traj[int(MAX_LENGTH_TRAJ * PRECISION_TRAJ)];
 int len_traj;
 
+// point (start/end of a dubin arc)
+class DubinPoint{
+    public: 
+        double x;
+        double y;
+        double th;
+};
+
+// arc (portion of dubin curve)
+class DubinArc {
+    public: 
+        DubinPoint source;
+        double length;
+        double k;
+
+        DubinPoint get_dest(){
+            DubinPoint p;
+            p.x = this->source.x + this->length * sinc(this->k * this->length / 2.0) * cos(this->source.th + this->k * this->length / 2);
+            p.y = this->source.y + this->length * sinc(this->k * this->length / 2.0) * sin(this->source.th + this->k * this->length / 2);
+            p.th = mod2pi(this->source.th + this->k * this->length);
+            return p;
+        }
+};
+
+class DubinCurve {
+    public:
+        vector<DubinArc> arcs;
+
+        DubinCurve(vector<DubinArc> arcs):arcs{arcs}{}
+
+        double get_length(){
+            return arcs[0].length + arcs[1].length + arcs[2].length; 
+        }
+};
+
 struct curve{
     double x0, y0, phi0;    //initial position
     double k;               //curvature (+/- kmax for curves, 0 for straights)
@@ -461,7 +496,7 @@ curve dubins_arc(double x0, double y0, double phi0, double k, double l){
     ret.xf=ret.x0+l*sinc(k*l/2.0)*cos(phi0+k*l/2);
     ret.yf=y0+l*sinc(k*l/2.0)*sin(phi0+k*l/2);
     ret.phif=mod2pi(phi0+k*l);
-    return ret; 
+    return ret;
 }
 
 curves dubins_curve(Eigen::Vector3d posin, Eigen::Vector3d s, double k0, double k1, double k2){
@@ -474,6 +509,7 @@ curves dubins_curve(Eigen::Vector3d posin, Eigen::Vector3d s, double k0, double 
     return ret;
 }
 
+// calculate every optimal curve type and returns the best, with its index as identifier  
 tuple<primitive, int> calculate_best_primitive(double th0, double thf, double kmax){
     double best_length = DOUBLE_MAX;
     int best_i = -1;
@@ -497,10 +533,8 @@ tuple<primitive, int> calculate_best_primitive(double th0, double thf, double km
 
 bool dubins_shortest_path(double xi, double yi, double angi, double xf, double yf, double angf){ 
     
-    Eigen::Vector3d posin;
-    Eigen::Vector3d posfin;
-    posin  << xi,yi,angi;
-    posfin << xf,yf,angf;
+    Eigen::Vector3d posin(xi,yi,angi);
+    Eigen::Vector3d posfin(xf,yf,angf);
     Eigen::Vector4d scaled = scale_to_standard(posin,posfin);    //scale the problem to standard values
 
     Eigen::MatrixXd ksigns (6,3);
@@ -516,11 +550,9 @@ bool dubins_shortest_path(double xi, double yi, double angi, double xf, double y
     primitive best_primitive = get<0>(best_primitive_result);
     int pidx = get<1>(best_primitive_result);
 
-    curves finalcurve;
-
     if(pidx>=0){
         Eigen::Vector3d s = scale_from_standard(scaled(3), best_primitive.sc_s1_c, best_primitive.sc_s2_c, best_primitive.sc_s3_c);  //scale from the standard solution to the general one
-        finalcurve=dubins_curve(posin,s,ksigns(pidx,0)*CURV_MAX,ksigns(pidx,1)*CURV_MAX,ksigns(pidx,2)*CURV_MAX);    //calculate all the parameter of the selected curve
+        curves finalcurve=dubins_curve(posin,s,ksigns(pidx,0)*CURV_MAX,ksigns(pidx,1)*CURV_MAX,ksigns(pidx,2)*CURV_MAX);    //calculate all the parameter of the selected curve
         draw_trajectory(xi, yi, angi, ksigns(pidx, 0), finalcurve.c1.l, ksigns(pidx, 1), finalcurve.c2.l, ksigns(pidx, 2), finalcurve.c3.l);
         #if DEBUG_MOBILE
             cout << endl << endl << "*******************" << endl;
