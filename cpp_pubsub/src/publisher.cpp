@@ -61,7 +61,7 @@ EulerAngles to_euler_angles(geometry_msgs::msg::Quaternion q){
 }
 
 // convert a vector of dubin points into a vector of poses stamped
-std::vector<geometry_msgs::msg::PoseStamped> dubin_points_to_poses(Point start, Point end, builtin_interfaces::msg::Time stamp){
+std::vector<geometry_msgs::msg::PoseStamped> dubin_points_to_poses(DubinPoint start, DubinPoint end, builtin_interfaces::msg::Time stamp){
   std::vector<geometry_msgs::msg::PoseStamped> poses;
 
   geometry_msgs::msg::PoseStamped pose;
@@ -69,7 +69,7 @@ std::vector<geometry_msgs::msg::PoseStamped> dubin_points_to_poses(Point start, 
   pose.header.frame_id = "map";
 
   //dubins
-  dubins_shortest_path(start.x, start.y, start.th, end.x, end.y, end.th);
+  dubins_shortest_path(start, end);
   for (int i = 0; i < getLenTraj(); i++)
   {
     Point p = getTraj(i);
@@ -93,10 +93,9 @@ class MinimalPublisher : public rclcpp::Node
     MinimalPublisher()
     : Node("minimal_publisher"), count_(0)
     {
-      Point start, end;
-      start.x=0.0; start.y=0.0; start.th=PI/4;
-      end.x=2.0; end.y=3.0; end.th=PI;
-      auto arc_poses = dubin_points_to_poses(start, end, this->get_clock()->now());
+      DubinPoint p_start(0.0, 0.0, PI/4);
+      DubinPoint p_end(2.0, 3.0, PI);
+      auto arc_poses = dubin_points_to_poses(p_start, p_end, this->get_clock()->now());
 
       nav_msgs::msg::Path path;
       path.header.stamp = this->get_clock()->now();
