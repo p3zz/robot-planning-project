@@ -35,19 +35,6 @@ class DubinCurve {
         }
 };
 
-struct curve{
-    double x0, y0, phi0;    //initial position
-    double k;               //curvature (+/- kmax for curves, 0 for straights)
-    double l;               //length of the curve
-    double xf,yf,phif;      //final position
-};
-
-struct curves{
-    curve c1,c2,c3; //3 segments of the curve
-    int pidx;       //type of the final curve (LSL,RSR, ecc.)
-    double l;       //total length of the curve
-};
-
 struct primitive{ 
     bool ok;
     double sc_s1_c,sc_s2_c,sc_s3_c;
