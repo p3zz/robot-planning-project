@@ -474,6 +474,27 @@ curves dubins_curve(Eigen::Vector3d posin, Eigen::Vector3d s, double k0, double 
     return ret;
 }
 
+tuple<primitive, int> calculate_best_primitive(double th0, double thf, double kmax){
+    double best_length = DOUBLE_MAX;
+    int best_i = -1;
+    double const optimal_curves_n = 6;
+    primitive best_prim;
+    // iterate through optimal curves
+    for(int i = 0 ; i < optimal_curves_n ; i++){
+        CurveType ct = static_cast<CurveType>(i);
+        primitive prim = calculate_primitive(ct,th0, thf, kmax); 
+        double length = prim.sc_s1_c + prim.sc_s2_c + prim.sc_s3_c;
+
+        if(prim.ok && length < best_length){
+            best_length = length;
+            best_prim = prim;
+            best_i = i;
+        }
+    }
+
+    return make_tuple(best_prim, best_i);
+}
+
 bool dubins_shortest_path(double xi, double yi, double angi, double xf, double yf, double angf){ 
     
     Eigen::Vector3d posin;
@@ -490,28 +511,15 @@ bool dubins_shortest_path(double xi, double yi, double angi, double xf, double y
             -1, 1,  -1, //RLR
             1,  -1, 1;  //LRL
 
-    int pidx=-1;
-    double l=DOUBLE_MAX;
-    double lcur=0.0;
-    
-    double sc_s1,sc_s2,sc_s3;
+    tuple<primitive, int> best_primitive_result = calculate_best_primitive(scaled(0),scaled(1),scaled(2));
 
-    for(int i=0;i<6;i++){
-        CurveType ct = static_cast<CurveType>(i);
-        primitive tmp=calculate_primitive(ct,scaled(0),scaled(1),scaled(2)); 
-        lcur=tmp.sc_s1_c+tmp.sc_s2_c+tmp.sc_s3_c;   //for every given curve type, calculate the length of the relative curve
-        if(tmp.ok && lcur<l){
-            l=lcur;
-            sc_s1=tmp.sc_s1_c;
-            sc_s2=tmp.sc_s2_c;
-            sc_s3=tmp.sc_s3_c;
-            pidx=i; //choose the curve with the shortest total length
-        }
-    }
+    primitive best_primitive = get<0>(best_primitive_result);
+    int pidx = get<1>(best_primitive_result);
 
     curves finalcurve;
+
     if(pidx>=0){
-        Eigen::Vector3d s= scale_from_standard(scaled(3),sc_s1,sc_s2,sc_s3);  //scale from the standard solution to the general one
+        Eigen::Vector3d s = scale_from_standard(scaled(3), best_primitive.sc_s1_c, best_primitive.sc_s2_c, best_primitive.sc_s3_c);  //scale from the standard solution to the general one
         finalcurve=dubins_curve(posin,s,ksigns(pidx,0)*CURV_MAX,ksigns(pidx,1)*CURV_MAX,ksigns(pidx,2)*CURV_MAX);    //calculate all the parameter of the selected curve
         draw_trajectory(xi, yi, angi, ksigns(pidx, 0), finalcurve.c1.l, ksigns(pidx, 1), finalcurve.c2.l, ksigns(pidx, 2), finalcurve.c3.l);
         #if DEBUG_MOBILE
