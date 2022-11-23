@@ -6,6 +6,7 @@
 #include <eigen3/Eigen/Dense>
 #include <cmath>
 #include <cstdlib>
+#include <utils/utils.h>
 
 
 #define DEBUG_MOBILE true
@@ -21,7 +22,6 @@
 #define CURV_MAX 1.0          // max curvature
 #define VELOCITY_AVG 0.5      // main velocity
 
-#define PI 3.141592654
 #define DOUBLE_MAX 1.79769e+308
 
 struct Point //structure of point: set all 5 parameters for every point, then len_traj (length of non-empty part of array), when you draw a trajectory!
@@ -53,10 +53,43 @@ class DubinPoint{
 
 };
 
+// arc (portion of dubin curve)
+class DubinArc {
+    public: 
+        DubinPoint source;
+        double length;
+        double k;
+
+        DubinArc(DubinPoint source, double length, double k):source{source},length{length},k{k}{}
+
+        DubinPoint get_dest(){
+            double x = this->source.x + this->length * sinc(this->k * this->length / 2.0) * cos(this->source.th + this->k * this->length / 2);
+            double y = this->source.y + this->length * sinc(this->k * this->length / 2.0) * sin(this->source.th + this->k * this->length / 2);
+            double th = mod2pi(this->source.th + this->k * this->length);
+            return DubinPoint(x,y,th);
+        }
+};
+
+class DubinCurve {
+    public:
+        DubinArc arc1;
+        DubinArc arc2;
+        DubinArc arc3;
+
+        DubinCurve(DubinArc arc1, DubinArc arc2, DubinArc arc3):arc1{arc1},arc2{arc2},arc3{arc3}{}
+
+        double get_length(){
+            return arc1.length + arc2.length + arc3.length; 
+        }
+};
+
+struct primitive{ 
+    bool ok;
+    double sc_s1_c,sc_s2_c,sc_s3_c;
+};
+
 bool dubins_shortest_path(DubinPoint p_start, DubinPoint p_end);
 Point getTraj(int x);
 int getLenTraj();
-double mod2pi(double ang);
-double sinc(double t);
 
 #endif

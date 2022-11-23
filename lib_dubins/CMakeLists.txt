@@ -6,12 +6,16 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(ament_cmake REQUIRED)
+find_package(utils REQUIRED)
 
 include_directories(include)
  
 add_library(lib_dubins src/dubins.cpp)
  
 ament_export_targets(lib_dubins HAS_LIBRARY_TARGET)
+
+ament_target_dependencies(lib_dubins utils)
+
  
 install(
   DIRECTORY include/lib_dubins

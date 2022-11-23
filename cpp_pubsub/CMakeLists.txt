@@ -12,10 +12,11 @@ find_package(std_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(lib_dubins REQUIRED)
+find_package(utils REQUIRED)
 
 add_executable(publisher src/publisher.cpp)
 
-ament_target_dependencies(publisher rclcpp nav_msgs geometry_msgs lib_dubins)
+ament_target_dependencies(publisher rclcpp nav_msgs geometry_msgs lib_dubins utils)
 
 install(
   TARGETS publisher

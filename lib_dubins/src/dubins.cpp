@@ -5,41 +5,6 @@ using namespace std;
 struct Point traj[int(MAX_LENGTH_TRAJ * PRECISION_TRAJ)];
 int len_traj;
 
-// arc (portion of dubin curve)
-class DubinArc {
-    public: 
-        DubinPoint source;
-        double length;
-        double k;
-
-        DubinArc(DubinPoint source, double length, double k):source{source},length{length},k{k}{}
-
-        DubinPoint get_dest(){
-            double x = this->source.x + this->length * sinc(this->k * this->length / 2.0) * cos(this->source.th + this->k * this->length / 2);
-            double y = this->source.y + this->length * sinc(this->k * this->length / 2.0) * sin(this->source.th + this->k * this->length / 2);
-            double th = mod2pi(this->source.th + this->k * this->length);
-            return DubinPoint(x,y,th);
-        }
-};
-
-class DubinCurve {
-    public:
-        DubinArc arc1;
-        DubinArc arc2;
-        DubinArc arc3;
-
-        DubinCurve(DubinArc arc1, DubinArc arc2, DubinArc arc3):arc1{arc1},arc2{arc2},arc3{arc3}{}
-
-        double get_length(){
-            return arc1.length + arc2.length + arc3.length; 
-        }
-};
-
-struct primitive{ 
-    bool ok;
-    double sc_s1_c,sc_s2_c,sc_s3_c;
-};
-
 Point getTraj(int x)
 {
     return traj[x];
@@ -48,24 +13,6 @@ Point getTraj(int x)
 int getLenTraj()
 {
     return len_traj;
-}
-
-double sinc(double t){
-    double ret;
-    if(abs(t)<0.002){
-        ret=1-(t*t)/6*(1-(t*t)/20);
-    }else{
-        ret=sin(t)/t;
-    }
-    return ret;
-}
-
-double mod2pi(double ang)
-{
-    double out = ang;
-    while(out < 0) out+= 2*PI;
-    while(out >= 2*PI) out-= 2*PI;
-    return out;
 }
 
 void reset_trajectory()
@@ -284,7 +231,7 @@ primitive rlr(double sc_th0, double sc_thf,double sc_kmax){
         ret.sc_s2_c=0;
         ret.sc_s3_c=0;
     }else{
-        ret.sc_s2_c=invk*mod2pi(2*PI-acos(temp2));
+        ret.sc_s2_c=invk*mod2pi(2*M_PI-acos(temp2));
         ret.sc_s1_c=invk*mod2pi(sc_th0-temp1+0.5*ret.sc_s2_c*sc_kmax);
         ret.sc_s3_c=invk*mod2pi(sc_th0-sc_thf+sc_kmax*(ret.sc_s2_c-ret.sc_s1_c));
         ret.ok=true;
@@ -306,7 +253,7 @@ primitive lrl(double sc_th0, double sc_thf,double sc_kmax){
         ret.sc_s2_c=0;
         ret.sc_s3_c=0;
     }else{
-        ret.sc_s2_c=invk*mod2pi(2*PI-acos(temp2));
+        ret.sc_s2_c=invk*mod2pi(2*M_PI-acos(temp2));
         ret.sc_s1_c=invk*mod2pi(temp1-sc_th0+0.5*ret.sc_s2_c*sc_kmax);
         ret.sc_s3_c=invk*mod2pi(sc_thf-sc_th0+sc_kmax*(ret.sc_s2_c-ret.sc_s1_c));
         ret.ok=true;

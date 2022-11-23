@@ -93,8 +93,8 @@ class MinimalPublisher : public rclcpp::Node
     MinimalPublisher()
     : Node("minimal_publisher"), count_(0)
     {
-      DubinPoint p_start(0.0, 0.0, PI/4);
-      DubinPoint p_end(2.0, 3.0, PI);
+      DubinPoint p_start(0.0, 0.0, M_PI/4);
+      DubinPoint p_end(4.0, 2.0, M_PI);
       auto arc_poses = dubin_points_to_poses(p_start, p_end, this->get_clock()->now());
 
       nav_msgs::msg::Path path;
