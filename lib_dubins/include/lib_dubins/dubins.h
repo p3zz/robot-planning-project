@@ -48,7 +48,8 @@ class DubinPoint{
         double x;
         double y;
         double th;
-         
+
+        DubinPoint():x{0},y{0},th{0}{}
         DubinPoint(double x, double y, double th):x{x},y{y},th{th}{}
 
 };
@@ -60,6 +61,7 @@ class DubinArc {
         double length;
         double k;
 
+        DubinArc():source{DubinPoint()}, length{0}, k{0}{};
         DubinArc(DubinPoint source, double length, double k):source{source},length{length},k{k}{}
 
         DubinPoint get_dest(){
@@ -76,6 +78,7 @@ class DubinCurve {
         DubinArc arc2;
         DubinArc arc3;
 
+        DubinCurve():arc1{DubinArc()},arc2{DubinArc()},arc3{DubinArc()}{}
         DubinCurve(DubinArc arc1, DubinArc arc2, DubinArc arc3):arc1{arc1},arc2{arc2},arc3{arc3}{}
 
         double get_length(){
@@ -88,8 +91,105 @@ struct primitive{
     double sc_s1_c,sc_s2_c,sc_s3_c;
 };
 
-bool dubins_shortest_path(DubinPoint p_start, DubinPoint p_end);
-Point getTraj(int x);
-int getLenTraj();
+class DubinDrawer{
+
+    private:
+
+        DubinCurve curve;
+        int len_traj;
+
+        void draw_arc(DubinArc arc, double velocity, bool acc, bool dec){
+            //compute start and numbers of trajectory points
+            int start_traj = this->len_traj;
+            this->len_traj += arc.length * PRECISION_TRAJ + 1;
+
+            int curve_type = int(arc.k / CURV_MAX);
+
+            //compute a point (x y th v w) every cm
+            for(int i = start_traj; i < this->len_traj; i++)
+            {
+                //x y th
+                double s = double(i - start_traj)/PRECISION_TRAJ;
+
+                // arc is straight
+                if(curve_type == S){
+                    this->traj[i].x = arc.source.x + s * cos(arc.source.th);
+                    this->traj[i].y = arc.source.y + s * sin(arc.source.th);
+                    this->traj[i].th = arc.source.th;
+                }
+
+                // arc is curve
+                else{
+                    this->traj[i].x = arc.source.x + s * sinc(arc.k * s / 2.0) * cos(arc.source.th + arc.k * s / 2.0);
+                    this->traj[i].y = arc.source.y + s * sinc(arc.k * s / 2.0) * sin(arc.source.th + arc.k * s / 2.0);
+                    this->traj[i].th = mod2pi(arc.source.th + arc.k * s);
+                }                
+
+                //v with acceleration, deceleration
+                if(acc && i - start_traj <= PRECISION_TRAJ * ACCELERATION)
+                    this->traj[i].v = velocity * ((i - start_traj) / (PRECISION_TRAJ * ACCELERATION));
+                else if(dec && this->len_traj - i <= PRECISION_TRAJ * DECELERATION)
+                    this->traj[i].v = velocity * ((this->len_traj - i) / (PRECISION_TRAJ * DECELERATION));
+                else
+                    this->traj[i].v = velocity;
+
+                if(curve_type == S){
+                    this->traj[i].w = 0;
+                }
+                else{
+                    this->traj[i].w = traj[i].v * arc.k;
+                }
+            }
+        }
+
+    public:
+
+        Point traj[int(MAX_LENGTH_TRAJ * PRECISION_TRAJ)];
+    
+        DubinDrawer(DubinCurve curve): curve{curve}, len_traj{0}{}
+
+        Point* draw_trajectory(){
+
+            double const length_threshold = 2.0;            
+            // reset trajectory
+            this->len_traj = 0;
+
+            //1st arc
+            double velocity = VELOCITY_AVG;
+
+            // if the arc is straight, go faster
+            if(int(this->curve.arc1.k / CURV_MAX) == S){
+                velocity = this->curve.arc1.length > length_threshold? VELOCITY_AVG + 0.5 : VELOCITY_AVG + 0.2;
+            }
+            draw_arc(curve.arc1, velocity, true, false);
+
+            //2nd arc
+            velocity = VELOCITY_AVG;
+
+            if(int(this->curve.arc2.k / CURV_MAX) == S){
+                velocity = this->curve.arc2.length > length_threshold? VELOCITY_AVG + 0.5 : VELOCITY_AVG + 0.2;
+            }
+            DubinArc arc2(DubinPoint(this->traj[this->len_traj-1].x, this->traj[this->len_traj-1].y, this->traj[this->len_traj-1].th), this->curve.arc2.length, this->curve.arc2.k); 
+            draw_arc(arc2, velocity, true, false);
+
+            //3rd arc
+            velocity = VELOCITY_AVG;
+
+            if(int(this->curve.arc3.k / CURV_MAX) == S){
+                velocity = this->curve.arc3.length > length_threshold? VELOCITY_AVG + 0.5 : VELOCITY_AVG + 0.2;
+            }
+            DubinArc arc3(DubinPoint(this->traj[this->len_traj-1].x, this->traj[this->len_traj-1].y, this->traj[this->len_traj-1].th), this->curve.arc3.length, this->curve.arc3.k); 
+            draw_arc(arc3, velocity, true, false);
+
+            return traj;
+        }
+
+        int get_length(){
+            return len_traj;
+        }
+
+};
+
+DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end);
 
 #endif

@@ -2,115 +2,6 @@
 
 using namespace std;
 
-struct Point traj[int(MAX_LENGTH_TRAJ * PRECISION_TRAJ)];
-int len_traj;
-
-Point getTraj(int x)
-{
-    return traj[x];
-}
-
-int getLenTraj()
-{
-    return len_traj;
-}
-
-void reset_trajectory()
-{
-    len_traj = 0;
-}
-
-void draw_curvature(double length, double velocity, double x0, double y0, double th0, double k, bool acc, bool dec)
-{
-    //compute start and numbers of trajectory points
-    int start_traj = len_traj;
-    len_traj += length * PRECISION_TRAJ + 1;
-
-    //compute a point (x y th v w) every cm
-    for(int i = start_traj; i < len_traj; i++)
-    {
-        //x y th
-        double s = double(i - start_traj)/PRECISION_TRAJ;
-        traj[i].x = x0 + s * sinc(k * s / 2.0) * cos(th0 + k * s / 2.0);
-        traj[i].y = y0 + s * sinc(k * s / 2.0) * sin(th0 + k * s / 2.0);
-        traj[i].th = mod2pi(th0 + k * s);
-
-        //v with acceleration, deceleration
-        if(acc && i - start_traj <= PRECISION_TRAJ * ACCELERATION)
-            traj[i].v = velocity * ((i - start_traj) / (PRECISION_TRAJ * ACCELERATION));
-        else if(dec && len_traj - i <= PRECISION_TRAJ * DECELERATION)
-            traj[i].v = velocity * ((len_traj - i) / (PRECISION_TRAJ * DECELERATION));
-        else
-            traj[i].v = velocity;
-
-        //w
-        traj[i].w = traj[i].v * k;
-    }
-}
-
-void draw_line(double length, double velocity, double x0, double y0, double th0, bool acc, bool dec)
-{
-    //compute start and numbers of trajectory points
-    int start_traj = len_traj;
-    len_traj += length * PRECISION_TRAJ + 1;
-
-    //compute a point (x y th v w) every cm
-    for(int i = start_traj; i < len_traj; i++)
-    {
-        //x y th
-        double s = double(i - start_traj)/PRECISION_TRAJ;
-        traj[i].x = x0 + s * cos(th0);
-        traj[i].y = y0 + s * sin(th0);
-        traj[i].th = th0;
-
-        //v with acceleration, deceleration
-        if(acc && i - start_traj <= PRECISION_TRAJ * ACCELERATION)
-            traj[i].v = velocity * ((i - start_traj) / (PRECISION_TRAJ * ACCELERATION));
-        else if(dec && len_traj - i <= PRECISION_TRAJ * DECELERATION)
-            traj[i].v = velocity * ((len_traj - i) / (PRECISION_TRAJ * DECELERATION));
-        else
-            traj[i].v = velocity;
-
-        //w
-        traj[i].w = 0;
-    }
-}
-
-void draw_trajectory(double xi, double yi, double angi, int t1, double len1, int t2, double len2, int t3, double len3)
-{
-    reset_trajectory();
-
-    //1st part
-    if(t1 == S)
-    {
-        double velocity = VELOCITY_AVG + 0.2;
-        if(len1>2.0) velocity = VELOCITY_AVG + 0.5;
-        draw_line(len1, velocity, xi, yi, angi, true, false);
-    }
-    else
-        draw_curvature(len1, VELOCITY_AVG, xi, yi, angi, CURV_MAX * double(t1), true, false);
-
-    //2nd part
-    if(t2 == S)
-    {
-        double velocity = VELOCITY_AVG + 0.2;
-        if(len2>2.0) velocity = VELOCITY_AVG + 0.5;
-        draw_line(len2, velocity, traj[len_traj-1].x, traj[len_traj-1].y, traj[len_traj-1].th, false, false);
-    }
-    else
-        draw_curvature(len2, VELOCITY_AVG, traj[len_traj-1].x,traj[len_traj-1].y,traj[len_traj-1].th, CURV_MAX * double(t2), false, false);
-
-    //3rd part
-    if(t3 == S)
-    {
-        double velocity = VELOCITY_AVG + 0.2;
-        if(len3>2.0) velocity = VELOCITY_AVG + 0.5;
-        draw_line(len3, velocity, traj[len_traj-1].x,traj[len_traj-1].y,traj[len_traj-1].th, false, true);
-    }
-    else
-        draw_curvature(len3, VELOCITY_AVG, traj[len_traj-1].x,traj[len_traj-1].y,traj[len_traj-1].th, CURV_MAX * double(t3), false, true);
-}
-
 Eigen::Vector4d scale_to_standard(DubinPoint p_start, DubinPoint p_end){    
     double dx = p_end.x - p_start.x;
     double dy = p_end.y - p_start.y;
@@ -311,7 +202,7 @@ tuple<primitive, int> calculate_best_primitive(double th0, double thf, double km
     return make_tuple(best_prim, best_i);
 }
 
-bool dubins_shortest_path(DubinPoint p_start, DubinPoint p_end){ 
+DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end){ 
     
     Eigen::Vector4d scaled = scale_to_standard(p_start, p_end);    //scale the problem to standard values
 
@@ -340,19 +231,18 @@ bool dubins_shortest_path(DubinPoint p_start, DubinPoint p_end){
         DubinArc arc3(arc2.get_dest(), s(2), ksigns(pidx,2)*CURV_MAX);
 
         DubinCurve final_curve(arc1, arc2, arc3);
-        
-        draw_trajectory(final_curve.arc1.source.x, final_curve.arc1.source.y, final_curve.arc1.source.th,
-                        ksigns(pidx, 0), final_curve.arc1.length, ksigns(pidx, 1), final_curve.arc2.length, ksigns(pidx, 2), final_curve.arc3.length);
-        
+
         #if DEBUG_MOBILE
             cout << endl << endl << "*******************" << endl;
             cout << ksigns(pidx, 0) << " " << final_curve.arc1.length << " - " << ksigns(pidx, 1) << " " <<  final_curve.arc2.length << " - " << ksigns(pidx, 2) << " " <<  final_curve.arc3.length << endl;
         #endif
-        return true;
+
+        return final_curve;
     }else{
         #if DEBUG_MOBILE
             cout<<"No curve found!"<<endl;
         #endif
-        return false;
+        // return default dubin curve
+        return DubinCurve();
     }
 }
