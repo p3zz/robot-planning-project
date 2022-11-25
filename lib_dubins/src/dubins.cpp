@@ -2,6 +2,34 @@
 
 using namespace std;
 
+std::vector<Point> arc_to_points(DubinArc arc, int n_points, double velocity, bool acc, bool dec){
+    std::vector<Point> points;
+    // compute the unit segment
+    double unit_seg_length = arc.length / n_points;
+    for(int i=0;i<n_points;i++){
+        // compute the length of portion of the arc
+        double arc_length = unit_seg_length*i;
+        // create a smaller dubin arc
+        DubinArc new_arc(arc.source, arc_length, arc.k);
+        // get the final point of the smaller dubin arc
+        DubinPoint p = new_arc.get_dest();
+
+        double acceleration = PRECISION_TRAJ * ACCELERATION;
+        double deceleration = PRECISION_TRAJ * ACCELERATION;
+
+        double v = velocity;
+        if(acc && i <= acceleration)
+            v *= (i / acceleration);
+        else if(dec && n_points - i <= deceleration)
+            v *= ((n_points - i) / deceleration);
+
+        double w = v * arc.k;
+
+        points.push_back(Point(p.x, p.y, p.th, v, w));
+    }
+    return points;
+}
+
 Eigen::Vector4d scale_to_standard(DubinPoint p_start, DubinPoint p_end){    
     double dx = p_end.x - p_start.x;
     double dy = p_end.y - p_start.y;

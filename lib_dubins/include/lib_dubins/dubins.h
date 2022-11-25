@@ -75,6 +75,8 @@ class DubinArc {
         }
 };
 
+std::vector<Point> arc_to_points(DubinArc arc, int n_points, double velocity, bool acc, bool dec);
+
 class DubinCurve {
     public:
         std::vector<DubinArc> arcs;
@@ -91,52 +93,8 @@ class DubinCurve {
             for(auto arc:arcs) length+=arc.length;
             return length; 
         }
-};
 
-struct primitive{ 
-    bool ok;
-    double sc_s1_c,sc_s2_c,sc_s3_c;
-};
-
-class DubinDrawer{
-
-    private:
-
-        DubinCurve curve;
-
-        std::vector<Point> arc_to_points(DubinArc arc, int n_points, double velocity, bool acc, bool dec){
-            std::vector<Point> points;
-            // compute the unit segment
-            double unit_seg_length = arc.length / n_points;
-            for(int i=0;i<n_points;i++){
-                // compute the length of portion of the arc
-                double arc_length = unit_seg_length*i;
-                // create a smaller dubin arc
-                DubinArc new_arc(arc.source, arc_length, arc.k);
-                // get the final point of the smaller dubin arc
-                DubinPoint p = new_arc.get_dest();
-
-                double acceleration = PRECISION_TRAJ * ACCELERATION;
-                double deceleration = PRECISION_TRAJ * ACCELERATION;
-
-                double v = velocity;
-                if(acc && i <= acceleration)
-                    v *= (i / acceleration);
-                else if(dec && n_points - i <= deceleration)
-                    v *= ((n_points - i) / deceleration);
-
-                double w = v * arc.k;
-
-                points.push_back(Point(p.x, p.y, p.th, v, w));
-            }
-            return points;
-        }
-
-    public:
-
-        DubinDrawer(DubinCurve curve): curve{curve}{}
-
-        std::vector<Point> draw_trajectory(){
+        std::vector<Point> get_trajectory(){
 
             std::vector<Point> points;
 
@@ -147,7 +105,7 @@ class DubinDrawer{
             double const velocity_straight = velocity + 0.2;
             double const velocity_straight_overlength = velocity + 0.5;
 
-            for(DubinArc arc:curve.arcs){
+            for(DubinArc arc:arcs){
                 velocity = VELOCITY_AVG;
 
                 // if the arc is straight, go faster
@@ -155,17 +113,20 @@ class DubinDrawer{
                     velocity = arc.length > length_threshold? velocity_straight_overlength : velocity_straight;
                 }
 
-                int arc_points_n = int((arc.length / curve.get_length()) * PRECISION_TRAJ);
+                int arc_points_n = int((arc.length / get_length()) * PRECISION_TRAJ);
                 std::vector<Point> arc_points = arc_to_points(arc, arc_points_n, velocity, true, false);
                 points.insert(points.end(), arc_points.begin(), arc_points.end());
             }
 
             return points;
         }
+};
 
+struct primitive{ 
+    bool ok;
+    double sc_s1_c,sc_s2_c,sc_s3_c;
 };
 
 DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end);
-DubinPoint get_destination(DubinArc arc);
 
 #endif
