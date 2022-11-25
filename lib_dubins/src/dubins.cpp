@@ -234,7 +234,7 @@ DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end){
 
         #if DEBUG_MOBILE
             cout << endl << endl << "*******************" << endl;
-            cout << ksigns(pidx, 0) << " " << final_curve.arc1.length << " - " << ksigns(pidx, 1) << " " <<  final_curve.arc2.length << " - " << ksigns(pidx, 2) << " " <<  final_curve.arc3.length << endl;
+            cout << ksigns(pidx, 0) << " " << final_curve.arcs[0].length << " - " << ksigns(pidx, 1) << " " <<  final_curve.arcs[1].length << " - " << ksigns(pidx, 2) << " " <<  final_curve.arcs[2].length << endl;
         #endif
 
         return final_curve;
