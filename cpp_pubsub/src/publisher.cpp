@@ -70,8 +70,7 @@ std::vector<geometry_msgs::msg::PoseStamped> dubin_points_to_poses(DubinPoint st
 
   //dubins
   DubinCurve curve = dubins_shortest_path(start, end);
-  DubinDrawer drawer(curve);
-  vector<Point> trajectory = drawer.draw_trajectory();
+  vector<Point> trajectory = curve.get_trajectory();
 
   for (Point p:trajectory){
     pose.pose.position.x = p.x;
@@ -94,8 +93,8 @@ class MinimalPublisher : public rclcpp::Node
     MinimalPublisher()
     : Node("minimal_publisher"), count_(0)
     {
-      DubinPoint p_start(0.0, 0.0, M_PI);
-      DubinPoint p_end(2.0, 3.0, M_PI);
+      DubinPoint p_start(0.1, 0.0, M_PI/4);
+      DubinPoint p_end(2.0, 3.0, 0);
       auto arc_poses = dubin_points_to_poses(p_start, p_end, this->get_clock()->now());
 
       nav_msgs::msg::Path path;
