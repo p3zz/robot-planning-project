@@ -71,10 +71,9 @@ std::vector<geometry_msgs::msg::PoseStamped> dubin_points_to_poses(DubinPoint st
   //dubins
   DubinCurve curve = dubins_shortest_path(start, end);
   DubinDrawer drawer(curve);
-  auto trajectory = drawer.draw_trajectory();
+  vector<Point> trajectory = drawer.draw_trajectory();
 
-  for (int i=0;i<drawer.get_length();i++){
-    Point p = trajectory[i];
+  for (Point p:trajectory){
     pose.pose.position.x = p.x;
     pose.pose.position.y = p.y;
     pose.pose.position.z = 0;
@@ -95,21 +94,14 @@ class MinimalPublisher : public rclcpp::Node
     MinimalPublisher()
     : Node("minimal_publisher"), count_(0)
     {
-      DubinPoint p_start(0.0, 0.0, -M_PI);
-      DubinPoint p_end(-2.0, 5.0, M_PI);
+      DubinPoint p_start(0.0, 0.0, M_PI);
+      DubinPoint p_end(2.0, 3.0, M_PI);
       auto arc_poses = dubin_points_to_poses(p_start, p_end, this->get_clock()->now());
 
       nav_msgs::msg::Path path;
       path.header.stamp = this->get_clock()->now();
       path.header.frame_id = "map";
       path.poses = arc_poses;
-
-      // for (int i = 0; i < getLenTraj(); i++)
-      //   {
-      //     Point p = getTraj(i);
-      //     std::cout << "x=" << p.x << "\ty=" << p.y << "\tth=" << p.th << "\tlin_vel=" << p.v << "\tang_vel=" << p.w << std::endl;
-      //   }
-
 
       publisher_ = this->create_publisher<nav_msgs::msg::Path>("plan", 10);
       //keep channel up for 10 times (100ms)
