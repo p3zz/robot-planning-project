@@ -7,13 +7,10 @@
 #include <cmath>
 #include <cstdlib>
 #include <utils/utils.h>
+#include <map>
 
 
 #define DEBUG_MOBILE true
-
-#define S 0
-#define L 1
-#define R -1
 
 #define MAX_LENGTH_TRAJ 500.0 // 100 meter max
 #define PRECISION_TRAJ 100.0  // cms precision
@@ -42,7 +39,14 @@ enum CurveType{
     LSR,
     RSL,
     RLR,
-    LRL
+    LRL,
+    None = -1
+};
+
+enum ArcType{
+    Straight = 0,
+    Left = 1,
+    Right = -1
 };
 
 // point (start/end of a dubin arc)
@@ -109,7 +113,7 @@ class DubinCurve {
                 velocity = VELOCITY_AVG;
 
                 // if the arc is straight, go faster
-                if(int(arc.k / CURV_MAX) == S){
+                if(int(arc.k / CURV_MAX) == ArcType::Straight){
                     velocity = arc.length > length_threshold? velocity_straight_overlength : velocity_straight;
                 }
 

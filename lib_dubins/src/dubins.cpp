@@ -208,69 +208,73 @@ primitive calculate_primitive(CurveType ct, double sc_th0, double sc_thf,double 
     return p;
 }
 
-// calculate every optimal curve type and returns the best, with its index as identifier  
-tuple<primitive, int> calculate_best_primitive(double th0, double thf, double kmax){
-    double best_length = DOUBLE_MAX;
-    int best_i = -1;
+// calculate every optimal curve type and returns the best
+tuple<primitive, CurveType> calculate_best_primitive(double th0, double thf, double kmax){
+
     double const optimal_curves_n = 6;
+    double best_length = DOUBLE_MAX;
     primitive best_prim;
+    CurveType best_ct = CurveType::None;
+
     // iterate through optimal curves
     for(int i = 0 ; i < optimal_curves_n ; i++){
         CurveType ct = static_cast<CurveType>(i);
-        primitive prim = calculate_primitive(ct,th0, thf, kmax); 
+        primitive prim = calculate_primitive(ct, th0, thf, kmax); 
         double length = prim.sc_s1_c + prim.sc_s2_c + prim.sc_s3_c;
 
         if(prim.ok && length < best_length){
             best_length = length;
             best_prim = prim;
-            best_i = i;
+            best_ct = ct;
         }
     }
 
-    return make_tuple(best_prim, best_i);
+    return make_tuple(best_prim, best_ct);
 }
 
 DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end){ 
     
     Eigen::Vector4d scaled = scale_to_standard(p_start, p_end);    //scale the problem to standard values
 
-    Eigen::MatrixXd ksigns (6,3);
-    ksigns<<1,  0,  1,  //LSL
-            -1, 0,  -1, //RSR
-            1,  0,  -1, //LSR
-            -1, 0,  1,  //RSL
-            -1, 1,  -1, //RLR
-            1,  -1, 1;  //LRL
+    tuple<primitive, CurveType> best_primitive_result = calculate_best_primitive(scaled(0),scaled(1),scaled(2));
 
-    tuple<primitive, int> best_primitive_result = calculate_best_primitive(scaled(0),scaled(1),scaled(2));
+    std::map<CurveType, std::vector<ArcType>> curve_to_arc_types = {
+        { CurveType::LSL, {ArcType::Left,  ArcType::Straight,  ArcType::Left} },
+        { CurveType::RSR, {ArcType::Right,  ArcType::Straight,  ArcType::Right} },
+        { CurveType::LSR, {ArcType::Left,  ArcType::Straight,  ArcType::Right} },
+        { CurveType::RSL, {ArcType::Right,  ArcType::Straight,  ArcType::Left} },
+        { CurveType::RLR, {ArcType::Right,  ArcType::Left,  ArcType::Right} },
+        { CurveType::LRL, {ArcType::Left,  ArcType::Right,  ArcType::Left} }
+    };
 
     primitive best_primitive = get<0>(best_primitive_result);
-    int pidx = get<1>(best_primitive_result);
+    CurveType best_ct = get<1>(best_primitive_result);
 
-    if(pidx>-1){
-
-        // get the lengths of the 3 arcs
-        Eigen::Vector3d s = scale_from_standard(scaled(3), best_primitive.sc_s1_c, best_primitive.sc_s2_c, best_primitive.sc_s3_c);  //scale from the standard solution to the general one
-        
-        DubinArc arc1(p_start, s(0), ksigns(pidx,0)*CURV_MAX);
-
-        DubinArc arc2(arc1.get_dest(), s(1), ksigns(pidx,1)*CURV_MAX);
-
-        DubinArc arc3(arc2.get_dest(), s(2), ksigns(pidx,2)*CURV_MAX);
-
-        DubinCurve final_curve(arc1, arc2, arc3);
-
-        #if DEBUG_MOBILE
-            cout << endl << endl << "*******************" << endl;
-            cout << ksigns(pidx, 0) << " " << final_curve.arcs[0].length << " - " << ksigns(pidx, 1) << " " <<  final_curve.arcs[1].length << " - " << ksigns(pidx, 2) << " " <<  final_curve.arcs[2].length << endl;
-        #endif
-
-        return final_curve;
-    }else{
+    if(best_ct == CurveType::None){
         #if DEBUG_MOBILE
             cout<<"No curve found!"<<endl;
         #endif
         // return default dubin curve
         return DubinCurve();
     }
+
+    // get the lengths of the 3 arcs
+    Eigen::Vector3d s = scale_from_standard(scaled(3), best_primitive.sc_s1_c, best_primitive.sc_s2_c, best_primitive.sc_s3_c);  //scale from the standard solution to the general one
+
+    auto arc_types = curve_to_arc_types.find(best_ct);
+    
+    DubinArc arc0(p_start, s(0), static_cast<int>(arc_types->second[0])*CURV_MAX);
+
+    DubinArc arc1(arc0.get_dest(), s(1), static_cast<int>(arc_types->second[1])*CURV_MAX);
+
+    DubinArc arc2(arc1.get_dest(), s(2), static_cast<int>(arc_types->second[2])*CURV_MAX);
+
+    DubinCurve final_curve(arc0, arc1, arc2);
+
+    #if DEBUG_MOBILE
+        cout << endl << endl << "Curve found" << endl;
+    #endif
+
+    return final_curve;
+
 }
