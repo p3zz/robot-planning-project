@@ -15,7 +15,7 @@ std::vector<Point> arc_to_points(DubinArc arc, int n_points, double velocity, bo
         DubinPoint p = new_arc.get_dest();
 
         double acceleration = PRECISION_TRAJ * ACCELERATION;
-        double deceleration = PRECISION_TRAJ * ACCELERATION;
+        double deceleration = PRECISION_TRAJ * DECELERATION;
 
         double v = velocity;
         if(acc && i <= acceleration)
