@@ -23,3 +23,6 @@ ros2 run cpp_pubsub publisher
 
 ### segment/arc
 ![arc_segment_intersection](https://user-images.githubusercontent.com/84152495/204867933-0e69153b-77e3-4d62-bc3d-b66c5063b831.png)
+
+### Centre and radius of circle given 3 points
+![circle_centre_radius_given_points](https://user-images.githubusercontent.com/84152495/204868406-e6384deb-3b48-4066-85a0-ecc90c457760.png)
