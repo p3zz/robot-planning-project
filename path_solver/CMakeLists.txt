@@ -6,12 +6,15 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(ament_cmake REQUIRED)
+find_package(utils REQUIRED)
 
 include_directories(include)
  
-add_library(utils src/path_solver.cpp)
+add_library(path_solver src/path_solver.cpp)
  
-ament_export_targets(utils HAS_LIBRARY_TARGET)
+ament_export_targets(path_solver HAS_LIBRARY_TARGET)
+
+ament_target_dependencies(path_solver utils)
  
 install(
   DIRECTORY include/path_solver

@@ -4,7 +4,7 @@
 
 - Install dependencies:
 ```bash
-sudo apt install python3-kt
+sudo apt install python3-tk
 ```
 
 ```bash

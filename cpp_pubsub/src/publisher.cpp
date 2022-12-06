@@ -10,6 +10,7 @@
 #include "nav_msgs/msg/path.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "lib_dubins/dubins.h"
+#include "path_solver/path_solver.h"
 
 using namespace std;
 
@@ -117,8 +118,11 @@ class MinimalPublisher : public rclcpp::Node
 
 int main(int argc, char * argv[])
 {  
-  rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<MinimalPublisher>());
-  rclcpp::shutdown();
+  //rclcpp::init(argc, argv);
+  //rclcpp::spin(std::make_shared<MinimalPublisher>());
+  //rclcpp::shutdown();
+  Room room(10,10);
+  RoadMap map(room);
+  map.constructRoadMap(20,3);
   return 0;
 }

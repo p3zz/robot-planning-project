@@ -1,71 +1,70 @@
 #ifndef PATH_SOLVER_H
 #define PATH_SOLVER_H
 
-#include "utils/utils.h"
-
-#define MAX_VERTEXES 10
-#define MAX_OBSTACLES 10
+#include <utils/utils.h>
+#include <vector>
+#include <string>
+#include <cstdlib>
+#include <cmath>
+#include <iostream>
 
 class Point2D
 {
     public:
         double x, y;
         Point2D(double x, double y):x{x},y{y}{}
-}
+        Point2D(){}
+};
+
+class Link
+{
+    public:
+        Point2D src, dest;
+        Link(Point2D src, Point2D dest):src{src},dest{dest}{}
+        
+};
 
 class Obstacle
 {
     private:
-        int num_v=0;
+        std::vector<Point2D> vertexes;
     public:
-        Point2D vertexes[MAX_VERTEXES];
-        Obstacle(){}
-        bool addVertex(Point2D v)
-        {
-            if(num_v==MAX_VERTEXES)
-                return false;
-            vertexes[num_v++]=v;
-            return true;
-        }
-        int getNumVertexes(){return num_v;}
-
-}
+        Obstacle(){}        
+        void addVertex(Point2D v){vertexes.push_back(v);}
+        Point2D getVertex(int index){return vertexes.at(index);}
+        int getNumVertexes(){return vertexes.size();}
+};
 
 class Room
 {
     private: 
         double h;
         double w;
-        int num_o=0;
-        
+        std::vector<Obstacle> obstacles;
     public:
-        Obstacle obstacles[MAX_OBSTACLES];
         Room(double h, double w):h{h},w{w}{}
-        bool addObstacle(Obstacle o)
-        {
-            if(num_o==MAX_OBSTACLES)
-                return false;
-            obstacles[num_o++]=o;
-            return true;
-        }
-        int getNumObstacles(){return num_o;}
+        void addObstacle(Obstacle o){obstacles.push_back(o);}
+        Obstacle getObstacle(int index){return obstacles.at(index);}
+        int getNumObstacles(){return obstacles.size();}
         int getHeight(){return h;}
         int getWidth(){return w;}
 
 };
 
-class PathSolver
+class RoadMap
 {
     private: 
         Room r;
-        int points;
-        double t_max;
-        len_path=0; //in points
-
+        std::vector<Point2D> nodes;
+        std::vector<Link>  links;
     public:
-        PathSolver(Room r, int points, double t_max):r{r},points{points},t_max{t_max}{} //time_max in seconds
-        Point2D* constructPath(Point2D robot_pos, Point2D goal_pos);
-        int getLenPath(){return len_path;}
-}
+        RoadMap(Room r):r{r}{}
+        void constructRoadMap(int points, int knn);
+        std::vector<Point2D> getNodes(){return nodes;}
+        std::vector<Link> getLinks(){return links;}
+        std::string getJson();
+};
+
+
 
 #endif
