@@ -8,6 +8,8 @@
 #include <cmath>
 #include <iostream>
 
+#define KNN_MAX 30
+
 class Point2D
 {
     public:
@@ -59,7 +61,8 @@ class RoadMap
         std::vector<Link>  links;
     public:
         RoadMap(Room r):r{r}{}
-        void constructRoadMap(int points, int knn);
+        //PRM ROADMAP
+        void constructRoadMap(int points, double distance_pts, int knn);
         std::vector<Point2D> getNodes(){return nodes;}
         std::vector<Link> getLinks(){return links;}
         std::string getJson();

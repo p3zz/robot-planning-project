@@ -123,6 +123,7 @@ int main(int argc, char * argv[])
   //rclcpp::shutdown();
   Room room(10,10);
   RoadMap map(room);
-  map.constructRoadMap(20,3);
+  map.constructRoadMap(20,0.1,3);
+  cout<<map.getJson();
   return 0;
 }

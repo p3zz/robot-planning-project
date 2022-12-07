@@ -5,7 +5,7 @@ def main():
     f = open('map.json')
     data = json.load(f)
 
-    win = GraphWin("roadmap", 500, 500)
+    win = GraphWin("roadmap", 1000, 1000)
 
     roadmap = data['roadmap']
     nodes = roadmap['nodes']
@@ -13,17 +13,17 @@ def main():
     obstacles = roadmap['obstacles']
 
     for point in nodes:
-        c = Circle(Point(point['x'],point['y']), 5)
+        c = Circle(Point(point['x']*100,point['y']*100), 5)
         c.draw(win)
 
     for link in links:
-        source = Point(link['source']['x'],link['source']['y'])
-        dest = Point(link['dest']['x'],link['dest']['y']) 
+        source = Point(link['source']['x']*100,link['source']['y']*100)
+        dest = Point(link['dest']['x']*100,link['dest']['y']*100) 
         c = Line(source, dest)
         c.draw(win)
 
     for obstacle in obstacles:
-        vertices = [Point(v['x'], v['y']) for v in obstacle]
+        vertices = [Point(v['x']*100, v['y']*100) for v in obstacle]
         c = Polygon(vertices)
         c.draw(win)    
 
