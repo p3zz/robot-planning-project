@@ -29,9 +29,13 @@ Point2D Segment::get_interceptor(double t){
     return Point2D(src.x + t*(dst.x - src.x), src.y + t*(dst.y - src.y));
 }
 
-// returns a vector containing the intersections between this circle and a given segment
-std::vector<Point2D> Circle::intersect(Segment s){
+bool Circle::intersect(Segment s, Point2D min, Point2D max){
     std::vector<Point2D> intersections = {};
+
+    if(!this->contains(min) || !this->contains(max)){
+        return false;
+    }
+
     double delta_x = s.dst.x - s.src.x;
     double delta_y = s.dst.y - s.src.y;
     double a = delta_x * delta_x + delta_y * delta_y;
@@ -43,7 +47,7 @@ std::vector<Point2D> Circle::intersect(Segment s){
 
     // if t1 or t2 are not bounded between 0 and 1 there are no intersections
     if(!is_bounded(t1, 0, 1) || !is_bounded(t2, 0, 1)){
-        return intersections;
+        return false;
     }
 
     // at least one intersection
@@ -56,11 +60,73 @@ std::vector<Point2D> Circle::intersect(Segment s){
         intersections.push_back(intersection);
     }
 
-    return intersections;
+    double min_angle = this->get_angle(min);
+    double max_angle = this->get_angle(max);
+    // check if at least one of the intersections stays between the bounds
+    for(auto inter: intersections){
+        double inter_angle = this->get_angle(inter);
+        if(is_bounded(inter_angle, min_angle, max_angle)){
+            return true;
+        }
+    }
+
+    return false;
 }
 
 double Circle::get_angle(Point2D p){
     return atan2(p.y - c.y, p.x - c.x);
+}
+
+bool Circle::contains(Point2D p){
+    return pow(p.x - c.x, 2) + pow(p.y - c.y, 2) == r;
+}
+
+Circle get_circle(Point2D p1, Point2D p2, Point2D p3){
+    double x12 = p1.x - p2.x;
+    double x13 = p1.x - p3.x;
+ 
+    double y12 = p1.y - p2.y;
+    double y13 = p1.y - p3.y;
+ 
+    double y31 = p3.y - p1.y;
+    double y21 = p2.y - p1.y;
+ 
+    double x31 = p3.x - p1.x;
+    double x21 = p2.x - p1.x;
+ 
+    // x1^2 - x3^2
+    double sx13 = pow(p1.x, 2) - pow(p3.x, 2);
+ 
+    // y1^2 - y3^2
+    double sy13 = pow(p1.y, 2) - pow(p3.y, 2);
+ 
+    double sx21 = pow(p2.x, 2) - pow(p1.x, 2);
+    double sy21 = pow(p2.y, 2) - pow(p1.y, 2);
+ 
+    double f = ((sx13) * (x12)
+             + (sy13) * (x12)
+             + (sx21) * (x13)
+             + (sy21) * (x13))
+            / (2 * ((y31) * (x12) - (y21) * (x13)));
+    double g = ((sx13) * (y12)
+             + (sy13) * (y12)
+             + (sx21) * (y13)
+             + (sy21) * (y13))
+            / (2 * ((x31) * (y12) - (x21) * (y13)));
+ 
+    double c = -pow(p1.x, 2) - pow(p1.y, 2) - 2 * g * p1.x - 2 * f * p1.y;
+ 
+    // eqn of circle be x^2 + y^2 + 2*g*x + 2*f*y + c = 0
+    // where centre is (h = -g, k = -f) and radius r
+    // as r^2 = h^2 + k^2 - c
+    Point2D center(-g, -f);
+    double sqr_of_r = center.x * center.x + center.y * center.y - c;
+ 
+    // r is the radius
+    float r = sqrt(sqr_of_r);
+
+    return Circle(center, r);
+
 }
 
 
