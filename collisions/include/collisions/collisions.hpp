@@ -4,38 +4,48 @@
 #include <cmath>
 #include <vector>
 
-class Point{
+class Point2D{
     public:
-        double x;
-        double y;
+        double x,y;
 
-        Point(double x, double y):x{x},y{y}{}
+        Point2D(double x, double y):x{x},y{y}{}
+
+        double distance_from(Point2D p);
 };
 
 class Segment{
     public:
-        Point p;
-        Point q;
+        Point2D src,dst;
 
-        Segment(Point p, Point q):p{p},q{q}{}
+        Segment(Point2D src, Point2D dst):src{src},dst{dst}{}
 
 
         bool intersect(Segment s);
-        bool contains(Point p);
-        Point get_interceptor(double t);
+        bool contains(Point2D p);
+        Point2D get_interceptor(double t);
 
 };
 
-
 class Circle{
     public:
-        double radius;
-        Point center;
+        double r;
+        Point2D c;
 
-        Circle(Point c, double r):radius{r},center(c){}
+        Circle(Point2D c, double r):r{r},c(c){}
 
-        std::vector<Point> intersect(Segment s);
-        double get_angle(Point p);
+        std::vector<Point2D> intersect(Segment s);
+        double get_angle(Point2D p);
+};
+
+class Polygon{
+    private:
+        std::vector<Point2D> vertexes;
+    public:
+        Polygon(){}        
+        void addVertex(Point2D v){vertexes.push_back(v);}
+        Point2D getVertex(int index){return vertexes.at(index);}
+        int getNumVertexes(){return vertexes.size();}
+
 };
 
 #endif

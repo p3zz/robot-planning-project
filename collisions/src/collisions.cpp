@@ -4,36 +4,40 @@ bool is_bounded(double val, double min, double max){
     return val>=min && val<=max;
 }
 
+double Point2D::distance_from(Point2D p){
+    return sqrt(pow(x-p.x,2)+pow(y-p.y,2));
+}
+
 bool Segment::intersect(Segment s){
-    double det = (s.q.x - s.p.x) * (p.y - q.y) - (p.x - q.x) * (s.q.y - s.p.y);
+    double det = (s.dst.x - s.src.x) * (src.y - dst.y) - (src.x - dst.x) * (s.dst.y - s.src.y);
     // segments are collinear
     if(det == 0){
         // check if the segments overlap
-        return this->contains(s.p) || this->contains(s.q) || s.contains(p) || s.contains(q);
+        return this->contains(s.src) || this->contains(s.dst) || s.contains(src) || s.contains(dst);
     }
-    double t = ((s.p.y - s.q.y) * (p.x - s.p.x) + (s.q.x - s.p.x) * (p.y - s.p.y)) / det;
-    double u = ((p.y - q.y) * (p.x - s.p.x) + (q.x - p.x) * (p.y - s.p.y)) / det;
+    double t = ((s.src.y - s.dst.y) * (src.x - s.src.x) + (s.dst.x - s.src.x) * (src.y - s.src.y)) / det;
+    double u = ((src.y - dst.y) * (src.x - s.src.x) + (dst.x - src.x) * (src.y - s.src.y)) / det;
     return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
 }
 
-bool Segment::contains(Point p){
-    return is_bounded(p.x, this->p.x, this->q.x) && is_bounded(p.y, this->p.y, this->q.y);
+bool Segment::contains(Point2D p){
+    return is_bounded(p.x, this->src.x, this->dst.x) && is_bounded(src.y, this->src.y, this->dst.y);
 }
 
 
-Point Segment::get_interceptor(double t){
-    return Point(p.x + t*(q.x - p.x), p.y + t*(q.y - p.y));
+Point2D Segment::get_interceptor(double t){
+    return Point2D(src.x + t*(dst.x - src.x), src.y + t*(dst.y - src.y));
 }
 
 // returns a vector containing the intersections between this circle and a given segment
-std::vector<Point> Circle::intersect(Segment s){
-    std::vector<Point> intersections = {};
-    double delta_x = s.q.x - s.p.x;
-    double delta_y = s.q.y - s.p.y;
+std::vector<Point2D> Circle::intersect(Segment s){
+    std::vector<Point2D> intersections = {};
+    double delta_x = s.dst.x - s.src.x;
+    double delta_y = s.dst.y - s.src.y;
     double a = delta_x * delta_x + delta_y * delta_y;
-    double b = delta_x * (s.p.x - center.x) + delta_y * (s.p.y - center.y);
-    double c = (s.p.x - center.x) * (s.p.x - center.x) + (s.p.y - center.y) * (s.p.y - center.y) - radius*radius;
-    double delta = sqrt(b*b - a*c);
+    double b = delta_x * (s.src.x - c.x) + delta_y * (s.src.y - c.y);
+    double cc = (s.src.x - c.x) * (s.src.x - c.x) + (s.src.y - c.y) * (s.src.y - c.y) - r*r;
+    double delta = sqrt(b*b - a*cc);
     double t1 = (-b + delta) / a;
     double t2 = (-b - delta) / a;
 
@@ -43,7 +47,7 @@ std::vector<Point> Circle::intersect(Segment s){
     }
 
     // at least one intersection
-    Point intersection = s.get_interceptor(t1);
+    Point2D intersection = s.get_interceptor(t1);
     intersections.push_back(intersection);
 
     // if t1 and t2 are different, there are two insersections
@@ -55,8 +59,8 @@ std::vector<Point> Circle::intersect(Segment s){
     return intersections;
 }
 
-double Circle::get_angle(Point p){
-    return atan2(p.y - center.y, p.x - center.x);
+double Circle::get_angle(Point2D p){
+    return atan2(p.y - c.y, p.x - c.x);
 }
 
 
