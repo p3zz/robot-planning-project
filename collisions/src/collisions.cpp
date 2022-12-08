@@ -10,18 +10,22 @@ double Point2D::distance_from(Point2D p){
 
 bool Segment::intersect(Segment s){
     double det = (s.dst.x - s.src.x) * (src.y - dst.y) - (src.x - dst.x) * (s.dst.y - s.src.y);
-    // segments are collinear
+    
     if(det == 0){
         // check if the segments overlap
         return this->contains(s.src) || this->contains(s.dst) || s.contains(src) || s.contains(dst);
     }
+
     double t = ((s.src.y - s.dst.y) * (src.x - s.src.x) + (s.dst.x - s.src.x) * (src.y - s.src.y)) / det;
     double u = ((src.y - dst.y) * (src.x - s.src.x) + (dst.x - src.x) * (src.y - s.src.y)) / det;
     return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
 }
 
 bool Segment::contains(Point2D p){
-    return is_bounded(p.x, this->src.x, this->dst.x) && is_bounded(src.y, this->src.y, this->dst.y);
+    double m = (src.y - dst.y) / (src.x - dst.x);
+    double q = (src.x * dst.y - dst.x * src.y) / (src.x - dst.x);
+    bool line_contains_p = (p.y == (m * p.x) + q);
+    return line_contains_p && is_bounded(p.x, src.x, dst.x) && is_bounded(p.y, src.y, dst.y);
 }
 
 
