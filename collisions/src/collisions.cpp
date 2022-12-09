@@ -24,7 +24,9 @@ bool Segment::intersect(Segment s){
 bool Segment::contains(Point2D p){
     double m = (src.y - dst.y) / (src.x - dst.x);
     double q = (src.x * dst.y - dst.x * src.y) / (src.x - dst.x);
-    bool line_contains_p = (p.y == (m * p.x) + q);
+    double const err_threshold = 0.01;
+    double err = abs(p.y - (m * p.x) - q);
+    bool line_contains_p = is_bounded(err, 0, err_threshold);
     return line_contains_p && is_bounded(p.x, src.x, dst.x) && is_bounded(p.y, src.y, dst.y);
 }
 
