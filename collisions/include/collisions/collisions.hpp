@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <vector>
+#include <iostream>
 
 class Point2D{
     public:
@@ -33,9 +34,9 @@ class Circle{
 
         Circle(Point2D c, double r):r{r},c(c){}
 
-        // check if this circle intersect a given segment into a bound [min, max]
+        // check if this circle intersect a given segment into a bound [start, end]
         // this bound simulates an arc described by its ends
-        bool intersect(Segment s, Point2D min, Point2D max);
+        bool intersect(Segment s, Point2D start, Point2D end);
         bool contains(Point2D p);
         double get_angle(Point2D p);
 };

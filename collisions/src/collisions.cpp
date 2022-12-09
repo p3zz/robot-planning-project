@@ -35,10 +35,11 @@ Point2D Segment::get_interceptor(double t){
     return Point2D(src.x + t*(dst.x - src.x), src.y + t*(dst.y - src.y));
 }
 
-bool Circle::intersect(Segment s, Point2D min, Point2D max){
+bool Circle::intersect(Segment s, Point2D start, Point2D end){
     std::vector<Point2D> intersections = {};
 
-    if(!this->contains(min) || !this->contains(max)){
+    if(!this->contains(start) || !this->contains(end)){
+        std::cout<<"not containing points"<<std::endl;
         return false;
     }
 
@@ -46,37 +47,44 @@ bool Circle::intersect(Segment s, Point2D min, Point2D max){
     double delta_y = s.dst.y - s.src.y;
     double a = delta_x * delta_x + delta_y * delta_y;
     double b = delta_x * (s.src.x - c.x) + delta_y * (s.src.y - c.y);
-    double cc = (s.src.x - c.x) * (s.src.x - c.x) + (s.src.y - c.y) * (s.src.y - c.y) - r*r;
+    double cc = pow(s.src.x - c.x, 2) + pow(s.src.y - c.y, 2) - pow(r,2);
     double delta = sqrt(b*b - a*cc);
     double t1 = (-b + delta) / a;
     double t2 = (-b - delta) / a;
-
-    // if t1 or t2 are not bounded between 0 and 1 there are no intersections
-    if(!is_bounded(t1, 0, 1) || !is_bounded(t2, 0, 1)){
-        return false;
+    
+    if(is_bounded(t1, 0, 1)){
+        intersections.push_back(s.get_interceptor(t1));
     }
 
-    // at least one intersection
-    Point2D intersection = s.get_interceptor(t1);
-    intersections.push_back(intersection);
-
-    // if t1 and t2 are different, there are two insersections
-    if(t1 != t2){
-        intersection = s.get_interceptor(t2);
-        intersections.push_back(intersection);
+    if(is_bounded(t2, 0, 1)){
+        intersections.push_back(s.get_interceptor(t2));
     }
 
-    double min_angle = this->get_angle(min);
-    double max_angle = this->get_angle(max);
+    double start_angle = this->get_angle(start);
+    double end_angle = this->get_angle(end);
+
+    // TODO optimize the for loop in case that t1 and t2 are bounded and equals 
+
+    bool intersected = false;
+
     // check if at least one of the intersections stays between the bounds
     for(auto inter: intersections){
         double inter_angle = this->get_angle(inter);
-        if(is_bounded(inter_angle, min_angle, max_angle)){
-            return true;
+
+        // https://stackoverflow.com/questions/6270785/how-to-determine-whether-a-point-x-y-is-contained-within-an-arc-section-of-a-c
+        if(start_angle < end_angle){
+            if(is_bounded(inter_angle, start_angle, end_angle)){
+                intersected = true;
+            };
+        }
+        else{
+            if(inter_angle < end_angle || inter_angle > start_angle){
+                intersected = true;
+            };
         }
     }
 
-    return false;
+    return intersected;
 }
 
 double Circle::get_angle(Point2D p){
