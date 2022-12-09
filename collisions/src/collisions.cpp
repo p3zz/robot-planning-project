@@ -45,10 +45,14 @@ bool Circle::intersect(Segment s, Point2D start, Point2D end){
 
     double delta_x = s.dst.x - s.src.x;
     double delta_y = s.dst.y - s.src.y;
-    double a = delta_x * delta_x + delta_y * delta_y;
+    double a = pow(delta_x,2) + pow(delta_y,2);
     double b = delta_x * (s.src.x - c.x) + delta_y * (s.src.y - c.y);
     double cc = pow(s.src.x - c.x, 2) + pow(s.src.y - c.y, 2) - pow(r,2);
-    double delta = sqrt(b*b - a*cc);
+    double delta = b*b - a*cc;
+    if(delta < 0){
+        return false;
+    }
+    delta = sqrt(delta);
     double t1 = (-b + delta) / a;
     double t2 = (-b - delta) / a;
     
@@ -75,12 +79,12 @@ bool Circle::intersect(Segment s, Point2D start, Point2D end){
         if(start_angle < end_angle){
             if(is_bounded(inter_angle, start_angle, end_angle)){
                 intersected = true;
-            };
+            }
         }
         else{
             if(inter_angle < end_angle || inter_angle > start_angle){
                 intersected = true;
-            };
+            }
         }
     }
 
