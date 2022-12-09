@@ -13,6 +13,11 @@ Make the executable reachable:
 ```bash
 ros2 run cpp_pubsub publisher
 ```
+### Test
+```bash
+colcon test --packages-select collisions --event-handler=console_direct+
+```
+
 ## Collisions
 
 ### segment/segment
