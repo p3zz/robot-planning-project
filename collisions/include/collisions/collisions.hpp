@@ -41,4 +41,6 @@ class Circle{
         double get_angle(Point2D p);
 };
 
+Circle get_circle(Point2D p1, Point2D p2, Point2D p3);
+
 #endif

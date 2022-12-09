@@ -117,3 +117,37 @@ TEST(Circle, IntersectOutside1){
     Point2D end_bound(1,1.73);
     EXPECT_FALSE(c.intersect(s, start_bound, end_bound));
 }
+
+
+// get_circle
+
+TEST(Circle, GetCircle1){
+    Point2D p1(-1.41, 1.41);
+    Point2D p2(1, 1.73);
+    Point2D p3(1.62, 1.18);
+    Circle c = get_circle(p1, p2, p3);
+    EXPECT_NEAR(c.r, 2, 0.05);
+    EXPECT_NEAR(c.c.x, 0, 0.05);
+    EXPECT_NEAR(c.c.y, 0, 0.05);
+}
+
+TEST(Circle, GetCircle2){
+    Point2D p1(0.37, -0.16);
+    Point2D p2(3, 2.73);
+    Point2D p3(4, 1.01);
+    Circle c = get_circle(p1, p2, p3);
+    EXPECT_NEAR(c.r, 2, 0.05);
+    EXPECT_NEAR(c.c.x, 2, 0.05);
+    EXPECT_NEAR(c.c.y, 1, 0.05);
+}
+
+TEST(Circle, GetCircle3){
+    Point2D p1(2.78, 2.84);
+    Point2D p2(2.97, 2.75);
+    Point2D p3(3.18, 2.62);
+    Circle c = get_circle(p1, p2, p3);
+    EXPECT_NEAR(c.r, 2, 0.05);
+    EXPECT_NEAR(c.c.x, 2, 0.05);
+    EXPECT_NEAR(c.c.y, 1, 0.05);
+}
+
