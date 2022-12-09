@@ -38,7 +38,8 @@ if(BUILD_TESTING)
   # gtest section
   find_package(ament_cmake_gtest REQUIRED)
 
-  ament_add_gtest(test_collisions test/main.cpp)
+  set(TEST_FILES test/segment.cpp test/main.cpp)
+  ament_add_gtest(test_collisions ${TEST_FILES})
   
   target_link_libraries(test_collisions collisions)
   
