@@ -82,7 +82,9 @@ double Circle::get_angle(Point2D p){
 }
 
 bool Circle::contains(Point2D p){
-    return pow(p.x - c.x, 2) + pow(p.y - c.y, 2) == r;
+    double const err_threshold = 0.01;
+    double err = abs(pow(p.x - c.x, 2) + pow(p.y - c.y, 2) - pow(r,2));
+    return is_bounded(err, 0, err_threshold);
 }
 
 Circle get_circle(Point2D p1, Point2D p2, Point2D p3){

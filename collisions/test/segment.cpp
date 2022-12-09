@@ -37,3 +37,28 @@ TEST(Segment, IntersectOverlap){
     Segment s2(Point2D(1, 1), Point2D(3, 3));
     EXPECT_TRUE(s1.intersect(s2));
 }
+
+// contains
+TEST(Segment, Contains){
+    Segment s(Point2D(0, 0), Point2D(2, 2));
+    Point2D p(1,1);
+    EXPECT_TRUE(s.contains(p));
+}
+
+TEST(Segment, ContainsEnd){
+    Segment s(Point2D(0, 0), Point2D(2, 2));
+    Point2D p(2,2);
+    EXPECT_TRUE(s.contains(p));
+}
+
+TEST(Segment, ContainsOutsideSameLine){
+    Segment s(Point2D(2, 3), Point2D(3, 4));
+    Point2D p(4,5);
+    EXPECT_FALSE(s.contains(p));
+}
+
+TEST(Segment, ContainsOutsideDifferentLine){
+    Segment s(Point2D(2, 3), Point2D(3, 4));
+    Point2D p(2,4);
+    EXPECT_FALSE(s.contains(p));
+}
