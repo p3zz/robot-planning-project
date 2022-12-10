@@ -149,4 +149,23 @@ Circle get_circle(Point2D p1, Point2D p2, Point2D p3){
 
 }
 
+std::vector<Segment> Polygon::get_sides(){
+    std::vector<Segment> sides = {};
+    for(int i=1;i<(int)vertexes.size();i++){
+        Segment side(vertexes[i-1],vertexes[i]);
+        sides.push_back(side);
+    }
+    Segment side(vertexes.back(),vertexes.front());
+    sides.push_back(side);
+    return sides;
+}
 
+bool Polygon::intersect(Segment s){
+    auto sides = this->get_sides();
+    for(auto side: sides){
+        if(s.intersect(side)){
+            return true;
+        }
+    }
+    return false;
+}

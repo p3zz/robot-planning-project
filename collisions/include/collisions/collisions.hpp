@@ -41,6 +41,20 @@ class Circle{
         double get_angle(Point2D p);
 };
 
+class Polygon{
+    public:
+        std::vector<Point2D> vertexes;
+
+        Polygon(std::vector<Point2D> vertexes):vertexes{vertexes}{}
+
+        std::vector<Segment> get_sides();
+
+        bool intersect(Segment s);
+
+        bool intersect(Circle s, Point2D start, Point2D end);
+    
+};
+
 Circle get_circle(Point2D p1, Point2D p2, Point2D p3);
 
 #endif
