@@ -59,9 +59,13 @@ bool check_sparse(double x, double y, std::vector<Point2D> nodes, double distanc
 }
 
 //PRM ROADMAP
-void RoadMap::constructRoadMap(int points, double distance_pts, int knn)
+void RoadMap::constructRoadMap(int points, double k_distance, int knn)
 {
     if(points>KNN_MAX) return;
+    if(points*k_distance>(r.getHeight()-1)*(r.getWidth()-1)) return; //in general, points and their distance must be lower than the room's area
+    double distance_pts=((r.getHeight()-1)*(r.getWidth()-1)*k_distance)/points; //bigger is k, more homogeneus the map, much diffcult the spawning of points
+    cout << distance_pts << endl << endl;
+    srand(time(NULL));
     //Create nodes
     for (int i=0; i<points; i++)
     {

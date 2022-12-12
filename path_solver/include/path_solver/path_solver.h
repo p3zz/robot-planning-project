@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <cstdlib>
+#include <ctime>
 #include <cmath>
 #include <iostream>
 
@@ -62,7 +63,7 @@ class RoadMap
     public:
         RoadMap(Room r):r{r}{}
         //PRM ROADMAP
-        void constructRoadMap(int points, double distance_pts, int knn);
+        void constructRoadMap(int points, double k_distance, int knn);
         std::vector<Point2D> getNodes(){return nodes;}
         std::vector<Link> getLinks(){return links;}
         std::string getJson();
