@@ -63,7 +63,7 @@ class RoadMap
     public:
         RoadMap(Room r):r{r}{}
         //PRM ROADMAP
-        void constructRoadMap(int points, double k_distance, int knn);
+        bool constructRoadMap(int points, double k_distance, int seconds_max, int knn); //k_distance between 0.1 (inhomogeneus, easy) and 0.5 (homogeneus, hard) provides an homogeneus map 
         std::vector<Point2D> getNodes(){return nodes;}
         std::vector<Link> getLinks(){return links;}
         std::string getJson();
