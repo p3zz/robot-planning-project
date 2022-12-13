@@ -47,10 +47,8 @@ void Knn(Point2D node, std::vector<Point2D> candidates, int k, Point2D* nearest_
     }
 }
 
-bool check_sparse(double x, double y, double width, double height, std::vector<Point2D> nodes, double distance_min)
+bool check_sparse(double x, double y, std::vector<Point2D> nodes, double distance_min)
 {
-    if(x<ROBOT_CIRCLE || x>width-ROBOT_CIRCLE || y<ROBOT_CIRCLE || y>height-ROBOT_CIRCLE) //check border room
-        return false;
     for (int i = 0; i < (int)nodes.size(); i++) //check distance with other nodes
     {
         double distance=sqrt(pow(x-nodes[i].x,2)+pow(y-nodes[i].y,2));
@@ -67,7 +65,7 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
     
     //Create nodes
     srand(time(NULL));
-    const double k_room_space=(r.getHeight()-ROBOT_CIRCLE)*(r.getWidth()-ROBOT_CIRCLE)/points;
+    const double k_room_space=(r.getHeight()-ROBOT_CIRCLE*2)*(r.getWidth()-ROBOT_CIRCLE*2)/points;
     const double k_base=std::pow(0.1,1/tms_max); //base to decrease k_distance to 10% at tms_max
     for (int i=0; i<points; i++)
     {
@@ -82,10 +80,10 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
                 k_distance=std::pow(k_base,tms)*k_distance_init;//bigger is k_distance, more homogeneus the map, much diffcult the spawning of points
                 distance_pts=k_room_space*k_distance;
             }
-            x = int(rand()%(r.getWidth()*100)) / 100.0; //cm sensibility
-            y = int(rand()%(r.getHeight()*100)) / 100.0; //cm sensibility
+            x = int(rand() % int((r.getWidth()-ROBOT_CIRCLE*2)*100)) / 100.0 + ROBOT_CIRCLE; //cm sensibility, consider room border
+            y = int(rand() % int((r.getHeight()-ROBOT_CIRCLE*2)*100)) / 100.0 + ROBOT_CIRCLE; //cm sensibility, consider room border
             count--;
-        }while(!check_sparse(x,y,r.getWidth(),r.getHeight(), nodes, distance_pts)); //check for sparse nodes
+        }while(!check_sparse(x, y, nodes, distance_pts)); //check for sparse nodes
         Point2D node(x, y);
         nodes.push_back(node);
     }
