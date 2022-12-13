@@ -123,7 +123,7 @@ int main(int argc, char * argv[])
   //rclcpp::shutdown();
   Room room(10,10);
   RoadMap map(room);
-  if(map.constructRoadMap(20, 0.42, 5, 4)) //knn=4 is the best choice (up, down, left and right in the ideal case)
+  if(map.constructRoadMap(20, 4, 0.5, 500)) //knn=4 is the best choice (up, down, left and right in the ideal case)
     cout<<map.getJson()<<endl;
   else
     cout<<"Error k"<<endl;

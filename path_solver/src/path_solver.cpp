@@ -61,23 +61,30 @@ bool check_sparse(double x, double y, double width, double height, std::vector<P
 }
 
 //PRM ROADMAP
-bool RoadMap::constructRoadMap(int points, double k_distance, int seconds_max, int knn)
+bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, double tms_max)
 {
     if(points>KNN_MAX) return false;
-    double distance_pts=((r.getHeight()-ROBOT_CIRCLE)*(r.getWidth()-ROBOT_CIRCLE)*k_distance)/points; //bigger is k, more homogeneus the map, much diffcult the spawning of points
     
     //Create nodes
     srand(time(NULL));
-    const clock_t begin_time = clock();
+    const double k_room_space=(r.getHeight()-ROBOT_CIRCLE)*(r.getWidth()-ROBOT_CIRCLE)/points;
+    const double k_base=std::pow(0.1,1/tms_max); //base to decrease k_distance to 10% at tms_max
     for (int i=0; i<points; i++)
     {
-        double x,y;
-        long int count=0;
+        double x,y,tms,k_distance,distance_pts;
+        int count=0;
+        const clock_t begin_time = clock();
         do{
+            if(count==0)
+            {
+                count=100; //number of retries with same distance_pts
+                tms=(float(clock()-begin_time)/CLOCKS_PER_SEC)*1000;
+                k_distance=std::pow(k_base,tms)*k_distance_init;//bigger is k_distance, more homogeneus the map, much diffcult the spawning of points
+                distance_pts=k_room_space*k_distance;
+            }
             x = int(rand()%(r.getWidth()*100)) / 100.0; //cm sensibility
             y = int(rand()%(r.getHeight()*100)) / 100.0; //cm sensibility
-            count++;
-            if(float(clock()-begin_time)/CLOCKS_PER_SEC>seconds_max) return false; //error: too long loop! Impossible to provide a random roadmap with this distance of points
+            count--;
         }while(!check_sparse(x,y,r.getWidth(),r.getHeight(), nodes, distance_pts)); //check for sparse nodes
         Point2D node(x, y);
         nodes.push_back(node);
