@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(collisions)
+project(shapes)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -10,18 +10,18 @@ find_package(ament_cmake REQUIRED)
 
 include_directories(include)
 
-add_library(collisions src/collisions.cpp)
+add_library(shapes src/shapes.cpp)
 
-ament_export_targets(collisions HAS_LIBRARY_TARGET)
+ament_export_targets(shapes HAS_LIBRARY_TARGET)
 
 install(
-  DIRECTORY include/collisions
+  DIRECTORY include/shapes
   DESTINATION include
 )
 
 install(
-  TARGETS collisions
-  EXPORT collisions
+  TARGETS shapes
+  EXPORT shapes
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   RUNTIME DESTINATION bin
@@ -39,11 +39,11 @@ if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
 
   set(TEST_FILES test/segment.cpp test/circle.cpp test/polygon.cpp test/main.cpp)
-  ament_add_gtest(test_collisions ${TEST_FILES})
+  ament_add_gtest(test_shapes ${TEST_FILES})
   
-  target_link_libraries(test_collisions collisions)
+  target_link_libraries(test_shapes shapes)
   
-  install(TARGETS test_collisions DESTINATION lib/collisions)
+  install(TARGETS test_shapes DESTINATION lib/shapes)
 
 endif()
 

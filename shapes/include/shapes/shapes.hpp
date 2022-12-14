@@ -1,5 +1,5 @@
-#ifndef COLLISIONS_H
-#define COLLISIONS_H
+#ifndef SHAPES_H
+#define SHAPES_H
 
 #include <cmath>
 #include <vector>
