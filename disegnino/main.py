@@ -18,13 +18,15 @@ def main():
 
     for link in links:
         source = Point(link['source']['x']*100,link['source']['y']*100)
-        dest = Point(link['dest']['x']*100,link['dest']['y']*100) 
+        dest = Point(link['dest']['x']*100,link['dest']['y']*100)
         c = Line(source, dest)
+        c.setArrow("last")
         c.draw(win)
 
     for obstacle in obstacles:
         vertices = [Point(v['x']*100, v['y']*100) for v in obstacle]
         c = Polygon(vertices)
+        c.setFill("red")
         c.draw(win)    
 
     win.getMouse() # Pause to view result
