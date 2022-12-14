@@ -4,50 +4,31 @@ bool is_bounded(double val, double min, double max){
     return val>=min && val<=max;
 }
 
-double Point2D::distance_from(Point2D p){
-    return sqrt(pow(x-p.x,2)+pow(y-p.y,2));
-}
-
-bool Segment::intersect(Segment s){
-    double det = (s.dst.x - s.src.x) * (src.y - dst.y) - (src.x - dst.x) * (s.dst.y - s.src.y);
+bool intersect(Segment s1, Segment s2){
+    double det = (s2.dst.x - s2.src.x) * (s1.src.y - s1.dst.y) - (s1.src.x - s1.dst.x) * (s2.dst.y - s2.src.y);
     
     if(det == 0){
         // check if the segments overlap
-        return this->contains(s.src) || this->contains(s.dst) || s.contains(src) || s.contains(dst);
+        return s1.contains(s2.src) || s1.contains(s2.dst) || s2.contains(s1.src) || s2.contains(s1.dst);
     }
 
-    double t = ((s.src.y - s.dst.y) * (src.x - s.src.x) + (s.dst.x - s.src.x) * (src.y - s.src.y)) / det;
-    double u = ((src.y - dst.y) * (src.x - s.src.x) + (dst.x - src.x) * (src.y - s.src.y)) / det;
+    double t = ((s2.src.y - s2.dst.y) * (s1.src.x - s2.src.x) + (s2.dst.x - s2.src.x) * (s1.src.y - s2.src.y)) / det;
+    double u = ((s1.src.y - s1.dst.y) * (s1.src.x - s2.src.x) + (s1.dst.x - s1.src.x) * (s1.src.y - s2.src.y)) / det;
     return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
 }
 
-bool Segment::contains(Point2D p){
-    double m = (src.y - dst.y) / (src.x - dst.x);
-    double q = (src.x * dst.y - dst.x * src.y) / (src.x - dst.x);
-    double const err_threshold = 0.01;
-    double err = abs(p.y - (m * p.x) - q);
-    bool line_contains_p = is_bounded(err, 0, err_threshold);
-    return line_contains_p && is_bounded(p.x, src.x, dst.x) && is_bounded(p.y, src.y, dst.y);
-}
-
-
-Point2D Segment::get_interceptor(double t){
-    return Point2D(src.x + t*(dst.x - src.x), src.y + t*(dst.y - src.y));
-}
-
-bool Circle::intersect(Segment s, Point2D start, Point2D end){
+bool intersect(Circle circle, Segment s, Point2D start, Point2D end){
     std::vector<Point2D> intersections = {};
 
-    if(!this->contains(start) || !this->contains(end)){
-        std::cout<<"not containing points"<<std::endl;
+    if(!circle.contains(start) || !circle.contains(end)){
         return false;
     }
 
     double delta_x = s.dst.x - s.src.x;
     double delta_y = s.dst.y - s.src.y;
     double a = pow(delta_x,2) + pow(delta_y,2);
-    double b = delta_x * (s.src.x - c.x) + delta_y * (s.src.y - c.y);
-    double cc = pow(s.src.x - c.x, 2) + pow(s.src.y - c.y, 2) - pow(r,2);
+    double b = delta_x * (s.src.x - circle.c.x) + delta_y * (s.src.y - circle.c.y);
+    double cc = pow(s.src.x - circle.c.x, 2) + pow(s.src.y - circle.c.y, 2) - pow(circle.r,2);
     double delta = b*b - a*cc;
     if(delta < 0){
         return false;
@@ -64,8 +45,8 @@ bool Circle::intersect(Segment s, Point2D start, Point2D end){
         intersections.push_back(s.get_interceptor(t2));
     }
 
-    double start_angle = this->get_angle(start);
-    double end_angle = this->get_angle(end);
+    double start_angle = circle.get_angle(start);
+    double end_angle = circle.get_angle(end);
 
     // TODO optimize the for loop in case that t1 and t2 are bounded and equals 
 
@@ -73,7 +54,7 @@ bool Circle::intersect(Segment s, Point2D start, Point2D end){
 
     // check if at least one of the intersections stays between the bounds
     for(auto inter: intersections){
-        double inter_angle = this->get_angle(inter);
+        double inter_angle = circle.get_angle(inter);
 
         // https://stackoverflow.com/questions/6270785/how-to-determine-whether-a-point-x-y-is-contained-within-an-arc-section-of-a-c
         if(start_angle < end_angle){
@@ -89,6 +70,34 @@ bool Circle::intersect(Segment s, Point2D start, Point2D end){
     }
 
     return intersected;
+}
+
+bool intersect(Polygon p, Segment s){
+    auto sides = p.get_sides();
+    for(auto side: sides){
+        if(intersect(s, side)){
+            return true;
+        }
+    }
+    return false;
+}
+
+double Point2D::distance_from(Point2D p){
+    return sqrt(pow(x-p.x,2)+pow(y-p.y,2));
+}
+
+bool Segment::contains(Point2D p){
+    double m = (src.y - dst.y) / (src.x - dst.x);
+    double q = (src.x * dst.y - dst.x * src.y) / (src.x - dst.x);
+    double const err_threshold = 0.01;
+    double err = abs(p.y - (m * p.x) - q);
+    bool line_contains_p = is_bounded(err, 0, err_threshold);
+    return line_contains_p && is_bounded(p.x, src.x, dst.x) && is_bounded(p.y, src.y, dst.y);
+}
+
+
+Point2D Segment::get_interceptor(double t){
+    return Point2D(src.x + t*(dst.x - src.x), src.y + t*(dst.y - src.y));
 }
 
 double Circle::get_angle(Point2D p){
@@ -158,14 +167,4 @@ std::vector<Segment> Polygon::get_sides(){
     Segment side(vertexes.back(),vertexes.front());
     sides.push_back(side);
     return sides;
-}
-
-bool Polygon::intersect(Segment s){
-    auto sides = this->get_sides();
-    for(auto side: sides){
-        if(s.intersect(side)){
-            return true;
-        }
-    }
-    return false;
 }

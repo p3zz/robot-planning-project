@@ -50,7 +50,7 @@ TEST(Circle, IntersectOnceTangentInBounds){
     Segment s(Point2D(-4,2), Point2D(1,2));
     Point2D start_bound(1,1.73);
     Point2D end_bound(-1,1.73);
-    EXPECT_TRUE(c.intersect(s, start_bound, end_bound));
+    EXPECT_TRUE(intersect(c, s, start_bound, end_bound));
 }
 
 TEST(Circle, IntersectOnceTangentInBounds2){
@@ -58,7 +58,7 @@ TEST(Circle, IntersectOnceTangentInBounds2){
     Segment s(Point2D(1,-2), Point2D(4,2));
     Point2D start_bound(0.7, -1.87);
     Point2D end_bound(1.93, -0.53);
-    EXPECT_TRUE(c.intersect(s, start_bound, end_bound));
+    EXPECT_TRUE(intersect(c, s, start_bound, end_bound));
 }
 
 TEST(Circle, IntersectOnceTangentOutBounds1){
@@ -66,7 +66,7 @@ TEST(Circle, IntersectOnceTangentOutBounds1){
     Segment s(Point2D(-4,2), Point2D(1,2));
     Point2D start_bound(0.7, -1.87);
     Point2D end_bound(1.93, -0.53);
-    EXPECT_FALSE(c.intersect(s, start_bound, end_bound));
+    EXPECT_FALSE(intersect(c, s, start_bound, end_bound));
 }
 
 TEST(Circle, IntersectOnceTangentOutBounds2){
@@ -74,7 +74,7 @@ TEST(Circle, IntersectOnceTangentOutBounds2){
     Segment s(Point2D(1,-2), Point2D(4,2));
     Point2D start_bound(1,1.73);
     Point2D end_bound(-1,1.73);
-    EXPECT_FALSE(c.intersect(s, start_bound, end_bound));
+    EXPECT_FALSE(intersect(c, s, start_bound, end_bound));
 }
 
 
@@ -83,7 +83,7 @@ TEST(Circle, IntersectOnce1){
     Segment s(Point2D(0, 1), Point2D(3,-1));
     Point2D start_bound(1.93, -0.53);
     Point2D end_bound(1.96, 0.4);
-    EXPECT_TRUE(c.intersect(s, start_bound, end_bound));
+    EXPECT_TRUE(intersect(c, s, start_bound, end_bound));
 }
 
 TEST(Circle, IntersectOnce2){
@@ -91,7 +91,7 @@ TEST(Circle, IntersectOnce2){
     Segment s(Point2D(-3, 3), Point2D(-1, 1));
     Point2D start_bound(-1.41, 1.41);
     Point2D end_bound(-2, 0.13);
-    EXPECT_TRUE(c.intersect(s, start_bound, end_bound));
+    EXPECT_TRUE(intersect(c, s, start_bound, end_bound));
 }
 
 TEST(Circle, IntersectTwiceOutBounds1){
@@ -99,7 +99,7 @@ TEST(Circle, IntersectTwiceOutBounds1){
     Segment s(Point2D(0, 3), Point2D(-2, -2));
     Point2D start_bound(-1.41,1.41);
     Point2D end_bound(-1.95,0.46);
-    EXPECT_FALSE(c.intersect(s, start_bound, end_bound));
+    EXPECT_FALSE(intersect(c, s, start_bound, end_bound));
 }
 
 TEST(Circle, IntersectTwiceInBounds1){
@@ -107,7 +107,7 @@ TEST(Circle, IntersectTwiceInBounds1){
     Segment s(Point2D(0, 3), Point2D(-2, -2));
     Point2D start_bound(-1.41,1.41);
     Point2D end_bound(1,1.73);
-    EXPECT_TRUE(c.intersect(s, start_bound, end_bound));
+    EXPECT_TRUE(intersect(c, s, start_bound, end_bound));
 }
 
 TEST(Circle, IntersectOutside1){
@@ -115,7 +115,7 @@ TEST(Circle, IntersectOutside1){
     Segment s(Point2D(3, 1), Point2D(2, 3));
     Point2D start_bound(-1.41,1.41);
     Point2D end_bound(1,1.73);
-    EXPECT_FALSE(c.intersect(s, start_bound, end_bound));
+    EXPECT_FALSE(intersect(c, s, start_bound, end_bound));
 }
 
 
