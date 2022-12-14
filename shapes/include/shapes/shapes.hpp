@@ -3,12 +3,12 @@
 
 #include <cmath>
 #include <vector>
-#include <iostream>
 
 class Point2D{
     public:
         double x,y;
 
+        Point2D(){}
         Point2D(double x, double y):x{x},y{y}{}
 
         double distance_from(Point2D p);
@@ -43,7 +43,9 @@ class Polygon{
         Polygon(std::vector<Point2D> vertexes):vertexes{vertexes}{}
 
         std::vector<Segment> get_sides();
-    
+        void add_v(Point2D v){vertexes.push_back(v);}
+        Point2D get_v(int index){return vertexes.at(index);}
+        int get_size(){return vertexes.size();}
 };
 
 Circle get_circle(Point2D p1, Point2D p2, Point2D p3);

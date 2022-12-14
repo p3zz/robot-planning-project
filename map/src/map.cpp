@@ -101,7 +101,7 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
 
         //Insert link in the vector
         for (int j = 0; j < knn; j++)
-            links.push_back(Link(Point2D(node.x,node.y),Point2D(node_knn[j].x, node_knn[j].y)));        
+            links.push_back(Segment(Point2D(node.x,node.y),Point2D(node_knn[j].x, node_knn[j].y)));        
     }
     return true;
 }
@@ -119,17 +119,17 @@ std::string RoadMap::getJson()
     json+="],\"links\":[";
     for(int i=0; i<(int)links.size();i++)
     {
-        json+="{\"source\":{\"x\":"+std::to_string(links[i].src.x)+",\"y\":"+std::to_string(links[i].src.y)+"},\"dest\":{\"x\":"+std::to_string(links[i].dest.x)+",\"y\":"+std::to_string(links[i].dest.y)+"}}";
+        json+="{\"source\":{\"x\":"+std::to_string(links[i].src.x)+",\"y\":"+std::to_string(links[i].src.y)+"},\"dest\":{\"x\":"+std::to_string(links[i].dst.x)+",\"y\":"+std::to_string(links[i].dst.y)+"}}";
         if(i+1<(int)links.size()) json+=",";
     }
     json+="],\"obstacles\":[";
     for(int i=0; i<r.getNumObstacles();i++)
     {
         json+="[";
-        for(int j=0;j<r.getObstacle(i).getNumVertexes();j++)
+        for(int j=0;j<r.getObstacle(i).get_size();j++)
         {
-            json+="{\"x\":"+std::to_string(r.getObstacle(i).getVertex(j).x)+",\"y\":"+std::to_string(r.getObstacle(i).getVertex(j).y)+"}";
-            if(j+1<r.getObstacle(i).getNumVertexes()) json+=",";
+            json+="{\"x\":"+std::to_string(r.getObstacle(i).get_v(j).x)+",\"y\":"+std::to_string(r.getObstacle(i).get_v(j).y)+"}";
+            if(j+1<r.getObstacle(i).get_size()) json+=",";
         }
         json+="]";
         if(i+1<r.getNumObstacles()) json+=",";

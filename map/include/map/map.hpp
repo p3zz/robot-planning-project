@@ -1,7 +1,6 @@
-#ifndef PATH_SOLVER_H
-#define PATH_SOLVER_H
+#ifndef MAP_H
+#define MAP_H
 
-#include <utils/utils.h>
 #include <vector>
 #include <string>
 #include <cstdlib>
@@ -9,45 +8,21 @@
 #include <cmath>
 #include <iostream>
 
+#include "shapes/shapes.hpp"
+#include "utils/utils.h"
+
 #define KNN_MAX 30
-
-class Point2D
-{
-    public:
-        double x, y;
-        Point2D(double x, double y):x{x},y{y}{}
-        Point2D(){}
-};
-
-class Link
-{
-    public:
-        Point2D src, dest;
-        Link(Point2D src, Point2D dest):src{src},dest{dest}{}
-        
-};
-
-class Obstacle
-{
-    private:
-        std::vector<Point2D> vertexes;
-    public:
-        Obstacle(){}        
-        void addVertex(Point2D v){vertexes.push_back(v);}
-        Point2D getVertex(int index){return vertexes.at(index);}
-        int getNumVertexes(){return vertexes.size();}
-};
 
 class Room
 {
     private: 
         double h;
         double w;
-        std::vector<Obstacle> obstacles;
+        std::vector<Polygon> obstacles;
     public:
         Room(double h, double w):h{h},w{w}{}
-        void addObstacle(Obstacle o){obstacles.push_back(o);}
-        Obstacle getObstacle(int index){return obstacles.at(index);}
+        void addObstacle(Polygon o){obstacles.push_back(o);}
+        Polygon getObstacle(int index){return obstacles.at(index);}
         int getNumObstacles(){return obstacles.size();}
         int getHeight(){return h;}
         int getWidth(){return w;}
@@ -59,13 +34,13 @@ class RoadMap
     private: 
         Room r;
         std::vector<Point2D> nodes;
-        std::vector<Link>  links;
+        std::vector<Segment>  links;
     public:
         RoadMap(Room r):r{r}{}
         //PRM ROADMAP
         bool constructRoadMap(int points, int knn, double k_distance_init, double tms_max); //k_distance_init initialize k_distance between 0.1 (inhomogeneus, very easy) and 1 (max homogeneus, very hard) which provides an homogeneus map, then decrease exponentially in time to reach 10% at time tms_max
         std::vector<Point2D> getNodes(){return nodes;}
-        std::vector<Link> getLinks(){return links;}
+        std::vector<Segment> getLinks(){return links;}
         std::string getJson();
 };
 
