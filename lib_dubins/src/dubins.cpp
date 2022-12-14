@@ -2,32 +2,41 @@
 
 using namespace std;
 
-std::vector<Point> arc_to_points(DubinArc arc, int n_points, double velocity, bool acc, bool dec){
-    std::vector<Point> points;
+std::vector<DubinPoint> DubinCurve::get_trajectory(){
+    std::vector<DubinPoint> points = {};
+
+    points.push_back(arcs[0].source);
+
+    for(auto arc:arcs){
+        int arc_points_n = int((arc.length / get_length()) * PRECISION_TRAJ);
+        std::vector<DubinPoint> arc_points = arc_to_points(arc, arc_points_n);
+        points.insert(points.end(), arc_points.begin(), arc_points.end());
+    }
+
+    return points;
+}
+
+std::vector<DubinPoint> arc_to_points(DubinArc arc, int n_points){
+    std::vector<DubinPoint> points;
     // compute the unit segment
     double unit_seg_length = arc.length / n_points;
-    for(int i=0;i<n_points;i++){
+    for(int i=1;i<=n_points;i++){
         // compute the length of portion of the arc
         double arc_length = unit_seg_length*i;
         // create a smaller dubin arc
         DubinArc new_arc(arc.source, arc_length, arc.k);
         // get the final point of the smaller dubin arc
         DubinPoint p = new_arc.get_dest();
-
-        double acceleration = PRECISION_TRAJ * ACCELERATION;
-        double deceleration = PRECISION_TRAJ * DECELERATION;
-
-        double v = velocity;
-        if(acc && i <= acceleration)
-            v *= (i / acceleration);
-        else if(dec && n_points - i <= deceleration)
-            v *= ((n_points - i) / deceleration);
-
-        double w = v * arc.k;
-
-        points.push_back(Point(p.x, p.y, p.th, v, w));
+        points.push_back(p);
     }
     return points;
+}
+
+DubinPoint DubinArc::get_dest(){
+    double x = this->source.x + this->length * sinc(this->k * this->length / 2.0) * cos(this->source.th + this->k * this->length / 2);
+    double y = this->source.y + this->length * sinc(this->k * this->length / 2.0) * sin(this->source.th + this->k * this->length / 2);
+    double th = mod2pi(this->source.th + this->k * this->length);
+    return DubinPoint(x,y,th);
 }
 
 Eigen::Vector4d scale_to_standard(DubinPoint p_start, DubinPoint p_end){    

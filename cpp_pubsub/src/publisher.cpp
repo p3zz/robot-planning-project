@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <vector>
 #include <thread>
+#include <iostream>
 
 #include "rclcpp/rclcpp.hpp"
 #include "nav_msgs/msg/path.hpp"
@@ -71,9 +72,9 @@ std::vector<geometry_msgs::msg::PoseStamped> dubin_points_to_poses(DubinPoint st
 
   //dubins
   DubinCurve curve = dubins_shortest_path(start, end);
-  vector<Point> trajectory = curve.get_trajectory();
+  auto trajectory = curve.get_trajectory();
 
-  for (Point p:trajectory){
+  for(auto p:trajectory){
     pose.pose.position.x = p.x;
     pose.pose.position.y = p.y;
     pose.pose.position.z = 0;
@@ -97,13 +98,15 @@ class MinimalPublisher : public rclcpp::Node
       DubinPoint p_start(0.0, 0.0, M_PI/4);
       DubinPoint p_end(2.0, 3.0, 0);
       auto arc_poses = dubin_points_to_poses(p_start, p_end, this->get_clock()->now());
-
       nav_msgs::msg::Path path;
       path.header.stamp = this->get_clock()->now();
       path.header.frame_id = "map";
       path.poses = arc_poses;
 
       publisher_ = this->create_publisher<nav_msgs::msg::Path>("plan", 10);
+      for(auto pose: arc_poses){
+        RCLCPP_INFO(this->get_logger(), "[%f %f]", pose.pose.position.x, pose.pose.position.y); 
+      }
       //keep channel up for 10 times (100ms)
       for (size_t i = 0; i < 10; i++)
       {
@@ -118,9 +121,9 @@ class MinimalPublisher : public rclcpp::Node
 
 int main(int argc, char * argv[])
 {  
-  //rclcpp::init(argc, argv);
-  //rclcpp::spin(std::make_shared<MinimalPublisher>());
-  //rclcpp::shutdown();
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<MinimalPublisher>());
+  rclcpp::shutdown();
   Room room(10,10);
   RoadMap map(room);
   if(map.constructRoadMap(20, 4, 0.5, 500)) //knn=4 is the best choice (up, down, left and right in the ideal case)

@@ -14,24 +14,9 @@
 
 #define MAX_LENGTH_TRAJ 500.0 // 100 meter max
 #define PRECISION_TRAJ 100.0  // cms precision
-#define DECELERATION 0.1      // 10 cms of deceleration
-#define ACCELERATION 0.1      // 10 cms of acceleration
 #define CURV_MAX 1.0          // max curvature
-#define VELOCITY_AVG 0.5      // main velocity
 
 #define DOUBLE_MAX 1.79769e+308
-
-class Point //structure of point: set all 5 parameters for every point, then len_traj (length of non-empty part of array), when you draw a trajectory!
-{
-    public: 
-        double x;
-        double y;
-        double th;
-        double v;
-        double w;
-
-        Point(double x, double y, double th, double v, double w):x{x},y{y},th{th},v{v},w{w}{}
-};
 
 enum CurveType{
     LSL,
@@ -71,15 +56,10 @@ class DubinArc {
         DubinArc():source{DubinPoint()}, length{0}, k{0}{};
         DubinArc(DubinPoint source, double length, double k):source{source},length{length},k{k}{}
 
-        DubinPoint get_dest(){
-            double x = this->source.x + this->length * sinc(this->k * this->length / 2.0) * cos(this->source.th + this->k * this->length / 2);
-            double y = this->source.y + this->length * sinc(this->k * this->length / 2.0) * sin(this->source.th + this->k * this->length / 2);
-            double th = mod2pi(this->source.th + this->k * this->length);
-            return DubinPoint(x,y,th);
-        }
+        DubinPoint get_dest();
 };
 
-std::vector<Point> arc_to_points(DubinArc arc, int n_points, double velocity, bool acc, bool dec);
+std::vector<DubinPoint> arc_to_points(DubinArc arc, int n_points);
 
 class DubinCurve {
     public:
@@ -98,32 +78,7 @@ class DubinCurve {
             return length; 
         }
 
-        std::vector<Point> get_trajectory(){
-
-            std::vector<Point> points;
-
-            double const length_threshold = 2.0;            
-
-            //1st arc
-            double velocity = VELOCITY_AVG;
-            double const velocity_straight = velocity + 0.2;
-            double const velocity_straight_overlength = velocity + 0.5;
-
-            for(DubinArc arc:arcs){
-                velocity = VELOCITY_AVG;
-
-                // if the arc is straight, go faster
-                if(int(arc.k / CURV_MAX) == ArcType::Straight){
-                    velocity = arc.length > length_threshold? velocity_straight_overlength : velocity_straight;
-                }
-
-                int arc_points_n = int((arc.length / get_length()) * PRECISION_TRAJ);
-                std::vector<Point> arc_points = arc_to_points(arc, arc_points_n, velocity, true, false);
-                points.insert(points.end(), arc_points.begin(), arc_points.end());
-            }
-
-            return points;
-        }
+        std::vector<DubinPoint> get_trajectory();
 };
 
 struct primitive{ 
