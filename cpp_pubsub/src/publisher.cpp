@@ -10,8 +10,8 @@
 #include "rclcpp/rclcpp.hpp"
 #include "nav_msgs/msg/path.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
-#include "lib_dubins/dubins.h"
-#include "path_solver/path_solver.h"
+#include "dubins/dubins.hpp"
+#include "map/map.hpp"
 
 using namespace std;
 

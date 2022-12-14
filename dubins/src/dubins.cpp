@@ -1,4 +1,4 @@
-#include "lib_dubins/dubins.h"
+#include "dubins/dubins.hpp"
 
 using namespace std;
 

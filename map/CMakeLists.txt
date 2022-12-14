@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(path_solver)
+project(map)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -10,20 +10,20 @@ find_package(utils REQUIRED)
 
 include_directories(include)
  
-add_library(path_solver src/path_solver.cpp)
+add_library(map src/map.cpp)
  
-ament_export_targets(path_solver HAS_LIBRARY_TARGET)
+ament_export_targets(map HAS_LIBRARY_TARGET)
 
-ament_target_dependencies(path_solver utils)
+ament_target_dependencies(map utils)
  
 install(
-  DIRECTORY include/path_solver
+  DIRECTORY include/map
   DESTINATION include
 )
  
 install(
-  TARGETS path_solver
-  EXPORT path_solver
+  TARGETS map
+  EXPORT map
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   RUNTIME DESTINATION bin

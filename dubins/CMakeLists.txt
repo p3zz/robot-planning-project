@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(lib_dubins)
+project(dubins)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -10,21 +10,21 @@ find_package(utils REQUIRED)
 
 include_directories(include)
  
-add_library(lib_dubins src/dubins.cpp)
+add_library(dubins src/dubins.cpp)
  
-ament_export_targets(lib_dubins HAS_LIBRARY_TARGET)
+ament_export_targets(dubins HAS_LIBRARY_TARGET)
 
-ament_target_dependencies(lib_dubins utils)
+ament_target_dependencies(dubins utils)
 
  
 install(
-  DIRECTORY include/lib_dubins
+  DIRECTORY include/dubins
   DESTINATION include
 )
  
 install(
-  TARGETS lib_dubins
-  EXPORT lib_dubins
+  TARGETS dubins
+  EXPORT dubins
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   RUNTIME DESTINATION bin
