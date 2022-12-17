@@ -14,10 +14,11 @@ find_package(geometry_msgs REQUIRED)
 find_package(dubins REQUIRED)
 find_package(utils REQUIRED)
 find_package(map REQUIRED)
+find_package(shapes REQUIRED)
 
 add_executable(publisher src/publisher.cpp)
 
-ament_target_dependencies(publisher rclcpp nav_msgs geometry_msgs dubins utils map)
+ament_target_dependencies(publisher rclcpp nav_msgs geometry_msgs dubins utils map shapes)
 
 install(
   TARGETS publisher

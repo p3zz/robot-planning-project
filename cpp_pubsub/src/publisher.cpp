@@ -124,7 +124,7 @@ void randomObstacles(Room* room, int num_obstacles, const int max_side)
   Point2D* centers = new Point2D[num_obstacles];
   for(int i=0; i<num_obstacles; i++)
   {
-    Obstacle o;
+    Polygon o;
     bool check;
     do{
       centers[i].x = ((rand()%(room->getWidth()*100-max_side))+max_side/2)/100.0;
@@ -138,10 +138,10 @@ void randomObstacles(Room* room, int num_obstacles, const int max_side)
         }
     }while(!check);
     Point2D center(centers[i]);
-    o.addVertex(Point2D(center.x+((rand() %(max_side/4))-(max_side/2))/100.0,center.y+((rand() %(max_side/4))+(max_side/4))/100.0));
-    o.addVertex(Point2D(center.x+((rand() %(max_side/4))+(max_side/4))/100.0,center.y+((rand() %(max_side/4))+(max_side/4))/100.0));
-    o.addVertex(Point2D(center.x+((rand() %(max_side/4))+(max_side/4))/100.0,center.y+((rand() %(max_side/4))-(max_side/2))/100.0));
-    o.addVertex(Point2D(center.x+((rand() %(max_side/4))-(max_side/2))/100.0,center.y+((rand() %(max_side/4))-(max_side/2))/100.0));
+    o.add_v(Point2D(center.x+((rand() %(max_side/4))-(max_side/2))/100.0,center.y+((rand() %(max_side/4))+(max_side/4))/100.0));
+    o.add_v(Point2D(center.x+((rand() %(max_side/4))+(max_side/4))/100.0,center.y+((rand() %(max_side/4))+(max_side/4))/100.0));
+    o.add_v(Point2D(center.x+((rand() %(max_side/4))+(max_side/4))/100.0,center.y+((rand() %(max_side/4))-(max_side/2))/100.0));
+    o.add_v(Point2D(center.x+((rand() %(max_side/4))-(max_side/2))/100.0,center.y+((rand() %(max_side/4))-(max_side/2))/100.0));
     room->addObstacle(o);
   }
 }

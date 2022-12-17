@@ -40,6 +40,7 @@ class Polygon{
     public:
         std::vector<Point2D> vertexes;
 
+        Polygon():vertexes{{}}{}
         Polygon(std::vector<Point2D> vertexes):vertexes{vertexes}{}
 
         std::vector<Segment> get_sides();
