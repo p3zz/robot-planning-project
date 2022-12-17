@@ -1,0 +1,132 @@
+[0.000000] (-) TimerEvent: {}
+[0.000124] (shapes) JobQueued: {'identifier': 'shapes', 'dependencies': OrderedDict([('shapes', '/root/ros2_ws/src/robot-planning-project/install/shapes')])}
+[0.000158] (shapes) JobStarted: {'identifier': 'shapes'}
+[0.020479] (shapes) Command: {'cmd': ['/usr/bin/ctest', '-C', 'Release', '-D', 'ExperimentalTest', '--no-compress-output', '-V', '--force-new-ctest-process'], 'cwd': '/root/ros2_ws/src/robot-planning-project/build/shapes', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HOSTNAME', 'gelato'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/root/ros2_ws/src/robot-planning-project/install/shapes/lib:/root/ros2_ws/install/map/lib:/root/ros2_ws/install/dubins/lib:/root/ros2_ws/install/utils/lib:/root/ros2_ws/install/shapes/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root/ros2_ws'), ('ROS_PYTHON_VERSION', '3'), ('LC_CTYPE', 'C.UTF-8'), ('COLCON_PREFIX_PATH', '/root/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':0'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros2_ws/src/robot-planning-project/install/shapes:/root/ros2_ws/install/map:/root/ros2_ws/install/dubins:/root/ros2_ws/install/utils:/root/ros2_ws/install/shapes:/opt/ros/humble'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/root/ros2_ws/src/robot-planning-project/build/shapes'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros2_ws/src/robot-planning-project/install/shapes:/root/ros2_ws/install/map:/root/ros2_ws/install/dubins:/root/ros2_ws/install/utils:/root/ros2_ws/install/shapes')]), 'shell': False}
+[0.029222] (shapes) StdoutLine: {'line': b'UpdateCTestConfiguration  from :/root/ros2_ws/src/robot-planning-project/build/shapes/CTestConfiguration.ini\n'}
+[0.029586] (shapes) StdoutLine: {'line': b'Parse Config file:/root/ros2_ws/src/robot-planning-project/build/shapes/CTestConfiguration.ini\n'}
+[0.029792] (shapes) StdoutLine: {'line': b'   Site: gelato\n'}
+[0.029952] (shapes) StdoutLine: {'line': b'   Build name: (empty)\n'}
+[0.030120] (shapes) StdoutLine: {'line': b' Add coverage exclude regular expressions.\n'}
+[0.030206] (shapes) StdoutLine: {'line': b'Create new tag: 20221217-1119 - Experimental\n'}
+[0.030290] (shapes) StdoutLine: {'line': b'UpdateCTestConfiguration  from :/root/ros2_ws/src/robot-planning-project/build/shapes/CTestConfiguration.ini\n'}
+[0.030395] (shapes) StdoutLine: {'line': b'Parse Config file:/root/ros2_ws/src/robot-planning-project/build/shapes/CTestConfiguration.ini\n'}
+[0.030486] (shapes) StdoutLine: {'line': b'Test project /root/ros2_ws/src/robot-planning-project/build/shapes\n'}
+[0.030590] (shapes) StdoutLine: {'line': b'Constructing a list of tests\n'}
+[0.030693] (shapes) StdoutLine: {'line': b'Done constructing a list of tests\n'}
+[0.030797] (shapes) StdoutLine: {'line': b'Updating test list for fixtures\n'}
+[0.030900] (shapes) StdoutLine: {'line': b'Added 0 tests to meet fixture requirements\n'}
+[0.031003] (shapes) StdoutLine: {'line': b'Checking test dependency graph...\n'}
+[0.031105] (shapes) StdoutLine: {'line': b'Checking test dependency graph end\n'}
+[0.031206] (shapes) StdoutLine: {'line': b'test 1\n'}
+[0.031304] (shapes) StdoutLine: {'line': b'    Start 1: test_shapes\n'}
+[0.031400] (shapes) StdoutLine: {'line': b'\n'}
+[0.031496] (shapes) StdoutLine: {'line': b'1: Test command: /usr/bin/python3.10 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml" "--package-name" "shapes" "--output-file" "/root/ros2_ws/src/robot-planning-project/build/shapes/ament_cmake_gtest/test_shapes.txt" "--command" "/root/ros2_ws/src/robot-planning-project/build/shapes/test_shapes" "--gtest_output=xml:/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml"\n'}
+[0.031614] (shapes) StdoutLine: {'line': b'1: Test timeout computed to be: 60\n'}
+[0.083596] (shapes) StdoutLine: {'line': b"1: -- run_test.py: invoking following command in '/root/ros2_ws/src/robot-planning-project/build/shapes':\n"}
+[0.083754] (shapes) StdoutLine: {'line': b'1:  - /root/ros2_ws/src/robot-planning-project/build/shapes/test_shapes --gtest_output=xml:/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml\n'}
+[0.085185] (shapes) StdoutLine: {'line': b'1: [==========] Running 35 tests from 3 test suites.\n'}
+[0.085609] (shapes) StdoutLine: {'line': b'1: [----------] Global test environment set-up.\n'}
+[0.085835] (shapes) StdoutLine: {'line': b'1: [----------] 9 tests from Segment\n'}
+[0.085960] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Segment.IntersectIncident\n'}
+[0.086058] (shapes) StdoutLine: {'line': b'1: [       OK ] Segment.IntersectIncident (0 ms)\n'}
+[0.086155] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Segment.IntersectNotIncident\n'}
+[0.086249] (shapes) StdoutLine: {'line': b'1: [       OK ] Segment.IntersectNotIncident (0 ms)\n'}
+[0.086341] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Segment.IntersectParallel\n'}
+[0.086432] (shapes) StdoutLine: {'line': b'1: [       OK ] Segment.IntersectParallel (0 ms)\n'}
+[0.086524] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Segment.IntersectParallel2\n'}
+[0.086610] (shapes) StdoutLine: {'line': b'1: [       OK ] Segment.IntersectParallel2 (0 ms)\n'}
+[0.086702] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Segment.IntersectOverlap\n'}
+[0.086783] (shapes) StdoutLine: {'line': b'1: [       OK ] Segment.IntersectOverlap (0 ms)\n'}
+[0.086868] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Segment.Contains\n'}
+[0.086960] (shapes) StdoutLine: {'line': b'1: [       OK ] Segment.Contains (0 ms)\n'}
+[0.087055] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Segment.ContainsEnd\n'}
+[0.087144] (shapes) StdoutLine: {'line': b'1: [       OK ] Segment.ContainsEnd (0 ms)\n'}
+[0.087238] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Segment.ContainsOutsideSameLine\n'}
+[0.087321] (shapes) StdoutLine: {'line': b'1: [       OK ] Segment.ContainsOutsideSameLine (0 ms)\n'}
+[0.087402] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Segment.ContainsOutsideDifferentLine\n'}
+[0.087483] (shapes) StdoutLine: {'line': b'1: [       OK ] Segment.ContainsOutsideDifferentLine (0 ms)\n'}
+[0.087618] (shapes) StdoutLine: {'line': b'1: [----------] 9 tests from Segment (0 ms total)\n'}
+[0.087728] (shapes) StdoutLine: {'line': b'1: \n'}
+[0.087821] (shapes) StdoutLine: {'line': b'1: [----------] 18 tests from Circle\n'}
+[0.087908] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.Contains1\n'}
+[0.087987] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.Contains1 (0 ms)\n'}
+[0.088079] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.Contains2\n'}
+[0.088190] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.Contains2 (0 ms)\n'}
+[0.088291] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.ContainsInside\n'}
+[0.088386] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.ContainsInside (0 ms)\n'}
+[0.088480] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.ContainsOutside\n'}
+[0.088568] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.ContainsOutside (0 ms)\n'}
+[0.088660] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.GetAngle1\n'}
+[0.088754] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.GetAngle1 (0 ms)\n'}
+[0.088867] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.GetAngle2\n'}
+[0.088976] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.GetAngle2 (0 ms)\n'}
+[0.089063] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.IntersectOnceTangentInBounds\n'}
+[0.089146] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.IntersectOnceTangentInBounds (0 ms)\n'}
+[0.089228] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.IntersectOnceTangentInBounds2\n'}
+[0.089310] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.IntersectOnceTangentInBounds2 (0 ms)\n'}
+[0.089401] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.IntersectOnceTangentOutBounds1\n'}
+[0.089488] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.IntersectOnceTangentOutBounds1 (0 ms)\n'}
+[0.089588] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.IntersectOnceTangentOutBounds2\n'}
+[0.089675] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.IntersectOnceTangentOutBounds2 (0 ms)\n'}
+[0.089777] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.IntersectOnce1\n'}
+[0.089871] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.IntersectOnce1 (0 ms)\n'}
+[0.089957] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.IntersectOnce2\n'}
+[0.090047] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.IntersectOnce2 (0 ms)\n'}
+[0.090142] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.IntersectTwiceOutBounds1\n'}
+[0.090224] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.IntersectTwiceOutBounds1 (0 ms)\n'}
+[0.090306] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.IntersectTwiceInBounds1\n'}
+[0.090388] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.IntersectTwiceInBounds1 (0 ms)\n'}
+[0.090470] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.IntersectOutside1\n'}
+[0.090559] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.IntersectOutside1 (0 ms)\n'}
+[0.090668] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.GetCircle1\n'}
+[0.090757] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.GetCircle1 (0 ms)\n'}
+[0.090843] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.GetCircle2\n'}
+[0.090935] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.GetCircle2 (0 ms)\n'}
+[0.091019] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Circle.GetCircle3\n'}
+[0.091101] (shapes) StdoutLine: {'line': b'1: [       OK ] Circle.GetCircle3 (0 ms)\n'}
+[0.091183] (shapes) StdoutLine: {'line': b'1: [----------] 18 tests from Circle (0 ms total)\n'}
+[0.091264] (shapes) StdoutLine: {'line': b'1: \n'}
+[0.091346] (shapes) StdoutLine: {'line': b'1: [----------] 8 tests from Polygon\n'}
+[0.091427] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Polygon.IntersectSegment1\n'}
+[0.091508] (shapes) StdoutLine: {'line': b'1: [       OK ] Polygon.IntersectSegment1 (0 ms)\n'}
+[0.091588] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Polygon.IntersectSegment2\n'}
+[0.091668] (shapes) StdoutLine: {'line': b'1: [       OK ] Polygon.IntersectSegment2 (0 ms)\n'}
+[0.091760] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Polygon.IntersectSegment3\n'}
+[0.091849] (shapes) StdoutLine: {'line': b'1: [       OK ] Polygon.IntersectSegment3 (0 ms)\n'}
+[0.091931] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Polygon.ContainsPointInside1\n'}
+[0.092014] (shapes) StdoutLine: {'line': b'1: [       OK ] Polygon.ContainsPointInside1 (0 ms)\n'}
+[0.092096] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Polygon.ContainsPointOutside1\n'}
+[0.092175] (shapes) StdoutLine: {'line': b'1: [       OK ] Polygon.ContainsPointOutside1 (0 ms)\n'}
+[0.092257] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Polygon.ContainsPointOutside2\n'}
+[0.092339] (shapes) StdoutLine: {'line': b'1: [       OK ] Polygon.ContainsPointOutside2 (0 ms)\n'}
+[0.092420] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Polygon.ContainsPointBelongsTo\n'}
+[0.092503] (shapes) StdoutLine: {'line': b'1: [       OK ] Polygon.ContainsPointBelongsTo (0 ms)\n'}
+[0.092585] (shapes) StdoutLine: {'line': b'1: [ RUN      ] Polygon.ContainsPointVertex\n'}
+[0.092667] (shapes) StdoutLine: {'line': b'1: [       OK ] Polygon.ContainsPointVertex (0 ms)\n'}
+[0.092748] (shapes) StdoutLine: {'line': b'1: [----------] 8 tests from Polygon (0 ms total)\n'}
+[0.092829] (shapes) StdoutLine: {'line': b'1: \n'}
+[0.092920] (shapes) StdoutLine: {'line': b'1: [----------] Global test environment tear-down\n'}
+[0.093007] (shapes) StdoutLine: {'line': b'1: [==========] 35 tests from 3 test suites ran. (0 ms total)\n'}
+[0.093088] (shapes) StdoutLine: {'line': b'1: [  PASSED  ] 35 tests.\n'}
+[0.093170] (shapes) StdoutLine: {'line': b'1: -- run_test.py: return code 0\n'}
+[0.093251] (shapes) StdoutLine: {'line': b"1: -- run_test.py: generate result file '/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml' with failed test\n"}
+[0.093334] (shapes) StdoutLine: {'line': b"1: -- run_test.py: verify result file '/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml'\n"}
+[0.095614] (shapes) StdoutLine: {'line': b'1/1 Test #1: test_shapes ......................***Failed    0.07 sec\n'}
+[0.095883] (shapes) StdoutLine: {'line': b'\n'}
+[0.096084] (shapes) StdoutLine: {'line': b'0% tests passed\x1b[0;0m, \x1b[0;31m1 tests failed\x1b[0;0m out of 1\n'}
+[0.096184] (shapes) StdoutLine: {'line': b'\n'}
+[0.096272] (shapes) StdoutLine: {'line': b'Label Time Summary:\n'}
+[0.096357] (shapes) StdoutLine: {'line': b'gtest    =   0.07 sec*proc (1 test)\n'}
+[0.096439] (shapes) StdoutLine: {'line': b'\n'}
+[0.096520] (shapes) StdoutLine: {'line': b'Total Test time (real) =   0.07 sec\n'}
+[0.096600] (shapes) StdoutLine: {'line': b'\n'}
+[0.096677] (shapes) StdoutLine: {'line': b'The following tests FAILED:\n'}
+[0.096756] (shapes) StdoutLine: {'line': b'\t\x1b[0;31m  1 - test_shapes (Failed)\x1b[0;0m\n'}
+[0.099227] (-) TimerEvent: {}
+[0.118808] (shapes) StderrLine: {'line': b'Errors while running CTest\n'}
+[0.119153] (shapes) StderrLine: {'line': b'Output from these tests are in: /root/ros2_ws/src/robot-planning-project/build/shapes/Testing/Temporary/LastTest.log\n'}
+[0.119457] (shapes) StderrLine: {'line': b'Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.\n'}
+[0.121126] (shapes) CommandEnded: {'returncode': 8}
+[0.121863] (shapes) TestFailure: {'identifier': 'shapes'}
+[0.121941] (shapes) JobEnded: {'identifier': 'shapes', 'rc': 0}
+[0.122363] (-) EventReactorShutdown: {}

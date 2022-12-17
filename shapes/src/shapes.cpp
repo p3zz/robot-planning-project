@@ -168,3 +168,24 @@ std::vector<Segment> Polygon::get_sides(){
     sides.push_back(side);
     return sides;
 }
+
+bool Polygon::contains(Point2D p){
+    int pos = 0;
+    int neg = 0;
+
+    auto sides = this->get_sides();
+    for (auto side: sides){
+        //Compute the cross product
+        double d = (p.x - side.src.x) * (side.dst.y - side.src.y) - (p.y - side.src.y) * (side.dst.x - side.src.x);
+
+        if (d > 0) pos++;
+        if (d < 0) neg++;
+
+        //If the sign changes, then point is outside
+        if (pos > 0 && neg > 0)
+            return false;
+    }
+
+    //If no change in direction, then on same side of all segments, and thus inside
+    return true;
+}

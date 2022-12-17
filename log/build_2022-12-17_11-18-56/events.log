@@ -1,0 +1,135 @@
+[0.000000] (-) TimerEvent: {}
+[0.000435] (-) JobUnselected: {'identifier': 'cpp_pubsub'}
+[0.000477] (-) JobUnselected: {'identifier': 'dubins'}
+[0.000501] (-) JobUnselected: {'identifier': 'map'}
+[0.000519] (-) JobUnselected: {'identifier': 'utils'}
+[0.000789] (shapes) JobQueued: {'identifier': 'shapes', 'dependencies': OrderedDict()}
+[0.000831] (shapes) JobStarted: {'identifier': 'shapes'}
+[0.009210] (shapes) JobProgress: {'identifier': 'shapes', 'progress': 'cmake'}
+[0.009504] (shapes) Command: {'cmd': ['/usr/bin/cmake', '/root/ros2_ws/src/robot-planning-project/shapes', '-DCMAKE_INSTALL_PREFIX=/root/ros2_ws/src/robot-planning-project/install/shapes'], 'cwd': '/root/ros2_ws/src/robot-planning-project/build/shapes', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HOSTNAME', 'gelato'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/root/ros2_ws/install/map/lib:/root/ros2_ws/install/dubins/lib:/root/ros2_ws/install/utils/lib:/root/ros2_ws/install/shapes/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root/ros2_ws'), ('ROS_PYTHON_VERSION', '3'), ('LC_CTYPE', 'C.UTF-8'), ('COLCON_PREFIX_PATH', '/root/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':0'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros2_ws/install/map:/root/ros2_ws/install/dubins:/root/ros2_ws/install/utils:/root/ros2_ws/install/shapes:/opt/ros/humble'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/root/ros2_ws/src/robot-planning-project/build/shapes'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros2_ws/install/map:/root/ros2_ws/install/dubins:/root/ros2_ws/install/utils:/root/ros2_ws/install/shapes:/opt/ros/humble')]), 'shell': False}
+[0.058875] (shapes) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.3.0\n'}
+[0.099144] (-) TimerEvent: {}
+[0.109822] (shapes) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.3.0\n'}
+[0.117778] (shapes) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.181238] (shapes) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.189411] (shapes) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.189710] (shapes) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.190115] (shapes) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.193424] (shapes) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.199261] (-) TimerEvent: {}
+[0.271227] (shapes) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.279141] (shapes) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.279433] (shapes) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.279907] (shapes) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.282345] (shapes) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.299386] (-) TimerEvent: {}
+[0.399646] (-) TimerEvent: {}
+[0.432033] (shapes) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter \n'}
+[0.499786] (-) TimerEvent: {}
+[0.510490] (shapes) StdoutLine: {'line': b'-- Found ament_cmake_gtest: 1.3.3 (/opt/ros/humble/share/ament_cmake_gtest/cmake)\n'}
+[0.512549] (shapes) StdoutLine: {'line': b"-- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built\n"}
+[0.514345] (shapes) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[0.578105] (shapes) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[0.578348] (shapes) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[0.599924] (-) TimerEvent: {}
+[0.647675] (shapes) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[0.648675] (shapes) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[0.700056] (-) TimerEvent: {}
+[0.711117] (shapes) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.719992] (shapes) StdoutLine: {'line': b'-- Generating done\n'}
+[0.721168] (shapes) StdoutLine: {'line': b'-- Build files have been written to: /root/ros2_ws/src/robot-planning-project/build/shapes\n'}
+[0.725112] (shapes) CommandEnded: {'returncode': 0}
+[0.725766] (shapes) JobProgress: {'identifier': 'shapes', 'progress': 'build'}
+[0.726549] (shapes) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ros2_ws/src/robot-planning-project/build/shapes', '--', '-j8', '-l8'], 'cwd': '/root/ros2_ws/src/robot-planning-project/build/shapes', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HOSTNAME', 'gelato'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/root/ros2_ws/install/map/lib:/root/ros2_ws/install/dubins/lib:/root/ros2_ws/install/utils/lib:/root/ros2_ws/install/shapes/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root/ros2_ws'), ('ROS_PYTHON_VERSION', '3'), ('LC_CTYPE', 'C.UTF-8'), ('COLCON_PREFIX_PATH', '/root/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':0'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros2_ws/install/map:/root/ros2_ws/install/dubins:/root/ros2_ws/install/utils:/root/ros2_ws/install/shapes:/opt/ros/humble'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/root/ros2_ws/src/robot-planning-project/build/shapes'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros2_ws/install/map:/root/ros2_ws/install/dubins:/root/ros2_ws/install/utils:/root/ros2_ws/install/shapes:/opt/ros/humble')]), 'shell': False}
+[0.772695] (shapes) StdoutLine: {'line': b'[ 27%] \x1b[32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o\x1b[0m\n'}
+[0.772929] (shapes) StdoutLine: {'line': b'[ 27%] \x1b[32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o\x1b[0m\n'}
+[0.773058] (shapes) StdoutLine: {'line': b'[ 27%] \x1b[32mBuilding CXX object CMakeFiles/shapes.dir/src/shapes.cpp.o\x1b[0m\n'}
+[0.800196] (-) TimerEvent: {}
+[0.900522] (-) TimerEvent: {}
+[1.000822] (-) TimerEvent: {}
+[1.039079] (shapes) StdoutLine: {'line': b'[ 36%] \x1b[32m\x1b[1mLinking CXX static library libshapes.a\x1b[0m\n'}
+[1.068716] (shapes) StdoutLine: {'line': b'[ 36%] Built target shapes\n'}
+[1.100969] (-) TimerEvent: {}
+[1.201284] (-) TimerEvent: {}
+[1.301596] (-) TimerEvent: {}
+[1.401895] (-) TimerEvent: {}
+[1.502203] (-) TimerEvent: {}
+[1.602512] (-) TimerEvent: {}
+[1.648623] (shapes) StdoutLine: {'line': b'[ 45%] \x1b[32m\x1b[1mLinking CXX static library libgtest_main.a\x1b[0m\n'}
+[1.678848] (shapes) StdoutLine: {'line': b'[ 45%] Built target gtest_main\n'}
+[1.702650] (-) TimerEvent: {}
+[1.802991] (-) TimerEvent: {}
+[1.903291] (-) TimerEvent: {}
+[2.003607] (-) TimerEvent: {}
+[2.103913] (-) TimerEvent: {}
+[2.204239] (-) TimerEvent: {}
+[2.304558] (-) TimerEvent: {}
+[2.404861] (-) TimerEvent: {}
+[2.505162] (-) TimerEvent: {}
+[2.605455] (-) TimerEvent: {}
+[2.705750] (-) TimerEvent: {}
+[2.806045] (-) TimerEvent: {}
+[2.906295] (-) TimerEvent: {}
+[3.006584] (-) TimerEvent: {}
+[3.106871] (-) TimerEvent: {}
+[3.207156] (-) TimerEvent: {}
+[3.307449] (-) TimerEvent: {}
+[3.407699] (-) TimerEvent: {}
+[3.507989] (-) TimerEvent: {}
+[3.608298] (-) TimerEvent: {}
+[3.708620] (-) TimerEvent: {}
+[3.778483] (shapes) StdoutLine: {'line': b'[ 54%] \x1b[32m\x1b[1mLinking CXX static library libgtest.a\x1b[0m\n'}
+[3.808768] (-) TimerEvent: {}
+[3.834691] (shapes) StdoutLine: {'line': b'[ 54%] Built target gtest\n'}
+[3.855020] (shapes) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding CXX object CMakeFiles/test_shapes.dir/test/segment.cpp.o\x1b[0m\n'}
+[3.855310] (shapes) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding CXX object CMakeFiles/test_shapes.dir/test/polygon.cpp.o\x1b[0m\n'}
+[3.855446] (shapes) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding CXX object CMakeFiles/test_shapes.dir/test/circle.cpp.o\x1b[0m\n'}
+[3.855567] (shapes) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding CXX object CMakeFiles/test_shapes.dir/test/main.cpp.o\x1b[0m\n'}
+[3.908886] (-) TimerEvent: {}
+[4.009202] (-) TimerEvent: {}
+[4.109503] (-) TimerEvent: {}
+[4.209828] (-) TimerEvent: {}
+[4.310157] (-) TimerEvent: {}
+[4.410489] (-) TimerEvent: {}
+[4.510851] (-) TimerEvent: {}
+[4.611202] (-) TimerEvent: {}
+[4.711542] (-) TimerEvent: {}
+[4.811874] (-) TimerEvent: {}
+[4.912214] (-) TimerEvent: {}
+[5.012536] (-) TimerEvent: {}
+[5.107201] (shapes) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable test_shapes\x1b[0m\n'}
+[5.112653] (-) TimerEvent: {}
+[5.212929] (-) TimerEvent: {}
+[5.258080] (shapes) StdoutLine: {'line': b'[100%] Built target test_shapes\n'}
+[5.268292] (shapes) CommandEnded: {'returncode': 0}
+[5.303890] (shapes) JobProgress: {'identifier': 'shapes', 'progress': 'install'}
+[5.312406] (shapes) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/ros2_ws/src/robot-planning-project/build/shapes'], 'cwd': '/root/ros2_ws/src/robot-planning-project/build/shapes', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HOSTNAME', 'gelato'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/root/ros2_ws/install/map/lib:/root/ros2_ws/install/dubins/lib:/root/ros2_ws/install/utils/lib:/root/ros2_ws/install/shapes/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root/ros2_ws'), ('ROS_PYTHON_VERSION', '3'), ('LC_CTYPE', 'C.UTF-8'), ('COLCON_PREFIX_PATH', '/root/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':0'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros2_ws/install/map:/root/ros2_ws/install/dubins:/root/ros2_ws/install/utils:/root/ros2_ws/install/shapes:/opt/ros/humble'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/root/ros2_ws/src/robot-planning-project/build/shapes'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros2_ws/install/map:/root/ros2_ws/install/dubins:/root/ros2_ws/install/utils:/root/ros2_ws/install/shapes:/opt/ros/humble')]), 'shell': False}
+[5.313020] (-) TimerEvent: {}
+[5.319494] (shapes) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[5.319719] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/environment/library_path.sh\n'}
+[5.319958] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/environment/library_path.dsv\n'}
+[5.320143] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/include/shapes\n'}
+[5.320288] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/include/shapes/shapes.hpp\n'}
+[5.320508] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/lib/libshapes.a\n'}
+[5.320917] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/lib/shapes/test_shapes\n'}
+[5.322486] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/ament_index/resource_index/package_run_dependencies/shapes\n'}
+[5.322744] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/ament_index/resource_index/parent_prefix_path/shapes\n'}
+[5.322913] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/environment/ament_prefix_path.sh\n'}
+[5.323139] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/environment/ament_prefix_path.dsv\n'}
+[5.323361] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/environment/path.sh\n'}
+[5.323538] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/environment/path.dsv\n'}
+[5.323705] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/local_setup.bash\n'}
+[5.323959] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/local_setup.sh\n'}
+[5.324111] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/local_setup.zsh\n'}
+[5.324353] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/local_setup.dsv\n'}
+[5.324545] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/package.dsv\n'}
+[5.324820] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/ament_index/resource_index/packages/shapes\n'}
+[5.325032] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/cmake/shapesExport.cmake\n'}
+[5.325305] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/cmake/shapesExport-noconfig.cmake\n'}
+[5.325494] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[5.325665] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/cmake/shapesConfig.cmake\n'}
+[5.325816] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/cmake/shapesConfig-version.cmake\n'}
+[5.326010] (shapes) StdoutLine: {'line': b'-- Installing: /root/ros2_ws/src/robot-planning-project/install/shapes/share/shapes/package.xml\n'}
+[5.328936] (shapes) CommandEnded: {'returncode': 0}
+[5.397341] (shapes) JobEnded: {'identifier': 'shapes', 'rc': 0}
+[5.398179] (-) EventReactorShutdown: {}

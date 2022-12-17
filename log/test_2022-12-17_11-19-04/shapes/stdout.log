@@ -1,0 +1,120 @@
+UpdateCTestConfiguration  from :/root/ros2_ws/src/robot-planning-project/build/shapes/CTestConfiguration.ini
+Parse Config file:/root/ros2_ws/src/robot-planning-project/build/shapes/CTestConfiguration.ini
+   Site: gelato
+   Build name: (empty)
+ Add coverage exclude regular expressions.
+Create new tag: 20221217-1119 - Experimental
+UpdateCTestConfiguration  from :/root/ros2_ws/src/robot-planning-project/build/shapes/CTestConfiguration.ini
+Parse Config file:/root/ros2_ws/src/robot-planning-project/build/shapes/CTestConfiguration.ini
+Test project /root/ros2_ws/src/robot-planning-project/build/shapes
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: test_shapes
+
+1: Test command: /usr/bin/python3.10 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml" "--package-name" "shapes" "--output-file" "/root/ros2_ws/src/robot-planning-project/build/shapes/ament_cmake_gtest/test_shapes.txt" "--command" "/root/ros2_ws/src/robot-planning-project/build/shapes/test_shapes" "--gtest_output=xml:/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml"
+1: Test timeout computed to be: 60
+1: -- run_test.py: invoking following command in '/root/ros2_ws/src/robot-planning-project/build/shapes':
+1:  - /root/ros2_ws/src/robot-planning-project/build/shapes/test_shapes --gtest_output=xml:/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml
+1: [==========] Running 35 tests from 3 test suites.
+1: [----------] Global test environment set-up.
+1: [----------] 9 tests from Segment
+1: [ RUN      ] Segment.IntersectIncident
+1: [       OK ] Segment.IntersectIncident (0 ms)
+1: [ RUN      ] Segment.IntersectNotIncident
+1: [       OK ] Segment.IntersectNotIncident (0 ms)
+1: [ RUN      ] Segment.IntersectParallel
+1: [       OK ] Segment.IntersectParallel (0 ms)
+1: [ RUN      ] Segment.IntersectParallel2
+1: [       OK ] Segment.IntersectParallel2 (0 ms)
+1: [ RUN      ] Segment.IntersectOverlap
+1: [       OK ] Segment.IntersectOverlap (0 ms)
+1: [ RUN      ] Segment.Contains
+1: [       OK ] Segment.Contains (0 ms)
+1: [ RUN      ] Segment.ContainsEnd
+1: [       OK ] Segment.ContainsEnd (0 ms)
+1: [ RUN      ] Segment.ContainsOutsideSameLine
+1: [       OK ] Segment.ContainsOutsideSameLine (0 ms)
+1: [ RUN      ] Segment.ContainsOutsideDifferentLine
+1: [       OK ] Segment.ContainsOutsideDifferentLine (0 ms)
+1: [----------] 9 tests from Segment (0 ms total)
+1: 
+1: [----------] 18 tests from Circle
+1: [ RUN      ] Circle.Contains1
+1: [       OK ] Circle.Contains1 (0 ms)
+1: [ RUN      ] Circle.Contains2
+1: [       OK ] Circle.Contains2 (0 ms)
+1: [ RUN      ] Circle.ContainsInside
+1: [       OK ] Circle.ContainsInside (0 ms)
+1: [ RUN      ] Circle.ContainsOutside
+1: [       OK ] Circle.ContainsOutside (0 ms)
+1: [ RUN      ] Circle.GetAngle1
+1: [       OK ] Circle.GetAngle1 (0 ms)
+1: [ RUN      ] Circle.GetAngle2
+1: [       OK ] Circle.GetAngle2 (0 ms)
+1: [ RUN      ] Circle.IntersectOnceTangentInBounds
+1: [       OK ] Circle.IntersectOnceTangentInBounds (0 ms)
+1: [ RUN      ] Circle.IntersectOnceTangentInBounds2
+1: [       OK ] Circle.IntersectOnceTangentInBounds2 (0 ms)
+1: [ RUN      ] Circle.IntersectOnceTangentOutBounds1
+1: [       OK ] Circle.IntersectOnceTangentOutBounds1 (0 ms)
+1: [ RUN      ] Circle.IntersectOnceTangentOutBounds2
+1: [       OK ] Circle.IntersectOnceTangentOutBounds2 (0 ms)
+1: [ RUN      ] Circle.IntersectOnce1
+1: [       OK ] Circle.IntersectOnce1 (0 ms)
+1: [ RUN      ] Circle.IntersectOnce2
+1: [       OK ] Circle.IntersectOnce2 (0 ms)
+1: [ RUN      ] Circle.IntersectTwiceOutBounds1
+1: [       OK ] Circle.IntersectTwiceOutBounds1 (0 ms)
+1: [ RUN      ] Circle.IntersectTwiceInBounds1
+1: [       OK ] Circle.IntersectTwiceInBounds1 (0 ms)
+1: [ RUN      ] Circle.IntersectOutside1
+1: [       OK ] Circle.IntersectOutside1 (0 ms)
+1: [ RUN      ] Circle.GetCircle1
+1: [       OK ] Circle.GetCircle1 (0 ms)
+1: [ RUN      ] Circle.GetCircle2
+1: [       OK ] Circle.GetCircle2 (0 ms)
+1: [ RUN      ] Circle.GetCircle3
+1: [       OK ] Circle.GetCircle3 (0 ms)
+1: [----------] 18 tests from Circle (0 ms total)
+1: 
+1: [----------] 8 tests from Polygon
+1: [ RUN      ] Polygon.IntersectSegment1
+1: [       OK ] Polygon.IntersectSegment1 (0 ms)
+1: [ RUN      ] Polygon.IntersectSegment2
+1: [       OK ] Polygon.IntersectSegment2 (0 ms)
+1: [ RUN      ] Polygon.IntersectSegment3
+1: [       OK ] Polygon.IntersectSegment3 (0 ms)
+1: [ RUN      ] Polygon.ContainsPointInside1
+1: [       OK ] Polygon.ContainsPointInside1 (0 ms)
+1: [ RUN      ] Polygon.ContainsPointOutside1
+1: [       OK ] Polygon.ContainsPointOutside1 (0 ms)
+1: [ RUN      ] Polygon.ContainsPointOutside2
+1: [       OK ] Polygon.ContainsPointOutside2 (0 ms)
+1: [ RUN      ] Polygon.ContainsPointBelongsTo
+1: [       OK ] Polygon.ContainsPointBelongsTo (0 ms)
+1: [ RUN      ] Polygon.ContainsPointVertex
+1: [       OK ] Polygon.ContainsPointVertex (0 ms)
+1: [----------] 8 tests from Polygon (0 ms total)
+1: 
+1: [----------] Global test environment tear-down
+1: [==========] 35 tests from 3 test suites ran. (0 ms total)
+1: [  PASSED  ] 35 tests.
+1: -- run_test.py: return code 0
+1: -- run_test.py: generate result file '/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml' with failed test
+1: -- run_test.py: verify result file '/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml'
+1/1 Test #1: test_shapes ......................***Failed    0.07 sec
+
+0% tests passed[0;0m, [0;31m1 tests failed[0;0m out of 1
+
+Label Time Summary:
+gtest    =   0.07 sec*proc (1 test)
+
+Total Test time (real) =   0.07 sec
+
+The following tests FAILED:
+	[0;31m  1 - test_shapes (Failed)[0;0m

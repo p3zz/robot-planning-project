@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20221217-1119-Experimental"
+	Name="gelato"
+	Generator="ctest-3.22.1"
+	CompilerName="/usr/bin/c++"
+	CompilerVersion="11.3.0"
+	OSName="Linux"
+	Hostname="gelato"
+	OSRelease="5.10.0-19-amd64"
+	OSVersion="#1 SMP Debian 5.10.149-2 (2022-10-21)"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="142"
+	ProcessorCacheSize="8192"
+	NumberOfLogicalCPU="8"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="975"
+	TotalPhysicalMemory="15891"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="1951.42"
+	>
+	<Testing>
+		<StartDateTime>Dec 17 11:19 UTC</StartDateTime>
+		<StartTestTime>1671275944</StartTestTime>
+		<TestList>
+			<Test>./test_shapes</Test>
+		</TestList>
+		<Test Status="failed">
+			<Name>test_shapes</Name>
+			<Path>.</Path>
+			<FullName>./test_shapes</FullName>
+			<FullCommandLine>/usr/bin/python3.10 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml" "--package-name" "shapes" "--output-file" "/root/ros2_ws/src/robot-planning-project/build/shapes/ament_cmake_gtest/test_shapes.txt" "--command" "/root/ros2_ws/src/robot-planning-project/build/shapes/test_shapes" "--gtest_output=xml:/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="text/string" name="Exit Code">
+					<Value>Failed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Exit Value">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.0654464</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/usr/bin/python3.10 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml" "--package-name" "shapes" "--output-file" "/root/ros2_ws/src/robot-planning-project/build/shapes/ament_cmake_gtest/test_shapes.txt" "--command" "/root/ros2_ws/src/robot-planning-project/build/shapes/test_shapes" "--gtest_output=xml:/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml"</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>-- run_test.py: invoking following command in '/root/ros2_ws/src/robot-planning-project/build/shapes':
+ - /root/ros2_ws/src/robot-planning-project/build/shapes/test_shapes --gtest_output=xml:/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml
+[==========] Running 35 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 9 tests from Segment
+[ RUN      ] Segment.IntersectIncident
+[       OK ] Segment.IntersectIncident (0 ms)
+[ RUN      ] Segment.IntersectNotIncident
+[       OK ] Segment.IntersectNotIncident (0 ms)
+[ RUN      ] Segment.IntersectParallel
+[       OK ] Segment.IntersectParallel (0 ms)
+[ RUN      ] Segment.IntersectParallel2
+[       OK ] Segment.IntersectParallel2 (0 ms)
+[ RUN      ] Segment.IntersectOverlap
+[       OK ] Segment.IntersectOverlap (0 ms)
+[ RUN      ] Segment.Contains
+[       OK ] Segment.Contains (0 ms)
+[ RUN      ] Segment.ContainsEnd
+[       OK ] Segment.ContainsEnd (0 ms)
+[ RUN      ] Segment.ContainsOutsideSameLine
+[       OK ] Segment.ContainsOutsideSameLine (0 ms)
+[ RUN      ] Segment.ContainsOutsideDifferentLine
+[       OK ] Segment.ContainsOutsideDifferentLine (0 ms)
+[----------] 9 tests from Segment (0 ms total)
+
+[----------] 18 tests from Circle
+[ RUN      ] Circle.Contains1
+[       OK ] Circle.Contains1 (0 ms)
+[ RUN      ] Circle.Contains2
+[       OK ] Circle.Contains2 (0 ms)
+[ RUN      ] Circle.ContainsInside
+[       OK ] Circle.ContainsInside (0 ms)
+[ RUN      ] Circle.ContainsOutside
+[       OK ] Circle.ContainsOutside (0 ms)
+[ RUN      ] Circle.GetAngle1
+[       OK ] Circle.GetAngle1 (0 ms)
+[ RUN      ] Circle.GetAngle2
+[       OK ] Circle.GetAngle2 (0 ms)
+[ RUN      ] Circle.IntersectOnceTangentInBounds
+[       OK ] Circle.IntersectOnceTangentInBounds (0 ms)
+[ RUN      ] Circle.IntersectOnceTangentInBounds2
+[       OK ] Circle.IntersectOnceTangentInBounds2 (0 ms)
+[ RUN      ] Circle.IntersectOnceTangentOutBounds1
+[       OK ] Circle.IntersectOnceTangentOutBounds1 (0 ms)
+[ RUN      ] Circle.IntersectOnceTangentOutBounds2
+[       OK ] Circle.IntersectOnceTangentOutBounds2 (0 ms)
+[ RUN      ] Circle.IntersectOnce1
+[       OK ] Circle.IntersectOnce1 (0 ms)
+[ RUN      ] Circle.IntersectOnce2
+[       OK ] Circle.IntersectOnce2 (0 ms)
+[ RUN      ] Circle.IntersectTwiceOutBounds1
+[       OK ] Circle.IntersectTwiceOutBounds1 (0 ms)
+[ RUN      ] Circle.IntersectTwiceInBounds1
+[       OK ] Circle.IntersectTwiceInBounds1 (0 ms)
+[ RUN      ] Circle.IntersectOutside1
+[       OK ] Circle.IntersectOutside1 (0 ms)
+[ RUN      ] Circle.GetCircle1
+[       OK ] Circle.GetCircle1 (0 ms)
+[ RUN      ] Circle.GetCircle2
+[       OK ] Circle.GetCircle2 (0 ms)
+[ RUN      ] Circle.GetCircle3
+[       OK ] Circle.GetCircle3 (0 ms)
+[----------] 18 tests from Circle (0 ms total)
+
+[----------] 8 tests from Polygon
+[ RUN      ] Polygon.IntersectSegment1
+[       OK ] Polygon.IntersectSegment1 (0 ms)
+[ RUN      ] Polygon.IntersectSegment2
+[       OK ] Polygon.IntersectSegment2 (0 ms)
+[ RUN      ] Polygon.IntersectSegment3
+[       OK ] Polygon.IntersectSegment3 (0 ms)
+[ RUN      ] Polygon.ContainsPointInside1
+[       OK ] Polygon.ContainsPointInside1 (0 ms)
+[ RUN      ] Polygon.ContainsPointOutside1
+[       OK ] Polygon.ContainsPointOutside1 (0 ms)
+[ RUN      ] Polygon.ContainsPointOutside2
+[       OK ] Polygon.ContainsPointOutside2 (0 ms)
+[ RUN      ] Polygon.ContainsPointBelongsTo
+[       OK ] Polygon.ContainsPointBelongsTo (0 ms)
+[ RUN      ] Polygon.ContainsPointVertex
+[       OK ] Polygon.ContainsPointVertex (0 ms)
+[----------] 8 tests from Polygon (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 35 tests from 3 test suites ran. (0 ms total)
+[  PASSED  ] 35 tests.
+-- run_test.py: return code 0
+-- run_test.py: generate result file '/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml' with failed test
+-- run_test.py: verify result file '/root/ros2_ws/src/robot-planning-project/build/shapes/test_results/shapes/test_shapes.gtest.xml'
+</Value>
+				</Measurement>
+			</Results>
+			<Labels>
+				<Label>gtest</Label>
+			</Labels>
+		</Test>
+		<EndDateTime>Dec 17 11:19 UTC</EndDateTime>
+		<EndTestTime>1671275944</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
