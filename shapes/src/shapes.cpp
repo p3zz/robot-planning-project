@@ -189,3 +189,55 @@ bool Polygon::contains(Point2D p){
     //If no change in direction, then on same side of all segments, and thus inside
     return true;
 }
+
+bool intersect(DubinArc arc, Segment s){
+    // arc is straight, so just compute a single segment and check the insersection
+    if(arc.k==0){
+        Point2D source(arc.source.x, arc.source.y);
+        auto arc_dest = arc.get_dest();
+        Point2D dest(arc_dest.x, arc_dest.y);
+        Segment arc_s(source, dest);
+        if(intersect(s, arc_s)){
+            return true;
+        }
+    // arc is curve, so build a circle and check the intersection with the arc
+    }else{
+        // compute the point that is in the middle of the arc. In order to build a full circle
+        // we need 3 points: the source point of the arc, the destination, and a middle point
+        Point2D p1(arc.source.x, arc.source.y);        
+
+        DubinArc arc_mid(arc.source, arc.length*0.5, arc.k);
+        DubinPoint p_mid = arc_mid.get_dest();
+        Point2D p2(p_mid.x, p_mid.y);
+
+        DubinPoint p_dest = arc.get_dest();
+        Point2D p3(p_dest.x, p_dest.y);
+        // build the circle and check the interection
+
+        Circle circle = get_circle(p1, p2, p3);
+        if(intersect(circle, s, p1, p3)){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+// check the collision between a dubin curve (3 arcs) and a segment
+bool intersect(DubinCurve c, Segment s){
+    for (auto arc:c.arcs){
+        if(intersect(arc, s)){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool intersect(DubinCurve c, Polygon p){
+    for(auto side: p.get_sides()){
+        if(intersect(c, side)){
+            return true;
+        }
+    }
+    return false;
+}

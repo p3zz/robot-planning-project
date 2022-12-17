@@ -4,6 +4,8 @@
 #include <cmath>
 #include <vector>
 
+#include "dubins/dubins.hpp"
+
 class Point2D{
     public:
         double x,y;

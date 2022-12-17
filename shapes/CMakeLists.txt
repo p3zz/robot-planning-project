@@ -7,12 +7,16 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(dubins REQUIRED)
+find_package(utils REQUIRED)
 
 include_directories(include)
 
 add_library(shapes src/shapes.cpp)
 
 ament_export_targets(shapes HAS_LIBRARY_TARGET)
+
+ament_target_dependencies(shapes dubins utils)
 
 install(
   DIRECTORY include/shapes
