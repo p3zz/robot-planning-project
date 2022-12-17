@@ -146,11 +146,11 @@ void randomObstacles(Room* room, int num_obstacles, const int max_side)
   }
 }
 
-int main(/*int argc, char * argv[]*/)
+int main(int argc, char * argv[])
 {
-  //rclcpp::init(argc, argv);
-  //rclcpp::spin(std::make_shared<MinimalPublisher>());
-  //rclcpp::shutdown();
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<MinimalPublisher>());
+  rclcpp::shutdown();
   srand(time(NULL));
   Room room(10,10);
   randomObstacles(&room, 4, 200);

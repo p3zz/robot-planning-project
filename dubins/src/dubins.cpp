@@ -3,24 +3,28 @@
 using namespace std;
 
 std::vector<DubinPoint> DubinCurve::get_trajectory(){
-    std::vector<DubinPoint> points = {};
+    std::vector<DubinPoint> points;
 
     points.push_back(arcs[0].source);
 
     for(auto arc:arcs){
-        int arc_points_n = int((arc.length / get_length()) * PRECISION_TRAJ);
+        int arc_points_n = round((arc.length / get_length()) * PRECISION_TRAJ);
         auto arc_points = arc.to_points(arc_points_n);
+        cout<<arc_points.size()<<endl;
+        // remove first element from every set of points to avoid duplicates
+        arc_points.erase(arc_points.begin());
         points.insert(points.end(), arc_points.begin(), arc_points.end());
     }
 
     return points;
 }
 
-std::vector<DubinPoint> DubinArc::to_points(int n_points){
+// returns a vector of n points that approximates the arc
+std::vector<DubinPoint> DubinArc::to_points(int n){
     std::vector<DubinPoint> points;
     // compute the unit segment
-    double unit_seg_length = this->length / n_points;
-    for(int i=1;i<=n_points;i++){
+    double unit_seg_length = this->length / (n-1);
+    for(int i=0;i<n;i++){
         // compute the length of portion of the arc
         double arc_length = unit_seg_length*i;
         // create a smaller dubin arc
