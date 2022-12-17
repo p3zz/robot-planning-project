@@ -10,7 +10,6 @@ std::vector<DubinPoint> DubinCurve::get_trajectory(){
     for(auto arc:arcs){
         int arc_points_n = round((arc.length / get_length()) * PRECISION_TRAJ);
         auto arc_points = arc.to_points(arc_points_n);
-        cout<<arc_points.size()<<endl;
         // remove first element from every set of points to avoid duplicates
         arc_points.erase(arc_points.begin());
         points.insert(points.end(), arc_points.begin(), arc_points.end());
