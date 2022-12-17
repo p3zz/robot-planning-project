@@ -57,9 +57,8 @@ class DubinArc {
         DubinArc(DubinPoint source, double length, double k):source{source},length{length},k{k}{}
 
         DubinPoint get_dest();
+        std::vector<DubinPoint> to_points(int n_points);
 };
-
-std::vector<DubinPoint> arc_to_points(DubinArc arc, int n_points);
 
 class DubinCurve {
     public:

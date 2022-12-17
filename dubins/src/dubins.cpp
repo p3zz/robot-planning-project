@@ -9,22 +9,22 @@ std::vector<DubinPoint> DubinCurve::get_trajectory(){
 
     for(auto arc:arcs){
         int arc_points_n = int((arc.length / get_length()) * PRECISION_TRAJ);
-        std::vector<DubinPoint> arc_points = arc_to_points(arc, arc_points_n);
+        auto arc_points = arc.to_points(arc_points_n);
         points.insert(points.end(), arc_points.begin(), arc_points.end());
     }
 
     return points;
 }
 
-std::vector<DubinPoint> arc_to_points(DubinArc arc, int n_points){
+std::vector<DubinPoint> DubinArc::to_points(int n_points){
     std::vector<DubinPoint> points;
     // compute the unit segment
-    double unit_seg_length = arc.length / n_points;
+    double unit_seg_length = this->length / n_points;
     for(int i=1;i<=n_points;i++){
         // compute the length of portion of the arc
         double arc_length = unit_seg_length*i;
         // create a smaller dubin arc
-        DubinArc new_arc(arc.source, arc_length, arc.k);
+        DubinArc new_arc(this->source, arc_length, this->k);
         // get the final point of the smaller dubin arc
         DubinPoint p = new_arc.get_dest();
         points.push_back(p);
