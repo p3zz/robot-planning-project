@@ -30,7 +30,7 @@ bool intersect(Circle circle, Segment s, Point2D start, Point2D end){
     double b = delta_x * (s.src.x - circle.c.x) + delta_y * (s.src.y - circle.c.y);
     double cc = pow(s.src.x - circle.c.x, 2) + pow(s.src.y - circle.c.y, 2) - pow(circle.r,2);
     double delta = b*b - a*cc;
-    if(delta < 0){
+    if(delta < 0 || a == 0){
         return false;
     }
     delta = sqrt(delta);
@@ -89,7 +89,7 @@ double Point2D::distance_from(Point2D p){
 bool Segment::contains(Point2D p){
     double m = (src.y - dst.y) / (src.x - dst.x);
     double q = (src.x * dst.y - dst.x * src.y) / (src.x - dst.x);
-    double const err_threshold = 0.01;
+    double const err_threshold = 0.05;
     double err = abs(p.y - (m * p.x) - q);
     bool line_contains_p = is_bounded(err, 0, err_threshold);
     return line_contains_p && is_bounded(p.x, src.x, dst.x) && is_bounded(p.y, src.y, dst.y);
@@ -105,7 +105,7 @@ double Circle::get_angle(Point2D p){
 }
 
 bool Circle::contains(Point2D p){
-    double const err_threshold = 0.01;
+    double const err_threshold = 0.05;
     double err = abs(pow(p.x - c.x, 2) + pow(p.y - c.y, 2) - pow(r,2));
     return is_bounded(err, 0, err_threshold);
 }
@@ -243,7 +243,7 @@ bool intersect(DubinCurve c, Polygon p){
 }
 
 
-bool intersect_reduced(DubinCurve c, Polygon p, int n){
+bool intersect(DubinCurve c, Polygon p, int n){
     std::vector<Segment> segments;
     auto points = c.to_points(n);
 
