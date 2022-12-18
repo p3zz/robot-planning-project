@@ -241,3 +241,27 @@ bool intersect(DubinCurve c, Polygon p){
     }
     return false;
 }
+
+
+bool intersect_reduced(DubinCurve c, Polygon p, int n){
+    std::vector<Segment> segments;
+    auto points = c.to_points(n);
+
+    // link points with segments
+    for(int i=1;i<(int)points.size();i++){
+        auto src = points.at(i-1);
+        auto dst = points.at(i);
+        Point2D new_src(src.x, src.y);
+        Point2D new_dst(dst.x, dst.y);
+        segments.push_back(Segment(new_src, new_dst));
+    }
+
+    for(auto dubin_seg: segments){
+        for(auto seg: p.get_sides()){
+            if(intersect(dubin_seg, seg)){
+                return true;
+            }
+        }
+    }
+    return false;
+}

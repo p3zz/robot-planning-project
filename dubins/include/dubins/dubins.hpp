@@ -13,7 +13,7 @@
 #define DEBUG_MOBILE true
 
 #define MAX_LENGTH_TRAJ 500.0 // 100 meter max
-#define PRECISION_TRAJ 100.0  // cms precision
+// #define PRECISION_TRAJ 100.0  // cms precision
 #define CURV_MAX 1.0          // max curvature
 
 #define DOUBLE_MAX 1.79769e+308
@@ -77,7 +77,7 @@ class DubinCurve {
             return length; 
         }
 
-        std::vector<DubinPoint> get_trajectory();
+        std::vector<DubinPoint> to_points(int n);
 };
 
 struct primitive{ 

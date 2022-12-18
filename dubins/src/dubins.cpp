@@ -2,13 +2,13 @@
 
 using namespace std;
 
-std::vector<DubinPoint> DubinCurve::get_trajectory(){
+std::vector<DubinPoint> DubinCurve::to_points(int n){
     std::vector<DubinPoint> points;
 
     points.push_back(arcs[0].source);
 
     for(auto arc:arcs){
-        int arc_points_n = round((arc.length / get_length()) * PRECISION_TRAJ);
+        int arc_points_n = round((arc.length / get_length()) * n);
         auto arc_points = arc.to_points(arc_points_n);
         // remove first element from every set of points to avoid duplicates
         arc_points.erase(arc_points.begin());

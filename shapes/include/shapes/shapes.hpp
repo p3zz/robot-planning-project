@@ -56,5 +56,7 @@ Circle get_circle(Point2D p1, Point2D p2, Point2D p3);
 bool intersect(Segment s1, Segment s2);
 bool intersect(Circle c, Segment s, Point2D start, Point2D end);
 bool intersect(Polygon p, Segment s);
+bool intersect(DubinCurve c, Polygon p);
+bool intersect_reduced(DubinCurve c, Polygon p, int n);
 
 #endif
