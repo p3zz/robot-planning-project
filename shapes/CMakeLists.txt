@@ -42,7 +42,7 @@ if(BUILD_TESTING)
   # gtest section
   find_package(ament_cmake_gtest REQUIRED)
 
-  set(TEST_FILES test/segment.cpp test/circle.cpp test/polygon.cpp test/main.cpp)
+  set(TEST_FILES test/segment.cpp test/circle.cpp test/polygon.cpp test/performance.cpp test/main.cpp)
   ament_add_gtest(test_shapes ${TEST_FILES})
   
   target_link_libraries(test_shapes shapes)

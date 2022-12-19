@@ -72,7 +72,7 @@ std::vector<geometry_msgs::msg::PoseStamped> dubin_points_to_poses(DubinPoint st
 
   //dubins
   DubinCurve curve = dubins_shortest_path(start, end);
-  auto trajectory = curve.get_trajectory();
+  auto trajectory = curve.to_points(100);
 
   for(auto p:trajectory){
     pose.pose.position.x = p.x;

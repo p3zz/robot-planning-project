@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <vector>
+#include <iostream>
 
 #include "dubins/dubins.hpp"
 
@@ -57,6 +58,6 @@ bool intersect(Segment s1, Segment s2);
 bool intersect(Circle c, Segment s, Point2D start, Point2D end);
 bool intersect(Polygon p, Segment s);
 bool intersect(DubinCurve c, Polygon p);
-bool intersect_reduced(DubinCurve c, Polygon p, int n);
+bool intersect(DubinCurve c, Polygon p, int n);
 
 #endif

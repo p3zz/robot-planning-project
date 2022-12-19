@@ -8,6 +8,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(utils REQUIRED)
 find_package(shapes REQUIRED)
+find_package(dubins REQUIRED)
 
 include_directories(include)
  
@@ -15,7 +16,7 @@ add_library(map src/map.cpp)
  
 ament_export_targets(map HAS_LIBRARY_TARGET)
 
-ament_target_dependencies(map utils shapes)
+ament_target_dependencies(map utils shapes dubins)
  
 install(
   DIRECTORY include/map
