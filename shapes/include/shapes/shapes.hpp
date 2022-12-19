@@ -19,8 +19,8 @@ class Point2D{
 
 class Segment {
     public:
-        Point2D src, dst;
-        Segment(Point2D src, Point2D dst):src{src},dst{dst}{};
+        Point2D node1, node2;
+        Segment(Point2D node1, Point2D node2):node1{node1},node2{node2}{};
 
         bool contains(Point2D p);
         Point2D get_interceptor(double t);

@@ -5,15 +5,15 @@ bool is_bounded(double val, double min, double max){
 }
 
 bool intersect(Segment s1, Segment s2){
-    double det = (s2.dst.x - s2.src.x) * (s1.src.y - s1.dst.y) - (s1.src.x - s1.dst.x) * (s2.dst.y - s2.src.y);
+    double det = (s2.node2.x - s2.node1.x) * (s1.node1.y - s1.node2.y) - (s1.node1.x - s1.node2.x) * (s2.node2.y - s2.node1.y);
     
     if(det == 0){
         // check if the segments overlap
-        return s1.contains(s2.src) || s1.contains(s2.dst) || s2.contains(s1.src) || s2.contains(s1.dst);
+        return s1.contains(s2.node1) || s1.contains(s2.node2) || s2.contains(s1.node1) || s2.contains(s1.node2);
     }
 
-    double t = ((s2.src.y - s2.dst.y) * (s1.src.x - s2.src.x) + (s2.dst.x - s2.src.x) * (s1.src.y - s2.src.y)) / det;
-    double u = ((s1.src.y - s1.dst.y) * (s1.src.x - s2.src.x) + (s1.dst.x - s1.src.x) * (s1.src.y - s2.src.y)) / det;
+    double t = ((s2.node1.y - s2.node2.y) * (s1.node1.x - s2.node1.x) + (s2.node2.x - s2.node1.x) * (s1.node1.y - s2.node1.y)) / det;
+    double u = ((s1.node1.y - s1.node2.y) * (s1.node1.x - s2.node1.x) + (s1.node2.x - s1.node1.x) * (s1.node1.y - s2.node1.y)) / det;
     return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
 }
 
@@ -24,11 +24,11 @@ bool intersect(Circle circle, Segment s, Point2D start, Point2D end){
         return false;
     }
 
-    double delta_x = s.dst.x - s.src.x;
-    double delta_y = s.dst.y - s.src.y;
+    double delta_x = s.node2.x - s.node1.x;
+    double delta_y = s.node2.y - s.node1.y;
     double a = pow(delta_x,2) + pow(delta_y,2);
-    double b = delta_x * (s.src.x - circle.c.x) + delta_y * (s.src.y - circle.c.y);
-    double cc = pow(s.src.x - circle.c.x, 2) + pow(s.src.y - circle.c.y, 2) - pow(circle.r,2);
+    double b = delta_x * (s.node1.x - circle.c.x) + delta_y * (s.node1.y - circle.c.y);
+    double cc = pow(s.node1.x - circle.c.x, 2) + pow(s.node1.y - circle.c.y, 2) - pow(circle.r,2);
     double delta = b*b - a*cc;
     if(delta < 0 || a == 0){
         return false;
@@ -87,17 +87,17 @@ double Point2D::distance_from(Point2D p){
 }
 
 bool Segment::contains(Point2D p){
-    double m = (src.y - dst.y) / (src.x - dst.x);
-    double q = (src.x * dst.y - dst.x * src.y) / (src.x - dst.x);
+    double m = (node1.y - node2.y) / (node1.x - node2.x);
+    double q = (node1.x * node2.y - node2.x * node1.y) / (node1.x - node2.x);
     double const err_threshold = 0.05;
     double err = abs(p.y - (m * p.x) - q);
     bool line_contains_p = is_bounded(err, 0, err_threshold);
-    return line_contains_p && is_bounded(p.x, src.x, dst.x) && is_bounded(p.y, src.y, dst.y);
+    return line_contains_p && is_bounded(p.x, node1.x, node2.x) && is_bounded(p.y, node1.y, node2.y);
 }
 
 
 Point2D Segment::get_interceptor(double t){
-    return Point2D(src.x + t*(dst.x - src.x), src.y + t*(dst.y - src.y));
+    return Point2D(node1.x + t*(node2.x - node1.x), node1.y + t*(node2.y - node1.y));
 }
 
 double Circle::get_angle(Point2D p){
@@ -176,7 +176,7 @@ bool Polygon::contains(Point2D p){
     auto sides = this->get_sides();
     for (auto side: sides){
         //Compute the cross product
-        double d = (p.x - side.src.x) * (side.dst.y - side.src.y) - (p.y - side.src.y) * (side.dst.x - side.src.x);
+        double d = (p.x - side.node1.x) * (side.node2.y - side.node1.y) - (p.y - side.node1.y) * (side.node2.x - side.node1.x);
 
         if (d > 0) pos++;
         if (d < 0) neg++;
@@ -249,11 +249,11 @@ bool intersect(DubinCurve c, Polygon p, int n){
 
     // link points with segments
     for(int i=1;i<(int)points.size();i++){
-        auto src = points.at(i-1);
-        auto dst = points.at(i);
-        Point2D new_src(src.x, src.y);
-        Point2D new_dst(dst.x, dst.y);
-        segments.push_back(Segment(new_src, new_dst));
+        auto node1 = points.at(i-1);
+        auto node2 = points.at(i);
+        Point2D new_node1(node1.x, node1.y);
+        Point2D new_node2(node2.x, node2.y);
+        segments.push_back(Segment(new_node1, new_node2));
     }
 
     for(auto dubin_seg: segments){
