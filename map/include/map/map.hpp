@@ -12,6 +12,7 @@
 #include "utils/utils.h"
 
 #define KNN_MAX 30
+#define POINT_COORD_MAX 999999
 
 class Room
 {

@@ -1,6 +1,38 @@
 #include "map/map.hpp"
 using namespace std;
 
+bool link_exists(Point2D node1, Point2D node2, std::vector<Segment> links)
+{
+    for(int i=0; i<(int)links.size(); i++)
+        if(links.at(i).node1.x == node2.x && links.at(i).node1.y == node2.y && links.at(i).node2.x == node1.x && links.at(i).node2.y == node1.y)
+            return true;
+    return false;
+}
+
+bool link_collides(Segment link, Room r)
+{
+    for(int i=0; i<r.getNumObstacles(); i++)
+        if(intersect(r.getObstacle(i), link))
+            return true;
+    return false;
+}
+
+bool point_collides(Point2D p, Room r)
+{
+    for(int i=0; i<r.getNumObstacles(); i++)
+        if(r.getObstacle(i).contains(p))
+            return true;
+    return false;
+}
+
+bool check_sparse(Point2D p, std::vector<Point2D> nodes, double distance_min)
+{
+    for (int i = 0; i < (int)nodes.size(); i++) //check distance with other nodes
+        if(sqrt(pow(p.x-nodes[i].x,2)+pow(p.y-nodes[i].y,2))<distance_min) 
+            return false;
+    return true;    
+}
+
 void sort_knn(double arr1[], Point2D* arr2, int k)
 {
     for(int j=0;j<k-1;j++)
@@ -16,46 +48,35 @@ void sort_knn(double arr1[], Point2D* arr2, int k)
             }
 }
 
-void Knn(Point2D node, std::vector<Point2D> candidates, int k, Point2D* nearest_nodes)
+void Knn(Point2D node, std::vector<Point2D> candidates, int k, Point2D* nearest_nodes, Room r)
 {
     //Init variables
     double* nearest_distances = new double[k];
     for(int i=0; i<k; i++)
-        nearest_distances[i]=999999;
+        nearest_distances[i]=POINT_COORD_MAX;
     
     //Test all candidates
     for(int i=0; i<(int)candidates.size(); i++)
     {
-        Point2D cand = candidates[i];
+        Point2D cand = candidates.at(i);
         //different nodes
         if(cand.x != node.x && cand.y != node.y)
         {
             //check if a node is better than others (starting from worst node)
             double distance=sqrt(pow(cand.x-node.x,2)+pow(cand.y-node.y,2));
-            bool edited=false;
-            for(int j=k; j>=0 && !edited; j--)
+            for(int j=k-1; j>=0; j--)
                 if(distance<nearest_distances[j])
                 {
-                    nearest_distances[j]=distance;
-                    nearest_nodes[j]=Point2D(cand.x, cand.y);
-                    edited=true;
+                    if(!link_collides(Segment(node, cand),r))
+                    { 
+                        nearest_distances[j]=distance;
+                        nearest_nodes[j]=Point2D(cand.x, cand.y);
+                        sort_knn(nearest_distances, nearest_nodes, k);
+                    }
+                    break;
                 }
-
-            if(edited)
-                sort_knn(nearest_distances, nearest_nodes, k);
         }
     }
-}
-
-bool check_sparse(double x, double y, std::vector<Point2D> nodes, double distance_min)
-{
-    for (int i = 0; i < (int)nodes.size(); i++) //check distance with other nodes
-    {
-        double distance=sqrt(pow(x-nodes[i].x,2)+pow(y-nodes[i].y,2));
-        if(distance<distance_min) 
-            return false;
-    }
-    return true;    
 }
 
 //PRM ROADMAP
@@ -69,7 +90,8 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
     const double k_base=std::pow(0.1,1/tms_max); //base to decrease k_distance to 10% at tms_max
     for (int i=0; i<points; i++)
     {
-        double x,y,tms,k_distance,distance_pts;
+        double tms,k_distance,distance_pts;
+        Point2D node;
         int count=0;
         const clock_t begin_time = clock();
         do{
@@ -80,11 +102,10 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
                 k_distance=std::pow(k_base,tms)*k_distance_init;//bigger is k_distance, more homogeneus the map, much diffcult the spawning of points
                 distance_pts=k_room_space*k_distance;
             }
-            x = int(rand() % int((r.getWidth()-ROBOT_CIRCLE*2)*100)) / 100.0 + ROBOT_CIRCLE; //cm sensibility, consider room border
-            y = int(rand() % int((r.getHeight()-ROBOT_CIRCLE*2)*100)) / 100.0 + ROBOT_CIRCLE; //cm sensibility, consider room border
+            node.x = int(rand() % int((r.getWidth()-ROBOT_CIRCLE*2)*100)) / 100.0 + ROBOT_CIRCLE;  //cm sensibility, consider room border
+            node.y = int(rand() % int((r.getHeight()-ROBOT_CIRCLE*2)*100)) / 100.0 + ROBOT_CIRCLE; //cm sensibility, consider room border
             count--;
-        }while(!check_sparse(x, y, nodes, distance_pts)); //check for sparse nodes
-        Point2D node(x, y);
+        }while(!check_sparse(node, nodes, distance_pts) || point_collides(node, this->r)); //check for sparse nodes
         nodes.push_back(node);
     }
     
@@ -94,14 +115,17 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
         //Compute KNN
         Point2D node = nodes.at(i);
         Point2D node_knn[KNN_MAX];
-        Knn(node, nodes, knn, node_knn);
+        for(int j=0; j<knn; j++)
+            node_knn[j]=Point2D(POINT_COORD_MAX, POINT_COORD_MAX);
+        Knn(node, nodes, knn, node_knn, this->r);
 
         //Check for collision with objects
         //TODO
 
         //Insert link in the vector
         for (int j = 0; j < knn; j++)
-            links.push_back(Segment(Point2D(node.x,node.y),Point2D(node_knn[j].x, node_knn[j].y)));        
+            if(node_knn[j].x!=POINT_COORD_MAX && node_knn[j].y!=POINT_COORD_MAX && !link_exists(node, node_knn[j], links))
+                links.push_back(Segment(Point2D(node.x,node.y),Point2D(node_knn[j].x, node_knn[j].y)));      
     }
     return true;
 }
