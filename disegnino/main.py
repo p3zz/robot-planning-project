@@ -17,10 +17,9 @@ def main():
         c.draw(win)
 
     for link in links:
-        source = Point(link['source']['x']*100,link['source']['y']*100)
-        dest = Point(link['dest']['x']*100,link['dest']['y']*100)
-        c = Line(source, dest)
-        c.setArrow("last")
+        node1 = Point(link['node1']['x']*100,link['node1']['y']*100)
+        node2 = Point(link['node2']['x']*100,link['node2']['y']*100)
+        c = Line(node1, node2)
         c.draw(win)
 
     for obstacle in obstacles:
