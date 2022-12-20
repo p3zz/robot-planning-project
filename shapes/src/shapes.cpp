@@ -265,3 +265,8 @@ bool intersect(DubinCurve c, Polygon p, int n){
     }
     return false;
 }
+
+double distance(Point2D p1, Point2D p2)
+{
+    return sqrt(pow(p1.x-p2.x,2)+pow(p1.y-p2.y,2));
+}

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(cpp_pubsub)
+project(decisions)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -7,31 +7,34 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(nav_msgs REQUIRED)
-find_package(geometry_msgs REQUIRED)
-find_package(dubins REQUIRED)
 find_package(utils REQUIRED)
 find_package(map REQUIRED)
+find_package(dubins REQUIRED)
 find_package(shapes REQUIRED)
-find_package(decisions REQUIRED)
 
-add_executable(publisher src/publisher.cpp)
-
-ament_target_dependencies(publisher rclcpp nav_msgs geometry_msgs dubins utils map shapes decisions)
+include_directories(include)
+add_library(decisions src/decisions.cpp)
+ament_export_targets(decisions HAS_LIBRARY_TARGET)
+ament_target_dependencies(decisions utils map dubins shapes)
 
 install(
-  TARGETS publisher
-  DESTINATION lib/${PROJECT_NAME}
+  DIRECTORY include/decisions
+  DESTINATION include
+)
+ 
+install(
+  TARGETS decisions
+  EXPORT decisions
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
+  INCLUDES DESTINATION include
 )
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
-
   set(ament_cmake_copyright_FOUND TRUE)
   set(ament_cmake_cpplint_FOUND TRUE)
-
   ament_lint_auto_find_test_dependencies()
 endif()
 

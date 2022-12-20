@@ -108,6 +108,10 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
         }while(!check_sparse(node, nodes, distance_pts) || point_collides(node, this->r)); //check for sparse nodes
         nodes.push_back(node);
     }
+
+    //Add exit nodes
+    for(int i=0; i<r.getNumExits(); i++)
+        nodes.push_back(r.getExit(i));
     
     //Create links
     for (int i=0; i<(int)nodes.size(); i++)
@@ -160,4 +164,15 @@ std::string RoadMap::getJson()
     }
     json+="]}}";
     return json;
+}
+
+void RoadMap::getAttachedNodes(Point2D node, std::vector<Point2D> *attached_links)
+{
+    for(int i=0; i<(int)links.size(); i++)
+    {
+        if(node==links.at(i).node1)
+            attached_links->push_back(links.at(i).node2);
+        else if(node==links.at(i).node2)
+            attached_links->push_back(links.at(i).node1);
+    }
 }

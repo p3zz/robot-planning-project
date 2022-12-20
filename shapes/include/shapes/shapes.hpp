@@ -15,6 +15,8 @@ class Point2D{
         Point2D(double x, double y):x{x},y{y}{}
 
         double distance_from(Point2D p);
+        friend bool operator== (const Point2D& first, const Point2D& second) {return first.x == second.x && first.y == second.y;}
+        friend std::ostream& operator<<(std::ostream& os, const Point2D& p){return os<<"("<<p.x<<";"<<p.y<<")";}
 };
 
 class Segment {
@@ -59,5 +61,6 @@ bool intersect(Circle c, Segment s, Point2D start, Point2D end);
 bool intersect(Polygon p, Segment s);
 bool intersect(DubinCurve c, Polygon p);
 bool intersect(DubinCurve c, Polygon p, int n);
+double distance(Point2D p1, Point2D p2);
 
 #endif
