@@ -266,7 +266,38 @@ bool intersect(DubinCurve c, Polygon p, int n){
     return false;
 }
 
-double distance(Point2D p1, Point2D p2)
-{
+double distance(Point2D p1, Point2D p2){
     return sqrt(pow(p1.x-p2.x,2)+pow(p1.y-p2.y,2));
+}
+
+Point2D Point2D::traslate(double offset_x, double offset_y){
+    return Point2D(x + offset_x, y + offset_y);
+}
+
+Segment Segment::traslate(double offset){
+    double slope = get_slope();
+    double perpendicular_slope;
+
+    if(std::isinf(slope)){
+        perpendicular_slope = 0;
+    } else if(slope == 0){
+        perpendicular_slope = std::numeric_limits<double>::infinity();
+    }else{
+        perpendicular_slope = -1 / slope;
+    }
+    double th = atan(perpendicular_slope);
+    double offset_x = offset * cosf(th);
+    double offset_y = offset * sinf(th);
+    Point2D node1_new = node1.traslate(offset_x, offset_y);
+    Point2D node2_new = node2.traslate(offset_x, offset_y);
+    return Segment(node1_new, node2_new);
+}
+
+double Segment::get_slope(){
+    double delta_x = node2.x - node1.x;
+    double delta_y = node2.y - node1.y; 
+    if(delta_x == 0){
+        return std::numeric_limits<double>::infinity();
+    }
+    return delta_y / delta_x;
 }

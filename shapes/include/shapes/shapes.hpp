@@ -4,6 +4,7 @@
 #include <cmath>
 #include <vector>
 #include <iostream>
+#include <limits>
 
 #include "dubins/dubins.hpp"
 
@@ -15,6 +16,7 @@ class Point2D{
         Point2D(double x, double y):x{x},y{y}{}
 
         double distance_from(Point2D p);
+        Point2D traslate(double offset_x, double offset_y);
         friend bool operator== (const Point2D& first, const Point2D& second) {return first.x == second.x && first.y == second.y;}
         friend std::ostream& operator<<(std::ostream& os, const Point2D& p){return os<<"("<<p.x<<";"<<p.y<<")";}
 };
@@ -26,6 +28,8 @@ class Segment {
 
         bool contains(Point2D p);
         Point2D get_interceptor(double t);
+        Segment traslate(double offset);
+        double get_slope();
 };
 
 class Circle{
