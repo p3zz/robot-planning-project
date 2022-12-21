@@ -82,7 +82,7 @@ void Knn(Point2D node, std::vector<Point2D> candidates, int k, Point2D* nearest_
 //PRM ROADMAP
 bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, double tms_max)
 {
-    if(points>KNN_MAX) return false;
+    if(knn>KNN_MAX) return false;
     
     //Create nodes
     srand(time(NULL));
@@ -168,6 +168,7 @@ std::string RoadMap::getJson()
 
 void RoadMap::getAttachedNodes(Point2D node, std::vector<Point2D> *attached_links)
 {
+    attached_links->clear();
     for(int i=0; i<(int)links.size(); i++)
     {
         if(node==links.at(i).node1)

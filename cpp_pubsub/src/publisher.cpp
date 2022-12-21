@@ -158,10 +158,10 @@ int main(int argc, char * argv[])
   room.addExit(Point2D(2,0));
   room.addExit(Point2D(8,10));
   RoadMap map(room);
-  if(map.constructRoadMap(20, 4, 0.5, 500)) //knn=4 is the best choice (up, down, left and right in the ideal case)
+  if(map.constructRoadMap(40, 4, 0.5, 500)) //knn=4 is the best choice (up, down, left and right in the ideal case)
     cout<<map.getJson()<<endl;
   else
-    cout<<"Error k"<<endl;
+    cerr<<"Error k"<<endl;
   PayoffMatrix mat(map);
   mat.computeMove(Point2D(1,9), Point2D(9,1));
   return 0;

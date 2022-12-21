@@ -42,6 +42,7 @@ Point2D PayoffMatrix::computeMove(Point2D pursuer, Point2D evader)
     Point2D path_p[KNN_MAX*KNN_MAX][2], path_e[KNN_MAX*KNN_MAX][2];
     int possible_p=0, possible_e=0;
     
+    //Compute possible moves for pursuer (2 forward)
     std::vector<Point2D> temp1, temp2;
     map.getAttachedNodes(pursuer, &temp1);
     for(int i=0; i<(int)temp1.size(); i++)
@@ -55,6 +56,7 @@ Point2D PayoffMatrix::computeMove(Point2D pursuer, Point2D evader)
         }
     }
 
+    //Compute possible moves for evader (2 forward)
     map.getAttachedNodes(evader, &temp1);
     for(int i=0; i<(int)temp1.size(); i++)
     {
@@ -67,7 +69,7 @@ Point2D PayoffMatrix::computeMove(Point2D pursuer, Point2D evader)
         }
     }
 
-
+    //Matrix with all possible combinations and selection of high score of evader (let evader decide with best intelligence, then compute our move)
     double max_score=0;
     int index_move_p, index_move_e;
     for(int i=0; i<possible_p; i++)
