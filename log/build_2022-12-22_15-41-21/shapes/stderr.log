@@ -1,7 +1,0 @@
-gmake[2]: *** [gtest/CMakeFiles/gtest_main.dir/build.make:76: gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o] Interrupt
-gmake[2]: *** [gtest/CMakeFiles/gtest.dir/build.make:76: gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:211: gtest/CMakeFiles/gtest.dir/all] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:237: gtest/CMakeFiles/gtest_main.dir/all] Interrupt
-gmake[2]: *** [CMakeFiles/shapes.dir/build.make:76: CMakeFiles/shapes.dir/src/shapes.cpp.o] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:157: CMakeFiles/shapes.dir/all] Interrupt
-gmake: *** [Makefile:146: all] Interrupt
