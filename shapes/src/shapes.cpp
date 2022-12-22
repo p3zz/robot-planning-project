@@ -279,27 +279,35 @@ Segment translate(Segment s, double offset, double th){
     return Segment(node1_new, node2_new);
 }
 
+double perpendicular_angle(Segment s){
+    double slope = s.get_slope();
+    double perpendicular_slope;
+
+    if(std::isinf(slope)){
+        perpendicular_slope = 0;
+    } else if(slope == 0){
+        perpendicular_slope = std::numeric_limits<double>::infinity();
+    }else{
+        perpendicular_slope = -1 / slope;
+    }
+
+    double th = atan(perpendicular_slope);
+    // if the dest point is above the src point or the segment is parallel to the x axis
+    // but the dst is on the left of the src, add PI
+    if(s.node2.y > s.node1.y || (s.node2.y == s.node1.y && s.node2.x < s.node1.x)){
+        th += M_PI;
+    }
+
+    return th;
+}
+
 // TODO add tests
 Polygon inflate(Polygon p, double offset){
     Polygon p_new;
     auto sides = p.get_sides();
-    for(auto side: sides){
-        double slope = side.get_slope();
-        double perpendicular_slope;
 
-        if(std::isinf(slope)){
-            perpendicular_slope = 0;
-        } else if(slope == 0){
-            perpendicular_slope = std::numeric_limits<double>::infinity();
-        }else{
-            perpendicular_slope = -1 / slope;
-        }
-        double th = atan(perpendicular_slope);
-        // if the dest point is above the src point or the segment is parallel to the x axis
-        // but the dst is on the left of the src, add PI
-        if(side.node2.y > side.node1.y || (side.node2.y == side.node1.y && side.node2.x < side.node1.x)){
-            th += M_PI;
-        }
+    for(auto side: sides){
+        double th = perpendicular_angle(side); 
         auto new_side = translate(side, offset, th);
         p_new.add_v(new_side.node1);
         p_new.add_v(new_side.node2);
