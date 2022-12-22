@@ -17,21 +17,6 @@ bool intersect(Segment s1, Segment s2){
     return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
 }
 
-bool intersect(Segment s1, Segment s2, double& t_s1, double& t_s2){
-    double det = (s2.node2.x - s2.node1.x) * (s1.node1.y - s1.node2.y) - (s1.node1.x - s1.node2.x) * (s2.node2.y - s2.node1.y);
-    
-    if(det == 0){
-        // check if the segments overlap
-        t_s1=-1;
-        t_s2=-1;
-        return s1.contains(s2.node1) || s1.contains(s2.node2) || s2.contains(s1.node1) || s2.contains(s1.node2);
-    }
-
-    t_s1 = ((s2.node1.y - s2.node2.y) * (s1.node1.x - s2.node1.x) + (s2.node2.x - s2.node1.x) * (s1.node1.y - s2.node1.y)) / det;
-    t_s2 = ((s1.node1.y - s1.node2.y) * (s1.node1.x - s2.node1.x) + (s1.node2.x - s1.node1.x) * (s1.node1.y - s2.node1.y)) / det;
-    return is_bounded(t_s1, 0, 1) && is_bounded(t_s2, 0, 1);
-}
-
 bool intersect(Circle circle, Segment s, Point2D start, Point2D end){
     std::vector<Point2D> intersections = {};
 
@@ -281,32 +266,16 @@ double distance(Point2D p1, Point2D p2){
     return sqrt(pow(p1.x-p2.x,2)+pow(p1.y-p2.y,2));
 }
 
-Point2D translate(Point2D p, double offset_x, double offset_y){
+Point2D translate(Point2D p, double offset, double th){
+    double offset_x = offset * cosf(th);
+    double offset_y = offset * sinf(th);
     return Point2D(p.x + offset_x, p.y + offset_y);
 }
 
 // TODO add tests
-Segment translate(Segment s, double offset){
-    double slope = s.get_slope();
-    double perpendicular_slope;
-
-    if(std::isinf(slope)){
-        perpendicular_slope = 0;
-    } else if(slope == 0){
-        perpendicular_slope = std::numeric_limits<double>::infinity();
-    }else{
-        perpendicular_slope = -1 / slope;
-    }
-    double th = atan(perpendicular_slope);
-    // if the dest point is above the src point or the segment is parallel to the x axis
-    // but the dst is on the left of the src, add PI
-    if(s.node2.y > s.node1.y || (s.node2.y == s.node1.y && s.node2.x < s.node1.x)){
-        th += M_PI;
-    }
-    double offset_x = offset * cosf(th);
-    double offset_y = offset * sinf(th);
-    Point2D node1_new = translate(s.node1, offset_x, offset_y);
-    Point2D node2_new = translate(s.node2, offset_x, offset_y);
+Segment translate(Segment s, double offset, double th){
+    Point2D node1_new = translate(s.node1, offset, th);
+    Point2D node2_new = translate(s.node2, offset, th);
     return Segment(node1_new, node2_new);
 }
 
@@ -315,7 +284,23 @@ Polygon inflate(Polygon p, double offset){
     Polygon p_new;
     auto sides = p.get_sides();
     for(auto side: sides){
-        auto new_side = translate(side, offset);
+        double slope = side.get_slope();
+        double perpendicular_slope;
+
+        if(std::isinf(slope)){
+            perpendicular_slope = 0;
+        } else if(slope == 0){
+            perpendicular_slope = std::numeric_limits<double>::infinity();
+        }else{
+            perpendicular_slope = -1 / slope;
+        }
+        double th = atan(perpendicular_slope);
+        // if the dest point is above the src point or the segment is parallel to the x axis
+        // but the dst is on the left of the src, add PI
+        if(side.node2.y > side.node1.y || (side.node2.y == side.node1.y && side.node2.x < side.node1.x)){
+            th += M_PI;
+        }
+        auto new_side = translate(side, offset, th);
         p_new.add_v(new_side.node1);
         p_new.add_v(new_side.node2);
     }
