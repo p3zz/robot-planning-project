@@ -51,6 +51,8 @@ class RoadMap
         std::string getJson();
 };
 
+void randomObstacles(Room* room, int num_obstacles, const int max_side);
+
 
 
 #endif

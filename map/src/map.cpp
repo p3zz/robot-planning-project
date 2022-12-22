@@ -177,3 +177,30 @@ void RoadMap::getAttachedNodes(Point2D node, std::vector<Point2D> *attached_link
             attached_links->push_back(links.at(i).node1);
     }
 }
+
+void randomObstacles(Room* room, int num_obstacles, const int max_side)
+{
+  Point2D* centers = new Point2D[num_obstacles];
+  for(int i=0; i<num_obstacles; i++)
+  {
+    Polygon o;
+    bool check;
+    do{
+      centers[i].x = ((rand()%(room->getWidth()*100-max_side))+max_side/2)/100.0;
+      centers[i].y = ((rand()%(room->getHeight()*100-max_side))+max_side/2)/100.0;
+      check=true;
+      for(int j=0;j<i;j++)
+        if(sqrt(pow(centers[j].x-centers[i].x,2)+pow(centers[j].y-centers[i].y,2))<max_side/100.0*sqrt(2))
+        {
+          check=false;
+          break;
+        }
+    }while(!check);
+    Point2D center(centers[i]);
+    o.add_v(Point2D(center.x+((rand() %(max_side/4))-(max_side/2))/100.0,center.y+((rand() %(max_side/4))+(max_side/4))/100.0));
+    o.add_v(Point2D(center.x+((rand() %(max_side/4))+(max_side/4))/100.0,center.y+((rand() %(max_side/4))+(max_side/4))/100.0));
+    o.add_v(Point2D(center.x+((rand() %(max_side/4))+(max_side/4))/100.0,center.y+((rand() %(max_side/4))-(max_side/2))/100.0));
+    o.add_v(Point2D(center.x+((rand() %(max_side/4))-(max_side/2))/100.0,center.y+((rand() %(max_side/4))-(max_side/2))/100.0));
+    room->addObstacle(o);
+  }
+}
