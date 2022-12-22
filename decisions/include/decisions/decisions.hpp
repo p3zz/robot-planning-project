@@ -3,18 +3,20 @@
 
 #include <iostream>
 #include <utils/utils.h>
+#include <fstream>
 #include "dubins/dubins.hpp"
 #include "map/map.hpp"
 
 class PayoffMatrix
 {
-    private:
+    public:
         RoadMap map;
         Point2D pursuer, evader;
-    public:
         PayoffMatrix(RoadMap map):map{map}{}
-        Point2D computeMove(Point2D pursuer, Point2D evader); //depth=2
+        void computeMove(Point2D pursuer, Point2D evader, Point2D& move_pursuer, Point2D& move_evader); //depth=2
 };
 
+Point2D getNearestNode(Point2D position, std::vector<Point2D> nodes);
+void simulate(Point2D pursuer_pos, Point2D evader_pos, PayoffMatrix decision);
 
 #endif

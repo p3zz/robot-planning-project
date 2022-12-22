@@ -1,0 +1,36 @@
+[0.039s] Invoking command in '/root/ros2_ws/src/robot-planning-project/build/map': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /root/ros2_ws/src/robot-planning-project/map -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/src/robot-planning-project/install/map
+[0.196s] -- The C compiler identification is GNU 11.3.0
+[0.276s] -- The CXX compiler identification is GNU 11.3.0
+[0.285s] -- Detecting C compiler ABI info
+[0.427s] -- Detecting C compiler ABI info - done
+[0.450s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.451s] -- Detecting C compile features
+[0.453s] -- Detecting C compile features - done
+[0.459s] -- Detecting CXX compiler ABI info
+[0.612s] -- Detecting CXX compiler ABI info - done
+[0.633s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.634s] -- Detecting CXX compile features
+[0.635s] -- Detecting CXX compile features - done
+[0.641s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.904s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter 
+[1.161s] -- Found utils: 0.0.0 (/root/ros2_ws/install/utils/share/utils/cmake)
+[1.167s] -- Found shapes: 0.0.0 (/root/ros2_ws/install/shapes/share/shapes/cmake)
+[1.175s] -- Found dubins: 0.0.0 (/root/ros2_ws/install/dubins/share/dubins/cmake)
+[1.186s] -- Found ament_lint_auto: 0.12.4 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.413s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.414s] -- Configured cppcheck include dirs: /root/ros2_ws/src/robot-planning-project/map/include
+[1.414s] -- Configured cppcheck exclude dirs and/or files: 
+[1.415s] -- Added test 'lint_cmake' to check CMake code style
+[1.419s] -- Added test 'uncrustify' to check C / C++ code style
+[1.419s] -- Configured uncrustify additional arguments: 
+[1.420s] -- Added test 'xmllint' to check XML markup files
+[1.426s] -- Configuring done
+[1.438s] -- Generating done
+[1.444s] -- Build files have been written to: /root/ros2_ws/src/robot-planning-project/build/map
+[1.463s] Invoked command in '/root/ros2_ws/src/robot-planning-project/build/map' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /root/ros2_ws/src/robot-planning-project/map -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/src/robot-planning-project/install/map
+[1.466s] Invoking command in '/root/ros2_ws/src/robot-planning-project/build/map': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/src/robot-planning-project/build/map -- -j6 -l6
+[1.566s] [ 50%] [32mBuilding CXX object CMakeFiles/map.dir/src/map.cpp.o[0m
+[3.153s] gmake[2]: *** [CMakeFiles/map.dir/build.make:76: CMakeFiles/map.dir/src/map.cpp.o] Interrupt
+[3.154s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/map.dir/all] Interrupt
+[3.195s] gmake: *** [Makefile:146: all] Interrupt
+[3.197s] Invoked command in '/root/ros2_ws/src/robot-planning-project/build/map' returned '-2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/src/robot-planning-project/build/map -- -j6 -l6

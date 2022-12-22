@@ -6,6 +6,7 @@
 #include <vector>
 #include <thread>
 #include <iostream>
+#include <fstream>
 
 #include "rclcpp/rclcpp.hpp"
 #include "nav_msgs/msg/path.hpp"
@@ -132,10 +133,17 @@ int main(/*int argc, char * argv[]*/)
   room.addExit(Point2D(8,10));
   RoadMap map(room);
   if(map.constructRoadMap(60, 4, 0.5, 500)) //knn=4 is the best choice (up, down, left and right in the ideal case)
-    cout<<map.getJson()<<endl;
+  {
+    ofstream myfile;
+    myfile.open ("map.json", std::ofstream::trunc);
+    myfile << map.getJson();
+    myfile.close();
+  }
   else
     cerr<<"Error k"<<endl;
   PayoffMatrix mat(map);
-  mat.computeMove(Point2D(1,9), Point2D(9,1));
+
+  
+  simulate(getNearestNode(Point2D(2,8), map.getNodes()), getNearestNode(Point2D(9,1), map.getNodes()), mat);
   return 0;
 }
