@@ -82,10 +82,6 @@ bool intersect(Polygon p, Segment s){
     return false;
 }
 
-double Point2D::distance_from(Point2D p){
-    return sqrt(pow(x-p.x,2)+pow(y-p.y,2));
-}
-
 bool Segment::contains(Point2D p){
     double m = (node1.y - node2.y) / (node1.x - node2.x);
     double q = (node1.x * node2.y - node2.x * node1.y) / (node1.x - node2.x);
@@ -270,12 +266,13 @@ double distance(Point2D p1, Point2D p2){
     return sqrt(pow(p1.x-p2.x,2)+pow(p1.y-p2.y,2));
 }
 
-Point2D Point2D::traslate(double offset_x, double offset_y){
-    return Point2D(x + offset_x, y + offset_y);
+Point2D translate(Point2D p, double offset_x, double offset_y){
+    return Point2D(p.x + offset_x, p.y + offset_y);
 }
 
-Segment Segment::traslate(double offset){
-    double slope = get_slope();
+// TODO add tests
+Segment translate(Segment s, double offset){
+    double slope = s.get_slope();
     double perpendicular_slope;
 
     if(std::isinf(slope)){
@@ -286,11 +283,28 @@ Segment Segment::traslate(double offset){
         perpendicular_slope = -1 / slope;
     }
     double th = atan(perpendicular_slope);
+    // if the dest point is above the src point or the segment is parallel to the x axis
+    // but the dst is on the left of the src, add PI
+    if(s.node2.y > s.node1.y || (s.node2.y == s.node1.y && s.node2.x < s.node1.x)){
+        th += M_PI;
+    }
     double offset_x = offset * cosf(th);
     double offset_y = offset * sinf(th);
-    Point2D node1_new = node1.traslate(offset_x, offset_y);
-    Point2D node2_new = node2.traslate(offset_x, offset_y);
+    Point2D node1_new = translate(s.node1, offset_x, offset_y);
+    Point2D node2_new = translate(s.node2, offset_x, offset_y);
     return Segment(node1_new, node2_new);
+}
+
+// TODO add tests
+Polygon inflate(Polygon p, double offset){
+    Polygon p_new;
+    auto sides = p.get_sides();
+    for(auto side: sides){
+        auto new_side = translate(side, offset);
+        p_new.add_v(new_side.node1);
+        p_new.add_v(new_side.node2);
+    }
+    return p_new;
 }
 
 double Segment::get_slope(){
