@@ -44,21 +44,3 @@ TEST(DubinCurve, IntersectPolygonReduced_50Points){
     duration<double, std::milli> ms_double = end - start;
     std::cout<<ms_double.count()<<"ms"<<std::endl;
 }
-
-TEST(DubinCurve, IntersectPolygonReduced_30Points){
-    auto start = high_resolution_clock::now();
-    intersect(curve, p, 30);
-    auto end = high_resolution_clock::now();
-
-    duration<double, std::milli> ms_double = end - start;
-    std::cout<<ms_double.count()<<"ms"<<std::endl;
-}
-
-TEST(DubinCurve, IntersectPolygonReduced_20Points){
-    auto start = high_resolution_clock::now();
-    intersect(curve, p, 20);
-    auto end = high_resolution_clock::now();
-
-    duration<double, std::milli> ms_double = end - start;
-    std::cout<<ms_double.count()<<"ms"<<std::endl;
-}
