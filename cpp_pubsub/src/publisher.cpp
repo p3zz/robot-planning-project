@@ -155,10 +155,10 @@ int main(int argc, char * argv[])
   srand(time(NULL));
   Room room(10,10);
   randomObstacles(&room, 4, 200);
-  room.addExit(Point2D(2,0));
+  room.addExit(Point2D(0,2));
   room.addExit(Point2D(8,10));
   RoadMap map(room);
-  if(map.constructRoadMap(40, 4, 0.5, 500)) //knn=4 is the best choice (up, down, left and right in the ideal case)
+  if(map.constructRoadMap(60, 4, 0.5, 500)) //knn=4 is the best choice (up, down, left and right in the ideal case)
     cout<<map.getJson()<<endl;
   else
     cerr<<"Error k"<<endl;
