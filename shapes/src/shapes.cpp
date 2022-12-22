@@ -272,7 +272,6 @@ Point2D translate(Point2D p, double offset, double th){
     return Point2D(p.x + offset_x, p.y + offset_y);
 }
 
-// TODO add tests
 Segment translate(Segment s, double offset, double th){
     Point2D node1_new = translate(s.node1, offset, th);
     Point2D node2_new = translate(s.node2, offset, th);
@@ -280,6 +279,7 @@ Segment translate(Segment s, double offset, double th){
 }
 
 double perpendicular_angle(Segment s){
+    // TODO use get_angle instead of get_slope (maybe) 
     double slope = s.get_slope();
     double perpendicular_slope;
 
@@ -301,20 +301,37 @@ double perpendicular_angle(Segment s){
     return th;
 }
 
-// TODO add tests
+double angle_between(Segment s1, Segment s2){
+    double m1 = s1.get_slope();
+    double m2 = s2.get_slope();
+    double yx = (m1 - m2) / (1 + m1 * m2);
+    return atan(yx);
+}
+
 Polygon inflate(Polygon p, double offset){
     Polygon p_new;
     auto sides = p.get_sides();
 
     for(auto side: sides){
-        double th = perpendicular_angle(side); 
+        double th = perpendicular_angle(side);
         auto new_side = translate(side, offset, th);
         p_new.add_v(new_side.node1);
         p_new.add_v(new_side.node2);
     }
+
+    // min angle = 45 deg
+    const double MIN_ANGLE = M_PI * 0.25;
+    for(int i=1;i<sides.size();i++){
+        double prev_side = sides.at(i-1); 
+        double curr_side = sides.at(i);
+        if(angle_between(prev_side, curr_side) < MIN_ANGLE){
+            // close angle
+        }
+    }
     return p_new;
 }
 
+// TODO add Segment::get_angle
 double Segment::get_slope(){
     double delta_x = node2.x - node1.x;
     double delta_y = node2.y - node1.y; 
@@ -323,3 +340,4 @@ double Segment::get_slope(){
     }
     return delta_y / delta_x;
 }
+
