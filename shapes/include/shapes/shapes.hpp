@@ -64,6 +64,6 @@ bool intersect(DubinCurve c, Polygon p);
 bool intersect(DubinCurve c, Polygon p, int n);
 double distance(Point2D p1, Point2D p2);
 Segment translate(Segment s, double offset);
-
+Polygon inflate(Polygon p, double offset);
 
 #endif
