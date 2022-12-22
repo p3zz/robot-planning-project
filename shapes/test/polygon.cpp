@@ -78,3 +78,31 @@ TEST(Polygon, Inflate1){
     EXPECT_NEAR(point.x, -3.41, 0.01);
     EXPECT_NEAR(point.y, 0.59, 0.01);
 }
+
+TEST(Polygon, InflateSquare){
+    Polygon polygon({
+        Point2D(4, 8),
+        Point2D(5, 8),
+        Point2D(5, 7),
+        Point2D(4, 7),
+    });
+
+    auto new_polygon = inflate(polygon, 1);
+    EXPECT_EQ(new_polygon.get_size(), polygon.get_size() * 2);
+
+    auto point = new_polygon.get_v(0);
+    EXPECT_NEAR(point.x, 4, 0.01);
+    EXPECT_NEAR(point.y, 9, 0.01);
+
+    point = new_polygon.get_v(1);
+    EXPECT_NEAR(point.x, 5, 0.01);
+    EXPECT_NEAR(point.y, 9, 0.01);
+
+    point = new_polygon.get_v(2);
+    EXPECT_NEAR(point.x, 6, 0.01);
+    EXPECT_NEAR(point.y, 8, 0.01);
+
+    point = new_polygon.get_v(6);
+    EXPECT_NEAR(point.x, 3, 0.01);
+    EXPECT_NEAR(point.y, 7, 0.01);
+}
