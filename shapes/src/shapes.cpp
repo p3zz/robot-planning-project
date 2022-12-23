@@ -316,20 +316,6 @@ Polygon inflate(Polygon p, double offset){
     }
 
     // min angle = 45 deg
-<<<<<<< HEAD
-    /*const double MIN_ANGLE = M_PI * 0.25;
-    for(int i=1;i<(int)sides.size();i++){
-        auto prev_side = sides.at(i-1); 
-        auto curr_side = sides.at(i);
-        if(angle_between(prev_side, curr_side) < MIN_ANGLE){
-            auto new_node1 = translate(prev_side.node2, offset, prev_side.get_angle());
-            Segment curr_reverse(curr_side.node2, curr_side.node1);
-            auto new_node2 = translate(prev_side.node2, offset, curr_reverse.get_angle());
-            p_new.add_v(new_node1);
-            p_new.add_v(new_node2);
-        }
-    }*/
-=======
     // TODO add the control between the last side and the first side !
     // const double MIN_ANGLE = M_PI * 0.25;
     // for(int i=1;i<(int)sides.size();i++){
@@ -343,7 +329,6 @@ Polygon inflate(Polygon p, double offset){
     //         p_new.add_v(new_node2);
     //     }
     // }
->>>>>>> 68112c0 (improve get_angle and angle_between)
     return p_new;
 }
 
