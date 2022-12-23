@@ -14,6 +14,23 @@ def main():
     links = roadmap['links']
     obstacles = roadmap['obstacles']
 
+    index=0
+    for obstacle in obstacles:
+        vertices = [Point(v['x']*100, v['y']*100) for v in obstacle['inflated']]
+        c = Polygon(vertices)
+        c.setFill("green3")
+        c.setOutline("green3")
+        c.draw(win)
+        vertices = [Point(v['x']*100, v['y']*100) for v in obstacle['normal']]
+        c = Polygon(vertices)
+        c.setFill("green")
+        c.draw(win)   
+        t=Text(Point(obstacle['normal'][0]['x']*100, obstacle['normal'][0]['y']*100), str(index))
+        t.setTextColor("blue")
+        t.setSize(18)
+        #t.draw(win)
+        index+=1
+
     for point in nodes:
         if point['x'] == 0 or point['x'] == 10:
             r = Rectangle(Point(point['x']*100-10, point['y']*100-20), Point(point['x']*100+10, point['y']*100+20))
@@ -37,18 +54,6 @@ def main():
         c = Line(node1, node2)
         c.setWidth(2)
         c.draw(win)
-
-    index=0
-    for obstacle in obstacles:
-        vertices = [Point(v['x']*100, v['y']*100) for v in obstacle]
-        c = Polygon(vertices)
-        c.setFill("green")
-        c.draw(win)    
-        t=Text(Point(obstacle[0]['x']*100, obstacle[0]['y']*100), str(index))
-        t.setTextColor("blue")
-        t.setSize(18)
-        #t.draw(win)
-        index+=1
 
     if exists('moves.json'):
         f2 = open('moves.json')

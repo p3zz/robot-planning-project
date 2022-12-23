@@ -20,11 +20,13 @@ class Room
         double h;
         double w;
         std::vector<Polygon> obstacles;
+        std::vector<Polygon> obstacles_inflated;
         std::vector<Point2D> exits;
     public:
         Room(double h, double w):h{h},w{w}{}
-        void addObstacle(Polygon o){obstacles.push_back(o);}
+        void addObstacle(Polygon o){obstacles.push_back(o); obstacles_inflated.push_back(inflate(o, ROBOT_CIRCLE*1.1));}
         Polygon getObstacle(int index){return obstacles.at(index);}
+        Polygon getInflatedObstacle(int index){return obstacles_inflated.at(index);}
         int getNumObstacles(){return obstacles.size();}
         void addExit(Point2D exit){exits.push_back(exit);}
         Point2D getExit(int index){return exits.at(index);}

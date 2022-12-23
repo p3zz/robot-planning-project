@@ -282,8 +282,8 @@ double distance(Point2D p1, Point2D p2){
 }
 
 Point2D translate(Point2D p, double offset, double th){
-    double offset_x = offset * cosf(th);
-    double offset_y = offset * sinf(th);
+    double offset_x = offset * cos(th);
+    double offset_y = offset * sin(th);
     return Point2D(p.x + offset_x, p.y + offset_y);
 }
 
@@ -299,6 +299,7 @@ double angle_between(Segment s1, Segment s2){
     return mod2pi((th1 + th2) * 0.5);
 }
 
+using namespace std;
 // TODO add test with close angles
 Polygon inflate(Polygon p, double offset){
     Polygon p_new;
