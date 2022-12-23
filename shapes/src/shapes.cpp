@@ -300,6 +300,7 @@ double angle_between(Segment s1, Segment s2){
     return atan(yx);
 }
 
+// TODO add test with close angles
 Polygon inflate(Polygon p, double offset){
     Polygon p_new;
     auto sides = p.get_sides();
@@ -320,7 +321,11 @@ Polygon inflate(Polygon p, double offset){
         auto prev_side = sides.at(i-1); 
         auto curr_side = sides.at(i);
         if(angle_between(prev_side, curr_side) < MIN_ANGLE){
-            // close angle
+            auto new_node1 = translate(prev_side.node2, offset, prev_side.get_angle());
+            Segment curr_reverse(curr_side.node2, curr_side.node1);
+            auto new_node2 = translate(prev_side.node2, offset, curr_reverse.get_angle());
+            p_new.add_v(new_node1);
+            p_new.add_v(new_node2);
         }
     }
     return p_new;
