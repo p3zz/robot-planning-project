@@ -294,10 +294,9 @@ Segment translate(Segment s, double offset, double th){
 }
 
 double angle_between(Segment s1, Segment s2){
-    double m1 = s1.get_slope();
-    double m2 = s2.get_slope();
-    double yx = (m1 - m2) / (1 + m1 * m2);
-    return atan(yx);
+    double th1 = s1.get_angle();
+    double th2 = s2.get_angle();
+    return mod2pi((th1 + th2) * 0.5);
 }
 
 using namespace std;
@@ -317,6 +316,7 @@ Polygon inflate(Polygon p, double offset){
     }
 
     // min angle = 45 deg
+<<<<<<< HEAD
     /*const double MIN_ANGLE = M_PI * 0.25;
     for(int i=1;i<(int)sides.size();i++){
         auto prev_side = sides.at(i-1); 
@@ -329,25 +329,28 @@ Polygon inflate(Polygon p, double offset){
             p_new.add_v(new_node2);
         }
     }*/
+=======
+    // TODO add the control between the last side and the first side !
+    // const double MIN_ANGLE = M_PI * 0.25;
+    // for(int i=1;i<(int)sides.size();i++){
+    //     auto prev_side = sides.at(i-1); 
+    //     auto curr_side = sides.at(i);
+    //     if(angle_between(prev_side, curr_side) < MIN_ANGLE){
+    //         auto new_node1 = translate(prev_side.node2, offset, prev_side.get_angle());
+    //         Segment curr_reverse(curr_side.node2, curr_side.node1);
+    //         auto new_node2 = translate(prev_side.node2, offset, curr_reverse.get_angle());
+    //         p_new.add_v(new_node1);
+    //         p_new.add_v(new_node2);
+    //     }
+    // }
+>>>>>>> 68112c0 (improve get_angle and angle_between)
     return p_new;
-}
-
-// TODO add Segment::get_angle
-double Segment::get_slope(){
-    double delta_x = node2.x - node1.x;
-    double delta_y = node2.y - node1.y; 
-    if(delta_x == 0){
-        return std::numeric_limits<double>::infinity();
-    }
-    return delta_y / delta_x;
 }
 
 // returns the angle [0, 2*PI] between the segment and the x axis
 // the direction is from node1 to node2
 double Segment::get_angle(){
-    double th = atan(get_slope());
-    if(node2.x < node1.x || (node2.x == node1.x && node2.y < node1.y)){
-        th += M_PI;
-    }
-    return mod2pi(th);
+    double delta_x = node2.x - node1.x;
+    double delta_y = node2.y - node1.y;
+    return atan2(delta_y, delta_x);
 }
