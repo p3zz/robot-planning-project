@@ -278,29 +278,6 @@ Segment translate(Segment s, double offset, double th){
     return Segment(node1_new, node2_new);
 }
 
-double perpendicular_angle(Segment s){
-    // TODO use get_angle instead of get_slope (maybe) 
-    double slope = s.get_slope();
-    double perpendicular_slope;
-
-    if(std::isinf(slope)){
-        perpendicular_slope = 0;
-    } else if(slope == 0){
-        perpendicular_slope = std::numeric_limits<double>::infinity();
-    }else{
-        perpendicular_slope = -1 / slope;
-    }
-
-    double th = atan(perpendicular_slope);
-    // if the dest point is above the src point or the segment is parallel to the x axis
-    // but the dst is on the left of the src, add PI
-    if(s.node2.y > s.node1.y || (s.node2.y == s.node1.y && s.node2.x < s.node1.x)){
-        th += M_PI;
-    }
-
-    return th;
-}
-
 double angle_between(Segment s1, Segment s2){
     double m1 = s1.get_slope();
     double m2 = s2.get_slope();
@@ -313,7 +290,10 @@ Polygon inflate(Polygon p, double offset){
     auto sides = p.get_sides();
 
     for(auto side: sides){
-        double th = perpendicular_angle(side);
+        double th = side.get_angle();
+        // compute the perpendicular angle
+        th += (M_PI * 0.5);
+        th = mod2pi(th);
         auto new_side = translate(side, offset, th);
         p_new.add_v(new_side.node1);
         p_new.add_v(new_side.node2);
@@ -321,9 +301,9 @@ Polygon inflate(Polygon p, double offset){
 
     // min angle = 45 deg
     const double MIN_ANGLE = M_PI * 0.25;
-    for(int i=1;i<sides.size();i++){
-        double prev_side = sides.at(i-1); 
-        double curr_side = sides.at(i);
+    for(int i=1;i<(int)sides.size();i++){
+        auto prev_side = sides.at(i-1); 
+        auto curr_side = sides.at(i);
         if(angle_between(prev_side, curr_side) < MIN_ANGLE){
             // close angle
         }
@@ -341,3 +321,12 @@ double Segment::get_slope(){
     return delta_y / delta_x;
 }
 
+// returns the angle [0, 2*PI] between the segment and the x axis
+// the direction is from node1 to node2
+double Segment::get_angle(){
+    double th = atan(get_slope());
+    if(node2.x < node1.x || (node2.x == node1.x && node2.y < node1.y)){
+        th += M_PI;
+    }
+    return mod2pi(th);
+}
