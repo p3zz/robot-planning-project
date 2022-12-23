@@ -62,3 +62,45 @@ TEST(Segment, ContainsOutsideDifferentLine){
     Point2D p(2,4);
     EXPECT_FALSE(s.contains(p));
 }
+
+// get angle
+
+TEST(Segment, GetAngle1){
+    Segment s(Point2D(0, 0), Point2D(1, 0));
+    EXPECT_EQ(mod2pi(s.get_angle()), 0);
+}
+
+TEST(Segment, GetAngle2){
+    Segment s(Point2D(0, 0), Point2D(-1, 0));
+    EXPECT_EQ(mod2pi(s.get_angle()), M_PI);
+}
+
+TEST(Segment, GetAngle3){
+    Segment s(Point2D(0, 0), Point2D(0, 1));
+    EXPECT_EQ(mod2pi(s.get_angle()), M_PI * 0.5);
+}
+
+TEST(Segment, GetAngle4){
+    Segment s(Point2D(0, 0), Point2D(0, -1));
+    EXPECT_EQ(mod2pi(s.get_angle()), M_PI * 1.5);
+}
+
+TEST(Segment, GetAngle5){
+    Segment s(Point2D(0, 0), Point2D(1, 1));
+    EXPECT_EQ(mod2pi(s.get_angle()), M_PI * 0.25);
+}
+
+TEST(Segment, GetAngle6){
+    Segment s(Point2D(0, 0), Point2D(-1, 1));
+    EXPECT_EQ(mod2pi(s.get_angle()), M_PI * 0.75);
+}
+
+TEST(Segment, GetAngle7){
+    Segment s(Point2D(0, 0), Point2D(-1, -1));
+    EXPECT_EQ(mod2pi(s.get_angle()), M_PI * 1.25);
+}
+
+TEST(Segment, GetAngle8){
+    Segment s(Point2D(0, 0), Point2D(1, -1));
+    EXPECT_EQ(mod2pi(s.get_angle()), M_PI * 1.75);
+}
