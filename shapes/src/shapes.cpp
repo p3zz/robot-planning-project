@@ -17,6 +17,21 @@ bool intersect(Segment s1, Segment s2){
     return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
 }
 
+bool intersect(Segment s1, Segment s2, double& t_s1, double& t_s2){
+    double det = (s2.node2.x - s2.node1.x) * (s1.node1.y - s1.node2.y) - (s1.node1.x - s1.node2.x) * (s2.node2.y - s2.node1.y);
+
+    if(det == 0){
+        // check if the segments overlap
+        t_s1=-1;
+        t_s2=-1;
+        return s1.contains(s2.node1) || s1.contains(s2.node2) || s2.contains(s1.node1) || s2.contains(s1.node2);
+    }
+
+    t_s1 = ((s2.node1.y - s2.node2.y) * (s1.node1.x - s2.node1.x) + (s2.node2.x - s2.node1.x) * (s1.node1.y - s2.node1.y)) / det;
+    t_s2 = ((s1.node1.y - s1.node2.y) * (s1.node1.x - s2.node1.x) + (s1.node2.x - s1.node1.x) * (s1.node1.y - s2.node1.y)) / det;
+    return is_bounded(t_s1, 0, 1) && is_bounded(t_s2, 0, 1);
+}
+
 bool intersect(Circle circle, Segment s, Point2D start, Point2D end){
     std::vector<Point2D> intersections = {};
 
