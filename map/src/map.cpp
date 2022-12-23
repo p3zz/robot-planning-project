@@ -20,7 +20,7 @@ bool link_collides(Segment link, Room r)
 bool point_collides(Point2D p, Room r)
 {
     for(int i=0; i<r.getNumObstacles(); i++)
-        if(r.getObstacle(i).contains(p))
+        if(r.getInflatedObstacle(i).contains(p))
             return true;
     return false;
 }
@@ -153,13 +153,19 @@ std::string RoadMap::getJson()
     json+="],\"obstacles\":[";
     for(int i=0; i<r.getNumObstacles();i++)
     {
-        json+="[";
+        json+="{\"normal\":[";
         for(int j=0;j<r.getObstacle(i).get_size();j++)
         {
             json+="{\"x\":"+std::to_string(r.getObstacle(i).get_v(j).x)+",\"y\":"+std::to_string(r.getObstacle(i).get_v(j).y)+"}";
             if(j+1<r.getObstacle(i).get_size()) json+=",";
         }
-        json+="]";
+        json+="],\"inflated\":[";
+        for(int j=0;j<r.getInflatedObstacle(i).get_size();j++)
+        {
+            json+="{\"x\":"+std::to_string(r.getInflatedObstacle(i).get_v(j).x)+",\"y\":"+std::to_string(r.getInflatedObstacle(i).get_v(j).y)+"}";
+            if(j+1<r.getInflatedObstacle(i).get_size()) json+=",";
+        }
+        json+="]}";
         if(i+1<r.getNumObstacles()) json+=",";
     }
     json+="]}}";

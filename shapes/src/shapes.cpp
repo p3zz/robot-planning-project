@@ -282,8 +282,8 @@ double distance(Point2D p1, Point2D p2){
 }
 
 Point2D translate(Point2D p, double offset, double th){
-    double offset_x = offset * cosf(th);
-    double offset_y = offset * sinf(th);
+    double offset_x = offset * cos(th);
+    double offset_y = offset * sin(th);
     return Point2D(p.x + offset_x, p.y + offset_y);
 }
 
@@ -300,6 +300,7 @@ double angle_between(Segment s1, Segment s2){
     return atan(yx);
 }
 
+using namespace std;
 // TODO add test with close angles
 Polygon inflate(Polygon p, double offset){
     Polygon p_new;
@@ -316,7 +317,7 @@ Polygon inflate(Polygon p, double offset){
     }
 
     // min angle = 45 deg
-    const double MIN_ANGLE = M_PI * 0.25;
+    /*const double MIN_ANGLE = M_PI * 0.25;
     for(int i=1;i<(int)sides.size();i++){
         auto prev_side = sides.at(i-1); 
         auto curr_side = sides.at(i);
@@ -327,7 +328,7 @@ Polygon inflate(Polygon p, double offset){
             p_new.add_v(new_node1);
             p_new.add_v(new_node2);
         }
-    }
+    }*/
     return p_new;
 }
 
