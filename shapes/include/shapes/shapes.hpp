@@ -26,7 +26,6 @@ class Segment {
 
         bool contains(Point2D p);
         Point2D get_interceptor(double t);
-        double get_slope();
         double get_angle();
 };
 
