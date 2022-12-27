@@ -95,5 +95,5 @@ struct primitive{
 };
 
 DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end);
-
+std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end);
 #endif
