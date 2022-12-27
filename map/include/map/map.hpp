@@ -38,6 +38,16 @@ class Room
 
 };
 
+class DubinLink{
+    public:
+        double th1;
+        double th2;
+        DubinCurve curve;
+
+        DubinLink(){}
+        DubinLink(double th1, double th2, DubinCurve curve):th1{th1}, th2{th2}, curve{curve}{}
+};
+
 class RoadMap
 {
     private: 
@@ -45,11 +55,13 @@ class RoadMap
         std::vector<Point2D> nodes;
         std::vector<Segment> links;
     public:
+        std::vector<std::vector<DubinLink>> curves;
         RoadMap(Room r):r{r}{}
         //PRM ROADMAP
         bool constructRoadMap(int points, int knn, double k_distance_init, double tms_max); //k_distance_init initialize k_distance between 0.1 (inhomogeneus, very easy) and 1 (max homogeneus, very hard) which provides an homogeneus map, then decrease exponentially in time to reach 10% at time tms_max
         std::vector<Point2D> getNodes(){return nodes;}
         std::vector<Segment> getLinks(){return links;}
+        std::vector<std::vector<DubinLink>> get_curves(){return curves;}
         void getAttachedNodes(Point2D node, std::vector<Point2D> *attached_nodes);
         Room& getRoom(){return r;}
         std::string getJson();
@@ -57,5 +69,6 @@ class RoadMap
 
 void randomObstacles(Room* room, int num_obstacles, const int max_side);
 void random_obstacles(Room* room, int num_obstacles, int vertexes_n);
+void compute_roadmap_dubins(RoadMap* roadmap);
 
 #endif

@@ -134,6 +134,36 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
     return true;
 }
 
+void compute_roadmap_dubins(RoadMap* roadmap){
+    for(auto link: roadmap->getLinks()){
+        std::vector<DubinLink> d_links;
+        // compute every dubin's curve for each M_PI/4 
+        double step = M_PI * 0.25;
+        for(double th_src = 0; th_src < 2 * M_PI; th_src += step){
+            DubinPoint src(link.node1.x, link.node1.y, th_src);
+            for(double th_dst = 0; th_dst < 2 * M_PI; th_dst += step){
+                DubinPoint dst(link.node2.x, link.node2.y, th_dst);
+                auto curves = dubin_curves(src, dst);
+                for(auto curve: curves){
+                    bool inter = false;
+                    for(auto ob: roadmap->getRoom().get_obstacles()){
+                        if(intersect(curve, ob)){
+                            inter = true;
+                            break;
+                        }
+                    }
+                    // if the curve doesn't collide with any obstacle, keep this as best curve for the pair (src, dst)
+                    if(!inter){
+                        d_links.push_back(DubinLink(th_src, th_dst, curve));
+                        break;
+                    }
+                }
+            }
+        }
+        roadmap->curves.push_back(d_links);
+    }
+}
+
 std::string RoadMap::getJson()
 {
     std::string json="";
@@ -219,6 +249,7 @@ void random_obstacles(Room* room, int num_obstacles, int vertexes_n){
     uniform_real_distribution<double> x_dis(0, room->getWidth());
     uniform_real_distribution<double> y_dis(0, room->getHeight());
     
+    // distance between the center of the polygon and one of its vertexes
     double const radius = 0.5;
     Point2D* centers = new Point2D[num_obstacles];
     for(int i=0; i<num_obstacles; i++){
@@ -230,7 +261,7 @@ void random_obstacles(Room* room, int num_obstacles, int vertexes_n){
 
             if(i>0){
                 for(int j=0;j<i;j++){
-                // check if the centers are correctly distanced
+                // check if the centers are correctly distanciated
                     if(distance(centers[j], centers[i]) < radius * 2){
                         valid = false;
                         break;
@@ -238,6 +269,7 @@ void random_obstacles(Room* room, int num_obstacles, int vertexes_n){
                 }
             }
         } while(!valid);
+        std::cout<<centers[i]<<std::endl;
         Polygon obstacle = regular_polygon(centers[i], radius, vertexes_n);
         room->addObstacle(obstacle);
     }
