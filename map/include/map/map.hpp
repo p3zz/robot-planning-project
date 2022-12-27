@@ -7,6 +7,7 @@
 #include <ctime>
 #include <cmath>
 #include <iostream>
+#include <random>
 
 #include "shapes/shapes.hpp"
 #include "utils/utils.h"
