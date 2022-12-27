@@ -215,6 +215,9 @@ primitive calculate_primitive(CurveType ct, double sc_th0, double sc_thf,double 
 
 // sort curves by increasing order of length using bubble sort
 void sort_curves_by_length(std::vector<DubinCurve>& curves){
+    if((int)curves.size() < 2){
+        return;
+    }
     for(int i = 0; i < (int)curves.size(); i++) {
         for(int j = i + 1; j < (int)curves.size(); j++){
             double curr_length = curves.at(i).get_length();
