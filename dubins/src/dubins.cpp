@@ -213,6 +213,20 @@ primitive calculate_primitive(CurveType ct, double sc_th0, double sc_thf,double 
     }
 }
 
+// sort curves by increasing order of length using bubble sort
+void sort_curves_by_length(std::vector<DubinCurve>& curves){
+    for(int i = 0; i < (int)curves.size(); i++) {
+        for(int j = i + 1; j < (int)curves.size(); j++){
+            double curr_length = curves.at(i).get_length();
+            double next_length = curves.at(j).get_length();
+            if(next_length < curr_length) {
+                std::swap(curves[i], curves[j]);
+            }
+        }
+   }
+}
+
+// return an ordered vector containing every dubin curve that links p_start to p_end
 std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end){
     std::vector<DubinCurve> curves;
     double const optimal_curves_n = 6;
@@ -233,6 +247,8 @@ std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end){
         }
     }
 
+    sort_curves_by_length(curves);
+
     return curves;
 }
 
@@ -241,11 +257,5 @@ DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end){
     if(curves.empty()){
         return DubinCurve();
     }
-    DubinCurve min = curves.at(0);
-    for(auto curve: curves){
-        if(curve.get_length() < min.get_length()){
-            min = curve; 
-        }
-    }
-    return min;
+    return curves.at(0);
 }
