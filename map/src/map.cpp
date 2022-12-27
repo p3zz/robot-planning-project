@@ -211,26 +211,29 @@ void randomObstacles(Room* room, int num_obstacles, const int max_side)
   }
 }
 
-void random_obstacles(Room* room, int num_obstacles, double radius){
+void random_obstacles(Room* room, int num_obstacles, int vertexes_n){
+    double const radius = 0.5;
     Point2D* centers = new Point2D[num_obstacles];
     for(int i=0; i<num_obstacles; i++){
-        bool check;
+        bool valid = true;
         do {
-            centers[i].x = (rand() * room->getWidth()) - radius;
-            centers[i].y = (rand() * room->getHeight()) - radius;
-            if(i < 1){
-                continue;
-            }
-            check = true;
-            for(int j=1;j<i;j++){
-            // check if the centers are correctly distanced
-                if(distance(centers[j], centers[i]) < radius * 2){
-                    check = false;
-                    break;
-                }
-            }
-        } while(!check);
-        Polygon obstacle = regular_polygon(centers[i], radius, 10);
+            // generate number between 0 and 1
+            double unit = (rand() / RAND_MAX);
+
+            centers[i].x = unit * room->getWidth();
+            centers[i].y = unit * room->getHeight();
+
+            // if(i>0){
+                // for(int j=0;j<i;j++){
+                // check if the centers are correctly distanced
+                    // if(distance(centers[j], centers[i]) < radius * 2){
+                        // valid = false;
+                        // break;
+                    // }
+                // }
+            // }
+        } while(!valid);
+        Polygon obstacle = regular_polygon(centers[i], radius, vertexes_n);
         room->addObstacle(obstacle);
     }
 }
