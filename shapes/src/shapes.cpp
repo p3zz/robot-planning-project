@@ -351,7 +351,6 @@ Polygon regular_polygon(Point2D center, double radius, int n){
         double curr_angle = mod2pi(unit_angle * (-i));
         double x = center.x + radius * cos(curr_angle);
         double y = center.y + radius * sin(curr_angle);
-        std::cout << Point2D(x, y) << std::endl;
         p.add_v(Point2D(x, y));
     }
     return p;
