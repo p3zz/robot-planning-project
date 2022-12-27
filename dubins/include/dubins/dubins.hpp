@@ -34,6 +34,15 @@ enum ArcType{
     Right = -1
 };
 
+const std::map<CurveType, std::vector<ArcType>> CURVE_TO_ARC_TYPES = {
+    { CurveType::LSL, {ArcType::Left,  ArcType::Straight,  ArcType::Left} },
+    { CurveType::RSR, {ArcType::Right,  ArcType::Straight,  ArcType::Right} },
+    { CurveType::LSR, {ArcType::Left,  ArcType::Straight,  ArcType::Right} },
+    { CurveType::RSL, {ArcType::Right,  ArcType::Straight,  ArcType::Left} },
+    { CurveType::RLR, {ArcType::Right,  ArcType::Left,  ArcType::Right} },
+    { CurveType::LRL, {ArcType::Left,  ArcType::Right,  ArcType::Left} }
+};
+
 // point (start/end of a dubin arc)
 class DubinPoint{
     public: 
