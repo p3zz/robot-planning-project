@@ -299,7 +299,6 @@ double angle_between(Segment s1, Segment s2){
     return mod2pi((th1 + th2) * 0.5);
 }
 
-using namespace std;
 // TODO add test with close angles
 Polygon inflate(Polygon p, double offset){
     Polygon p_new;
@@ -338,4 +337,22 @@ double Segment::get_angle(){
     double delta_x = node2.x - node1.x;
     double delta_y = node2.y - node1.y;
     return atan2(delta_y, delta_x);
+}
+
+// build a regular polygon of n vertices given a radius and a center 
+Polygon regular_polygon(Point2D center, double radius, int n){
+    Polygon p;
+    if(n < 3 || radius == 0){
+        return p;
+    }
+    double unit_angle = (2 * M_PI) / n;
+    for(int i = 0; i < n; i++){
+        // -i so the polygon is built clockwise 
+        double curr_angle = mod2pi(unit_angle * (-i));
+        double x = center.x + radius * cos(curr_angle);
+        double y = center.y + radius * sin(curr_angle);
+        std::cout << Point2D(x, y) << std::endl;
+        p.add_v(Point2D(x, y));
+    }
+    return p;
 }

@@ -65,5 +65,6 @@ bool intersect(DubinCurve c, Polygon p);
 bool intersect(DubinCurve c, Polygon p, int n);
 double distance(Point2D p1, Point2D p2);
 Polygon inflate(Polygon p, double offset);
+Polygon regular_polygon(Point2D center, double radius, int n);
 
 #endif
