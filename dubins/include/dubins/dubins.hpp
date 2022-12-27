@@ -82,7 +82,7 @@ class DubinCurve {
 
 struct primitive{ 
     bool ok;
-    double sc_s1_c,sc_s2_c,sc_s3_c;
+    double curve1_len, curve2_len, curve3_len;
 };
 
 DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end);

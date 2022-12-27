@@ -65,17 +65,17 @@ primitive lsl(double sc_th0, double sc_thf,double sc_kmax){
     double c=cos(sc_thf)-cos(sc_th0);
     double s=2*sc_kmax+sin(sc_th0)-sin(sc_thf);
     double temp1=atan2(c,s);
-    ret.sc_s1_c=invk*mod2pi(temp1-sc_th0);
+    ret.curve1_len=invk*mod2pi(temp1-sc_th0);
     double temp2=2+4*(sc_kmax*sc_kmax)-2*cos(sc_th0-sc_thf)+4*sc_kmax*(sin(sc_th0)-sin(sc_thf));
     if(temp2<0){
         ret.ok=false;
-        ret.sc_s1_c=0;
-        ret.sc_s2_c=0;
-        ret.sc_s3_c=0;
+        ret.curve1_len=0;
+        ret.curve2_len=0;
+        ret.curve3_len=0;
     }else{
         ret.ok=true;
-        ret.sc_s2_c=invk*sqrt(temp2);
-        ret.sc_s3_c=invk*mod2pi(sc_thf-temp1);
+        ret.curve2_len=invk*sqrt(temp2);
+        ret.curve3_len=invk*mod2pi(sc_thf-temp1);
     }
     return ret;
 }
@@ -87,16 +87,16 @@ primitive rsr(double sc_th0, double sc_thf,double sc_kmax){
     double c = cos(sc_th0) - cos(sc_thf);
     double s = 2 * sc_kmax - sin(sc_th0) + sin(sc_thf);
     double temp1 = atan2(c, s);
-    ret.sc_s1_c=invk*mod2pi(sc_th0-temp1);
+    ret.curve1_len=invk*mod2pi(sc_th0-temp1);
     double temp2 = 2 + 4 * (sc_kmax*sc_kmax) - 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf));
     if(temp2<0){
         ret.ok=false;
-        ret.sc_s1_c=0;
-        ret.sc_s2_c=0;
-        ret.sc_s3_c=0;
+        ret.curve1_len=0;
+        ret.curve2_len=0;
+        ret.curve3_len=0;
     }else{
-        ret.sc_s2_c = invk * sqrt(temp2);
-        ret.sc_s3_c = invk * mod2pi(temp1 - sc_thf);
+        ret.curve2_len = invk * sqrt(temp2);
+        ret.curve3_len = invk * mod2pi(temp1 - sc_thf);
         ret.ok = true;
     }
     return ret;
@@ -112,14 +112,14 @@ primitive lsr(double sc_th0, double sc_thf,double sc_kmax){
     double temp3 = 4 * (sc_kmax*sc_kmax) - 2 + 2 * cos(sc_th0 - sc_thf) + 4 * sc_kmax * (sin(sc_th0) + sin(sc_thf));
     if(temp3<0){
         ret.ok=false;
-        ret.sc_s1_c=0;
-        ret.sc_s2_c=0;
-        ret.sc_s3_c=0;
+        ret.curve1_len=0;
+        ret.curve2_len=0;
+        ret.curve3_len=0;
     }else{
-        ret.sc_s2_c=invk*sqrt(temp3);
-        double temp2=-atan2(-2,ret.sc_s2_c*sc_kmax);
-        ret.sc_s1_c=invk*mod2pi(temp1+temp2-sc_th0);
-        ret.sc_s3_c=invk*mod2pi(temp1+temp2-sc_thf);
+        ret.curve2_len=invk*sqrt(temp3);
+        double temp2=-atan2(-2,ret.curve2_len*sc_kmax);
+        ret.curve1_len=invk*mod2pi(temp1+temp2-sc_th0);
+        ret.curve3_len=invk*mod2pi(temp1+temp2-sc_thf);
         ret.ok=true;
     }
     return ret;
@@ -135,14 +135,14 @@ primitive rsl(double sc_th0, double sc_thf,double sc_kmax){
     double temp3 = 4 * (sc_kmax*sc_kmax) - 2 + 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) + sin(sc_thf));
     if(temp3<0){
         ret.ok=false;
-        ret.sc_s1_c=0;
-        ret.sc_s2_c=0;
-        ret.sc_s3_c=0;
+        ret.curve1_len=0;
+        ret.curve2_len=0;
+        ret.curve3_len=0;
     }else{
-        ret.sc_s2_c=invk*sqrt(temp3);
-        double temp2=atan2(2,ret.sc_s2_c*sc_kmax);
-        ret.sc_s1_c=invk*mod2pi(sc_th0-temp1+temp2);
-        ret.sc_s3_c=invk*mod2pi(sc_thf-temp1+temp2);
+        ret.curve2_len=invk*sqrt(temp3);
+        double temp2=atan2(2,ret.curve2_len*sc_kmax);
+        ret.curve1_len=invk*mod2pi(sc_th0-temp1+temp2);
+        ret.curve3_len=invk*mod2pi(sc_thf-temp1+temp2);
         ret.ok=true;
     }
     return ret;
@@ -158,13 +158,13 @@ primitive rlr(double sc_th0, double sc_thf,double sc_kmax){
     double temp2 = 0.125 * (6 - 4 * (sc_kmax*sc_kmax) + 2 * cos(sc_th0 - sc_thf) + 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf)));
     if(abs(temp2)>1){
         ret.ok=false;
-        ret.sc_s1_c=0;
-        ret.sc_s2_c=0;
-        ret.sc_s3_c=0;
+        ret.curve1_len=0;
+        ret.curve2_len=0;
+        ret.curve3_len=0;
     }else{
-        ret.sc_s2_c=invk*mod2pi(2*M_PI-acos(temp2));
-        ret.sc_s1_c=invk*mod2pi(sc_th0-temp1+0.5*ret.sc_s2_c*sc_kmax);
-        ret.sc_s3_c=invk*mod2pi(sc_th0-sc_thf+sc_kmax*(ret.sc_s2_c-ret.sc_s1_c));
+        ret.curve2_len=invk*mod2pi(2*M_PI-acos(temp2));
+        ret.curve1_len=invk*mod2pi(sc_th0-temp1+0.5*ret.curve2_len*sc_kmax);
+        ret.curve3_len=invk*mod2pi(sc_th0-sc_thf+sc_kmax*(ret.curve2_len-ret.curve1_len));
         ret.ok=true;
     }
     return ret;
@@ -180,75 +180,42 @@ primitive lrl(double sc_th0, double sc_thf,double sc_kmax){
     double temp2 = 0.125 * (6 - 4 * (sc_kmax*sc_kmax) + 2 * cos(sc_th0 - sc_thf) - 4 * sc_kmax * (sin(sc_th0) - sin(sc_thf)));
     if(abs(temp2)>1){
         ret.ok=false;
-        ret.sc_s1_c=0;
-        ret.sc_s2_c=0;
-        ret.sc_s3_c=0;
+        ret.curve1_len=0;
+        ret.curve2_len=0;
+        ret.curve3_len=0;
     }else{
-        ret.sc_s2_c=invk*mod2pi(2*M_PI-acos(temp2));
-        ret.sc_s1_c=invk*mod2pi(temp1-sc_th0+0.5*ret.sc_s2_c*sc_kmax);
-        ret.sc_s3_c=invk*mod2pi(sc_thf-sc_th0+sc_kmax*(ret.sc_s2_c-ret.sc_s1_c));
+        ret.curve2_len=invk*mod2pi(2*M_PI-acos(temp2));
+        ret.curve1_len=invk*mod2pi(temp1-sc_th0+0.5*ret.curve2_len*sc_kmax);
+        ret.curve3_len=invk*mod2pi(sc_thf-sc_th0+sc_kmax*(ret.curve2_len-ret.curve1_len));
         ret.ok=true;
     }
     return ret;
 }
 
 primitive calculate_primitive(CurveType ct, double sc_th0, double sc_thf,double sc_kmax){
-    primitive p;
     switch(ct){
         case CurveType::LSL:
-            p = lsl(sc_th0, sc_thf, sc_kmax);
-            break;
+            return lsl(sc_th0, sc_thf, sc_kmax);
         case CurveType::RSR:
-            p = rsr(sc_th0, sc_thf, sc_kmax);
-            break;
+            return rsr(sc_th0, sc_thf, sc_kmax);
         case CurveType::LSR:
-            p = lsr(sc_th0, sc_thf, sc_kmax);
-            break;
+            return lsr(sc_th0, sc_thf, sc_kmax);
         case CurveType::RSL:
-            p = rsl(sc_th0, sc_thf, sc_kmax);
-            break;
+            return rsl(sc_th0, sc_thf, sc_kmax);
         case CurveType::RLR:
-            p = rlr(sc_th0, sc_thf, sc_kmax);
-            break;
+            return rlr(sc_th0, sc_thf, sc_kmax);
         case CurveType::LRL:
-            p = lrl(sc_th0, sc_thf, sc_kmax);
-            break;
+            return lrl(sc_th0, sc_thf, sc_kmax);
         default:
-            cout<<"An error occurred while calculating the primitive!"<<endl;
-            break;           
+            primitive p;
+            p.ok = false;
+            return p;
     }
-    return p;
 }
 
-// calculate every optimal curve type and returns the best
-tuple<primitive, CurveType> calculate_best_primitive(double th0, double thf, double kmax){
-
+std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end){
+    std::vector<DubinCurve> curves;
     double const optimal_curves_n = 6;
-    double best_length = DOUBLE_MAX;
-    primitive best_prim;
-    CurveType best_ct = CurveType::None;
-
-    // iterate through optimal curves
-    for(int i = 0 ; i < optimal_curves_n ; i++){
-        CurveType ct = static_cast<CurveType>(i);
-        primitive prim = calculate_primitive(ct, th0, thf, kmax); 
-        double length = prim.sc_s1_c + prim.sc_s2_c + prim.sc_s3_c;
-
-        if(prim.ok && length < best_length){
-            best_length = length;
-            best_prim = prim;
-            best_ct = ct;
-        }
-    }
-
-    return make_tuple(best_prim, best_ct);
-}
-
-DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end){ 
-    
-    Eigen::Vector4d scaled = scale_to_standard(p_start, p_end);    //scale the problem to standard values
-
-    tuple<primitive, CurveType> best_primitive_result = calculate_best_primitive(scaled(0),scaled(1),scaled(2));
 
     std::map<CurveType, std::vector<ArcType>> curve_to_arc_types = {
         { CurveType::LSL, {ArcType::Left,  ArcType::Straight,  ArcType::Left} },
@@ -259,34 +226,35 @@ DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end){
         { CurveType::LRL, {ArcType::Left,  ArcType::Right,  ArcType::Left} }
     };
 
-    primitive best_primitive = get<0>(best_primitive_result);
-    CurveType best_ct = get<1>(best_primitive_result);
+    Eigen::Vector4d scaled = scale_to_standard(p_start, p_end);
 
-    if(best_ct == CurveType::None){
-        #if DEBUG_MOBILE
-            cout<<"No curve found!"<<endl;
-        #endif
-        // return default dubin curve
-        return DubinCurve();
+    for(int i = 0 ; i < optimal_curves_n ; i++){
+        CurveType ct = static_cast<CurveType>(i);
+        primitive prim = calculate_primitive(ct, scaled(0),scaled(1),scaled(2));
+        if(prim.ok){
+            Eigen::Vector3d curves_len = scale_from_standard(scaled(3), prim.curve1_len, prim.curve2_len, prim.curve3_len);
+            auto arc_types = curve_to_arc_types.find(ct);
+            DubinArc arc0(p_start, curves_len(0), static_cast<int>(arc_types->second[0])*CURV_MAX);
+            DubinArc arc1(arc0.get_dest(), curves_len(1), static_cast<int>(arc_types->second[1])*CURV_MAX);
+            DubinArc arc2(arc1.get_dest(), curves_len(2), static_cast<int>(arc_types->second[2])*CURV_MAX);
+
+            curves.push_back(DubinCurve(arc0, arc1, arc2));
+        }
     }
 
-    // get the lengths of the 3 arcs
-    Eigen::Vector3d s = scale_from_standard(scaled(3), best_primitive.sc_s1_c, best_primitive.sc_s2_c, best_primitive.sc_s3_c);  //scale from the standard solution to the general one
+    return curves;
+}
 
-    auto arc_types = curve_to_arc_types.find(best_ct);
-    
-    DubinArc arc0(p_start, s(0), static_cast<int>(arc_types->second[0])*CURV_MAX);
-
-    DubinArc arc1(arc0.get_dest(), s(1), static_cast<int>(arc_types->second[1])*CURV_MAX);
-
-    DubinArc arc2(arc1.get_dest(), s(2), static_cast<int>(arc_types->second[2])*CURV_MAX);
-
-    DubinCurve final_curve(arc0, arc1, arc2);
-
-    #if DEBUG_MOBILE
-        cout << endl << endl << "Curve found" << endl;
-    #endif
-
-    return final_curve;
-
+DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end){
+    auto curves = dubin_curves(p_start, p_end);
+    if(curves.empty()){
+        return DubinCurve();
+    }
+    DubinCurve min = curves.at(0);
+    for(auto curve: curves){
+        if(curve.get_length() < min.get_length()){
+            min = curve; 
+        }
+    }
+    return min;
 }
