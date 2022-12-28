@@ -269,7 +269,6 @@ void random_obstacles(Room* room, int num_obstacles, int vertexes_n){
                 }
             }
         } while(!valid);
-        std::cout<<centers[i]<<std::endl;
         Polygon obstacle = regular_polygon(centers[i], radius, vertexes_n);
         room->addObstacle(obstacle);
     }
