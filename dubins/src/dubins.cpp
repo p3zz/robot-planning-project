@@ -249,6 +249,15 @@ std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end){
     std::vector<DubinCurve> curves;
     double const optimal_curves_n = 6;
 
+    const std::map<CurveType, std::vector<ArcType>> CURVE_TO_ARC_TYPES = {
+        { CurveType::LSL, {ArcType::Left,  ArcType::Straight,  ArcType::Left} },
+        { CurveType::RSR, {ArcType::Right,  ArcType::Straight,  ArcType::Right} },
+        { CurveType::LSR, {ArcType::Left,  ArcType::Straight,  ArcType::Right} },
+        { CurveType::RSL, {ArcType::Right,  ArcType::Straight,  ArcType::Left} },
+        { CurveType::RLR, {ArcType::Right,  ArcType::Left,  ArcType::Right} },
+        { CurveType::LRL, {ArcType::Left,  ArcType::Right,  ArcType::Left} }
+    };
+
     Eigen::Vector4d scaled = scale_to_standard(p_start, p_end);
 
     for(int i = 0 ; i < optimal_curves_n ; i++){
@@ -260,7 +269,7 @@ std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end){
             DubinArc arc0(p_start, curves_len(0), static_cast<int>(arc_types->second[0])*CURV_MAX);
             DubinArc arc1(arc0.get_dest(), curves_len(1), static_cast<int>(arc_types->second[1])*CURV_MAX);
             DubinArc arc2(arc1.get_dest(), curves_len(2), static_cast<int>(arc_types->second[2])*CURV_MAX);
-
+                        
             curves.push_back(DubinCurve(arc0, arc1, arc2));
         }
     }
