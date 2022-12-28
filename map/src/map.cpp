@@ -255,10 +255,10 @@ void random_obstacles(Room* room, int num_obstacles, int vertexes_n){
     for(int i=0; i<num_obstacles; i++){
         bool valid = true;
         do {
-
             centers[i].x = x_dis(gen);
             centers[i].y = y_dis(gen);
-
+            valid = true;
+            
             if(i>0){
                 for(int j=0;j<i;j++){
                 // check if the centers are correctly distanciated
