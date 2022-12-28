@@ -331,6 +331,45 @@ Polygon inflate(Polygon p, double offset){
     return p_new;
 }
 
+Polygon inflate_2(Polygon p, double offset){
+    Polygon p_new;
+    std::vector<Segment> new_sides;
+    auto sides = p.get_sides();
+
+    for(auto side: sides){
+        double th = side.get_angle();
+        // compute the perpendicular angle
+        double th_norm = th + (M_PI * 0.5);
+        th_norm = mod2pi(th_norm);
+        auto new_side = translate(side, offset, th_norm);
+        // crazy scale the size of the new side so we ensure that the collision happens
+        double const scale = 10;        
+        double s_length = distance(new_side.node1, new_side.node2);
+        auto new_node1 = translate(new_side.node1, s_length * scale, th + M_PI);
+        auto new_node2 = translate(new_side.node2, s_length * scale, th);
+        new_sides.push_back(Segment(new_node1, new_node2));
+    }
+
+    double t_s1, t_s2;
+
+    for(int i=1;i<(int)new_sides.size();i++){
+        auto s1 = new_sides.at(i-1);
+        auto s2 = new_sides.at(i);
+        // get the intersection point of every pair of consecutive segments
+        if(intersect(s1, s2, t_s1, t_s2)){
+            auto new_point = s1.get_interceptor(t_s1);
+            p_new.add_v(new_point);
+        }
+    }
+
+    if(intersect(new_sides.back(), new_sides.front(), t_s1, t_s2)){
+        auto new_point = new_sides.back().get_interceptor(t_s1);
+        p_new.add_v(new_point);
+    }
+
+    return p_new;
+}
+
 // returns the angle [0, 2*PI] between the segment and the x axis
 // the direction is from node1 to node2
 double Segment::get_angle(){
