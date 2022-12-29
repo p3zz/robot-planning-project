@@ -214,7 +214,21 @@ void RoadMap::getAttachedNodes(Point2D node, std::vector<Point2D> *attached_link
     }
 }
 
-void randomObstacles(Room* room, int num_obstacles, const int max_side)
+/*DubinLink RoadMap::get_dubin_link(Segment link, double th1, double th2)
+{
+    for(int i=0; i<links.size(); i++)
+    {
+        if((links[i].node1 == link.node1 && links[i].node2 == link.node2) || (links[i].node1 == link.node2 && links[i].node2 == link.node1))
+        {
+            for(auto dubin_link: curves[i])
+            {
+                if(dubin_link.th1 == th1 && dubin_link.th2 == th2)
+            }
+        }
+    }
+}*/
+
+void random_obstacles_side(Room* room, int num_obstacles, const int max_side)
 {
   Point2D* centers = new Point2D[num_obstacles];
   for(int i=0; i<num_obstacles; i++)
@@ -241,7 +255,7 @@ void randomObstacles(Room* room, int num_obstacles, const int max_side)
   }
 }
 
-void random_obstacles(Room* room, int num_obstacles, int vertexes_n){
+void random_obstacles_vertexes(Room* room, int num_obstacles, int vertexes_n){
     random_device rd;
 
     mt19937 gen(rd());

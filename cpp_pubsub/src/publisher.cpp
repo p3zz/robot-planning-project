@@ -129,7 +129,7 @@ int main(int argc, char * argv[])
   rclcpp::shutdown();
   srand(time(NULL));
   Room room(10,10);
-  randomObstacles(&room, 4, 200);
+  random_obstacles_side(&room, 4, 200);
   room.addExit(Point2D(0,2));
   room.addExit(Point2D(8,10));
   RoadMap map(room);

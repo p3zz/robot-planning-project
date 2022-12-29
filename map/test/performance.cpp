@@ -11,7 +11,7 @@ using std::chrono::milliseconds;
 Room room(10,10);
 
 TEST(Map, Performance1){
-    random_obstacles(&room, 6, 20);
+    random_obstacles_vertexes(&room, 6, 20);
     RoadMap map(room);
     auto start = high_resolution_clock::now();
 
@@ -30,7 +30,7 @@ TEST(Map, Performance1){
 }
 
 TEST(Map, Performance2){
-    random_obstacles(&room, 6, 20);
+    random_obstacles_vertexes(&room, 6, 20);
     RoadMap map(room);
     auto start = high_resolution_clock::now();
 
@@ -49,7 +49,7 @@ TEST(Map, Performance2){
 }
 
 TEST(Map, Performance3){
-    random_obstacles(&room, 8, 20);
+    random_obstacles_vertexes(&room, 8, 20);
     RoadMap map(room);
     auto start = high_resolution_clock::now();
 
@@ -69,7 +69,7 @@ TEST(Map, Performance3){
 }
 
 TEST(Map, Performance4){
-    random_obstacles(&room, 8, 20);
+    random_obstacles_vertexes(&room, 8, 20);
     RoadMap map(room);
     auto start = high_resolution_clock::now();
 
