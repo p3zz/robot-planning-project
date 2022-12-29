@@ -80,6 +80,18 @@ class DubinCurve {
         std::vector<DubinPoint> to_points(int n);
 };
 
+class DubinLink{
+    private:
+        DubinPoint src, dst;
+        DubinCurve curve;
+    public:
+        DubinLink(){}
+        DubinLink(DubinPoint src, DubinPoint dst, DubinCurve curve):src{src}, dst{dst}, curve{curve}{}
+        DubinPoint get_src(){return src;}
+        DubinPoint get_dst(){return dst;}
+        DubinCurve get_curve(){return curve;}
+};
+
 struct primitive{ 
     bool ok;
     double curve1_len, curve2_len, curve3_len;

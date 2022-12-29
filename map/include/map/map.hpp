@@ -11,6 +11,7 @@
 
 #include "shapes/shapes.hpp"
 #include "utils/utils.h"
+#include "dubins/dubins.hpp"
 
 #define KNN_MAX 10
 #define POINT_COORD_MAX 999999
@@ -36,18 +37,6 @@ class Room
         int getHeight(){return h;}
         int getWidth(){return w;}
 
-};
-
-class DubinLink{
-    private:
-        double th1, th2;
-        DubinCurve curve;
-    public:
-        DubinLink(){}
-        DubinLink(double th1, double th2, DubinCurve curve):th1{th1}, th2{th2}, curve{curve}{}
-        double get_th1(){return th1;}
-        double get_th2(){return th2;}
-        DubinCurve get_curve(){return curve;}
 };
 
 class RoadMap

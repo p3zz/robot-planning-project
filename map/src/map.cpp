@@ -132,16 +132,19 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
                 links.push_back(Segment(Point2D(node.x,node.y),Point2D(node_knn[j].x, node_knn[j].y)));      
     }
 
+    
+
     //Create Dubins Curves
     for(auto link: links){
         std::vector<DubinLink> d_links;
         // compute every dubins curve for each M_PI/4 
         double step = M_PI * 0.25;
         for(double th_src = 0; th_src < 2 * M_PI; th_src += step){
-            DubinPoint src(link.node1.x, link.node1.y, th_src);
+            DubinPoint node1(link.node1.x, link.node1.y, th_src);
             for(double th_dst = 0; th_dst < 2 * M_PI; th_dst += step){
-                DubinPoint dst(link.node2.x, link.node2.y, th_dst);
-                auto curves = dubin_curves(src, dst);
+                DubinPoint node2(link.node2.x, link.node2.y, th_dst);
+                // compute dubins from node1 to node2
+                auto curves = dubin_curves(node1, node2);
                 for(auto curve: curves){
                     bool inter = false;
                     for(auto ob: r.get_obstacles()){
@@ -152,7 +155,23 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
                     }
                     // if the curve doesn't collide with any obstacle, keep this as best curve for the pair (src, dst)
                     if(!inter){
-                        d_links.push_back(DubinLink(th_src, th_dst, curve));
+                        d_links.push_back(DubinLink(node1, node2, curve));
+                        break;
+                    }
+                }
+
+                // compute dubins from node2 to node1
+                curves = dubin_curves(node2, node1);
+                for(auto curve: curves){
+                    bool inter = false;
+                    for(auto ob: r.get_obstacles()){
+                        if(intersect(curve, ob)){
+                            inter = true;
+                            break;
+                        }
+                    }
+                    if(!inter){
+                        d_links.push_back(DubinLink(node2, node1, curve));
                         break;
                     }
                 }
