@@ -28,7 +28,7 @@ bool point_collides(Point2D p, Room r)
 bool check_sparse(Point2D p, std::vector<Point2D> nodes, double distance_min)
 {
     for (int i = 0; i < (int)nodes.size(); i++) //check distance with other nodes
-        if(sqrt(pow(p.x-nodes[i].x,2)+pow(p.y-nodes[i].y,2))<distance_min) 
+        if(distance(p, nodes[i])<distance_min) 
             return false;
     return true;    
 }
@@ -63,13 +63,13 @@ void Knn(Point2D node, std::vector<Point2D> candidates, int k, Point2D* nearest_
         if(cand.x != node.x && cand.y != node.y)
         {
             //check if a node is better than others (starting from worst node)
-            double distance=sqrt(pow(cand.x-node.x,2)+pow(cand.y-node.y,2));
+            double d=distance(cand, node);
             for(int j=k-1; j>=0; j--)
-                if(distance<nearest_distances[j])
+                if(d<nearest_distances[j])
                 {
                     if(!link_collides(Segment(node, cand),r))
                     { 
-                        nearest_distances[j]=distance;
+                        nearest_distances[j]=d;
                         nearest_nodes[j]=Point2D(cand.x, cand.y);
                         sort_knn(nearest_distances, nearest_nodes, k);
                     }
@@ -240,7 +240,7 @@ void random_obstacles_side(Room* room, int num_obstacles, const int max_side)
       centers[i].y = ((rand()%(room->getHeight()*100-max_side))+max_side/2)/100.0;
       check=true;
       for(int j=0;j<i;j++)
-        if(sqrt(pow(centers[j].x-centers[i].x,2)+pow(centers[j].y-centers[i].y,2))<max_side/100.0*sqrt(2))
+        if(distance(centers[j], centers[i])<max_side/100.0*sqrt(2))
         {
           check=false;
           break;
