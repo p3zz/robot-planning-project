@@ -69,6 +69,5 @@ class RoadMap
 
 void randomObstacles(Room* room, int num_obstacles, const int max_side);
 void random_obstacles(Room* room, int num_obstacles, int vertexes_n);
-void compute_roadmap_dubins(RoadMap* roadmap);
 
 #endif

@@ -131,13 +131,11 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
             if(node_knn[j].x!=POINT_COORD_MAX && node_knn[j].y!=POINT_COORD_MAX && !link_exists(node, node_knn[j], links))
                 links.push_back(Segment(Point2D(node.x,node.y),Point2D(node_knn[j].x, node_knn[j].y)));      
     }
-    return true;
-}
 
-void compute_roadmap_dubins(RoadMap* roadmap){
-    for(auto link: roadmap->getLinks()){
+    //Create Dubins Curves
+    for(auto link: links){
         std::vector<DubinLink> d_links;
-        // compute every dubin's curve for each M_PI/4 
+        // compute every dubins curve for each M_PI/4 
         double step = M_PI * 0.25;
         for(double th_src = 0; th_src < 2 * M_PI; th_src += step){
             DubinPoint src(link.node1.x, link.node1.y, th_src);
@@ -146,7 +144,7 @@ void compute_roadmap_dubins(RoadMap* roadmap){
                 auto curves = dubin_curves(src, dst);
                 for(auto curve: curves){
                     bool inter = false;
-                    for(auto ob: roadmap->getRoom().get_obstacles()){
+                    for(auto ob: r.get_obstacles()){
                         if(intersect(curve, ob)){
                             inter = true;
                             break;
@@ -160,8 +158,10 @@ void compute_roadmap_dubins(RoadMap* roadmap){
                 }
             }
         }
-        roadmap->curves.push_back(d_links);
+        curves.push_back(d_links);
     }
+
+    return true;
 }
 
 std::string RoadMap::getJson()

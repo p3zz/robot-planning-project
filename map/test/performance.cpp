@@ -13,10 +13,9 @@ Room room(10,10);
 TEST(Map, Performance1){
     random_obstacles(&room, 6, 20);
     RoadMap map(room);
-    map.constructRoadMap(60, 4, 0.5, 500);
     auto start = high_resolution_clock::now();
 
-    compute_roadmap_dubins(&map);
+    map.constructRoadMap(60, 4, 0.5, 500);
 
     auto end = high_resolution_clock::now();
 
@@ -33,10 +32,9 @@ TEST(Map, Performance1){
 TEST(Map, Performance2){
     random_obstacles(&room, 6, 20);
     RoadMap map(room);
-    map.constructRoadMap(80, 4, 0.5, 500);
     auto start = high_resolution_clock::now();
 
-    compute_roadmap_dubins(&map);
+    map.constructRoadMap(80, 4, 0.5, 500);
 
     auto end = high_resolution_clock::now();
 
@@ -53,10 +51,9 @@ TEST(Map, Performance2){
 TEST(Map, Performance3){
     random_obstacles(&room, 8, 20);
     RoadMap map(room);
-    map.constructRoadMap(60, 4, 0.5, 500);
     auto start = high_resolution_clock::now();
 
-    compute_roadmap_dubins(&map);
+    map.constructRoadMap(60, 4, 0.5, 500);
 
     auto end = high_resolution_clock::now();
 
@@ -74,10 +71,9 @@ TEST(Map, Performance3){
 TEST(Map, Performance4){
     random_obstacles(&room, 8, 20);
     RoadMap map(room);
-    map.constructRoadMap(80, 4, 0.5, 500);
     auto start = high_resolution_clock::now();
 
-    compute_roadmap_dubins(&map);
+    map.constructRoadMap(80, 4, 0.5, 500);
 
     auto end = high_resolution_clock::now();
 
