@@ -85,12 +85,14 @@ class DubinLink{
     private:
         DubinPoint src, dst;
         DubinCurve curve;
+        bool empty;
     public:
-        DubinLink(){}
-        DubinLink(DubinPoint src, DubinPoint dst, DubinCurve curve):src{src}, dst{dst}, curve{curve}{}
+        DubinLink():empty{true}{}
+        DubinLink(DubinPoint src, DubinPoint dst, DubinCurve curve):src{src}, dst{dst}, curve{curve}, empty{false}{}
         DubinPoint get_src(){return src;}
         DubinPoint get_dst(){return dst;}
         DubinCurve get_curve(){return curve;}
+        bool is_empty(){return empty;}
 };
 
 struct primitive{ 
