@@ -21,12 +21,12 @@ TEST(Map, Performance1){
 
     duration<double, std::milli> ms_double = end - start;
     std::cout<<"Execution time: "<<ms_double.count()<<" ms"<<std::endl;
-    auto links = map.getLinks();
+    /*auto links = map.getLinks();
     auto curves = map.get_curves();
     EXPECT_EQ((int)links.size(), (int)curves.size());
     for(int i=0;i<(int)links.size();i++){
         std::cout<<links[i].node1<<links[i].node2<<curves[i].size()<<std::endl;
-    }
+    }*/
 }
 
 TEST(Map, Performance2){
@@ -40,12 +40,12 @@ TEST(Map, Performance2){
 
     duration<double, std::milli> ms_double = end - start;
     std::cout<<"Execution time: "<<ms_double.count()<<" ms"<<std::endl;
-    auto links = map.getLinks();
+    /*auto links = map.getLinks();
     auto curves = map.get_curves();
     EXPECT_EQ((int)links.size(), (int)curves.size());
     for(int i=0;i<(int)links.size();i++){
         std::cout<<links[i].node1<<links[i].node2<<curves[i].size()<<std::endl;
-    }
+    }*/
 }
 
 TEST(Map, Performance3){
@@ -59,12 +59,12 @@ TEST(Map, Performance3){
 
     duration<double, std::milli> ms_double = end - start;
     std::cout<<"Execution time: "<<ms_double.count()<<" ms"<<std::endl;
-    auto links = map.getLinks();
+    /*auto links = map.getLinks();
     auto curves = map.get_curves();
     EXPECT_EQ((int)links.size(), (int)curves.size());
     for(int i=0;i<(int)links.size();i++){
         std::cout<<links[i].node1<<links[i].node2<<curves[i].size()<<std::endl;
-    }
+    }*/
 
 }
 
@@ -79,11 +79,11 @@ TEST(Map, Performance4){
 
     duration<double, std::milli> ms_double = end - start;
     std::cout<<"Execution time: "<<ms_double.count()<<" ms"<<std::endl;
-    auto links = map.getLinks();
+    /*auto links = map.getLinks();
     auto curves = map.get_curves();
     EXPECT_EQ((int)links.size(), (int)curves.size());
     for(int i=0;i<(int)links.size();i++){
         std::cout<<links[i].node1<<links[i].node2<<curves[i].size()<<std::endl;
-    }
+    }*/
 
 }

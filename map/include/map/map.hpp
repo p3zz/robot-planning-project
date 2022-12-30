@@ -45,16 +45,16 @@ class RoadMap
         Room r;
         std::vector<Point2D> nodes;
         std::vector<Segment> links;
-        std::vector<std::vector<DubinLink>> curves;
+        std::vector<DubinLink> dubin_links;
     public:
         RoadMap(Room r):r{r}{}
         //PRM ROADMAP
         bool constructRoadMap(int points, int knn, double k_distance_init, double tms_max); //k_distance_init initialize k_distance between 0.1 (inhomogeneus, very easy) and 1 (max homogeneus, very hard) which provides an homogeneus map, then decrease exponentially in time to reach 10% at time tms_max
         std::vector<Point2D> getNodes(){return nodes;}
         std::vector<Segment> getLinks(){return links;}
-        std::vector<std::vector<DubinLink>> get_curves(){return curves;}
+        std::vector<DubinLink> get_curves(){return dubin_links;}
         void getAttachedNodes(Point2D node, std::vector<Point2D> *attached_nodes);
-        DubinLink get_dubin_link(Segment link, double th1, double th2);
+        DubinLink get_dubin_link(Point2D p1, Point2D p2, double th1, double th2);
         Room& getRoom(){return r;}
         std::string getJson();
 };

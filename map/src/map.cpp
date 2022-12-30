@@ -155,7 +155,7 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
                     }
                     // if the curve doesn't collide with any obstacle, keep this as best curve for the pair (src, dst)
                     if(!inter){
-                        d_links.push_back(DubinLink(node1, node2, curve));
+                        dubin_links.push_back(DubinLink(node1, node2, curve));
                         break;
                     }
                 }
@@ -171,13 +171,12 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
                         }
                     }
                     if(!inter){
-                        d_links.push_back(DubinLink(node2, node1, curve));
+                        dubin_links.push_back(DubinLink(node2, node1, curve));
                         break;
                     }
                 }
             }
         }
-        curves.push_back(d_links);
     }
 
     return true;
@@ -233,19 +232,13 @@ void RoadMap::getAttachedNodes(Point2D node, std::vector<Point2D> *attached_link
     }
 }
 
-/*DubinLink RoadMap::get_dubin_link(Segment link, double th1, double th2)
+DubinLink RoadMap::get_dubin_link(Point2D p1, Point2D p2, double th1, double th2)
 {
-    for(int i=0; i<links.size(); i++)
-    {
-        if((links[i].node1 == link.node1 && links[i].node2 == link.node2) || (links[i].node1 == link.node2 && links[i].node2 == link.node1))
-        {
-            for(auto dubin_link: curves[i])
-            {
-                if(dubin_link.th1 == th1 && dubin_link.th2 == th2)
-            }
-        }
-    }
-}*/
+    for(int i=0; i<(int)dubin_links.size(); i++)
+        if(dubin_links[i].get_src() == DubinPoint(p1.x, p1.y, th1) && dubin_links[i].get_dst() == DubinPoint(p2.x, p2.y, th2))
+            return dubin_links[i];
+    return DubinLink();
+}
 
 void random_obstacles_side(Room* room, int num_obstacles, const int max_side)
 {

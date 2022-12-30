@@ -44,6 +44,7 @@ class DubinPoint{
         DubinPoint():x{0},y{0},th{0}{}
         DubinPoint(double x, double y, double th):x{x},y{y},th{th}{}
 
+        friend bool operator== (const DubinPoint& first, const DubinPoint& second) {return first.x == second.x && first.y == second.y && first.th == second.th;}
 };
 
 // arc (portion of dubin curve)
