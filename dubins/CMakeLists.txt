@@ -7,6 +7,7 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(utils REQUIRED)
+find_package(shapes REQUIRED)
 
 include_directories(include)
  
@@ -14,7 +15,7 @@ add_library(dubins src/dubins.cpp)
  
 ament_export_targets(dubins HAS_LIBRARY_TARGET)
 
-ament_target_dependencies(dubins utils)
+ament_target_dependencies(dubins utils shapes)
 
  
 install(
@@ -32,10 +33,22 @@ install(
 )
 
 if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
+  # find_package(ament_lint_auto REQUIRED)
+
   set(ament_cmake_copyright_FOUND TRUE)
   set(ament_cmake_cpplint_FOUND TRUE)
-  ament_lint_auto_find_test_dependencies()
+  # ament_lint_auto_find_test_dependencies()
+
+  # gtest section
+  find_package(ament_cmake_gtest REQUIRED)
+
+  set(TEST_FILES test/performance.cpp test/main.cpp)
+  ament_add_gtest(test_dubins ${TEST_FILES})
+  
+  target_link_libraries(test_dubins dubins)
+  
+  install(TARGETS test_dubins DESTINATION lib/dubins)
+
 endif()
 
 ament_package()

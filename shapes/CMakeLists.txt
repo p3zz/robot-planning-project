@@ -7,7 +7,6 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(dubins REQUIRED)
 find_package(utils REQUIRED)
 
 include_directories(include)
@@ -16,7 +15,7 @@ add_library(shapes src/shapes.cpp)
 
 ament_export_targets(shapes HAS_LIBRARY_TARGET)
 
-ament_target_dependencies(shapes dubins utils)
+ament_target_dependencies(shapes utils)
 
 install(
   DIRECTORY include/shapes
@@ -42,7 +41,7 @@ if(BUILD_TESTING)
   # gtest section
   find_package(ament_cmake_gtest REQUIRED)
 
-  set(TEST_FILES test/segment.cpp test/circle.cpp test/polygon.cpp test/performance.cpp test/main.cpp)
+  set(TEST_FILES test/segment.cpp test/circle.cpp test/polygon.cpp test/main.cpp)
   ament_add_gtest(test_shapes ${TEST_FILES})
   
   target_link_libraries(test_shapes shapes)

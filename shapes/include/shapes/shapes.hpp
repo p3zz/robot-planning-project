@@ -5,8 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <limits>
-
-#include "dubins/dubins.hpp"
+#include "utils/utils.h"
 
 class Point2D{
     public:
@@ -61,8 +60,6 @@ bool intersect(Segment s1, Segment s2);
 bool intersect(Segment s1, Segment s2, double& t_s1, double& t_s2);
 bool intersect(Circle c, Segment s, Point2D start, Point2D end);
 bool intersect(Polygon p, Segment s);
-bool intersect(DubinCurve c, Polygon p);
-bool intersect(DubinCurve c, Polygon p, int n);
 double distance(Point2D p1, Point2D p2);
 Polygon inflate(Polygon p, double offset);
 Polygon inflate_2(Polygon p, double offset);

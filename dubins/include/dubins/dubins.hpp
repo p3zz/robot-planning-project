@@ -7,6 +7,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <utils/utils.h>
+#include <shapes/shapes.hpp>
 #include <map>
 
 
@@ -102,4 +103,7 @@ struct primitive{
 
 DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end);
 std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end);
+bool intersect(DubinCurve c, Polygon p);
+bool intersect(DubinCurve c, Polygon p, int n);
+
 #endif
