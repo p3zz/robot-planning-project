@@ -4,6 +4,7 @@
 #include <iostream>
 #include <utils/utils.h>
 #include <fstream>
+#include <ctime>
 #include "dubins/dubins.hpp"
 #include "map/map.hpp"
 

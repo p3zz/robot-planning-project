@@ -49,7 +49,7 @@ class DubinPoint{
         Point2D get_point(){return Point2D(x,y);}
 
         friend bool operator== (const DubinPoint& first, const DubinPoint& second) {return first.x == second.x && first.y == second.y && first.th <= second.th*1.03 && first.th >= second.th*0.97;}
-        friend std::ostream& operator<<(std::ostream& os, const DubinPoint& dp){return os<<"("<<dp.x<<";"<<dp.y<<";"<<(int)(dp.th*360/M_PI)<<")";}
+        friend std::ostream& operator<<(std::ostream& os, const DubinPoint& dp){return os<<"("<<dp.x<<";"<<dp.y<<";"<<(int)(dp.th*180/M_PI)<<")";}
 };
 
 // arc (portion of dubin curve)

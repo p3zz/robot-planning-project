@@ -6,6 +6,21 @@ double min(double n1, double n2)
     return n2<n1? n2:n1;
 }
 
+double angle_in_range(double angle)
+{
+    double nearest_value=100, nearest_angle;
+    for(int i=0; i<8; i++)
+    {
+        double tang=mod2pi(i*0.25*M_PI-angle);
+        if(tang<nearest_value)
+        {
+            nearest_angle=i*0.25*M_PI;
+            nearest_value=tang;
+        }
+    }
+    return nearest_angle;
+}
+
 DubinPoint getNearestNode(DubinPoint position, std::vector<Point2D> nodes)
 {
     DubinPoint p;
@@ -28,14 +43,23 @@ double score_angle(DubinPoint dp1, Point2D p2) //score from 0 to 1, based on pro
     return 1-abs(modpi(dp1.th-angle))/M_PI;
 }
 
-double scoreE(DubinPoint pursuer_2, DubinPoint evader_0, DubinPoint evader_1, DubinPoint evader_2, RoadMap& r)
+double scoreE(Point2D pursuer_2, DubinPoint evader_0, DubinPoint evader_1, DubinPoint evader_2, RoadMap& r)
 {
     //Score must be positive
     double center=1000;
     //Length of trajectory
-    double len_path = r.get_dubin_link(evader_0, evader_1).get_curve().get_length() + r.get_dubin_link(evader_1, evader_2).get_curve().get_length();
+    //clock_t now = clock();
+    DubinLink d1 = r.get_dubin_link(evader_0, evader_1);
+    //clock_t now1 = clock()-now;
+    //now = clock();
+    DubinLink d2 = r.get_dubin_link(evader_1, evader_2);
+    //clock_t now2 = clock()-now;
+    //now = clock();
+    double len_path = d1.get_curve().get_length() + d2.get_curve().get_length();
+    //clock_t now3 = clock()-now;
+    //cout << now1/(double)CLOCKS_PER_SEC << " " << now2/(double)CLOCKS_PER_SEC << " " << now3/(double)CLOCKS_PER_SEC << endl;
     //Distance between pursuer and evader
-    double distancePE = distance(pursuer_2.get_point(), evader_2.get_point());
+    double distancePE = distance(pursuer_2, evader_2.get_point());
     //Min Distance from exit & Score for direction
     double min_exit=POINT_COORD_MAX;
     double score_th=0;
@@ -53,20 +77,20 @@ double scoreE(DubinPoint pursuer_2, DubinPoint evader_0, DubinPoint evader_1, Du
     return scoreE;
 }
 
-double scoreP(DubinPoint evader_2, DubinPoint pursuer_0, DubinPoint pursuer_1, DubinPoint pursuer_2, RoadMap& r)
+double scoreP(Point2D evader_2, DubinPoint pursuer_0, DubinPoint pursuer_1, DubinPoint pursuer_2, RoadMap& r)
 {
     //Score must be positive
     double center=1000;
     //Length of trajectory
     double len_path = r.get_dubin_link(pursuer_0, pursuer_1).get_curve().get_length() + r.get_dubin_link(pursuer_1, pursuer_2).get_curve().get_length();
     //Distance between pursuer and evader
-    double distancePE = distance(pursuer_2.get_point(), evader_2.get_point());
+    double distancePE = distance(pursuer_2.get_point(), evader_2);
     //Probable exit chosen by evader
     double min_exit=POINT_COORD_MAX;
     int index_exit;
     for(int i=0; i<r.getRoom().getNumExits(); i++) //more probable exit chosen by evader
     {
-        double d=distance(evader_2.get_point(), r.getRoom().getExit(i));
+        double d=distance(evader_2, r.getRoom().getExit(i));
         if(d<min_exit)
         {
             min_exit=d;
@@ -76,86 +100,19 @@ double scoreP(DubinPoint evader_2, DubinPoint pursuer_0, DubinPoint pursuer_1, D
     //Distance between pursuer and exit
     double distanceExit = distance(pursuer_2.get_point(), r.getRoom().getExit(index_exit));
     //Score for direction
-    double score_th = score_angle(pursuer_2, avg_point(evader_2.get_point(), r.getRoom().getExit(index_exit)));
-
+    double score_th = score_angle(pursuer_2, avg_point(evader_2, r.getRoom().getExit(index_exit)));
     
     double scoreP = center - distancePE *1.5 - distanceExit *0.75 - len_path *0.75 + score_th * 4;
     return scoreP;
 }
 
-/*void PayoffMatrix::computeMove(Point2D pursuer, Point2D evader, Point2D& move_pursuer, Point2D& move_evader)
-{
-    pursuer = getNearestNode(pursuer, map.getNodes());
-    evader = getNearestNode(evader, map.getNodes());
-    Point2D path_p[KNN_MAX*KNN_MAX][2], path_e[KNN_MAX*KNN_MAX][2];
-    int possible_p=0, possible_e=0;
-    
-    //Compute possible moves for pursuer (2 forward)
-    std::vector<Point2D> temp1, temp2;
-    map.getAttachedNodes(pursuer, &temp1);
-    for(int i=0; i<(int)temp1.size(); i++)
-    {
-        map.getAttachedNodes(temp1.at(i), &temp2);
-        for(int j=0; j<(int)temp2.size(); j++)
-        {
-            path_p[possible_p][0]=temp1.at(i);
-            path_p[possible_p][1]=temp2.at(j);
-            possible_p++;
-        }
-    }
-
-    //Compute possible moves for evader (2 forward)
-    map.getAttachedNodes(evader, &temp1);
-    for(int i=0; i<(int)temp1.size(); i++)
-    {
-        map.getAttachedNodes(temp1.at(i), &temp2);
-        for(int j=0; j<(int)temp2.size(); j++)
-        {
-            path_e[possible_e][0]=temp1.at(i);
-            path_e[possible_e][1]=temp2.at(j);
-            possible_e++;
-        }
-    }
-
-    //Matrix with all possible combinations and selection of high score of evader (let evader decide with best intelligence, then compute our move)
-    double score, max_score_e=0, max_score_p=0;
-    int index_move_p, index_move_e;
-    for(int i=0; i<possible_p; i++)
-    {
-        for(int j=0; j<possible_e; j++)
-        {
-            score = scoreE(path_p[i][1], evader, path_e[j][0], path_e[j][1], map.getRoom());
-            if(score > max_score_e)
-            {
-                max_score_e = score;
-                index_move_e = j;
-            }
-        }
-    }
-    //Best move for the pursuer
-    for(int i=0; i<possible_p; i++)
-    {
-        score = scoreP(path_e[index_move_e][1], pursuer, path_p[i][0], path_p[i][1], map.getRoom());
-        if(score > max_score_p)
-        {
-            max_score_p = score;
-            index_move_p = i;
-        }
-    }
-
-    //cerr << "Moves for the pursuer: " << pursuer << " " << path_p[index_move_p][0] << " " << path_p[index_move_p][1] << " with score " << max_score_p << endl;
-    //cerr << "Moves for the evader: " << evader << " " << path_e[index_move_e][0] << " " << path_e[index_move_e][1] << " with score " << max_score_e << endl;
-
-    move_pursuer=path_p[index_move_p][0];
-    move_evader=path_e[index_move_e][0];
-}*/
-
 void PayoffMatrix::computeMove(DubinPoint pursuer, DubinPoint evader, DubinPoint& move_pursuer, DubinPoint& move_evader)
 {
     pursuer = getNearestNode(pursuer, map.getNodes());
     evader = getNearestNode(evader, map.getNodes());
-    DubinPoint path_p[KNN_MAX*KNN_MAX*8][2], path_e[KNN_MAX*KNN_MAX*8][2];
-    int possible_p=0, possible_e=0;
+    DubinPoint path_p[KNN_MAX*KNN_MAX*8][2], path_e[KNN_MAX*KNN_MAX*8][2]; 
+    Point2D path_p_points[KNN_MAX*KNN_MAX];
+    int possible_p=0, possible_e=0, possible_p_points=0;
     
     //Compute possible moves for pursuer (2 forward)
     std::vector<Point2D> temp1, temp2;
@@ -165,12 +122,15 @@ void PayoffMatrix::computeMove(DubinPoint pursuer, DubinPoint evader, DubinPoint
         map.getAttachedNodes(temp1.at(i), &temp2);
         for(int j=0; j<(int)temp2.size(); j++)
         {
+            double angle=angle_in_range(atan2(temp1.at(i).y-temp2.at(j).y, temp1.at(i).x-temp2.at(j).x));
             for(int k=0; k<8; k++)
             {
-                path_p[possible_p][0]=DubinPoint(temp1.at(i), M_PI*0.25*k);
+                path_p[possible_p][0]=DubinPoint(temp1.at(i), angle);
                 path_p[possible_p][1]=DubinPoint(temp2.at(j), M_PI*0.25*k);
                 possible_p++;
             }
+            path_p_points[possible_p_points]=temp2.at(j);
+            possible_p_points++;
         }
     }
 
@@ -181,23 +141,27 @@ void PayoffMatrix::computeMove(DubinPoint pursuer, DubinPoint evader, DubinPoint
         map.getAttachedNodes(temp1.at(i), &temp2);
         for(int j=0; j<(int)temp2.size(); j++)
         {
+            double angle=angle_in_range(atan2(temp1.at(i).y-temp2.at(j).y, temp1.at(i).x-temp2.at(j).x));
             for(int k=0; k<8; k++)
             {
-                path_e[possible_e][0]=DubinPoint(temp1.at(i), M_PI*0.25*k);
+                path_e[possible_e][0]=DubinPoint(temp1.at(i), angle);
                 path_e[possible_e][1]=DubinPoint(temp2.at(j), M_PI*0.25*k);
                 possible_e++;
             }
         }
     }
+    
+    cout << "Mat ini " << possible_e << " " << possible_p << endl;
+    clock_t now = clock();
 
     //Matrix with all possible combinations and selection of high score of evader (let evader decide with best intelligence, then compute our move)
     double score, max_score_e=0, max_score_p=0;
     int index_move_p, index_move_e;
-    for(int i=0; i<possible_p; i++)
+    for(int i=0; i<possible_p_points; i++)
     {
         for(int j=0; j<possible_e; j++)
         {
-            score = scoreE(path_p[i][1], evader, path_e[j][0], path_e[j][1], map);
+            score = scoreE(path_p_points[i], evader, path_e[j][0], path_e[j][1], map);
             if(score > max_score_e)
             {
                 max_score_e = score;
@@ -205,16 +169,23 @@ void PayoffMatrix::computeMove(DubinPoint pursuer, DubinPoint evader, DubinPoint
             }
         }
     }
+
+    cout << "ScoreE= " << (clock()-now)/(double)CLOCKS_PER_SEC << endl;
+    now = clock();
+
     //Best move for the pursuer
     for(int i=0; i<possible_p; i++)
     {
-        score = scoreP(path_e[index_move_e][1], pursuer, path_p[i][0], path_p[i][1], map);
+        score = scoreP(path_e[index_move_e][1].get_point(), pursuer, path_p[i][0], path_p[i][1], map);
         if(score > max_score_p)
         {
             max_score_p = score;
             index_move_p = i;
         }
     }
+
+    cout << "ScoreP= " << (clock()-now)/(double)CLOCKS_PER_SEC << endl;
+    
 
     //cerr << "Moves for the pursuer: " << pursuer << " " << path_p[index_move_p][0] << " " << path_p[index_move_p][1] << " with score " << max_score_p << endl;
     //cerr << "Moves for the evader: " << evader << " " << path_e[index_move_e][0] << " " << path_e[index_move_e][1] << " with score " << max_score_e << endl;
