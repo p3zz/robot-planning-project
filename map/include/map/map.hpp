@@ -41,7 +41,7 @@ class Room
 
 class RoadMap
 {
-    private: 
+    private:
         Room r;
         std::vector<Point2D> nodes;
         std::vector<Segment> links;
@@ -54,7 +54,7 @@ class RoadMap
         std::vector<Segment> getLinks(){return links;}
         std::vector<DubinLink> get_curves(){return dubin_links;}
         void getAttachedNodes(Point2D node, std::vector<Point2D> *attached_nodes);
-        DubinLink get_dubin_link(Point2D p1, Point2D p2, double th1, double th2);
+        DubinLink get_dubin_link(DubinPoint dp1, DubinPoint dp2);
         Room& getRoom(){return r;}
         std::string getJson();
 };

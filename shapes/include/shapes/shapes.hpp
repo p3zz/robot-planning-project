@@ -55,6 +55,7 @@ class Polygon{
         int get_size(){return vertexes.size();}
 };
 
+Point2D avg_point(Point2D p1, Point2D p2);
 Circle get_circle(Point2D p1, Point2D p2, Point2D p3);
 bool intersect(Segment s1, Segment s2);
 bool intersect(Segment s1, Segment s2, double& t_s1, double& t_s2);

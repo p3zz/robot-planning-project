@@ -318,3 +318,8 @@ Polygon regular_polygon(Point2D center, double radius, int n){
     }
     return p;
 }
+
+Point2D avg_point(Point2D p1, Point2D p2)
+{
+    return Point2D((p1.x+p2.x)/2, (p1.y+p2.y)/2);
+}

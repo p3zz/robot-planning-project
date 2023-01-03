@@ -232,10 +232,10 @@ void RoadMap::getAttachedNodes(Point2D node, std::vector<Point2D> *attached_link
     }
 }
 
-DubinLink RoadMap::get_dubin_link(Point2D p1, Point2D p2, double th1, double th2)
+DubinLink RoadMap::get_dubin_link(DubinPoint dp1, DubinPoint dp2)
 {
     for(int i=0; i<(int)dubin_links.size(); i++)
-        if(dubin_links[i].get_src() == DubinPoint(p1.x, p1.y, th1) && dubin_links[i].get_dst() == DubinPoint(p2.x, p2.y, th2))
+        if(dubin_links[i].get_src() == dp1 && dubin_links[i].get_dst() == dp2)
             return dubin_links[i];
     return DubinLink();
 }

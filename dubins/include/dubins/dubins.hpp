@@ -44,8 +44,12 @@ class DubinPoint{
 
         DubinPoint():x{0},y{0},th{0}{}
         DubinPoint(double x, double y, double th):x{x},y{y},th{th}{}
+        DubinPoint(Point2D p, double th):x{p.x},y{p.y},th{th}{}
 
-        friend bool operator== (const DubinPoint& first, const DubinPoint& second) {return first.x == second.x && first.y == second.y && first.th == second.th;}
+        Point2D get_point(){return Point2D(x,y);}
+
+        friend bool operator== (const DubinPoint& first, const DubinPoint& second) {return first.x == second.x && first.y == second.y && first.th <= second.th*1.03 && first.th >= second.th*0.97;}
+        friend std::ostream& operator<<(std::ostream& os, const DubinPoint& dp){return os<<"("<<dp.x<<";"<<dp.y<<";"<<(int)(dp.th*360/M_PI)<<")";}
 };
 
 // arc (portion of dubin curve)

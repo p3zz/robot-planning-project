@@ -13,7 +13,7 @@ class PayoffMatrix
         RoadMap map;
         Point2D pursuer, evader;
         PayoffMatrix(RoadMap map):map{map}{}
-        void computeMove(Point2D pursuer, Point2D evader, Point2D& move_pursuer, Point2D& move_evader); //depth=2
+        void computeMove(DubinPoint pursuer, DubinPoint evader, DubinPoint& move_pursuer, DubinPoint& move_evader); //depth=2
 };
 
 Point2D getNearestNode(Point2D position, std::vector<Point2D> nodes);

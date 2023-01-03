@@ -124,9 +124,9 @@ class MinimalPublisher : public rclcpp::Node
 
 int main(int argc, char * argv[])
 {
-  rclcpp::init(argc, argv);
+  /*rclcpp::init(argc, argv);
   rclcpp::spin(std::make_shared<MinimalPublisher>());
-  rclcpp::shutdown();
+  rclcpp::shutdown();*/
   srand(time(NULL));
   Room room(10,10);
   random_obstacles_side(&room, 4, 200);
@@ -142,9 +142,13 @@ int main(int argc, char * argv[])
   }
   else
     cerr<<"Error k"<<endl;
-  PayoffMatrix mat(map);
-
   
-  simulate(getNearestNode(Point2D(2,8), map.getNodes()), getNearestNode(Point2D(9,1), map.getNodes()), mat);
+  cout<<"Payoff mat" << endl;
+  PayoffMatrix mat(map);
+  DubinPoint p, e;
+  mat.computeMove(DubinPoint(2,8,M_PI*1.75), DubinPoint(8,2,M_PI*0.75), p, e);
+  cout << p << " " << e << endl;
+  
+  //simulate(getNearestNode(Point2D(2,8), map.getNodes()), getNearestNode(Point2D(9,1), map.getNodes()), mat);
   return 0;
 }
