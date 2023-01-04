@@ -20,6 +20,8 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(custom_msgs
   "msg/ObstacleMsg.msg"
   "msg/ObstacleArrayMsg.msg"
+  "msg/Edges.msg"
+  "msg/GeometryGraph.msg"
   DEPENDENCIES builtin_interfaces geometry_msgs std_msgs
 )
 
