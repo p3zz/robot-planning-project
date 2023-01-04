@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(obstacles_msgs)
+project(custom_msgs)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
@@ -17,7 +17,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
-rosidl_generate_interfaces(obstacles_msgs
+rosidl_generate_interfaces(custom_msgs
   "msg/ObstacleMsg.msg"
   "msg/ObstacleArrayMsg.msg"
   DEPENDENCIES builtin_interfaces geometry_msgs std_msgs

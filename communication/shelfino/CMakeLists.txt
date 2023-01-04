@@ -8,10 +8,10 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(obstacles_msgs REQUIRED)
+find_package(custom_msgs REQUIRED)
 
 add_executable(obstacles src/obstacles.cpp)
-ament_target_dependencies(obstacles rclcpp obstacles_msgs)
+ament_target_dependencies(obstacles rclcpp custom_msgs)
 
 install(TARGETS
   obstacles
