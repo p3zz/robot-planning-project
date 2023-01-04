@@ -13,6 +13,9 @@ find_package(custom_msgs REQUIRED)
 add_executable(obstacles src/obstacles.cpp)
 ament_target_dependencies(obstacles rclcpp custom_msgs)
 
+add_executable(roadmap src/roadmap.cpp)
+ament_target_dependencies(roadmap rclcpp custom_msgs)
+
 install(TARGETS
   obstacles
   DESTINATION lib/${PROJECT_NAME})
