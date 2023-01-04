@@ -1,0 +1,2 @@
+std_msgs/Header header
+shelfino_communication/ObstacleMsg[] obstacles
