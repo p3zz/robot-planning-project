@@ -9,9 +9,11 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(custom_msgs REQUIRED)
+find_package(shapes REQUIRED)
+find_package(utils REQUIRED)
 
 add_executable(obstacles src/obstacles.cpp)
-ament_target_dependencies(obstacles rclcpp custom_msgs)
+ament_target_dependencies(obstacles rclcpp custom_msgs shapes utils)
 
 add_executable(roadmap src/roadmap.cpp)
 ament_target_dependencies(roadmap rclcpp custom_msgs)
