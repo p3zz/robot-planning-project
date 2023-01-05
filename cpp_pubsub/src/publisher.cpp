@@ -143,11 +143,11 @@ int main(int argc, char * argv[])
   else
     cerr<<"Error k"<<endl;
   
-  cout<<"Payoff mat" << endl;
   PayoffMatrix mat(map);
-  DubinPoint p, e;
+  Path p, e;
   mat.computeMove(DubinPoint(2,8,M_PI*1.75), DubinPoint(8,2,M_PI*0.75), p, e);
-  cout << p << " " << e << endl;
+
+  cout << p << endl << e << endl;
   
   //simulate(getNearestNode(Point2D(2,8), map.getNodes()), getNearestNode(Point2D(9,1), map.getNodes()), mat);
   return 0;

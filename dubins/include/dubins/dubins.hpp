@@ -64,6 +64,8 @@ class DubinArc {
 
         DubinPoint get_dest();
         std::vector<DubinPoint> to_points(int n_points);
+
+        friend std::ostream& operator<<(std::ostream& os, const DubinArc& da){return os<<(da.k==-1?"R":(da.k==1?"L":"S"));}
 };
 
 class DubinCurve {
@@ -84,6 +86,8 @@ class DubinCurve {
         }
 
         std::vector<DubinPoint> to_points(int n);
+
+        friend std::ostream& operator<<(std::ostream& os, const DubinCurve& dc){return os<<dc.arcs.at(0)<<dc.arcs.at(1)<<dc.arcs.at(2);}
 };
 
 class DubinLink{
