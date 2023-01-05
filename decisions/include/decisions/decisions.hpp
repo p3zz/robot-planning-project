@@ -30,7 +30,6 @@ class PayoffMatrix
         bool computeMove(DubinPoint pursuer, DubinPoint evader, Path& path_pursuer, Path& path_evader); //depth=2
 };
 
-Point2D getNearestNode(Point2D position, std::vector<Point2D> nodes);
-void simulate(Point2D pursuer_pos, Point2D evader_pos, PayoffMatrix decision);
+std::string get_path_json(Path& path_pursuer, Path& path_evader, double precision);
 
 #endif

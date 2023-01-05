@@ -33,6 +33,11 @@ std::vector<DubinPoint> DubinCurve::to_points(int n){
     return points;
 }
 
+std::vector<DubinPoint> DubinCurve::to_points_homogeneus(double sens)
+{
+    return to_points((int)(get_length()/sens)+1);
+}
+
 // returns a vector of n points that approximates the arc
 std::vector<DubinPoint> DubinArc::to_points(int n){
     std::vector<DubinPoint> points;

@@ -86,6 +86,7 @@ class DubinCurve {
         }
 
         std::vector<DubinPoint> to_points(int n);
+        std::vector<DubinPoint> to_points_homogeneus(double sens);
 
         friend std::ostream& operator<<(std::ostream& os, const DubinCurve& dc){return os<<dc.arcs.at(0)<<dc.arcs.at(1)<<dc.arcs.at(2);}
 };
