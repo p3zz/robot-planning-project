@@ -74,7 +74,7 @@ std::vector<geometry_msgs::msg::PoseStamped> dubin_points_to_poses(DubinPoint st
 
   //dubins
   DubinCurve curve = dubins_shortest_path(start, end);
-  auto trajectory = curve.to_points(50);
+  auto trajectory = curve.to_points_homogeneous(0.2);
   std::cout<<trajectory.size()<<std::endl;
 
   for(auto p:trajectory){
@@ -98,8 +98,8 @@ class MinimalPublisher : public rclcpp::Node
     MinimalPublisher()
     : Node("minimal_publisher"), count_(0)
     {
-      DubinPoint p_start(0.0, 0.0, M_PI/4);
-      DubinPoint p_end(5.0, -2.0, M_PI);
+      DubinPoint p_start(1, 1, M_PI/2);
+      DubinPoint p_end(0, 0,  M_PI/2);
       auto arc_poses = dubin_points_to_poses(p_start, p_end, this->get_clock()->now());
       nav_msgs::msg::Path path;
       path.header.stamp = this->get_clock()->now();
@@ -124,9 +124,9 @@ class MinimalPublisher : public rclcpp::Node
 
 int main(int argc, char * argv[])
 {
-  /*rclcpp::init(argc, argv);
+  rclcpp::init(argc, argv);
   rclcpp::spin(std::make_shared<MinimalPublisher>());
-  rclcpp::shutdown();*/
+  rclcpp::shutdown();
   
   //Construct random room
   srand(time(NULL));
