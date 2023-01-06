@@ -132,10 +132,9 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
                 links.push_back(Segment(Point2D(node.x,node.y),Point2D(node_knn[j].x, node_knn[j].y)));      
     }
 
-    
-
+    auto obstacles = r.get_inflated_obstacles();
     //Create Dubins Curves
-    for(auto link: links){
+    for(auto &link: links){
         std::vector<DubinLink> d_links;
         // compute every dubins curve for each M_PI/4 
         double step = M_PI * 0.25;
@@ -145,9 +144,9 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
                 DubinPoint node2(link.node2.x, link.node2.y, th_dst);
                 // compute dubins from node1 to node2
                 auto curves = dubin_curves(node1, node2);
-                for(auto curve: curves){
+                for(auto &curve: curves){
                     bool inter = false;
-                    for(auto ob: r.get_obstacles()){
+                    for(auto &ob: obstacles){
                         if(intersect(curve, ob)){
                             inter = true;
                             break;
@@ -162,9 +161,9 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
 
                 // compute dubins from node2 to node1
                 curves = dubin_curves(node2, node1);
-                for(auto curve: curves){
+                for(auto &curve: curves){
                     bool inter = false;
-                    for(auto ob: r.get_obstacles()){
+                    for(auto &ob: obstacles){
                         if(intersect(curve, ob)){
                             inter = true;
                             break;
