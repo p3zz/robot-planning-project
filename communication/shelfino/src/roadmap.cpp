@@ -9,7 +9,18 @@
 
 using namespace std::chrono_literals;
 
-
+// custom_msgs::msg::GeometryGraph graph_from_roadmap(RoadMap map){
+//   std_msgs::Header h;
+//   const int nodes_len = (int)map.nodes.size();
+//   geometry_msgs::Point nodes[nodes_len];
+//   custom_msgs::msg::Edges edges[nodes_len];
+//   for(int i = 0; i < nodes_len; i++){
+//     auto node = map.nodes.at(i);
+//     nodes[i] = geometry_msgs::Point(node.x, node.y, 0);
+//     std::vector<Point2D> neighbors;
+    
+//   }
+// }
 
 class MinimalPublisher : public rclcpp::Node
 {
