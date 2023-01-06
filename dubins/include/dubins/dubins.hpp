@@ -13,9 +13,8 @@
 
 #define DEBUG_MOBILE true
 
-#define MAX_LENGTH_TRAJ 500.0 // 100 meter max
-// #define PRECISION_TRAJ 100.0  // cms precision
-#define CURV_MAX 1.0          // max curvature
+#define MAX_LENGTH_TRAJ 500.0 // traj meter max
+#define CURV_MAX 1.0          // max meter curvature
 
 #define DOUBLE_MAX 1.79769e+308
 
@@ -86,6 +85,7 @@ class DubinCurve {
         }
 
         std::vector<DubinPoint> to_points(int n);
+        std::vector<DubinPoint> to_points_homogeneus(double sens);
 
         friend std::ostream& operator<<(std::ostream& os, const DubinCurve& dc){return os<<dc.arcs.at(0)<<dc.arcs.at(1)<<dc.arcs.at(2);}
 };

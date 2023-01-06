@@ -127,11 +127,15 @@ int main(int argc, char * argv[])
   /*rclcpp::init(argc, argv);
   rclcpp::spin(std::make_shared<MinimalPublisher>());
   rclcpp::shutdown();*/
+  
+  //Construct random room
   srand(time(NULL));
   Room room(10,10);
   random_obstacles_side(&room, 4, 200);
   room.addExit(Point2D(0,2));
   room.addExit(Point2D(8,10));
+
+  //Construct roadmap
   RoadMap map(room);
   if(map.constructRoadMap(60, 4, 0.5, 500)) //knn=4 is the best choice (up, down, left and right in the ideal case)
   {
@@ -143,12 +147,15 @@ int main(int argc, char * argv[])
   else
     cerr<<"Error k"<<endl;
   
+  //Construct Payoff Matrix
   PayoffMatrix mat(map);
   Path p, e;
   mat.computeMove(DubinPoint(2,8,M_PI*1.75), DubinPoint(8,2,M_PI*0.75), p, e);
 
-  cout << p << endl << e << endl;
-  
-  //simulate(getNearestNode(Point2D(2,8), map.getNodes()), getNearestNode(Point2D(9,1), map.getNodes()), mat);
+  ofstream myfile;
+  myfile.open("moves.json", std::ofstream::trunc);
+  myfile << get_path_json(p, e, 0.05);
+  myfile.close();
+
   return 0;
 }

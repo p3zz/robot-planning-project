@@ -111,8 +111,6 @@ bool PayoffMatrix::computeMove(DubinPoint pursuer, DubinPoint evader, Path& path
     std::vector<Path> path_p, path_e;
     std::vector<Point2D> possible_p;
 
-    clock_t now = clock();
-
     //Compute possible moves for pursuer (2 forward)
     std::vector<Point2D> temp1, temp2;
     map.getAttachedNodes(pursuer.get_point(), &temp1);
@@ -201,112 +199,83 @@ bool PayoffMatrix::computeMove(DubinPoint pursuer, DubinPoint evader, Path& path
     path_pursuer=path_p.at(index_move_p);
     path_evader=path_e.at(index_move_e);
 
-
-    cout << "Completed in " << ((clock()-now)/(double)CLOCKS_PER_SEC)*1000 << " ms" << endl;
-
-    ofstream myfile;
-    myfile.open ("moves.json", std::ofstream::trunc);
-    myfile << "{\"moves\":[{\"pursuer\":{\"x\":"<<pursuer.x<<",\"y\":"<<pursuer.y<<"},\"evader\":{\"x\":"<<evader.x<<",\"y\":"<<evader.y<<"}},";
-    myfile <<             "{\"pursuer\":{\"x\":"<<path_p.at(index_move_p).p1.x<<",\"y\":"<<path_p.at(index_move_p).p1.y<<"},\"evader\":{\"x\":"<<path_e.at(index_move_e).p1.x<<",\"y\":"<<path_e.at(index_move_e).p1.y<<"}},";
-    myfile <<             "{\"pursuer\":{\"x\":"<<path_p.at(index_move_p).p2.x<<",\"y\":"<<path_p.at(index_move_p).p2.y<<"},\"evader\":{\"x\":"<<path_e.at(index_move_e).p2.x<<",\"y\":"<<path_e.at(index_move_e).p2.y<<"}}]}";
-    myfile.close();
-
     return true;
 }
 
-
-
-
-double moves_robots(Point2D pursuer_0, Point2D pursuer_1, Point2D evader_0, Point2D evader_1, Point2D& pursuer_final, Point2D& evader_final)
+std::string get_path_json(Path& path_pursuer, Path& path_evader, double precision)
 {
-    double t_s1, t_s2;
-    if(intersect(Segment(pursuer_0, pursuer_1), Segment(evader_0, evader_1), t_s1, t_s2))
-    {
-        pursuer_final.x = (pursuer_1.x-pursuer_0.x)*t_s1+pursuer_0.x;
-        pursuer_final.y = (pursuer_1.y-pursuer_0.y)*t_s1+pursuer_0.y;
-        evader_final = pursuer_final;
-        double tp=distance(pursuer_0, pursuer_final)/ROBOT_VELOCITY;
-        double te=distance(evader_0, evader_final)/ROBOT_VELOCITY;
-        return tp>te?tp:te;
-    }
-    else
-    {
-        double tp=distance(pursuer_0, pursuer_1)/ROBOT_VELOCITY;
-        double te=distance(evader_0, evader_1)/ROBOT_VELOCITY;
-        if(tp>te)
-        {
-            evader_final = evader_1;
-            pursuer_final.x = (pursuer_1.x-pursuer_0.x)*(te/tp) + pursuer_0.x; 
-            pursuer_final.y = (pursuer_1.y-pursuer_0.y)*(te/tp) + pursuer_0.y; 
-            return te;
-        }
-        else
-        {
-            pursuer_final = pursuer_1;
-            evader_final.x = (evader_1.x-evader_0.x)*(tp/te) + evader_0.x; 
-            evader_final.y = (evader_1.y-evader_0.y)*(tp/te) + evader_0.y; 
-            return tp;
-        }
-    }
-}
+    std::string s;
 
-void simulate(Point2D pursuer_pos, Point2D evader_pos, PayoffMatrix decision)
-{
-    ofstream myfile;
-    myfile.open ("moves.json", std::ofstream::trunc);
-    myfile<<"{\"moves\":[{\"pursuer\":{\"x\":"<<pursuer_pos.x<<",\"y\":"<<pursuer_pos.y<<"},\"evader\":{\"x\":"<<evader_pos.x<<",\"y\":"<<evader_pos.y<<"}}";
-    Point2D pursuer_1, evader_1, pursuer_half, evader_half, throw_pos;
-    bool end=false;
-    int next_move=0, count=0;
-    double t=0;
-    while(!end && count < 200)
+    s += "{";
+
+    std::vector<DubinPoint> points = path_pursuer.l1.get_curve().to_points_homogeneus(precision);
+    s +=    "\"moves_pursuer\":";
+    s +=        "[";
+    for(int i=0; i<(int)points.size(); i++)
     {
-        switch(next_move)
-        {
-            case 1:
-                //decision.computeMove(pursuer_pos, evader_1, pursuer_1, throw_pos);
-                break;
-            case 2:
-                //decision.computeMove(pursuer_1, evader_pos, throw_pos, evader_1);
-                break;
-            default:
-                //decision.computeMove(pursuer_pos, evader_pos, pursuer_1, evader_1);
-                break;
-        }
-        
-        t+=moves_robots(pursuer_pos, pursuer_1, evader_pos, evader_1, pursuer_half, evader_half);
-        myfile << ",{\"pursuer\":{\"x\":"<<pursuer_half.x<<",\"y\":"<<pursuer_half.y<<"},\"evader\":{\"x\":"<<evader_half.x<<",\"y\":"<<evader_half.y<<"}}";
-        
-        if(pursuer_half == evader_half) //case intersection
-        {
-            end=true;
-            cout << "Pursuer reach evader position! YOU WIN" << endl;
-        }
-        else if(pursuer_half == pursuer_1) //pursuer completed the move
-        {
-            /*if(pursuer_half == evader_1)
-            {
-                end=true;
-                cout << "Pursuer reach evader position! YOU WIN" << endl;
-            }*/
-            next_move=1;
-            pursuer_pos=pursuer_1;
-            evader_pos=evader_half;
-        }
-        else //evader completed the move
-        {
-            for(int i=0; i<decision.map.getRoom().getNumExits(); i++)
-                if(evader_half==decision.map.getRoom().getExit(i))
-                {
-                    end=true;
-                    cout << "Evader evaded from the room! YOU LOSE" << endl;
-                }
-            next_move=2;
-            evader_pos=evader_1;
-            pursuer_pos=pursuer_half;
-        }
-        count++;
+    s +=            "{";
+    s +=                "\"x\":"+to_string(points.at(i).x)+",";
+    s +=                "\"y\":"+to_string(points.at(i).y)+",";
+    s +=                "\"marked\": false";
+    s +=            "},";
     }
-    myfile << "]}";
-    cout << "total time: " << t << endl;
+    points.clear();
+    points = path_pursuer.l2.get_curve().to_points_homogeneus(precision);
+    s +=            "{";
+    s +=                "\"x\":"+to_string(path_pursuer.p1.x)+",";
+    s +=                "\"y\":"+to_string(path_pursuer.p1.y)+",";
+    s +=                "\"marked\": true";
+    s +=            "},";
+    for(int i=0; i<(int)points.size(); i++)
+    {
+    s +=            "{";
+    s +=                "\"x\":"+to_string(points.at(i).x)+",";
+    s +=                "\"y\":"+to_string(points.at(i).y)+",";
+    s +=                "\"marked\": false";
+    s +=            "},";
+    }
+    s +=            "{";
+    s +=                "\"x\":"+to_string(path_pursuer.p2.x)+",";
+    s +=                "\"y\":"+to_string(path_pursuer.p2.y)+",";
+    s +=                "\"marked\": true";
+    s +=            "}";
+    s +=        "],";
+    
+    points.clear();
+    points = path_evader.l1.get_curve().to_points_homogeneus(precision);
+    s +=    "\"moves_evader\":";
+    s +=        "[";
+    for(int i=0; i<(int)points.size(); i++)
+    {
+    s +=            "{";
+    s +=                "\"x\":"+to_string(points.at(i).x)+",";
+    s +=                "\"y\":"+to_string(points.at(i).y)+",";
+    s +=                "\"marked\": false";
+    s +=            "},";
+    }
+    points.clear();
+    points = path_evader.l2.get_curve().to_points_homogeneus(precision);
+    s +=            "{";
+    s +=                "\"x\":"+to_string(path_evader.p1.x)+",";
+    s +=                "\"y\":"+to_string(path_evader.p1.y)+",";
+    s +=                "\"marked\": true";
+    s +=            "},";
+    for(int i=0; i<(int)points.size(); i++)
+    {
+    s +=            "{";
+    s +=                "\"x\":"+to_string(points.at(i).x)+",";
+    s +=                "\"y\":"+to_string(points.at(i).y)+",";
+    s +=                "\"marked\": false";
+    s +=            "},";
+    }
+    s +=            "{";
+    s +=                "\"x\":"+to_string(path_evader.p2.x)+",";
+    s +=                "\"y\":"+to_string(path_evader.p2.y)+",";
+    s +=                "\"marked\": true";
+    s +=            "}";
+    s +=        "]";
+
+    s += "}";
+
+    return s;   
 }

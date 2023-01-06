@@ -3,6 +3,9 @@ from os.path import exists
 import json
 
 def main():
+
+    ## Map & Roadmap ##
+
     f = open('map.json')
     data = json.load(f)
     f.close()
@@ -47,61 +50,71 @@ def main():
         c.setWidth(2)
         c.draw(win)
 
+    ## Moves ##
+
     if exists('moves.json'):
         f2 = open('moves.json')
         data = json.load(f2)
         f2.close()
-        moves = data["moves"]
-        lst_pursuer_x=moves[0]["pursuer"]["x"]*100
-        lst_pursuer_y=hRcm-moves[0]["pursuer"]["y"]*100
-        c = Circle(Point(lst_pursuer_x, lst_pursuer_y), 10)
+        moves_purser = data["moves_pursuer"]
+        moves_evader = data["moves_evader"]
+        
+        index=1
+        lst_x=moves_purser[0]["x"]*100
+        lst_y=hRcm-moves_purser[0]["y"]*100
+        c = Circle(Point(lst_x, lst_y), 10)
         c.setFill("yellow")
         c.draw(win)
-        t=Text(Point(lst_pursuer_x, lst_pursuer_y+3), "0")
-        t.setSize(14)
+        t=Text(Point(lst_x, lst_y+2), "0")
+        t.setSize(12)
         t.draw(win)
-        lst_evader_x=moves[0]["evader"]["x"]*100
-        lst_evader_y=hRcm-moves[0]["evader"]["y"]*100
-        c = Circle(Point(lst_evader_x, lst_evader_y), 10)
+        for move in moves_purser[1:]:
+            act_x=move["x"]*100
+            act_y=hRcm-move["y"]*100
+            l = Line(Point(lst_x, lst_y), Point(act_x, act_y))
+            if(move["marked"]):
+                c = Circle(Point(act_x, act_y), 8)
+                c.setFill("yellow")
+                c.draw(win)
+            l.setFill("yellow")
+            l.setWidth(2)
+            l.draw(win)
+            if(move["marked"]):
+                t=Text(Point(act_x, act_y+2), str(index))
+                t.setSize(12)
+                t.draw(win)
+                index+=1
+            lst_x=act_x
+            lst_y=act_y
+
+        index=1
+        lst_x=moves_evader[0]["x"]*100
+        lst_y=hRcm-moves_evader[0]["y"]*100
+        c = Circle(Point(lst_x, lst_y), 10)
         c.setFill("red")
         c.draw(win)
-        t=Text(Point(lst_evader_x, lst_evader_y+3), "0")
-        t.setSize(14)
+        t=Text(Point(lst_x, lst_y+2), "0")
+        t.setSize(12)
         t.draw(win)
-        index=1
-        for move in moves[1:]:
-
-            act_pursuer_x=move["pursuer"]["x"]*100
-            act_pursuer_y=hRcm-move["pursuer"]["y"]*100
-            c = Circle(Point(act_pursuer_x, act_pursuer_y), 8)
-            c.setFill("yellow")
-            c.draw(win)
-            l = Line(Point(lst_pursuer_x, lst_pursuer_y), Point(act_pursuer_x, act_pursuer_y))
-            l.setArrow("last")
-            l.setFill("yellow4")
+        for move in moves_evader[1:]:
+            act_x=move["x"]*100
+            act_y=hRcm-move["y"]*100
+            l = Line(Point(lst_x, lst_y), Point(act_x, act_y))
+            if(move["marked"]):
+                c = Circle(Point(act_x, act_y), 8)
+                c.setFill("red")
+                c.draw(win)
+            l.setFill("red")
+            l.setWidth(2)
             l.draw(win)
-            t=Text(Point(act_pursuer_x, act_pursuer_y+2), str(index))
-            t.setSize(12)
-            t.draw(win)
-            lst_pursuer_x=act_pursuer_x
-            lst_pursuer_y=act_pursuer_y
-
-            act_evader_x=move["evader"]["x"]*100
-            act_evader_y=hRcm-move["evader"]["y"]*100
-            c = Circle(Point(act_evader_x, act_evader_y), 8)
-            c.setFill("red")
-            c.draw(win)
-            l = Line(Point(lst_evader_x, lst_evader_y), Point(act_evader_x, act_evader_y))
-            l.setArrow("last")
-            l.setFill("red4")
-            l.draw(win)
-            t=Text(Point(act_evader_x, act_evader_y+2), str(index))
-            t.setSize(12)
-            t.draw(win)
-            lst_evader_x=act_evader_x
-            lst_evader_y=act_evader_y
-
-            index+=1
+            if(move["marked"]):
+                t=Text(Point(act_x, act_y+2), str(index))
+                t.setSize(12)
+                t.draw(win)
+                index+=1
+            lst_x=act_x
+            lst_y=act_y
+            
         
     keyString = ""
     while keyString!="q":
