@@ -208,7 +208,7 @@ std::string get_path_json(Path& path_pursuer, Path& path_evader, double precisio
 
     s += "{";
 
-    std::vector<DubinPoint> points = path_pursuer.l1.get_curve().to_points_homogeneus(precision);
+    std::vector<DubinPoint> points = path_pursuer.l1.get_curve().to_points_homogeneous(precision);
     s +=    "\"moves_pursuer\":";
     s +=        "[";
     for(int i=0; i<(int)points.size(); i++)
@@ -220,7 +220,7 @@ std::string get_path_json(Path& path_pursuer, Path& path_evader, double precisio
     s +=            "},";
     }
     points.clear();
-    points = path_pursuer.l2.get_curve().to_points_homogeneus(precision);
+    points = path_pursuer.l2.get_curve().to_points_homogeneous(precision);
     s +=            "{";
     s +=                "\"x\":"+to_string(path_pursuer.p1.x)+",";
     s +=                "\"y\":"+to_string(path_pursuer.p1.y)+",";
@@ -242,7 +242,7 @@ std::string get_path_json(Path& path_pursuer, Path& path_evader, double precisio
     s +=        "],";
     
     points.clear();
-    points = path_evader.l1.get_curve().to_points_homogeneus(precision);
+    points = path_evader.l1.get_curve().to_points_homogeneous(precision);
     s +=    "\"moves_evader\":";
     s +=        "[";
     for(int i=0; i<(int)points.size(); i++)
@@ -254,7 +254,7 @@ std::string get_path_json(Path& path_pursuer, Path& path_evader, double precisio
     s +=            "},";
     }
     points.clear();
-    points = path_evader.l2.get_curve().to_points_homogeneus(precision);
+    points = path_evader.l2.get_curve().to_points_homogeneous(precision);
     s +=            "{";
     s +=                "\"x\":"+to_string(path_evader.p1.x)+",";
     s +=                "\"y\":"+to_string(path_evader.p1.y)+",";

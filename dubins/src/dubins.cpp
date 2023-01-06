@@ -2,9 +2,51 @@
 
 using namespace std;
 
-std::vector<DubinPoint> DubinCurve::to_points_homogeneus(double sens)
-{
-    return to_points((int)(get_length()/sens)+1);
+// returns a vector containing the approximation of a dubin curve
+// using n points. If a straight arc is found inside the curve,
+// its points will compose the 10% of the total points.
+// Points that compose a curve arc will be proportional to
+// the length of the arc inside the curve 
+std::vector<DubinPoint> DubinCurve::to_points(int n){
+    std::vector<DubinPoint> points;
+    // s_coeff is for straight line
+    double const s_coeff = 0.1;
+    double curves_length = get_length();
+    for(auto arc:arcs){
+        // search for a straight arc (there can be max 1 per curve).
+        // if so, reduce the available points for the curves by an amount
+        // equal to the number of points dedicated to the straight arc
+        if(arc.k == 0){
+            n -= (s_coeff * n);
+            curves_length -= arc.length;
+        }
+    }
+    for(auto arc:arcs){
+        double coeff = arc.k == 0 ? s_coeff : (arc.length / curves_length);
+        int arc_points_n = round(coeff * n);
+        auto arc_points = arc.to_points(arc_points_n);
+        // remove first element from every set of points to avoid duplicates
+        // arc_points.erase(arc_points.begin());
+        points.insert(points.end(), arc_points.begin(), arc_points.end());
+    }
+
+    return points;
+}
+
+
+std::vector<DubinPoint> DubinCurve::to_points_homogeneous(double sens){
+    std::vector<DubinPoint> points;
+    for(auto arc:arcs){
+        auto arc_points = arc.to_points_homogeneous(sens);
+        points.insert(points.end(), arc_points.begin(), arc_points.end());
+    }
+    return points;
+}
+
+std::vector<DubinPoint> DubinArc::to_points_homogeneous(double sens){
+    std::vector<DubinPoint> points;
+    int const n_points = round(this->length / sens);  
+    return to_points(n_points);
 }
 
 // returns a vector of n points that approximates the arc
@@ -305,6 +347,12 @@ bool intersect(DubinCurve c, Segment s){
 }
 
 bool intersect(DubinCurve c, Polygon p){
+    Point2D src(c.arcs[0].source.x, c.arcs[0].source.y);
+    Point2D mid(c.arcs[1].source.x, c.arcs[1].source.y);
+    Point2D dst(c.arcs[2].source.x, c.arcs[2].source.y);
+    if(p.contains(src) || p.contains(mid) || p.contains(dst)){
+        return true;
+    }
     for(auto side: p.get_sides()){
         if(intersect(c, side)){
             return true;
@@ -313,7 +361,8 @@ bool intersect(DubinCurve c, Polygon p){
     return false;
 }
 
-
+// check the intersection between a dubin curve and a polygon,
+// but the curve is approximated by a sequence of n points
 bool intersect(DubinCurve c, Polygon p, int n){
     std::vector<Segment> segments;
     auto points = c.to_points(n);
