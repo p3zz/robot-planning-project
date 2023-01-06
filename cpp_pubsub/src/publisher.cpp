@@ -74,7 +74,7 @@ std::vector<geometry_msgs::msg::PoseStamped> dubin_points_to_poses(DubinPoint st
 
   //dubins
   DubinCurve curve = dubins_shortest_path(start, end);
-  auto trajectory = curve.to_points_homogeneous(0.2);
+  auto trajectory = curve.to_points_homogeneous(0.1);
   std::cout<<trajectory.size()<<std::endl;
 
   for(auto p:trajectory){
@@ -98,8 +98,8 @@ class MinimalPublisher : public rclcpp::Node
     MinimalPublisher()
     : Node("minimal_publisher"), count_(0)
     {
-      DubinPoint p_start(1, 1, M_PI/2);
-      DubinPoint p_end(0, 0,  M_PI/2);
+      DubinPoint p_start(0, 0, M_PI * 0.25);
+      DubinPoint p_end(5, -2,  M_PI);
       auto arc_poses = dubin_points_to_poses(p_start, p_end, this->get_clock()->now());
       nav_msgs::msg::Path path;
       path.header.stamp = this->get_clock()->now();
@@ -124,11 +124,11 @@ class MinimalPublisher : public rclcpp::Node
 
 int main(int argc, char * argv[])
 {
-  rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<MinimalPublisher>());
-  rclcpp::shutdown();
+  // rclcpp::init(argc, argv);
+  // rclcpp::spin(std::make_shared<MinimalPublisher>());
+  // rclcpp::shutdown();
   
-  //Construct random room
+  // Construct random room
   srand(time(NULL));
   Room room(10,10);
   random_obstacles_side(&room, 4, 200);
@@ -151,6 +151,7 @@ int main(int argc, char * argv[])
   PayoffMatrix mat(map);
   Path p, e;
   mat.computeMove(DubinPoint(2,8,M_PI*1.75), DubinPoint(8,2,M_PI*0.75), p, e);
+  mat.computeMove(DubinPoint(8,2,M_PI*0.75), DubinPoint(4,6,M_PI*0.75), p, e);
 
   ofstream myfile;
   myfile.open("moves.json", std::ofstream::trunc);

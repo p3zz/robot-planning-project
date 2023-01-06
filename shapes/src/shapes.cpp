@@ -63,6 +63,7 @@ bool intersect(Circle circle, Segment s, Point2D start, Point2D end){
     double start_angle = circle.get_angle(start);
     double end_angle = circle.get_angle(end);
 
+
     // TODO optimize the for loop in case that t1 and t2 are bounded and equals 
 
     bool intersected = false;
@@ -115,7 +116,7 @@ Point2D Segment::get_interceptor(double t){
 }
 
 double Circle::get_angle(Point2D p){
-    return atan2(p.y - c.y, p.x - c.x);
+    return mod2pi(atan2(p.y - c.y, p.x - c.x));
 }
 
 bool Circle::contains(Point2D p){

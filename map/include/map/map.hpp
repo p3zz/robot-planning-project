@@ -29,6 +29,7 @@ class Room
         void addObstacle(Polygon o){obstacles.push_back(o); obstacles_inflated.push_back(inflate(o, ROBOT_CIRCLE*1.1));}
         Polygon getObstacle(int index){return obstacles.at(index);}
         std::vector<Polygon> get_obstacles(){return obstacles;};
+        std::vector<Polygon> get_inflated_obstacles(){return obstacles_inflated;};
         Polygon getInflatedObstacle(int index){return obstacles_inflated.at(index);}
         int getNumObstacles(){return obstacles.size();}
         void addExit(Point2D exit){exits.push_back(exit);}
