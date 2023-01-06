@@ -54,3 +54,12 @@ TEST(DubinCurve, PolygonCollision6){
     Polygon p({Point2D(-3,3), Point2D(2,3), Point2D(2,-2), Point2D(-3,-2)});
     EXPECT_TRUE(intersect(curve, p));
 }
+
+TEST(DubinCurve, PolygonCollision7){
+    DubinPoint src(0, 0, M_PI / 2);
+    DubinPoint dst(0, -1,  M_PI / 2);
+    auto curve = dubins_shortest_path(src, dst);
+
+    Polygon p({Point2D(-3,3), Point2D(2,3), Point2D(2,-2), Point2D(-3,-2)});
+    EXPECT_TRUE(intersect(curve, p));
+}
