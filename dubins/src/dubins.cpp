@@ -36,22 +36,30 @@ std::vector<DubinPoint> DubinCurve::to_points(int n){
 
 std::vector<DubinPoint> DubinCurve::to_points_homogeneous(double sens){
     std::vector<DubinPoint> points;
+    if(arcs.empty()){
+        return points;
+    }
+    points.push_back(arcs[0].source);
     for(auto arc:arcs){
         auto arc_points = arc.to_points_homogeneous(sens);
-        points.insert(points.end(), arc_points.begin(), arc_points.end());
+        if(!arc_points.empty()){
+            points.insert(points.end(), arc_points.begin() + 1, arc_points.end());
+        }
     }
     return points;
 }
 
 std::vector<DubinPoint> DubinArc::to_points_homogeneous(double sens){
-    std::vector<DubinPoint> points;
-    int const n_points = round(this->length / sens);  
+    int const n_points = round(this->length / sens) + 2;
     return to_points(n_points);
 }
 
 // returns a vector of n points that approximates the arc
 std::vector<DubinPoint> DubinArc::to_points(int n){
     std::vector<DubinPoint> points;
+    if(n<2){
+        return points;
+    }
     // compute the unit segment
     double unit_seg_length = this->length / (n-1);
     for(int i=0;i<n;i++){
@@ -328,7 +336,16 @@ bool intersect(DubinArc arc, Segment s){
         // build the circle and check the interection
 
         Circle circle = get_circle(p1, p2, p3);
-        if(intersect(circle, s, p1, p3)){
+        // p_start and p_end are the point boundaries for the check of the intersection
+        auto p_start = p1;
+        auto p_end = p3;
+        // if k > 0 the curve is clockwise, so we need to switch the boundaries
+        // (on a cartesian circle we check the boundaries anti-clockwise)
+        if(arc.k > 0){
+            p_start = p3;
+            p_end = p1;
+        }
+        if(intersect(circle, s, p_start, p_end)){
             return true;
         }
     }
