@@ -339,9 +339,9 @@ bool intersect(DubinArc arc, Segment s){
         // p_start and p_end are the point boundaries for the check of the intersection
         auto p_start = p1;
         auto p_end = p3;
-        // if k > 0 the curve is clockwise, so we need to switch the boundaries
+        // if k < 0 the curve is clockwise, so we need to switch the boundaries
         // (on a cartesian circle we check the boundaries anti-clockwise)
-        if(arc.k > 0){
+        if(arc.k < 0){
             p_start = p3;
             p_end = p1;
         }
