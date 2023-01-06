@@ -88,6 +88,9 @@ bool intersect(Circle circle, Segment s, Point2D start, Point2D end){
 }
 
 bool intersect(Polygon p, Segment s){
+    if(p.contains(s.node1) || p.contains(s.node2)){
+        return true;
+    }
     auto sides = p.get_sides();
     for(auto side: sides){
         if(intersect(s, side)){
