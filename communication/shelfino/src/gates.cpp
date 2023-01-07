@@ -1,5 +1,6 @@
 #include <functional>
 #include <memory>
+#include "geometry_msgs/msg/pose.hpp"
 
 #include "rclcpp/rclcpp.hpp"
 

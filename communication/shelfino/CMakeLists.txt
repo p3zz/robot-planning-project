@@ -8,20 +8,24 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(geometry_msgs REQUIRED)
 find_package(custom_msgs REQUIRED)
 find_package(shapes REQUIRED)
 find_package(utils REQUIRED)
 
-add_executable(obstacles src/obstacles.cpp)
-ament_target_dependencies(obstacles rclcpp custom_msgs shapes utils)
+add_library(shelfino src/gates.cpp src/obstacles.cpp src/roadmap.cpp src/walls.cpp)
+ 
+ament_export_targets(shelfino HAS_LIBRARY_TARGET)
 
-add_executable(roadmap src/roadmap.cpp)
-ament_target_dependencies(roadmap rclcpp custom_msgs)
-
-install(TARGETS
-  obstacles
-  DESTINATION lib/${PROJECT_NAME})
-
+ament_target_dependencies(shelfino rclcpp custom_msgs shapes utils geometry_msgs)
+ 
+install(
+  TARGETS shelfino
+  EXPORT shelfino
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
+)
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
