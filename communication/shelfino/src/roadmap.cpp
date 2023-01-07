@@ -29,26 +29,12 @@ class RoadmapPublisher : public rclcpp::Node
     : Node("roadmap_publisher"), count_(0)
     {
       publisher_ = this->create_publisher<custom_msgs::msg::GeometryGraph>("roadmap", 10);
-      timer_ = this->create_wall_timer(
-      500ms, std::bind(&RoadmapPublisher::timer_callback, this));
-    }
-
-  private:
-    void timer_callback()
-    {
       auto message = custom_msgs::msg::GeometryGraph();
     //   RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
       publisher_->publish(message);
     }
-    rclcpp::TimerBase::SharedPtr timer_;
+
+  private:
     rclcpp::Publisher<custom_msgs::msg::GeometryGraph>::SharedPtr publisher_;
     size_t count_;
 };
-
-int main(int argc, char * argv[])
-{
-  rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<RoadmapPublisher>());
-  rclcpp::shutdown();
-  return 0;
-}

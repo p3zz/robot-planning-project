@@ -33,10 +33,3 @@ private:
   }
   rclcpp::Subscription<custom_msgs::msg::ObstacleArrayMsg>::SharedPtr subscription_;
 };
-
-int main(int argc, char * argv[]) {
-  rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<ObstacleSubscriber>());
-  rclcpp::shutdown();
-  return 0;
-}
