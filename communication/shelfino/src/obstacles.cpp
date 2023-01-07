@@ -19,11 +19,11 @@ std::vector<Polygon> obstacles_from_msg(custom_msgs::msg::ObstacleArrayMsg msg){
   return obstacles;
 } 
 
-class MinimalSubscriber : public rclcpp::Node{
+class ObstacleSubscriber : public rclcpp::Node{
 public:
-  MinimalSubscriber() : Node("obstacles_subscriber") {
+  ObstacleSubscriber() : Node("obstacles_subscriber") {
     subscription_ = this->create_subscription<custom_msgs::msg::ObstacleArrayMsg>(
-      "obstacles", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
+      "obstacles", 10, std::bind(&ObstacleSubscriber::topic_callback, this, _1));
   }
 
 private:
@@ -36,7 +36,7 @@ private:
 
 int main(int argc, char * argv[]) {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<MinimalSubscriber>());
+  rclcpp::spin(std::make_shared<ObstacleSubscriber>());
   rclcpp::shutdown();
   return 0;
 }

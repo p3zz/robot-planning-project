@@ -22,15 +22,15 @@ using namespace std::chrono_literals;
 //   }
 // }
 
-class MinimalPublisher : public rclcpp::Node
+class RoadmapPublisher : public rclcpp::Node
 {
   public:
-    MinimalPublisher()
+    RoadmapPublisher()
     : Node("roadmap_publisher"), count_(0)
     {
       publisher_ = this->create_publisher<custom_msgs::msg::GeometryGraph>("roadmap", 10);
       timer_ = this->create_wall_timer(
-      500ms, std::bind(&MinimalPublisher::timer_callback, this));
+      500ms, std::bind(&RoadmapPublisher::timer_callback, this));
     }
 
   private:
@@ -48,7 +48,7 @@ class MinimalPublisher : public rclcpp::Node
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<MinimalPublisher>());
+  rclcpp::spin(std::make_shared<RoadmapPublisher>());
   rclcpp::shutdown();
   return 0;
 }
