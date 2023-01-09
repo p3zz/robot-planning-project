@@ -5,9 +5,31 @@
 #include "geometry_msgs/msg/polygon.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "shapes/shapes.hpp"
+#include "custom_msgs/msg/obstacle_array_msg.hpp"
+#include "custom_msgs/msg/obstacle_msg.hpp"
 #include <thread>
 
 using std::placeholders::_1;
+
+std::vector<Polygon> obstacles_from_msg(custom_msgs::msg::ObstacleArrayMsg msg){
+  std::vector<Polygon> obstacles;
+  for(auto obstacle: msg.obstacles){
+    Polygon p;
+    for(auto point: obstacle.polygon.points){
+      p.add_v(Point2D(point.x, point.y));
+    }
+    obstacles.push_back(p);
+  }
+  return obstacles;
+}
+
+Polygon borders_from_msg(geometry_msgs::msg::Polygon msg){
+    Polygon borders;
+    for(auto p:msg.points){
+        borders.add_v(Point2D(p.x, p.y));
+    }
+    return borders;
+}
 
 template <typename T>
 class SafeValue{
@@ -34,6 +56,19 @@ class SafeValue{
             return valid;
         }
 
+};
+
+class ShelfinoDto {
+    public:
+        ShelfinoDto(){
+            gate_position = SafeValue<Point2D>(Point2D(0,0));
+            map_borders = SafeValue<Polygon>(Polygon());
+            obstacles = SafeValue<std::vector<Polygon>>();
+        }
+
+        SafeValue<Point2D> gate_position;
+        SafeValue<Polygon> map_borders;
+        SafeValue<std::vector<Polygon>> obstacles;
 };
 
 class GatesSubscriber : public rclcpp::Node{
@@ -64,24 +99,24 @@ class WallsSubscriber : public rclcpp::Node{
 
     private:
         void topic_callback(const geometry_msgs::msg::Polygon & msg) const {
-            Polygon borders;
-            for(auto p:msg.points){
-                borders.add_v(Point2D(p.x, p.y));
-            }
-            map_borders.set(borders);
+            map_borders.set(borders_from_msg(msg));
             std::cout<<"new map borders"<<std::endl;
         }
         rclcpp::Subscription<geometry_msgs::msg::Polygon>::SharedPtr subscription_;
         SafeValue<Polygon>& map_borders;
 };
 
-class ShelfinoDto {
-    public:
-        ShelfinoDto(){
-            gate_position = SafeValue<Point2D>(Point2D(0,0));
-            map_borders = SafeValue<Polygon>(Polygon());
-        }
+class ObstaclesSubscriber : public rclcpp::Node{
+public:
+    ObstaclesSubscriber(SafeValue<std::vector<Polygon>>& obstacles) : Node("obstacles_subscriber"), obstacles{obstacles} {
+        subscription_ = this->create_subscription<custom_msgs::msg::ObstacleArrayMsg>(
+        "obstacles", 10, std::bind(&ObstaclesSubscriber::topic_callback, this, _1));
+    }
 
-        SafeValue<Point2D> gate_position;
-        SafeValue<Polygon> map_borders;
+private:
+    void topic_callback(const custom_msgs::msg::ObstacleArrayMsg & msg) const {
+        obstacles.set(obstacles_from_msg(msg));
+    }
+    rclcpp::Subscription<custom_msgs::msg::ObstacleArrayMsg>::SharedPtr subscription_;
+    SafeValue<std::vector<Polygon>>& obstacles;
 };
