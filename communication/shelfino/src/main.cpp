@@ -5,9 +5,11 @@ void thread_body(ShelfinoDto& dto){
     auto gate_subscriber = std::make_shared<GatesSubscriber>(dto.gate_position);
     auto walls_subscriber = std::make_shared<WallsSubscriber>(dto.map_borders);
     auto obstacles_subscriber = std::make_shared<ObstaclesSubscriber>(dto.obstacles);
+    auto pose_listener = std::make_shared<PoseListener>(dto.pose);
     executor.add_node(gate_subscriber);
     executor.add_node(walls_subscriber);
     executor.add_node(obstacles_subscriber);
+    executor.add_node(pose_listener);
     std::cout<<"spinning"<<std::endl;
     executor.spin();
     rclcpp::shutdown();
@@ -23,6 +25,7 @@ int main(int argc, char * argv[]) {
     auto dto = ShelfinoDto();
     std::thread t(thread_body, std::ref(dto));
     t.detach();
+    // wait for map borders, gate position and obstacles
     while(!dto.gate_position.is_valid() || !dto.map_borders.is_valid() || !dto.obstacles.is_valid()){}
     std::cout<<dto.gate_position.get()<<std::endl;
     std::cout<<dto.map_borders.get().get_size()<<std::endl;

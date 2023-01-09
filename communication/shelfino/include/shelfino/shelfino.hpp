@@ -1,15 +1,24 @@
 #include <functional>
 #include <memory>
 #include <iostream>
-#include "geometry_msgs/msg/pose.hpp"
-#include "geometry_msgs/msg/polygon.hpp"
+#include <thread>
+#include <string>
+
 #include "rclcpp/rclcpp.hpp"
-#include "shapes/shapes.hpp"
 #include "custom_msgs/msg/obstacle_array_msg.hpp"
 #include "custom_msgs/msg/obstacle_msg.hpp"
-#include <thread>
+#include "geometry_msgs/msg/pose.hpp"
+#include "geometry_msgs/msg/polygon.hpp"
+#include "geometry_msgs/msg/transform_stamped.hpp"
+#include "tf2/exceptions.h"
+#include "tf2_ros/transform_listener.h"
+#include "tf2_ros/buffer.h"
+
+#include "shapes/shapes.hpp"
+#include "dubins/dubins.hpp"
 
 using std::placeholders::_1;
+using namespace std::chrono_literals;
 
 std::vector<Polygon> obstacles_from_msg(custom_msgs::msg::ObstacleArrayMsg msg){
   std::vector<Polygon> obstacles;
@@ -64,11 +73,13 @@ class ShelfinoDto {
             gate_position = SafeValue<Point2D>(Point2D(0,0));
             map_borders = SafeValue<Polygon>(Polygon());
             obstacles = SafeValue<std::vector<Polygon>>();
+            pose = SafeValue<DubinPoint>(DubinPoint(0,0,0));
         }
 
         SafeValue<Point2D> gate_position;
         SafeValue<Polygon> map_borders;
         SafeValue<std::vector<Polygon>> obstacles;
+        SafeValue<DubinPoint> pose;
 };
 
 class GatesSubscriber : public rclcpp::Node{
@@ -119,4 +130,42 @@ private:
     }
     rclcpp::Subscription<custom_msgs::msg::ObstacleArrayMsg>::SharedPtr subscription_;
     SafeValue<std::vector<Polygon>>& obstacles;
+};
+
+class PoseListener : public rclcpp::Node {
+public:
+  PoseListener(SafeValue<DubinPoint>& pose): Node("shelfino2_listener"), pose{pose}{
+    target_frame_ = this->declare_parameter<std::string>("target_frame", "shelfino2/base_link");
+
+    tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
+    tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);
+
+    timer_ = this->create_wall_timer(1s, std::bind(&PoseListener::timer_callback, this));
+  }
+
+private:
+  void timer_callback() {
+    std::string fromFrameRel = target_frame_.c_str();
+    std::string toFrameRel = "map";
+
+    geometry_msgs::msg::TransformStamped t;
+
+    try {
+        t = tf_buffer_->lookupTransform(toFrameRel, fromFrameRel, tf2::TimePointZero);
+    } catch (const tf2::TransformException & ex) {
+        return;
+    }
+
+    tf2::Quaternion q(t.transform.rotation.x,t.transform.rotation.y,t.transform.rotation.z,t.transform.rotation.w);
+    tf2::Matrix3x3 m(q);
+    double roll, pitch, yaw;
+    m.getRPY(roll, pitch, yaw);
+    pose.set(DubinPoint(t.transform.translation.x, t.transform.translation.y, yaw));
+  }
+
+  rclcpp::TimerBase::SharedPtr timer_{nullptr};
+  std::shared_ptr<tf2_ros::TransformListener> tf_listener_{nullptr};
+  std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
+  std::string target_frame_;
+  SafeValue<DubinPoint>& pose;
 };
