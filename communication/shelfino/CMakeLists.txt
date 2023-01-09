@@ -11,6 +11,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(custom_msgs REQUIRED)
 find_package(shapes REQUIRED)
 find_package(dubins REQUIRED)
+find_package(map REQUIRED)
 find_package(utils REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
@@ -19,7 +20,7 @@ include_directories(include)
 
 add_executable(shelfino src/main.cpp)
 
-ament_target_dependencies(shelfino rclcpp custom_msgs utils shapes dubins geometry_msgs tf2 tf2_ros)
+ament_target_dependencies(shelfino rclcpp custom_msgs utils shapes dubins map geometry_msgs tf2 tf2_ros)
 
 install(
   TARGETS shelfino

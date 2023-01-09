@@ -5,17 +5,22 @@
 #include <string>
 
 #include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/header.hpp"
 #include "custom_msgs/msg/obstacle_array_msg.hpp"
 #include "custom_msgs/msg/obstacle_msg.hpp"
+#include "custom_msgs/msg/geometry_graph.hpp"
+#include "custom_msgs/msg/edges.hpp"
 #include "geometry_msgs/msg/pose.hpp"
 #include "geometry_msgs/msg/polygon.hpp"
 #include "geometry_msgs/msg/transform_stamped.hpp"
+
 #include "tf2/exceptions.h"
 #include "tf2_ros/transform_listener.h"
 #include "tf2_ros/buffer.h"
 
 #include "shapes/shapes.hpp"
 #include "dubins/dubins.hpp"
+#include "map/map.hpp"
 
 using std::placeholders::_1;
 using namespace std::chrono_literals;
@@ -40,6 +45,41 @@ Polygon borders_from_msg(geometry_msgs::msg::Polygon msg){
     return borders;
 }
 
+custom_msgs::msg::GeometryGraph msg_from_roadmap(RoadMap rm, std_msgs::msg::Header h){
+  custom_msgs::msg::GeometryGraph gg;
+  std::vector<custom_msgs::msg::Edges> nodes_edges;
+  std::vector<geometry_msgs::msg::Point> nodes;
+  for(auto &node: rm.getNodes()){
+    geometry_msgs::msg::Point p;
+    p.x = node.x;
+    p.y = node.y;
+    p.z = 0;
+    nodes.push_back(p);
+    std::vector<unsigned int> neighbors;
+    for(auto &link: rm.getLinks()){
+      Point2D neighbor;
+      if(node == link.node1){
+        neighbor = link.node2;
+      }
+      else if(node == link.node2){
+        neighbor = link.node1;
+      }
+      auto i = rm.get_node_index(neighbor);
+      if(i > -1){
+        neighbors.push_back(i);
+      }
+    }
+    custom_msgs::msg::Edges edges;
+    edges.node_ids = neighbors;
+    nodes_edges.push_back(edges);
+  }
+
+  gg.header = h;
+  gg.nodes = nodes;
+  gg.edges = nodes_edges;
+
+  return gg;
+}
 template <typename T>
 class SafeValue{
     private:
@@ -168,4 +208,20 @@ private:
   std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
   std::string target_frame_;
   SafeValue<DubinPoint>& pose;
+};
+
+class RoadmapPublisher : public rclcpp::Node
+{
+  public:
+    RoadmapPublisher(RoadMap rm): Node("roadmap_publisher"), count_(0) {
+      publisher_ = this->create_publisher<custom_msgs::msg::GeometryGraph>("roadmap", 10);
+      std_msgs::msg::Header h;
+      h.stamp = this->get_clock()->now();
+      auto message = msg_from_roadmap(rm, h);
+      publisher_->publish(message);
+    }
+
+  private:
+    rclcpp::Publisher<custom_msgs::msg::GeometryGraph>::SharedPtr publisher_;
+    size_t count_;
 };

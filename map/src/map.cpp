@@ -298,3 +298,13 @@ void random_obstacles_vertexes(Room* room, int num_obstacles, int vertexes_n){
         room->addObstacle(obstacle);
     }
 }
+
+int RoadMap::get_node_index(Point2D p){
+    auto nodes = getNodes();
+    for(int i = 0; i < (int)nodes.size(); i++){
+        if(nodes[i] == p){
+            return i;
+        }
+    }
+    return -1;
+}
