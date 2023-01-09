@@ -5,7 +5,6 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
@@ -13,19 +12,17 @@ find_package(custom_msgs REQUIRED)
 find_package(shapes REQUIRED)
 find_package(utils REQUIRED)
 
-add_library(shelfino src/gates.cpp src/obstacles.cpp src/roadmap.cpp src/walls.cpp)
- 
-ament_export_targets(shelfino HAS_LIBRARY_TARGET)
+include_directories(include)
+
+add_executable(shelfino src/main.cpp)
 
 ament_target_dependencies(shelfino rclcpp custom_msgs shapes utils geometry_msgs)
- 
+
 install(
   TARGETS shelfino
-  EXPORT shelfino
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib
-  RUNTIME DESTINATION bin
+  DESTINATION lib/${PROJECT_NAME}
 )
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
