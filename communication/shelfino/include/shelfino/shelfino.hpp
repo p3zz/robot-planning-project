@@ -2,6 +2,7 @@
 #include <memory>
 #include <iostream>
 #include "geometry_msgs/msg/pose.hpp"
+#include "geometry_msgs/msg/polygon.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "shapes/shapes.hpp"
 #include <thread>
@@ -23,4 +24,35 @@ class GatesSubscriber : public rclcpp::Node{
         }
         rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr subscription_;
         Point2D& gate_position;
+};
+
+
+class WallsSubscriber : public rclcpp::Node{
+    public:
+        WallsSubscriber(Polygon& map_borders) : 
+            Node("walls_subscriber"), map_borders{map_borders} {
+                subscription_ = this->create_subscription<geometry_msgs::msg::Polygon>(
+                "map_borders", 10, std::bind(&WallsSubscriber::topic_callback, this, _1));
+        }
+
+    private:
+        void topic_callback(const geometry_msgs::msg::Polygon & msg) const {
+            for(auto p:msg.points){
+                map_borders.add_v(Point2D(p.x, p.y));
+            }
+            std::cout<<"new map borders"<<std::endl;
+        }
+        rclcpp::Subscription<geometry_msgs::msg::Polygon>::SharedPtr subscription_;
+        Polygon& map_borders;
+};
+
+class ShelfinoDto{
+    public:
+        ShelfinoDto(){
+            gate_position = Point2D(0,0);
+            map_borders = Polygon();
+        }
+
+        Point2D gate_position;
+        Polygon map_borders;
 };
