@@ -46,6 +46,26 @@ class WallsSubscriber : public rclcpp::Node{
         Polygon& map_borders;
 };
 
+template <typename T>
+class SafeValue{
+    private:
+        T value;
+        bool valid;
+
+    public:
+        T get(){
+            if(valid){
+                return value;
+            }
+        }
+
+        void set(T value){
+            value = value;
+            valid = true;
+        }
+
+};
+
 class ShelfinoDto{
     public:
         ShelfinoDto(){
