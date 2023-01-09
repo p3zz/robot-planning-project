@@ -19,10 +19,8 @@ int main(int argc, char * argv[]) {
     auto dto = ShelfinoDto();
     std::thread t(thread_body, std::ref(dto));
     t.detach();
-    while(1){
-        std::cout<<dto.gate_position<<std::endl;
-        std::cout<<dto.map_borders.get_size()<<std::endl;
-        sleep(1);
-    }
+    while(!dto.gate_position.is_valid() || !dto.map_borders.is_valid()){}
+    std::cout<<dto.gate_position.get()<<std::endl;
+    std::cout<<dto.map_borders.get().get_size()<<std::endl;
     return 0;
 }
