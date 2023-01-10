@@ -11,16 +11,16 @@ bool link_exists(Point2D node1, Point2D node2, std::vector<Segment> links)
 
 bool link_collides(Segment link, Room r)
 {
-    for(int i=0; i<r.getNumObstacles(); i++)
-        if(intersect(r.getObstacle(i), link))
+    for(int i=0; i<r.get_num_obstacles(); i++)
+        if(intersect(r.get_obstacle(i), link))
             return true;
     return false;
 }
 
 bool point_collides(Point2D p, Room r)
 {
-    for(int i=0; i<r.getNumObstacles(); i++)
-        if(r.getInflatedObstacle(i).contains(p))
+    for(int i=0; i<r.get_num_obstacles(); i++)
+        if(r.get_inflated_obstacle(i).contains(p))
             return true;
     return false;
 }
@@ -80,13 +80,13 @@ void Knn(Point2D node, std::vector<Point2D> candidates, int k, Point2D* nearest_
 }
 
 //PRM ROADMAP
-bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, double tms_max)
+bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, double tms_max)
 {
     if(knn>KNN_MAX) return false;
     
     //Create nodes
-    srand(time(NULL));
-    const double k_room_space=(r.getHeight()-ROBOT_CIRCLE*2)*(r.getWidth()-ROBOT_CIRCLE*2)/points;
+    srand(get_seed());
+    const double k_room_space=r.get_approx_area()/points;
     const double k_base=std::pow(0.1,1/tms_max); //base to decrease k_distance to 10% at tms_max
     for (int i=0; i<points; i++)
     {
@@ -102,16 +102,16 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
                 k_distance=std::pow(k_base,tms)*k_distance_init;//bigger is k_distance, more homogeneus the map, much diffcult the spawning of points
                 distance_pts=k_room_space*k_distance;
             }
-            node.x = int(rand() % int((r.getWidth()-ROBOT_CIRCLE*2)*100)) / 100.0 + ROBOT_CIRCLE;  //cm sensibility, consider room border
-            node.y = int(rand() % int((r.getHeight()-ROBOT_CIRCLE*2)*100)) / 100.0 + ROBOT_CIRCLE; //cm sensibility, consider room border
+            node.x = int(rand() % int((r.get_approx_width())*100)) / 100.0;  //cm sensibility, consider room border
+            node.y = int(rand() % int((r.get_approx_height())*100)) / 100.0; //cm sensibility, consider room border
             count--;
-        }while(!check_sparse(node, nodes, distance_pts) || point_collides(node, this->r)); //check for sparse nodes
+        }while(!check_sparse(node, nodes, distance_pts) || point_collides(node, this->r) || !r.get_dimensions(true).contains(node)); //check for sparse nodes
         nodes.push_back(node);
     }
 
     //Add exit nodes
-    for(int i=0; i<r.getNumExits(); i++)
-        nodes.push_back(r.getExit(i));
+    for(int i=0; i<r.get_num_exits(); i++)
+        nodes.push_back(r.get_exit(i));
     
     //Create links
     for (int i=0; i<(int)nodes.size(); i++)
@@ -132,8 +132,9 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
                 links.push_back(Segment(Point2D(node.x,node.y),Point2D(node_knn[j].x, node_knn[j].y)));      
     }
 
-    auto obstacles = r.get_inflated_obstacles();
     //Create Dubins Curves
+    auto obstacles = r.get_inflated_obstacles();
+    auto dimensions_room = r.get_dimensions(true);
     for(auto &link: links){
         std::vector<DubinLink> d_links;
         // compute every dubins curve for each M_PI/4 
@@ -145,13 +146,14 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
                 // compute dubins from node1 to node2
                 auto curves = dubin_curves(node1, node2);
                 for(auto &curve: curves){
-                    bool inter = false;
-                    for(auto &ob: obstacles){
-                        if(intersect(curve, ob)){
-                            inter = true;
-                            break;
+                    bool inter = intersect_sides(curve, dimensions_room);
+                    if(!inter)
+                        for(auto &ob: obstacles){
+                            if(intersect(curve, ob)){
+                                inter = true;
+                                break;
+                            }
                         }
-                    }
                     // if the curve doesn't collide with any obstacle, keep this as best curve for the pair (src, dst)
                     if(!inter){
                         dubin_links.push_back(DubinLink(node1, node2, curve));
@@ -162,13 +164,14 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
                 // compute dubins from node2 to node1
                 curves = dubin_curves(node2, node1);
                 for(auto &curve: curves){
-                    bool inter = false;
-                    for(auto &ob: obstacles){
-                        if(intersect(curve, ob)){
-                            inter = true;
-                            break;
+                    bool inter = intersect_sides(curve, dimensions_room);
+                    if(!inter)
+                        for(auto &ob: obstacles){
+                            if(intersect(curve, ob)){
+                                inter = true;
+                                break;
+                            }
                         }
-                    }
                     if(!inter){
                         dubin_links.push_back(DubinLink(node2, node1, curve));
                         break;
@@ -181,7 +184,7 @@ bool RoadMap::constructRoadMap(int points, int knn, double k_distance_init, doub
     return true;
 }
 
-std::string RoadMap::getJson()
+std::string RoadMap::get_json()
 {
     std::string json="";
     json += "{\"roadmap\":";
@@ -198,28 +201,28 @@ std::string RoadMap::getJson()
         if(i+1<(int)links.size()) json+=",";
     }
     json+="],\"obstacles\":[";
-    for(int i=0; i<r.getNumObstacles();i++)
+    for(int i=0; i<r.get_num_obstacles();i++)
     {
         json+="{\"normal\":[";
-        for(int j=0;j<r.getObstacle(i).get_size();j++)
+        for(int j=0;j<r.get_obstacle(i).get_size();j++)
         {
-            json+="{\"x\":"+std::to_string(r.getObstacle(i).get_v(j).x)+",\"y\":"+std::to_string(r.getObstacle(i).get_v(j).y)+"}";
-            if(j+1<r.getObstacle(i).get_size()) json+=",";
+            json+="{\"x\":"+std::to_string(r.get_obstacle(i).get_v(j).x)+",\"y\":"+std::to_string(r.get_obstacle(i).get_v(j).y)+"}";
+            if(j+1<r.get_obstacle(i).get_size()) json+=",";
         }
         json+="],\"inflated\":[";
-        for(int j=0;j<r.getInflatedObstacle(i).get_size();j++)
+        for(int j=0;j<r.get_inflated_obstacle(i).get_size();j++)
         {
-            json+="{\"x\":"+std::to_string(r.getInflatedObstacle(i).get_v(j).x)+",\"y\":"+std::to_string(r.getInflatedObstacle(i).get_v(j).y)+"}";
-            if(j+1<r.getInflatedObstacle(i).get_size()) json+=",";
+            json+="{\"x\":"+std::to_string(r.get_inflated_obstacle(i).get_v(j).x)+",\"y\":"+std::to_string(r.get_inflated_obstacle(i).get_v(j).y)+"}";
+            if(j+1<r.get_inflated_obstacle(i).get_size()) json+=",";
         }
         json+="]}";
-        if(i+1<r.getNumObstacles()) json+=",";
+        if(i+1<r.get_num_obstacles()) json+=",";
     }
     json+="]}}";
     return json;
 }
 
-void RoadMap::getAttachedNodes(Point2D node, std::vector<Point2D> *attached_links)
+void RoadMap::get_attached_nodes(Point2D node, std::vector<Point2D> *attached_links)
 {
     attached_links->clear();
     for(int i=0; i<(int)links.size(); i++)
@@ -247,10 +250,12 @@ void random_obstacles_side(Room* room, int num_obstacles, const int max_side)
     Polygon o;
     bool check;
     do{
-      centers[i].x = ((rand()%(room->getWidth()*100-max_side))+max_side/2)/100.0;
-      centers[i].y = ((rand()%(room->getHeight()*100-max_side))+max_side/2)/100.0;
+      centers[i].x = ((rand()%(int)(room->get_approx_width()*100-max_side))+max_side/2)/100.0;
+      centers[i].y = ((rand()%(int)(room->get_approx_height()*100-max_side))+max_side/2)/100.0;
       check=true;
-      for(int j=0;j<i;j++)
+      if(!room->get_dimensions(true).contains(centers[i]))
+        check=false;
+      for(int j=0;j<i && check;j++)
         if(distance(centers[j], centers[i])<max_side/100.0*sqrt(2))
         {
           check=false;
@@ -262,7 +267,7 @@ void random_obstacles_side(Room* room, int num_obstacles, const int max_side)
     o.add_v(Point2D(center.x+((rand() %(max_side/4))+(max_side/4))/100.0,center.y+((rand() %(max_side/4))+(max_side/4))/100.0));
     o.add_v(Point2D(center.x+((rand() %(max_side/4))+(max_side/4))/100.0,center.y+((rand() %(max_side/4))-(max_side/2))/100.0));
     o.add_v(Point2D(center.x+((rand() %(max_side/4))-(max_side/2))/100.0,center.y+((rand() %(max_side/4))-(max_side/2))/100.0));
-    room->addObstacle(o);
+    room->add_obstacle(o);
   }
 }
 
@@ -271,8 +276,8 @@ void random_obstacles_vertexes(Room* room, int num_obstacles, int vertexes_n){
 
     mt19937 gen(rd());
 
-    uniform_real_distribution<double> x_dis(0, room->getWidth());
-    uniform_real_distribution<double> y_dis(0, room->getHeight());
+    uniform_real_distribution<double> x_dis(0, room->get_approx_width());
+    uniform_real_distribution<double> y_dis(0, room->get_approx_height());
     
     // distance between the center of the polygon and one of its vertexes
     double const radius = 0.5;
@@ -295,12 +300,12 @@ void random_obstacles_vertexes(Room* room, int num_obstacles, int vertexes_n){
             }
         } while(!valid);
         Polygon obstacle = regular_polygon(centers[i], radius, vertexes_n);
-        room->addObstacle(obstacle);
+        room->add_obstacle(obstacle);
     }
 }
 
 int RoadMap::get_node_index(Point2D p){
-    auto nodes = getNodes();
+    auto nodes = get_nodes();
     for(int i = 0; i < (int)nodes.size(); i++){
         if(nodes[i] == p){
             return i;

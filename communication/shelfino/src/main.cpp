@@ -27,6 +27,8 @@ void publisher_body(RoadMap rm){
 // ros2 topic pub --once obstacles custom_msgs/msg/ObstacleArrayMsg '{header:{stamp:{sec: 0, nanosec: 0}}, obstacles: [{header:{stamp:{sec: 0, nanosec: 0}}, polygon:{points:[{x: 0, y: 0, z: 0}, {x: 1, y: 0, z: 0}, {x: 1, y: 1, z: 0}, {x: 0, y: 1, z: 0}]}, radius: 0}, {header:{stamp:{sec: 0, nanosec: 0}}, polygon:{points:[{x: 2, y: 1, z: 0}, {x: 1, y: 0, z: 0}, {x: 3, y: 2, z: 0}, {x: 0, y: 1, z: 0}]}, radius: 0}]}'
 
 int main(int argc, char * argv[]) {
+    init_seed(0);
+    std::cout << "The seed is " << get_seed() << std::endl;
     rclcpp::init(argc, argv);
     auto dto = ShelfinoDto();
     std::thread subscriber(subscriber_body, std::ref(dto));
@@ -36,15 +38,15 @@ int main(int argc, char * argv[]) {
     std::cout<<"Gate: "<<dto.gate_position.get()<<std::endl;
     std::cout<<"Map borders: "<<dto.map_borders.get().get_size()<<std::endl;
     std::cout<<"Obstacles: "<<dto.obstacles.get().size()<<std::endl;
-    Room room(10,10);
+    Room room(Polygon({ Point2D(0,0), Point2D(10,0), Point2D(10,10), Point2D(0,10) }));
     for(auto obstacle: dto.obstacles.get()){
-        room.addObstacle(obstacle);
+        room.add_obstacle(obstacle);
     }
     RoadMap rm(room);
-    rm.constructRoadMap(60, 4, 0.5, 500);
+    rm.construct_roadmap(60, 4, 0.5, 500);
     std::thread publisher(publisher_body, rm);
     publisher.detach();
-    std::cout<<"Nodes: "<<rm.getNodes().size()<<std::endl;
-    std::cout<<"Links: "<<rm.getLinks().size()<<std::endl;
+    std::cout<<"Nodes: "<<rm.get_nodes().size()<<std::endl;
+    std::cout<<"Links: "<<rm.get_links().size()<<std::endl;
     return 0;
 }

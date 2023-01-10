@@ -58,13 +58,13 @@ double scoreE(Point2D pursuer_2, Path path_e, RoadMap& r)
     //Min Distance from exit & Score for direction
     double min_exit=POINT_COORD_MAX;
     double score_th=0;
-    for(int i=0; i<r.getRoom().getNumExits(); i++)
+    for(int i=0; i<r.get_room().get_num_exits(); i++)
     {
-        double d=distance(path_e.p2.get_point(), r.getRoom().getExit(i));
+        double d=distance(path_e.p2.get_point(), r.get_room().get_exit(i));
         if(d<min_exit)
         {
             min_exit=d;
-            score_th=score_angle(path_e.p2, r.getRoom().getExit(i));
+            score_th=score_angle(path_e.p2, r.get_room().get_exit(i));
         }
     }
 
@@ -86,9 +86,9 @@ double scoreP(Point2D evader_2, Path path_p, RoadMap& r)
     //Probable exit chosen by evader
     double min_exit=POINT_COORD_MAX;
     int index_exit;
-    for(int i=0; i<r.getRoom().getNumExits(); i++) //more probable exit chosen by evader
+    for(int i=0; i<r.get_room().get_num_exits(); i++) //more probable exit chosen by evader
     {
-        double d=distance(evader_2, r.getRoom().getExit(i));
+        double d=distance(evader_2, r.get_room().get_exit(i));
         if(d<min_exit)
         {
             min_exit=d;
@@ -96,9 +96,9 @@ double scoreP(Point2D evader_2, Path path_p, RoadMap& r)
         }
     }
     //Distance between pursuer and exit
-    double distanceExit = distance(path_p.p2.get_point(), r.getRoom().getExit(index_exit));
+    double distanceExit = distance(path_p.p2.get_point(), r.get_room().get_exit(index_exit));
     //Score for direction
-    double score_th = score_angle(path_p.p2, avg_point(evader_2, r.getRoom().getExit(index_exit)));
+    double score_th = score_angle(path_p.p2, avg_point(evader_2, r.get_room().get_exit(index_exit)));
     
     double scoreP = center - distancePE *1.5 - distanceExit *0.75 - len_path *0.75 + score_th * 4;
     return scoreP;
@@ -106,17 +106,17 @@ double scoreP(Point2D evader_2, Path path_p, RoadMap& r)
 
 bool PayoffMatrix::computeMove(DubinPoint pursuer, DubinPoint evader, Path& path_pursuer, Path& path_evader)
 {
-    pursuer = getNearestNode(pursuer, map.getNodes());
-    evader = getNearestNode(evader, map.getNodes());
+    pursuer = getNearestNode(pursuer, map.get_nodes());
+    evader = getNearestNode(evader, map.get_nodes());
     std::vector<Path> path_p, path_e;
     std::vector<Point2D> possible_p;
 
     //Compute possible moves for pursuer (2 forward)
     std::vector<Point2D> temp1, temp2;
-    map.getAttachedNodes(pursuer.get_point(), &temp1);
+    map.get_attached_nodes(pursuer.get_point(), &temp1);
     for(int i=0; i<(int)temp1.size(); i++)
     {
-        map.getAttachedNodes(temp1.at(i), &temp2);
+        map.get_attached_nodes(temp1.at(i), &temp2);
         for(int j=0; j<(int)temp2.size(); j++)
         {
             possible_p.push_back(temp2.at(j));
@@ -136,10 +136,10 @@ bool PayoffMatrix::computeMove(DubinPoint pursuer, DubinPoint evader, Path& path
     }    
 
     //Compute possible moves for evader (2 forward)
-    map.getAttachedNodes(evader.get_point(), &temp1);
+    map.get_attached_nodes(evader.get_point(), &temp1);
     for(int i=0; i<(int)temp1.size(); i++)
     {
-        map.getAttachedNodes(temp1.at(i), &temp2);
+        map.get_attached_nodes(temp1.at(i), &temp2);
         for(int j=0; j<(int)temp2.size(); j++)
         {
             double angle=angle_in_range(atan2(temp2.at(j).y-temp1.at(i).y, temp2.at(j).x-temp1.at(i).x));
@@ -175,7 +175,7 @@ bool PayoffMatrix::computeMove(DubinPoint pursuer, DubinPoint evader, Path& path
     }
     if(index_move_e==-1)
     {
-        cerr << "No moves found for evader";
+        cerr << "No moves found for evader" << endl;
         return false;
     }
 
@@ -190,9 +190,9 @@ bool PayoffMatrix::computeMove(DubinPoint pursuer, DubinPoint evader, Path& path
             index_move_p = i;
         }
     }
-    if(index_move_e==-1)
+    if(index_move_p==-1)
     {
-        cerr << "No moves found for pursuer";
+        cerr << "No moves found for pursuer" << endl;
         return false;
     }
     

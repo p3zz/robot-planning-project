@@ -49,14 +49,14 @@ custom_msgs::msg::GeometryGraph msg_from_roadmap(RoadMap rm, std_msgs::msg::Head
   custom_msgs::msg::GeometryGraph gg;
   std::vector<custom_msgs::msg::Edges> nodes_edges;
   std::vector<geometry_msgs::msg::Point> nodes;
-  for(auto &node: rm.getNodes()){
+  for(auto &node: rm.get_nodes()){
     geometry_msgs::msg::Point p;
     p.x = node.x;
     p.y = node.y;
     p.z = 0;
     nodes.push_back(p);
     std::vector<unsigned int> neighbors;
-    for(auto &link: rm.getLinks()){
+    for(auto &link: rm.get_links()){
       Point2D neighbor;
       if(node == link.node1){
         neighbor = link.node2;
@@ -94,6 +94,7 @@ class SafeValue{
             if(valid){
                 return value;
             }
+            return T();
         }
 
         void set(T v){

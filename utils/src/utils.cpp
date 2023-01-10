@@ -23,3 +23,21 @@ double modpi(double angle)
     while(out >= M_PI) out-= 2*M_PI;
     return out;
 }
+
+int seed;
+
+void init_seed(int t_seed)
+{
+    if(t_seed==0)
+    {
+        srand(time(NULL));
+        seed = rand();
+    }
+    else
+        seed = t_seed;
+}
+
+int get_seed()
+{
+    return seed;
+}

@@ -8,20 +8,20 @@ using std::chrono::duration_cast;
 using std::chrono::duration;
 using std::chrono::milliseconds;
 
-Room room(10,10);
+Room room(Polygon({ Point2D(0,0), Point2D(10,0), Point2D(10,10), Point2D(0,10) }));
 
 TEST(Map, Performance1){
     random_obstacles_vertexes(&room, 6, 20);
     RoadMap map(room);
     auto start = high_resolution_clock::now();
 
-    map.constructRoadMap(60, 4, 0.5, 500);
+    map.construct_roadmap(60, 4, 0.5, 500);
 
     auto end = high_resolution_clock::now();
 
     duration<double, std::milli> ms_double = end - start;
     std::cout<<"Execution time: "<<ms_double.count()<<" ms"<<std::endl;
-    /*auto links = map.getLinks();
+    /*auto links = map.get_links();
     auto curves = map.get_curves();
     EXPECT_EQ((int)links.size(), (int)curves.size());
     for(int i=0;i<(int)links.size();i++){
@@ -34,13 +34,13 @@ TEST(Map, Performance2){
     RoadMap map(room);
     auto start = high_resolution_clock::now();
 
-    map.constructRoadMap(80, 4, 0.5, 500);
+    map.construct_roadmap(80, 4, 0.5, 500);
 
     auto end = high_resolution_clock::now();
 
     duration<double, std::milli> ms_double = end - start;
     std::cout<<"Execution time: "<<ms_double.count()<<" ms"<<std::endl;
-    /*auto links = map.getLinks();
+    /*auto links = map.get_links();
     auto curves = map.get_curves();
     EXPECT_EQ((int)links.size(), (int)curves.size());
     for(int i=0;i<(int)links.size();i++){
@@ -53,13 +53,13 @@ TEST(Map, Performance3){
     RoadMap map(room);
     auto start = high_resolution_clock::now();
 
-    map.constructRoadMap(60, 4, 0.5, 500);
+    map.construct_roadmap(60, 4, 0.5, 500);
 
     auto end = high_resolution_clock::now();
 
     duration<double, std::milli> ms_double = end - start;
     std::cout<<"Execution time: "<<ms_double.count()<<" ms"<<std::endl;
-    /*auto links = map.getLinks();
+    /*auto links = map.get_links();
     auto curves = map.get_curves();
     EXPECT_EQ((int)links.size(), (int)curves.size());
     for(int i=0;i<(int)links.size();i++){
@@ -73,13 +73,13 @@ TEST(Map, Performance4){
     RoadMap map(room);
     auto start = high_resolution_clock::now();
 
-    map.constructRoadMap(80, 4, 0.5, 500);
+    map.construct_roadmap(80, 4, 0.5, 500);
 
     auto end = high_resolution_clock::now();
 
     duration<double, std::milli> ms_double = end - start;
     std::cout<<"Execution time: "<<ms_double.count()<<" ms"<<std::endl;
-    /*auto links = map.getLinks();
+    /*auto links = map.get_links();
     auto curves = map.get_curves();
     EXPECT_EQ((int)links.size(), (int)curves.size());
     for(int i=0;i<(int)links.size();i++){

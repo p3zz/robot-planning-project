@@ -114,5 +114,6 @@ DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end);
 std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end);
 bool intersect(DubinCurve c, Polygon p);
 bool intersect(DubinCurve c, Polygon p, int n);
+bool intersect_sides(DubinCurve c, Polygon p);
 
 #endif

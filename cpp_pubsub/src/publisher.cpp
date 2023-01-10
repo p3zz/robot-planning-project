@@ -122,26 +122,29 @@ class MinimalPublisher : public rclcpp::Node
     size_t count_;
 };
 
-int main(int argc, char * argv[])
+int main(/*int argc, char * argv[]*/)
 {
   // rclcpp::init(argc, argv);
   // rclcpp::spin(std::make_shared<MinimalPublisher>());
   // rclcpp::shutdown();
+  init_seed(0);
+  cout << "The seed is " << get_seed() << endl;
   
   // Construct random room
-  srand(time(NULL));
-  Room room(10,10);
+  srand(get_seed());
+  Polygon dim_room({ Point2D(0,0), Point2D(10,0), Point2D(10,10), Point2D(0,10) });
+  Room room(dim_room);
   random_obstacles_side(&room, 4, 200);
-  room.addExit(Point2D(0,2));
-  room.addExit(Point2D(8,10));
+  room.add_exit(Point2D(0,2));
+  room.add_exit(Point2D(8,10));
 
   //Construct roadmap
   RoadMap map(room);
-  if(map.constructRoadMap(60, 4, 0.5, 500)) //knn=4 is the best choice (up, down, left and right in the ideal case)
+  if(map.construct_roadmap(60, 4, 0.5, 500)) //knn=4 is the best choice (up, down, left and right in the ideal case)
   {
     ofstream myfile;
     myfile.open ("map.json", std::ofstream::trunc);
-    myfile << map.getJson();
+    myfile << map.get_json();
     myfile.close();
   }
   else
@@ -151,7 +154,6 @@ int main(int argc, char * argv[])
   PayoffMatrix mat(map);
   Path p, e;
   mat.computeMove(DubinPoint(2,8,M_PI*1.75), DubinPoint(8,2,M_PI*0.75), p, e);
-  mat.computeMove(DubinPoint(8,2,M_PI*0.75), DubinPoint(4,6,M_PI*0.75), p, e);
 
   ofstream myfile;
   myfile.open("moves.json", std::ofstream::trunc);

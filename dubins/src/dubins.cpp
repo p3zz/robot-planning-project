@@ -378,6 +378,17 @@ bool intersect(DubinCurve c, Polygon p){
     return false;
 }
 
+bool intersect_sides(DubinCurve c, Polygon p){
+    for(int i=1; i < (int)p.vertexes.size(); i++)
+    {
+        Segment s(p.vertexes.at(i-1), p.vertexes.at(i));
+        if(intersect(c, s))
+            return true;
+    }
+    return false;
+}
+
+
 // check the intersection between a dubin curve and a polygon,
 // but the curve is approximated by a sequence of n points
 bool intersect(DubinCurve c, Polygon p, int n){
