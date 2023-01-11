@@ -3,6 +3,7 @@
 #include <iostream>
 #include <thread>
 #include <string>
+#include <fstream>
 
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
@@ -25,6 +26,7 @@
 #include "shapes/shapes.hpp"
 #include "dubins/dubins.hpp"
 #include "map/map.hpp"
+#include "decisions/decisions.hpp"
 
 using std::placeholders::_1;
 using std::placeholders::_2;
@@ -160,12 +162,14 @@ class ShelfinoDto {
             map_borders = SafeValue<Polygon>(Polygon());
             obstacles = SafeValue<std::vector<Polygon>>();
             pose = SafeValue<DubinPoint>(DubinPoint(0,0,0));
+            path_to_follow = SafeValue<DubinCurve>(DubinCurve());
         }
 
         SafeValue<std::vector<Point2D>> gates_position;
         SafeValue<Polygon> map_borders;
         SafeValue<std::vector<Polygon>> obstacles;
         SafeValue<DubinPoint> pose;
+        SafeValue<DubinCurve> path_to_follow;
 };
 
 class GatesSubscriber : public rclcpp::Node{
@@ -279,7 +283,7 @@ class RoadmapPublisher : public rclcpp::Node
       std_msgs::msg::Header h;
       h.stamp = this->get_clock()->now();
       auto message = msg_from_roadmap(rm, h);
-      publisher_->publish(message);
+      // publisher_->publish(message);
     }
 
   private:
@@ -302,6 +306,10 @@ private:
 
   void send_goal(){
     if (!this->client_ptr_->wait_for_action_server()) {
+      return;
+    }
+
+    if(!curve.is_valid()){
       return;
     }
 
