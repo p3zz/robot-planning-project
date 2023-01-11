@@ -85,6 +85,46 @@ custom_msgs::msg::GeometryGraph msg_from_roadmap(RoadMap rm, std_msgs::msg::Head
 
   return gg;
 }
+
+geometry_msgs::msg::Quaternion to_quaternion(double pitch, double roll, double yaw){
+  const double half = 0.5;
+  double cr = cos(roll * half);
+  double sr = sin(roll * half);
+  double cp = cos(pitch * half);
+  double sp = sin(pitch * half);
+  double cy = cos(yaw * half);
+  double sy = sin(yaw * half);
+
+  geometry_msgs::msg::Quaternion q;
+  q.w = cr * cp * cy + sr * sp * sy;
+  q.x = sr * cp * cy - cr * sp * sy;
+  q.y = cr * sp * cy + sr * cp * sy;
+  q.z = cr * cp * sy - sr * sp * cy;
+
+  return q;
+}
+
+nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
+  nav_msgs::msg::Path path;
+  path.header = h;
+
+  geometry_msgs::msg::PoseStamped pose;
+  pose.header = h;
+  pose.header.frame_id = "map";
+
+  auto trajectory = curve.to_points_homogeneous(0.1);
+
+  for(auto p:trajectory){
+    pose.pose.position.x = p.x;
+    pose.pose.position.y = p.y;
+    pose.pose.position.z = 0;
+    pose.pose.orientation = to_quaternion(0,0,p.th);
+    path.poses.push_back(pose);
+  }
+
+  return path;
+}
+
 template <typename T>
 class SafeValue{
     private:
@@ -241,32 +281,46 @@ class FollowPathClient : public rclcpp::Node {
 
     using FollowPath = nav2_msgs::action::FollowPath;
     using GoalHandleFollowPath = rclcpp_action::ClientGoalHandle<FollowPath>;
-    FollowPathClient() : Node("follow_path_client") {
+    FollowPathClient(SafeValue<DubinCurve>& curve) : Node("follow_path_client"), curve{curve} {
       this->client_ptr_ = rclcpp_action::create_client<FollowPath>(this,"follow_path");
-    }
-
-    void send_goal(){
-
-      if (!this->client_ptr_->wait_for_action_server()) {
-        // RCLCPP_ERROR(this->get_logger(), "Action server not available after waiting");
-        // rclcpp::shutdown();
-      }
-
-      auto path_msg = FollowPath::Goal();
-      path_msg.path = nav_msgs::msg::Path();
-
-      auto send_goal_options = rclcpp_action::Client<FollowPath>::SendGoalOptions();
-      send_goal_options.feedback_callback = std::bind(&FollowPathClient::feedback_callback, this, _1, _2);
-      send_goal_options.result_callback = std::bind(&FollowPathClient::result_callback, this, _1);
-      this->client_ptr_->async_send_goal(path_msg, send_goal_options);
     }
 
 private:
   rclcpp_action::Client<FollowPath>::SharedPtr client_ptr_;
+  SafeValue<DubinCurve>& curve;
+
+  void send_goal(){
+    if (!this->client_ptr_->wait_for_action_server()) {
+      return;
+    }
+
+    auto path_msg = FollowPath::Goal();
+    std_msgs::msg::Header h;
+    h.stamp = this->get_clock()->now();
+    path_msg.path = msg_from_curve(curve.get(), h);
+
+    auto send_goal_options = rclcpp_action::Client<FollowPath>::SendGoalOptions();
+    send_goal_options.feedback_callback = std::bind(&FollowPathClient::feedback_callback, this, _1, _2);
+    send_goal_options.result_callback = std::bind(&FollowPathClient::result_callback, this, _1);
+    this->client_ptr_->async_send_goal(path_msg, send_goal_options);
+  }
+
+  void goal_response_callback(const GoalHandleFollowPath::SharedPtr& goal_handle)
+  {
+    if (!goal_handle) {
+      RCLCPP_ERROR(this->get_logger(), "Goal was rejected by server");
+    } else {
+      RCLCPP_INFO(this->get_logger(), "Goal accepted by server, waiting for result");
+    }
+  }
 
   void feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback){
     std::cout<<feedback->distance_to_goal<<std::endl;
     std::cout<<feedback->speed<<std::endl;
+    // send the next path once shelfino reaches the goal
+    if(feedback->distance_to_goal == 0){
+      this->send_goal();
+    }
   }
 
   void result_callback(const GoalHandleFollowPath::WrappedResult& result)
