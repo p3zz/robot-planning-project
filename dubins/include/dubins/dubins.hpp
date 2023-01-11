@@ -14,7 +14,7 @@
 #define DEBUG_MOBILE true
 
 #define MAX_LENGTH_TRAJ 500.0 // traj meter max
-#define CURV_MAX 1.0          // max meter curvature
+#define CURV_MAX 5.0         // max meter curvature
 
 #define DOUBLE_MAX 1.79769e+308
 

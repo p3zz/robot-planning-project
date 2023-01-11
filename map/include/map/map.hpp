@@ -73,7 +73,7 @@ class RoadMap
     public:
         RoadMap(Room r):r{r}{}
         //PRM ROADMAP
-        bool construct_roadmap(int points, int knn, double k_distance_init, double tms_max); //k_distance_init initialize k_distance between 0.1 (inhomogeneus, very easy) and 1 (max homogeneus, very hard) which provides an homogeneus map, then decrease exponentially in time to reach 10% at time tms_max
+        bool construct_roadmap(int points, int knn, double k_distance_init, double tms_max, Point2D p_pos, Point2D e_pos); //k_distance_init initialize k_distance between 0.1 (inhomogeneus, very easy) and 1 (max homogeneus, very hard) which provides an homogeneus map, then decrease exponentially in time to reach 10% at time tms_max
         std::vector<Point2D> get_nodes(){return nodes;}
         std::vector<Segment> get_links(){return links;}
         int get_node_index(Point2D node);

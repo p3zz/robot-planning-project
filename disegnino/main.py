@@ -58,30 +58,27 @@ def main():
         f2.close()
         moves_purser = data["moves_pursuer"]
         moves_evader = data["moves_evader"]
+        lines=[]
         
         index=1
         lst_x=moves_purser[0]["x"]*100
         lst_y=hRcm-moves_purser[0]["y"]*100
-        c = Circle(Point(lst_x, lst_y), 10)
-        c.setFill("yellow")
-        c.draw(win)
-        t=Text(Point(lst_x, lst_y+2), "0")
-        t.setSize(12)
+        t=Text(Point(lst_x, lst_y-10), "0")
+        t.setSize(14)
+        t.setFill("red3")
         t.draw(win)
         for move in moves_purser[1:]:
             act_x=move["x"]*100
             act_y=hRcm-move["y"]*100
             l = Line(Point(lst_x, lst_y), Point(act_x, act_y))
-            if(move["marked"]):
-                c = Circle(Point(act_x, act_y), 8)
-                c.setFill("yellow")
-                c.draw(win)
-            l.setFill("yellow")
+            l.setFill("red")
             l.setWidth(2)
-            l.draw(win)
+            lines.append(l)
+            #l.draw(win)
             if(move["marked"]):
-                t=Text(Point(act_x, act_y+2), str(index))
-                t.setSize(12)
+                t=Text(Point(act_x, act_y-10), str(index))
+                t.setSize(14)
+                t.setFill("red3")
                 t.draw(win)
                 index+=1
             lst_x=act_x
@@ -90,30 +87,29 @@ def main():
         index=1
         lst_x=moves_evader[0]["x"]*100
         lst_y=hRcm-moves_evader[0]["y"]*100
-        c = Circle(Point(lst_x, lst_y), 10)
-        c.setFill("red")
-        c.draw(win)
-        t=Text(Point(lst_x, lst_y+2), "0")
-        t.setSize(12)
+        t=Text(Point(lst_x, lst_y-10), "0")
+        t.setSize(14)
+        t.setFill("orange3")
         t.draw(win)
         for move in moves_evader[1:]:
             act_x=move["x"]*100
             act_y=hRcm-move["y"]*100
             l = Line(Point(lst_x, lst_y), Point(act_x, act_y))
-            if(move["marked"]):
-                c = Circle(Point(act_x, act_y), 8)
-                c.setFill("red")
-                c.draw(win)
-            l.setFill("red")
+            l.setFill("orange")
             l.setWidth(2)
-            l.draw(win)
+            lines.append(l)
+            #l.draw(win)
             if(move["marked"]):
-                t=Text(Point(act_x, act_y+2), str(index))
-                t.setSize(12)
+                t=Text(Point(act_x, act_y-10), str(index))
+                t.setSize(14)
+                t.setFill("orange3")
                 t.draw(win)
                 index+=1
             lst_x=act_x
             lst_y=act_y
+        
+        for l in lines:
+            l.draw(win)
             
         
     keyString = ""

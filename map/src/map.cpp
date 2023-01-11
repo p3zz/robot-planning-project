@@ -80,7 +80,7 @@ void Knn(Point2D node, std::vector<Point2D> candidates, int k, Point2D* nearest_
 }
 
 //PRM ROADMAP
-bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, double tms_max)
+bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, double tms_max, Point2D p_pos, Point2D e_pos)
 {
     if(knn>KNN_MAX) return false;
     
@@ -88,7 +88,9 @@ bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, dou
     srand(get_seed());
     const double k_room_space=r.get_approx_area()/points;
     const double k_base=std::pow(0.1,1/tms_max); //base to decrease k_distance to 10% at tms_max
-    for (int i=0; i<points; i++)
+    nodes.push_back(p_pos); //add pursuer position as a node
+    nodes.push_back(e_pos); //add evader position as a node
+    for (int i=2; i<points; i++)
     {
         double tms,k_distance,distance_pts;
         Point2D node;

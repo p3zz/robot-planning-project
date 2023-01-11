@@ -43,7 +43,9 @@ int main(int argc, char * argv[]) {
         room.add_obstacle(obstacle);
     }
     RoadMap rm(room);
-    rm.construct_roadmap(60, 4, 0.5, 500);
+    DubinPoint pursuer(2,8,M_PI*1.75);
+    DubinPoint evader(8,2,M_PI*0.75);
+    rm.construct_roadmap(60, 4, 0.5, 500, pursuer.get_point(), evader.get_point());
     std::thread publisher(publisher_body, rm);
     publisher.detach();
     std::cout<<"Nodes: "<<rm.get_nodes().size()<<std::endl;

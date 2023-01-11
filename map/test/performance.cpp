@@ -9,13 +9,15 @@ using std::chrono::duration;
 using std::chrono::milliseconds;
 
 Room room(Polygon({ Point2D(0,0), Point2D(10,0), Point2D(10,10), Point2D(0,10) }));
+DubinPoint pursuer(2,8,M_PI*1.75);
+DubinPoint evader(8,2,M_PI*0.75);
 
 TEST(Map, Performance1){
     random_obstacles_vertexes(&room, 6, 20);
     RoadMap map(room);
     auto start = high_resolution_clock::now();
 
-    map.construct_roadmap(60, 4, 0.5, 500);
+    map.construct_roadmap(60, 4, 0.5, 500, pursuer.get_point(), evader.get_point());
 
     auto end = high_resolution_clock::now();
 
@@ -34,7 +36,7 @@ TEST(Map, Performance2){
     RoadMap map(room);
     auto start = high_resolution_clock::now();
 
-    map.construct_roadmap(80, 4, 0.5, 500);
+    map.construct_roadmap(80, 4, 0.5, 500, pursuer.get_point(), evader.get_point());
 
     auto end = high_resolution_clock::now();
 
@@ -53,7 +55,7 @@ TEST(Map, Performance3){
     RoadMap map(room);
     auto start = high_resolution_clock::now();
 
-    map.construct_roadmap(60, 4, 0.5, 500);
+    map.construct_roadmap(60, 4, 0.5, 500, pursuer.get_point(), evader.get_point());
 
     auto end = high_resolution_clock::now();
 
@@ -73,7 +75,7 @@ TEST(Map, Performance4){
     RoadMap map(room);
     auto start = high_resolution_clock::now();
 
-    map.construct_roadmap(80, 4, 0.5, 500);
+    map.construct_roadmap(80, 4, 0.5, 500, pursuer.get_point(), evader.get_point());
 
     auto end = high_resolution_clock::now();
 
