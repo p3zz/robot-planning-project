@@ -1,0 +1,33 @@
+[0.030s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/dubins': /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/dubins -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/dubins
+[0.221s] -- The C compiler identification is GNU 11.3.0
+[0.403s] -- The CXX compiler identification is GNU 11.3.0
+[0.427s] -- Detecting C compiler ABI info
+[0.576s] -- Detecting C compiler ABI info - done
+[0.603s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.603s] -- Detecting C compile features
+[0.617s] -- Detecting C compile features - done
+[0.624s] -- Detecting CXX compiler ABI info
+[0.801s] -- Detecting CXX compiler ABI info - done
+[0.823s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.825s] -- Detecting CXX compile features
+[0.826s] -- Detecting CXX compile features - done
+[0.878s] [31mCMake Error at CMakeLists.txt:8 (find_package):
+[0.879s]   By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project
+[0.879s]   has asked CMake to find a package configuration file provided by
+[0.880s]   "ament_cmake", but CMake did not find one.
+[0.881s] 
+[0.882s]   Could not find a package configuration file provided by "ament_cmake" with
+[0.882s]   any of the following names:
+[0.882s] 
+[0.882s]     ament_cmakeConfig.cmake
+[0.883s]     ament_cmake-config.cmake
+[0.883s] 
+[0.883s]   Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set
+[0.883s]   "ament_cmake_DIR" to a directory containing one of the above files.  If
+[0.884s]   "ament_cmake" provides a separate development package or SDK, be sure it
+[0.884s]   has been installed.
+[0.884s] 
+[0.884s] [0m
+[0.885s] -- Configuring incomplete, errors occurred!
+[0.885s] See also "/home/p3zz/Documents/uni/robot-planning-project/build/dubins/CMakeFiles/CMakeOutput.log".
+[0.929s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/dubins' returned '1': /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/dubins -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/dubins

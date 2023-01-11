@@ -1,0 +1,60 @@
+In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:262:3:[m[K [01;31m[Kerror: [m[K‘[01m[Krclcpp_action[m[K’ does not name a type
+  262 |   [01;31m[Krclcpp_action[m[K::Client<FollowPath>::SharedPtr client_ptr_;
+      |   [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In constructor ‘[01m[KFollowPathClient::FollowPathClient()[m[K’:
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:242:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass FollowPathClient[m[K’ has no member named ‘[01m[Kclient_ptr_[m[K’
+  242 |       this->[01;31m[Kclient_ptr_[m[K = rclcpp_action::create_client<FollowPath>(this,"follow_path");
+      |             [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:242:27:[m[K [01;31m[Kerror: [m[K‘[01m[Krclcpp_action[m[K’ has not been declared
+  242 |       this->client_ptr_ = [01;31m[Krclcpp_action[m[K::create_client<FollowPath>(this,"follow_path");
+      |                           [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:242:66:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K>[m[K’ token
+  242 |       this->client_ptr_ = rclcpp_action::create_client<FollowPath[01;31m[K>[m[K(this,"follow_path");
+      |                                                                  [01;31m[K^[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:242:68:[m[K [01;35m[Kwarning: [m[Kleft operand of comma operator has no effect [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+  242 |       this->client_ptr_ = rclcpp_action::create_client<FollowPath>([01;35m[Kthis[m[K,"follow_path");
+      |                                                                    [01;35m[K^~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In member function ‘[01m[Kvoid FollowPathClient::send_goal()[m[K’:
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:247:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass FollowPathClient[m[K’ has no member named ‘[01m[Kclient_ptr_[m[K’
+  247 |       if (!this->[01;31m[Kclient_ptr_[m[K->wait_for_action_server()) {
+      |                  [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:255:32:[m[K [01;31m[Kerror: [m[K‘[01m[Krclcpp_action[m[K’ has not been declared
+  255 |       auto send_goal_options = [01;31m[Krclcpp_action[m[K::Client<FollowPath>::SendGoalOptions();
+      |                                [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:255:64:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K>[m[K’ token
+  255 |       auto send_goal_options = rclcpp_action::Client<FollowPath[01;31m[K>[m[K::SendGoalOptions();
+      |                                                                [01;31m[K^[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:255:67:[m[K [01;31m[Kerror: [m[K‘[01m[K::SendGoalOptions[m[K’ has not been declared; did you mean ‘[01m[Ksend_goal_options[m[K’?
+  255 |       auto send_goal_options = rclcpp_action::Client<FollowPath>::[01;31m[KSendGoalOptions[m[K();
+      |                                                                   [01;31m[K^~~~~~~~~~~~~~~[m[K
+      |                                                                   [32m[Ksend_goal_options[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:256:103:[m[K [01;31m[Kerror: [m[K‘[01m[K_2[m[K’ was not declared in this scope; did you mean ‘[01m[Kstd::placeholders::_2[m[K’?
+  256 | l_options.feedback_callback = std::bind(&FollowPathClient::feedback_callback, this, _1, [01;31m[K_2[m[K);
+      |                                                                                         [01;31m[K^~[m[K
+      |                                                                                         [32m[Kstd::placeholders::_2[m[K
+In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:1[m[K,
+                 from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[01m[K/usr/include/c++/11/functional:226:34:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::placeholders::_2[m[K’ declared here
+  226 |     extern const _Placeholder<2> [01;36m[K_2[m[K;
+      |                                  [01;36m[K^~[m[K
+In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:258:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass FollowPathClient[m[K’ has no member named ‘[01m[Kclient_ptr_[m[K’
+  258 |       this->[01;31m[Kclient_ptr_[m[K->async_send_goal(path_msg, send_goal_options);
+      |             [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In member function ‘[01m[Kvoid FollowPathClient::result_callback(const Result&)[m[K’:
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:271:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst Result[m[K’ {aka ‘[01m[Kconst struct nav2_msgs::action::FollowPath_Result_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kcode[m[K’
+  271 |     switch (result.[01;31m[Kcode[m[K) {
+      |                    [01;31m[K^~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:272:12:[m[K [01;31m[Kerror: [m[K‘[01m[Krclcpp_action[m[K’ has not been declared
+  272 |       case [01;31m[Krclcpp_action[m[K::ResultCode::SUCCEEDED:
+      |            [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:274:12:[m[K [01;31m[Kerror: [m[K‘[01m[Krclcpp_action[m[K’ has not been declared
+  274 |       case [01;31m[Krclcpp_action[m[K::ResultCode::ABORTED:
+      |            [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:277:12:[m[K [01;31m[Kerror: [m[K‘[01m[Krclcpp_action[m[K’ has not been declared
+  277 |       case [01;31m[Krclcpp_action[m[K::ResultCode::CANCELED:
+      |            [01;31m[K^~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/shelfino.dir/build.make:76: CMakeFiles/shelfino.dir/src/main.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/shelfino.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

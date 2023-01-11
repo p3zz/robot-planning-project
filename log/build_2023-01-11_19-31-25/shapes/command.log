@@ -1,0 +1,2 @@
+Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/shapes': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/shapes -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/shapes
+Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/shapes' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/shapes -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/shapes

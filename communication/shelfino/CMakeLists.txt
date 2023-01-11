@@ -7,6 +7,7 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(rclcpp_action REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(custom_msgs REQUIRED)
 find_package(shapes REQUIRED)
@@ -15,12 +16,14 @@ find_package(map REQUIRED)
 find_package(utils REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(nav2_msgs)
+find_package(nav_msgs REQUIRED)
 
 include_directories(include)
 
 add_executable(shelfino src/main.cpp)
 
-ament_target_dependencies(shelfino rclcpp custom_msgs utils shapes dubins map geometry_msgs tf2 tf2_ros)
+ament_target_dependencies(shelfino rclcpp rclcpp_action custom_msgs utils shapes dubins map geometry_msgs tf2 tf2_ros nav2_msgs nav_msgs)
 
 install(
   TARGETS shelfino

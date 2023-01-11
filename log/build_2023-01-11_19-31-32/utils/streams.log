@@ -1,0 +1,4 @@
+[0.039s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/utils': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/utils -- -j8 -l8
+[0.370s] [35m[1mConsolidate compiler generated dependencies of target utils[0m
+[0.370s] [100%] Built target utils
+[0.371s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/utils' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/utils -- -j8 -l8

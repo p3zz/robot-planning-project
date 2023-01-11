@@ -1,0 +1,272 @@
+[0.000000] (-) TimerEvent: {}
+[0.000183] (cpp_pubsub) JobQueued: {'identifier': 'cpp_pubsub', 'dependencies': OrderedDict()}
+[0.000340] (custom_msgs) JobQueued: {'identifier': 'custom_msgs', 'dependencies': OrderedDict()}
+[0.001240] (decisions) JobQueued: {'identifier': 'decisions', 'dependencies': OrderedDict()}
+[0.001296] (dubins) JobQueued: {'identifier': 'dubins', 'dependencies': OrderedDict()}
+[0.001330] (map) JobQueued: {'identifier': 'map', 'dependencies': OrderedDict()}
+[0.001364] (shapes) JobQueued: {'identifier': 'shapes', 'dependencies': OrderedDict()}
+[0.001396] (utils) JobQueued: {'identifier': 'utils', 'dependencies': OrderedDict()}
+[0.001439] (shelfino) JobQueued: {'identifier': 'shelfino', 'dependencies': OrderedDict([('custom_msgs', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs'), ('shapes', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes')])}
+[0.001487] (custom_msgs) JobStarted: {'identifier': 'custom_msgs'}
+[0.014107] (shapes) JobStarted: {'identifier': 'shapes'}
+[0.015795] (cpp_pubsub) JobStarted: {'identifier': 'cpp_pubsub'}
+[0.018618] (decisions) JobStarted: {'identifier': 'decisions'}
+[0.021714] (dubins) JobStarted: {'identifier': 'dubins'}
+[0.026892] (map) JobStarted: {'identifier': 'map'}
+[0.028082] (utils) JobStarted: {'identifier': 'utils'}
+[0.035753] (custom_msgs) JobProgress: {'identifier': 'custom_msgs', 'progress': 'cmake'}
+[0.035997] (custom_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/p3zz/Documents/uni/robot-planning-project/communication/custom_msgs', '-DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz/Documents/uni'), ('DESKTOP_SESSION', 'ubuntu'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '1851'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1821,unix/p3zz-X510UQR:/tmp/.ICE-unix/1821'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/bf308169_4728_490f_8a17_a621d12680da'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.0JQ4X1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.138'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.039771] (shapes) JobProgress: {'identifier': 'shapes', 'progress': 'cmake'}
+[0.040050] (shapes) Command: {'cmd': ['/usr/bin/cmake', '/home/p3zz/Documents/uni/robot-planning-project/shapes', '-DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/shapes'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/shapes', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz/Documents/uni'), ('DESKTOP_SESSION', 'ubuntu'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '1851'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1821,unix/p3zz-X510UQR:/tmp/.ICE-unix/1821'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/bf308169_4728_490f_8a17_a621d12680da'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.0JQ4X1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.138'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/shapes'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.043101] (cpp_pubsub) JobProgress: {'identifier': 'cpp_pubsub', 'progress': 'cmake'}
+[0.043181] (cpp_pubsub) Command: {'cmd': ['/usr/bin/cmake', '/home/p3zz/Documents/uni/robot-planning-project/cpp_pubsub', '-DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/cpp_pubsub'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/cpp_pubsub', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz/Documents/uni'), ('DESKTOP_SESSION', 'ubuntu'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '1851'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1821,unix/p3zz-X510UQR:/tmp/.ICE-unix/1821'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/bf308169_4728_490f_8a17_a621d12680da'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.0JQ4X1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.138'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/cpp_pubsub'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.046589] (decisions) JobProgress: {'identifier': 'decisions', 'progress': 'cmake'}
+[0.046661] (decisions) Command: {'cmd': ['/usr/bin/cmake', '/home/p3zz/Documents/uni/robot-planning-project/decisions', '-DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/decisions'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/decisions', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz/Documents/uni'), ('DESKTOP_SESSION', 'ubuntu'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '1851'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1821,unix/p3zz-X510UQR:/tmp/.ICE-unix/1821'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/bf308169_4728_490f_8a17_a621d12680da'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.0JQ4X1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.138'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/decisions'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.048024] (dubins) JobProgress: {'identifier': 'dubins', 'progress': 'cmake'}
+[0.048473] (dubins) Command: {'cmd': ['/usr/bin/cmake', '/home/p3zz/Documents/uni/robot-planning-project/dubins', '-DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/dubins'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/dubins', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz/Documents/uni'), ('DESKTOP_SESSION', 'ubuntu'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '1851'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1821,unix/p3zz-X510UQR:/tmp/.ICE-unix/1821'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/bf308169_4728_490f_8a17_a621d12680da'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.0JQ4X1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.138'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/dubins'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.052592] (map) JobProgress: {'identifier': 'map', 'progress': 'cmake'}
+[0.052802] (map) Command: {'cmd': ['/usr/bin/cmake', '/home/p3zz/Documents/uni/robot-planning-project/map', '-DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/map'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/map', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz/Documents/uni'), ('DESKTOP_SESSION', 'ubuntu'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '1851'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1821,unix/p3zz-X510UQR:/tmp/.ICE-unix/1821'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/bf308169_4728_490f_8a17_a621d12680da'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.0JQ4X1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.138'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/map'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.056971] (utils) JobProgress: {'identifier': 'utils', 'progress': 'cmake'}
+[0.057086] (utils) Command: {'cmd': ['/usr/bin/cmake', '/home/p3zz/Documents/uni/robot-planning-project/utils', '-DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/utils'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/utils', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz/Documents/uni'), ('DESKTOP_SESSION', 'ubuntu'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '1851'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1821,unix/p3zz-X510UQR:/tmp/.ICE-unix/1821'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/bf308169_4728_490f_8a17_a621d12680da'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.0JQ4X1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.138'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/utils'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.099796] (-) TimerEvent: {}
+[0.200438] (-) TimerEvent: {}
+[0.225294] (custom_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.3.0\n'}
+[0.225748] (map) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.3.0\n'}
+[0.238660] (dubins) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.3.0\n'}
+[0.242615] (cpp_pubsub) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.3.0\n'}
+[0.243147] (shapes) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.3.0\n'}
+[0.243423] (decisions) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.3.0\n'}
+[0.301066] (-) TimerEvent: {}
+[0.401453] (-) TimerEvent: {}
+[0.410253] (custom_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.3.0\n'}
+[0.418507] (decisions) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.3.0\n'}
+[0.424165] (dubins) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.3.0\n'}
+[0.428000] (cpp_pubsub) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.3.0\n'}
+[0.428343] (shapes) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.3.0\n'}
+[0.430270] (map) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.3.0\n'}
+[0.447767] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.448774] (dubins) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.449002] (map) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.449193] (decisions) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.449382] (custom_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.449639] (shapes) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.502025] (-) TimerEvent: {}
+[0.593939] (shapes) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.597884] (dubins) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.602150] (-) TimerEvent: {}
+[0.603799] (custom_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.610127] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.613575] (map) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.616738] (shapes) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.624259] (dubins) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.624539] (dubins) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.625334] (custom_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.625986] (custom_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.626341] (map) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.626721] (map) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.627199] (custom_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.627434] (map) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.631083] (shapes) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.631360] (shapes) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.631597] (cpp_pubsub) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.632057] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.632800] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.633201] (shapes) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.633501] (custom_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.634744] (map) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.638904] (dubins) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.643705] (decisions) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.645570] (dubins) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.645898] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.663676] (decisions) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.664563] (decisions) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.665086] (decisions) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.671121] (decisions) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.702259] (-) TimerEvent: {}
+[0.804992] (-) TimerEvent: {}
+[0.806916] (shapes) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.812324] (map) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.816690] (custom_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.822563] (dubins) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.824226] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.833765] (decisions) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.834100] (map) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.834315] (map) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.834469] (map) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.838799] (shapes) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.839546] (shapes) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.840232] (shapes) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.845016] (dubins) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.845535] (dubins) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.847448] (cpp_pubsub) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.847804] (dubins) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.848208] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.848711] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.854190] (custom_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.854609] (custom_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.855005] (custom_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.862259] (custom_msgs) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:14 (find_package):\n'}
+[0.872880] (custom_msgs) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.878515] (custom_msgs) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.878718] (custom_msgs) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.879269] (custom_msgs) StderrLine: {'line': b'\n'}
+[0.880104] (custom_msgs) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.880565] (custom_msgs) StderrLine: {'line': b'  any of the following names:\n'}
+[0.880757] (custom_msgs) StderrLine: {'line': b'\n'}
+[0.881162] (custom_msgs) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.881911] (custom_msgs) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.882604] (custom_msgs) StderrLine: {'line': b'\n'}
+[0.883019] (custom_msgs) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.883429] (custom_msgs) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.884135] (custom_msgs) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.884708] (custom_msgs) StderrLine: {'line': b'  has been installed.\n'}
+[0.885314] (custom_msgs) StderrLine: {'line': b'\n'}
+[0.886029] (custom_msgs) StderrLine: {'line': b'\x1b[0m\n'}
+[0.886569] (custom_msgs) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.886835] (custom_msgs) StdoutLine: {'line': b'See also "/home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs/CMakeFiles/CMakeOutput.log".\n'}
+[0.894699] (shapes) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:9 (find_package):\n'}
+[0.894944] (shapes) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.895105] (shapes) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.895262] (shapes) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.895422] (shapes) StderrLine: {'line': b'\n'}
+[0.895586] (shapes) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.895742] (shapes) StderrLine: {'line': b'  any of the following names:\n'}
+[0.895924] (shapes) StderrLine: {'line': b'\n'}
+[0.897279] (shapes) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.897500] (shapes) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.897745] (shapes) StderrLine: {'line': b'\n'}
+[0.897904] (shapes) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.898088] (shapes) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.898284] (shapes) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.898452] (shapes) StderrLine: {'line': b'  has been installed.\n'}
+[0.898771] (shapes) StderrLine: {'line': b'\n'}
+[0.899234] (shapes) StderrLine: {'line': b'\x1b[0m\n'}
+[0.899442] (dubins) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:8 (find_package):\n'}
+[0.899876] (dubins) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.900639] (dubins) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.901237] (dubins) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.902571] (dubins) StderrLine: {'line': b'\n'}
+[0.903049] (dubins) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.903764] (dubins) StderrLine: {'line': b'  any of the following names:\n'}
+[0.903962] (dubins) StderrLine: {'line': b'\n'}
+[0.904117] (dubins) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.904275] (dubins) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.904429] (dubins) StderrLine: {'line': b'\n'}
+[0.904722] (dubins) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.904895] (dubins) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.905049] (-) TimerEvent: {}
+[0.905318] (dubins) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.905594] (dubins) StderrLine: {'line': b'  has been installed.\n'}
+[0.905760] (dubins) StderrLine: {'line': b'\n'}
+[0.905947] (dubins) StderrLine: {'line': b'\x1b[0m\n'}
+[0.906250] (dubins) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.906445] (dubins) StdoutLine: {'line': b'See also "/home/p3zz/Documents/uni/robot-planning-project/build/dubins/CMakeFiles/CMakeOutput.log".\n'}
+[0.906721] (shapes) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.906898] (shapes) StdoutLine: {'line': b'See also "/home/p3zz/Documents/uni/robot-planning-project/build/shapes/CMakeFiles/CMakeOutput.log".\n'}
+[0.907049] (decisions) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.907199] (map) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:8 (find_package):\n'}
+[0.907365] (map) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.907511] (map) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.907657] (map) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.907802] (map) StderrLine: {'line': b'\n'}
+[0.907946] (map) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.908096] (map) StderrLine: {'line': b'  any of the following names:\n'}
+[0.908312] (map) StderrLine: {'line': b'\n'}
+[0.908467] (map) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.908615] (map) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.908763] (map) StderrLine: {'line': b'\n'}
+[0.908919] (map) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.909067] (map) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.909206] (map) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.909569] (map) StderrLine: {'line': b'  has been installed.\n'}
+[0.910581] (map) StderrLine: {'line': b'\n'}
+[0.911354] (map) StderrLine: {'line': b'\x1b[0m\n'}
+[0.917693] (cpp_pubsub) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:9 (find_package):\n'}
+[0.917936] (cpp_pubsub) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.919405] (cpp_pubsub) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.919550] (cpp_pubsub) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.919687] (cpp_pubsub) StderrLine: {'line': b'\n'}
+[0.919989] (cpp_pubsub) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.920142] (cpp_pubsub) StderrLine: {'line': b'  any of the following names:\n'}
+[0.920336] (cpp_pubsub) StderrLine: {'line': b'\n'}
+[0.920481] (cpp_pubsub) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.920776] (cpp_pubsub) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.921070] (cpp_pubsub) StderrLine: {'line': b'\n'}
+[0.921257] (cpp_pubsub) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.922453] (cpp_pubsub) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.922615] (cpp_pubsub) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.923436] (cpp_pubsub) StderrLine: {'line': b'  has been installed.\n'}
+[0.923654] (cpp_pubsub) StderrLine: {'line': b'\n'}
+[0.923848] (cpp_pubsub) StderrLine: {'line': b'\x1b[0m\n'}
+[0.924131] (cpp_pubsub) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.924275] (cpp_pubsub) StdoutLine: {'line': b'See also "/home/p3zz/Documents/uni/robot-planning-project/build/cpp_pubsub/CMakeFiles/CMakeOutput.log".\n'}
+[0.924454] (map) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.924592] (map) StdoutLine: {'line': b'See also "/home/p3zz/Documents/uni/robot-planning-project/build/map/CMakeFiles/CMakeOutput.log".\n'}
+[0.924879] (decisions) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.925067] (decisions) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.925285] (decisions) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:9 (find_package):\n'}
+[0.925541] (decisions) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.925729] (decisions) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.925943] (decisions) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.926216] (decisions) StderrLine: {'line': b'\n'}
+[0.926483] (decisions) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.926633] (decisions) StderrLine: {'line': b'  any of the following names:\n'}
+[0.927042] (decisions) StderrLine: {'line': b'\n'}
+[0.927141] (decisions) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.927228] (decisions) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.928493] (decisions) StderrLine: {'line': b'\n'}
+[0.928635] (decisions) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.928933] (decisions) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.929073] (decisions) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.929252] (decisions) StderrLine: {'line': b'  has been installed.\n'}
+[0.929382] (decisions) StderrLine: {'line': b'\n'}
+[0.929651] (decisions) StderrLine: {'line': b'\x1b[0m\n'}
+[0.929832] (decisions) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.930041] (decisions) StdoutLine: {'line': b'See also "/home/p3zz/Documents/uni/robot-planning-project/build/decisions/CMakeFiles/CMakeOutput.log".\n'}
+[0.930336] (utils) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.3.0\n'}
+[0.930584] (utils) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.3.0\n'}
+[0.930764] (utils) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.931052] (utils) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.931227] (utils) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.931526] (utils) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.931698] (utils) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.933270] (utils) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.934189] (utils) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.934540] (utils) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.934734] (utils) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.934891] (utils) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.935994] (utils) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.939766] (utils) StdoutLine: {'line': b'See also "/home/p3zz/Documents/uni/robot-planning-project/build/utils/CMakeFiles/CMakeOutput.log".\n'}
+[0.939946] (utils) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:8 (find_package):\n'}
+[0.940149] (utils) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.940302] (utils) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.941309] (utils) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.941511] (utils) StderrLine: {'line': b'\n'}
+[0.941876] (utils) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.942051] (utils) StderrLine: {'line': b'  any of the following names:\n'}
+[0.942612] (utils) StderrLine: {'line': b'\n'}
+[0.943081] (utils) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.943285] (utils) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.944247] (utils) StderrLine: {'line': b'\n'}
+[0.944528] (utils) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.944952] (utils) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.945115] (utils) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.945319] (utils) StderrLine: {'line': b'  has been installed.\n'}
+[0.945484] (utils) StderrLine: {'line': b'\n'}
+[0.946935] (utils) StderrLine: {'line': b'\x1b[0m\n'}
+[0.947368] (custom_msgs) CommandEnded: {'returncode': 1}
+[0.948925] (cpp_pubsub) CommandEnded: {'returncode': 1}
+[0.949589] (shapes) CommandEnded: {'returncode': 1}
+[0.950288] (dubins) CommandEnded: {'returncode': 1}
+[0.950802] (decisions) CommandEnded: {'returncode': 1}
+[0.951300] (map) CommandEnded: {'returncode': 1}
+[0.952036] (utils) CommandEnded: {'returncode': 1}
+[0.952678] (custom_msgs) JobEnded: {'identifier': 'custom_msgs', 'rc': 1}
+[0.954152] (shapes) JobEnded: {'identifier': 'shapes', 'rc': 'SIGINT'}
+[0.954424] (cpp_pubsub) JobEnded: {'identifier': 'cpp_pubsub', 'rc': 'SIGINT'}
+[0.954688] (decisions) JobEnded: {'identifier': 'decisions', 'rc': 'SIGINT'}
+[0.955012] (dubins) JobEnded: {'identifier': 'dubins', 'rc': 'SIGINT'}
+[0.955334] (map) JobEnded: {'identifier': 'map', 'rc': 'SIGINT'}
+[0.955653] (utils) JobEnded: {'identifier': 'utils', 'rc': 'SIGINT'}
+[0.964879] (shelfino) JobSkipped: {'identifier': 'shelfino'}
+[0.964961] (-) EventReactorShutdown: {}

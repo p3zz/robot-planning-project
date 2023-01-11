@@ -5,6 +5,7 @@
 #include <string>
 
 #include "rclcpp/rclcpp.hpp"
+#include "rclcpp_action/rclcpp_action.hpp"
 #include "std_msgs/msg/header.hpp"
 #include "custom_msgs/msg/obstacle_array_msg.hpp"
 #include "custom_msgs/msg/obstacle_msg.hpp"
@@ -14,6 +15,8 @@
 #include "geometry_msgs/msg/pose_array.hpp"
 #include "geometry_msgs/msg/polygon.hpp"
 #include "geometry_msgs/msg/transform_stamped.hpp"
+#include "nav2_msgs/action/follow_path.hpp"
+#include "nav_msgs/msg/path.hpp"
 
 #include "tf2/exceptions.h"
 #include "tf2_ros/transform_listener.h"
@@ -24,6 +27,7 @@
 #include "map/map.hpp"
 
 using std::placeholders::_1;
+using std::placeholders::_2;
 using namespace std::chrono_literals;
 
 std::vector<Polygon> obstacles_from_msg(custom_msgs::msg::ObstacleArrayMsg msg){
@@ -230,4 +234,55 @@ class RoadmapPublisher : public rclcpp::Node
   private:
     rclcpp::Publisher<custom_msgs::msg::GeometryGraph>::SharedPtr publisher_;
     size_t count_;
+};
+
+class FollowPathClient : public rclcpp::Node {
+  public:
+
+    using FollowPath = nav2_msgs::action::FollowPath;
+    using GoalHandleFollowPath = rclcpp_action::ClientGoalHandle<FollowPath>;
+    FollowPathClient() : Node("follow_path_client") {
+      this->client_ptr_ = rclcpp_action::create_client<FollowPath>(this,"follow_path");
+    }
+
+    void send_goal(){
+
+      if (!this->client_ptr_->wait_for_action_server()) {
+        // RCLCPP_ERROR(this->get_logger(), "Action server not available after waiting");
+        // rclcpp::shutdown();
+      }
+
+      auto path_msg = FollowPath::Goal();
+      path_msg.path = nav_msgs::msg::Path();
+
+      auto send_goal_options = rclcpp_action::Client<FollowPath>::SendGoalOptions();
+      send_goal_options.feedback_callback = std::bind(&FollowPathClient::feedback_callback, this, _1, _2);
+      send_goal_options.result_callback = std::bind(&FollowPathClient::result_callback, this, _1);
+      this->client_ptr_->async_send_goal(path_msg, send_goal_options);
+    }
+
+private:
+  rclcpp_action::Client<FollowPath>::SharedPtr client_ptr_;
+
+  void feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback){
+    std::cout<<feedback->distance_to_goal<<std::endl;
+    std::cout<<feedback->speed<<std::endl;
+  }
+
+  void result_callback(const GoalHandleFollowPath::WrappedResult& result)
+  {
+    switch (result.code) {
+      case rclcpp_action::ResultCode::SUCCEEDED:
+        break;
+      case rclcpp_action::ResultCode::ABORTED:
+        RCLCPP_ERROR(this->get_logger(), "Goal was aborted");
+        return;
+      case rclcpp_action::ResultCode::CANCELED:
+        RCLCPP_ERROR(this->get_logger(), "Goal was canceled");
+        return;
+      default:
+        RCLCPP_ERROR(this->get_logger(), "Unknown result code");
+        return;
+    }
+  }
 };

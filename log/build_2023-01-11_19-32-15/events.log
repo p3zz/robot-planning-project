@@ -1,0 +1,145 @@
+[0.000000] (-) TimerEvent: {}
+[0.000187] (-) JobUnselected: {'identifier': 'cpp_pubsub'}
+[0.000248] (-) JobUnselected: {'identifier': 'custom_msgs'}
+[0.000588] (-) JobUnselected: {'identifier': 'decisions'}
+[0.000639] (-) JobUnselected: {'identifier': 'map'}
+[0.000858] (-) JobUnselected: {'identifier': 'shapes'}
+[0.001606] (-) JobUnselected: {'identifier': 'shelfino'}
+[0.001768] (-) JobUnselected: {'identifier': 'utils'}
+[0.001830] (dubins) JobQueued: {'identifier': 'dubins', 'dependencies': OrderedDict()}
+[0.001884] (dubins) JobStarted: {'identifier': 'dubins'}
+[0.015082] (dubins) JobProgress: {'identifier': 'dubins', 'progress': 'cmake'}
+[0.015958] (dubins) Command: {'cmd': ['/usr/bin/cmake', '/home/p3zz/Documents/uni/robot-planning-project/dubins', '-DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/dubins'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/dubins', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes/lib:/home/p3zz/Documents/uni/robot-planning-project/install/utils/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '1851'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1821,unix/p3zz-X510UQR:/tmp/.ICE-unix/1821'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/7eb6ef9d_4735_4365_b984_4834f7c65106'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.0JQ4X1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.384'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/dubins'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble')]), 'shell': False}
+[0.032507] (dubins) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.099499] (-) TimerEvent: {}
+[0.199772] (-) TimerEvent: {}
+[0.213380] (dubins) StdoutLine: {'line': b'-- Found utils: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/utils/share/utils/cmake)\n'}
+[0.214658] (dubins) StdoutLine: {'line': b'-- Found shapes: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/cmake)\n'}
+[0.219999] (dubins) StdoutLine: {'line': b'-- Found ament_cmake_gtest: 1.3.3 (/opt/ros/humble/share/ament_cmake_gtest/cmake)\n'}
+[0.222928] (dubins) StdoutLine: {'line': b"-- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built\n"}
+[0.224962] (dubins) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[0.299917] (-) TimerEvent: {}
+[0.302991] (dubins) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[0.303343] (dubins) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[0.383825] (dubins) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[0.384792] (dubins) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[0.400010] (-) TimerEvent: {}
+[0.460097] (dubins) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.472262] (dubins) StdoutLine: {'line': b'-- Generating done\n'}
+[0.473913] (dubins) StdoutLine: {'line': b'-- Build files have been written to: /home/p3zz/Documents/uni/robot-planning-project/build/dubins\n'}
+[0.476803] (dubins) CommandEnded: {'returncode': 0}
+[0.477635] (dubins) JobProgress: {'identifier': 'dubins', 'progress': 'build'}
+[0.478317] (dubins) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/p3zz/Documents/uni/robot-planning-project/build/dubins', '--', '-j8', '-l8'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/dubins', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes/lib:/home/p3zz/Documents/uni/robot-planning-project/install/utils/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '1851'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1821,unix/p3zz-X510UQR:/tmp/.ICE-unix/1821'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/7eb6ef9d_4735_4365_b984_4834f7c65106'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.0JQ4X1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.384'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/dubins'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble')]), 'shell': False}
+[0.500148] (-) TimerEvent: {}
+[0.536026] (dubins) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o\x1b[0m\n'}
+[0.538087] (dubins) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding CXX object CMakeFiles/dubins.dir/src/dubins.cpp.o\x1b[0m\n'}
+[0.539953] (dubins) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o\x1b[0m\n'}
+[0.600279] (-) TimerEvent: {}
+[0.700650] (-) TimerEvent: {}
+[0.800898] (-) TimerEvent: {}
+[0.901218] (-) TimerEvent: {}
+[1.001479] (-) TimerEvent: {}
+[1.101804] (-) TimerEvent: {}
+[1.202090] (-) TimerEvent: {}
+[1.302403] (-) TimerEvent: {}
+[1.402679] (-) TimerEvent: {}
+[1.502983] (-) TimerEvent: {}
+[1.603274] (-) TimerEvent: {}
+[1.652057] (dubins) StdoutLine: {'line': b'[ 40%] \x1b[32m\x1b[1mLinking CXX static library libgtest_main.a\x1b[0m\n'}
+[1.687523] (dubins) StdoutLine: {'line': b'[ 40%] Built target gtest_main\n'}
+[1.703413] (-) TimerEvent: {}
+[1.803673] (-) TimerEvent: {}
+[1.903981] (-) TimerEvent: {}
+[2.004236] (-) TimerEvent: {}
+[2.104513] (-) TimerEvent: {}
+[2.204803] (-) TimerEvent: {}
+[2.305149] (-) TimerEvent: {}
+[2.405457] (-) TimerEvent: {}
+[2.505787] (-) TimerEvent: {}
+[2.539129] (dubins) StdoutLine: {'line': b'[ 50%] \x1b[32m\x1b[1mLinking CXX static library libdubins.a\x1b[0m\n'}
+[2.582452] (dubins) StdoutLine: {'line': b'[ 50%] Built target dubins\n'}
+[2.605884] (-) TimerEvent: {}
+[2.706158] (-) TimerEvent: {}
+[2.806431] (-) TimerEvent: {}
+[2.906708] (-) TimerEvent: {}
+[3.006950] (-) TimerEvent: {}
+[3.107261] (-) TimerEvent: {}
+[3.207714] (-) TimerEvent: {}
+[3.308025] (-) TimerEvent: {}
+[3.408287] (-) TimerEvent: {}
+[3.508587] (-) TimerEvent: {}
+[3.608919] (-) TimerEvent: {}
+[3.709237] (-) TimerEvent: {}
+[3.809551] (-) TimerEvent: {}
+[3.909830] (-) TimerEvent: {}
+[4.010152] (-) TimerEvent: {}
+[4.110539] (-) TimerEvent: {}
+[4.210888] (-) TimerEvent: {}
+[4.311160] (-) TimerEvent: {}
+[4.371354] (dubins) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking CXX static library libgtest.a\x1b[0m\n'}
+[4.411295] (-) TimerEvent: {}
+[4.442279] (dubins) StdoutLine: {'line': b'[ 60%] Built target gtest\n'}
+[4.464406] (dubins) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/test_dubins.dir/test/performance.cpp.o\x1b[0m\n'}
+[4.464708] (dubins) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding CXX object CMakeFiles/test_dubins.dir/test/main.cpp.o\x1b[0m\n'}
+[4.464983] (dubins) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding CXX object CMakeFiles/test_dubins.dir/test/collisions.cpp.o\x1b[0m\n'}
+[4.511418] (-) TimerEvent: {}
+[4.611738] (-) TimerEvent: {}
+[4.712031] (-) TimerEvent: {}
+[4.812338] (-) TimerEvent: {}
+[4.912639] (-) TimerEvent: {}
+[5.012935] (-) TimerEvent: {}
+[5.113307] (-) TimerEvent: {}
+[5.213657] (-) TimerEvent: {}
+[5.314017] (-) TimerEvent: {}
+[5.414312] (-) TimerEvent: {}
+[5.514655] (-) TimerEvent: {}
+[5.614984] (-) TimerEvent: {}
+[5.715306] (-) TimerEvent: {}
+[5.815614] (-) TimerEvent: {}
+[5.915950] (-) TimerEvent: {}
+[6.016265] (-) TimerEvent: {}
+[6.116591] (-) TimerEvent: {}
+[6.216925] (-) TimerEvent: {}
+[6.317294] (-) TimerEvent: {}
+[6.417658] (-) TimerEvent: {}
+[6.517978] (-) TimerEvent: {}
+[6.618299] (-) TimerEvent: {}
+[6.718577] (-) TimerEvent: {}
+[6.818959] (-) TimerEvent: {}
+[6.919218] (-) TimerEvent: {}
+[6.938699] (dubins) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable test_dubins\x1b[0m\n'}
+[7.019344] (-) TimerEvent: {}
+[7.119723] (-) TimerEvent: {}
+[7.143664] (dubins) StdoutLine: {'line': b'[100%] Built target test_dubins\n'}
+[7.156158] (dubins) CommandEnded: {'returncode': 0}
+[7.195632] (dubins) JobProgress: {'identifier': 'dubins', 'progress': 'install'}
+[7.204900] (dubins) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/p3zz/Documents/uni/robot-planning-project/build/dubins'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/dubins', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes/lib:/home/p3zz/Documents/uni/robot-planning-project/install/utils/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '1851'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1821,unix/p3zz-X510UQR:/tmp/.ICE-unix/1821'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/7eb6ef9d_4735_4365_b984_4834f7c65106'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.0JQ4X1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.384'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/dubins'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble')]), 'shell': False}
+[7.213846] (dubins) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[7.214118] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/environment/library_path.sh\n'}
+[7.214309] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/environment/library_path.dsv\n'}
+[7.214493] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/include/dubins\n'}
+[7.214660] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/include/dubins/dubins.hpp\n'}
+[7.214775] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/lib/libdubins.a\n'}
+[7.215799] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/lib/dubins/test_dubins\n'}
+[7.217893] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/ament_index/resource_index/package_run_dependencies/dubins\n'}
+[7.218118] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/ament_index/resource_index/parent_prefix_path/dubins\n'}
+[7.218328] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/environment/ament_prefix_path.sh\n'}
+[7.218519] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/environment/ament_prefix_path.dsv\n'}
+[7.218742] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/environment/path.sh\n'}
+[7.218945] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/environment/path.dsv\n'}
+[7.219080] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/local_setup.bash\n'}
+[7.219271] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/local_setup.sh\n'}
+[7.219465] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/local_setup.zsh\n'}
+[7.219640] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/local_setup.dsv\n'}
+[7.219723] (-) TimerEvent: {}
+[7.219905] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/package.dsv\n'}
+[7.220108] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/ament_index/resource_index/packages/dubins\n'}
+[7.220295] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/cmake/dubinsExport.cmake\n'}
+[7.220485] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/cmake/dubinsExport-noconfig.cmake\n'}
+[7.220700] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[7.220864] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/cmake/dubinsConfig.cmake\n'}
+[7.221002] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/cmake/dubinsConfig-version.cmake\n'}
+[7.221181] (dubins) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/package.xml\n'}
+[7.225393] (dubins) CommandEnded: {'returncode': 0}
+[7.289205] (dubins) JobEnded: {'identifier': 'dubins', 'rc': 0}
+[7.289893] (-) EventReactorShutdown: {}

@@ -1,0 +1,10 @@
+/home/p3zz/Documents/uni/robot-planning-project/build/shelfino/CMakeFiles/uninstall.dir
+/home/p3zz/Documents/uni/robot-planning-project/build/shelfino/CMakeFiles/shelfino_uninstall.dir
+/home/p3zz/Documents/uni/robot-planning-project/build/shelfino/CMakeFiles/shelfino.dir
+/home/p3zz/Documents/uni/robot-planning-project/build/shelfino/CMakeFiles/test.dir
+/home/p3zz/Documents/uni/robot-planning-project/build/shelfino/CMakeFiles/edit_cache.dir
+/home/p3zz/Documents/uni/robot-planning-project/build/shelfino/CMakeFiles/rebuild_cache.dir
+/home/p3zz/Documents/uni/robot-planning-project/build/shelfino/CMakeFiles/list_install_components.dir
+/home/p3zz/Documents/uni/robot-planning-project/build/shelfino/CMakeFiles/install.dir
+/home/p3zz/Documents/uni/robot-planning-project/build/shelfino/CMakeFiles/install/local.dir
+/home/p3zz/Documents/uni/robot-planning-project/build/shelfino/CMakeFiles/install/strip.dir

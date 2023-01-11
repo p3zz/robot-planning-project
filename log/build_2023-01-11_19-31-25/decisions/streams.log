@@ -1,0 +1,21 @@
+[0.052s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/decisions': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/decisions -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/decisions
+[0.092s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.421s] [31mCMake Error at CMakeLists.txt:10 (find_package):
+[0.421s]   By not providing "Findutils.cmake" in CMAKE_MODULE_PATH this project has
+[0.421s]   asked CMake to find a package configuration file provided by "utils", but
+[0.427s]   CMake did not find one.
+[0.430s] 
+[0.430s]   Could not find a package configuration file provided by "utils" with any of
+[0.431s]   the following names:
+[0.431s] 
+[0.432s]     utilsConfig.cmake
+[0.432s]     utils-config.cmake
+[0.432s] 
+[0.433s]   Add the installation prefix of "utils" to CMAKE_PREFIX_PATH or set
+[0.433s]   "utils_DIR" to a directory containing one of the above files.  If "utils"
+[0.433s]   provides a separate development package or SDK, be sure it has been
+[0.433s]   installed.
+[0.433s] 
+[0.434s] [0m
+[0.434s] -- Configuring incomplete, errors occurred!
+[0.434s] See also "/home/p3zz/Documents/uni/robot-planning-project/build/decisions/CMakeFiles/CMakeOutput.log".
