@@ -183,7 +183,9 @@ class GatesSubscriber : public rclcpp::Node{
             gates.push_back(Point2D(pose.position.x, pose.position.y));
           }
           gates_position.set(gates);
-          std::cout<<"new gate position"<<std::endl;
+          for(auto &gate: gates_position.get()){
+            RCLCPP_INFO(this->get_logger(), "Gate received: (%f, %f)", gate.x, gate.y);
+          }
         }
         rclcpp::Subscription<geometry_msgs::msg::PoseArray>::SharedPtr subscription_;
         SafeValue<std::vector<Point2D>>& gates_position;
@@ -200,8 +202,11 @@ class WallsSubscriber : public rclcpp::Node{
 
     private:
         void topic_callback(const geometry_msgs::msg::Polygon & msg) const {
-            map_borders.set(borders_from_msg(msg));
-            std::cout<<"new map borders"<<std::endl;
+          map_borders.set(borders_from_msg(msg));
+          RCLCPP_INFO(this->get_logger(), "Borders received");
+          for(auto &v: map_borders.get().vertexes){
+            RCLCPP_INFO(this->get_logger(), "Border: (%f, %f)", v.x, v.y);
+          }
         }
         rclcpp::Subscription<geometry_msgs::msg::Polygon>::SharedPtr subscription_;
         SafeValue<Polygon>& map_borders;
@@ -217,6 +222,12 @@ public:
 private:
     void topic_callback(const custom_msgs::msg::ObstacleArrayMsg & msg) const {
         obstacles.set(obstacles_from_msg(msg));
+        for(auto &ob: obstacles.get()){
+          RCLCPP_INFO(this->get_logger(), "Obstacle received");
+          for(auto &v: ob.vertexes){  
+            RCLCPP_INFO(this->get_logger(), "Vertex: (%f, %f)", v.x, v.y);
+          }
+        }
     }
     rclcpp::Subscription<custom_msgs::msg::ObstacleArrayMsg>::SharedPtr subscription_;
     SafeValue<std::vector<Polygon>>& obstacles;
@@ -303,6 +314,7 @@ private:
     send_goal_options.feedback_callback = std::bind(&FollowPathClient::feedback_callback, this, _1, _2);
     send_goal_options.result_callback = std::bind(&FollowPathClient::result_callback, this, _1);
     this->client_ptr_->async_send_goal(path_msg, send_goal_options);
+    RCLCPP_INFO(this->get_logger(), "Sending goal");
   }
 
   void goal_response_callback(const GoalHandleFollowPath::SharedPtr& goal_handle)
@@ -315,8 +327,7 @@ private:
   }
 
   void feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback){
-    std::cout<<feedback->distance_to_goal<<std::endl;
-    std::cout<<feedback->speed<<std::endl;
+    RCLCPP_INFO(this->get_logger(), "Speed: %f, Distance to goal: %f", feedback->speed, feedback->distance_to_goal);
     // send the next path once shelfino reaches the goal
     if(feedback->distance_to_goal == 0){
       this->send_goal();
