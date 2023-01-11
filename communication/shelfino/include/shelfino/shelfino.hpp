@@ -11,6 +11,7 @@
 #include "custom_msgs/msg/geometry_graph.hpp"
 #include "custom_msgs/msg/edges.hpp"
 #include "geometry_msgs/msg/pose.hpp"
+#include "geometry_msgs/msg/pose_array.hpp"
 #include "geometry_msgs/msg/polygon.hpp"
 #include "geometry_msgs/msg/transform_stamped.hpp"
 
@@ -111,13 +112,13 @@ class SafeValue{
 class ShelfinoDto {
     public:
         ShelfinoDto(){
-            gate_position = SafeValue<Point2D>(Point2D(0,0));
+            gates_position = SafeValue<std::vector<Point2D>>();
             map_borders = SafeValue<Polygon>(Polygon());
             obstacles = SafeValue<std::vector<Polygon>>();
             pose = SafeValue<DubinPoint>(DubinPoint(0,0,0));
         }
 
-        SafeValue<Point2D> gate_position;
+        SafeValue<std::vector<Point2D>> gates_position;
         SafeValue<Polygon> map_borders;
         SafeValue<std::vector<Polygon>> obstacles;
         SafeValue<DubinPoint> pose;
@@ -125,19 +126,23 @@ class ShelfinoDto {
 
 class GatesSubscriber : public rclcpp::Node{
     public:
-        GatesSubscriber(SafeValue<Point2D>& gate_position) : 
-            Node("gates_subscriber"), gate_position{gate_position} {
-                subscription_ = this->create_subscription<geometry_msgs::msg::Pose>(
+        GatesSubscriber(SafeValue<std::vector<Point2D>>& gates_position) : 
+            Node("gates_subscriber"), gates_position{gates_position} {
+                subscription_ = this->create_subscription<geometry_msgs::msg::PoseArray>(
                 "gate_position", 10, std::bind(&GatesSubscriber::topic_callback, this, _1));
         };
 
     private:
-        void topic_callback(const geometry_msgs::msg::Pose& msg) {
-            gate_position.set(Point2D(msg.position.x, msg.position.y));
-            std::cout<<"new gate position"<<std::endl;
+        void topic_callback(const geometry_msgs::msg::PoseArray& msg) {
+          std::vector<Point2D> gates;
+          for(auto &pose: msg.poses){
+            gates.push_back(Point2D(pose.position.x, pose.position.y));
+          }
+          gates_position.set(gates);
+          std::cout<<"new gate position"<<std::endl;
         }
-        rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr subscription_;
-        SafeValue<Point2D>& gate_position;
+        rclcpp::Subscription<geometry_msgs::msg::PoseArray>::SharedPtr subscription_;
+        SafeValue<std::vector<Point2D>>& gates_position;
 };
 
 
