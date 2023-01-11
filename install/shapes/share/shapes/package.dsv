@@ -1,8 +1,0 @@
-source;share/shapes/hook/cmake_prefix_path.ps1
-source;share/shapes/hook/cmake_prefix_path.dsv
-source;share/shapes/hook/cmake_prefix_path.sh
-source;share/shapes/local_setup.bash
-source;share/shapes/local_setup.dsv
-source;share/shapes/local_setup.ps1
-source;share/shapes/local_setup.sh
-source;share/shapes/local_setup.zsh

@@ -1,1 +1,0 @@
-Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs -- -j8 -l8
