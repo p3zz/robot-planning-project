@@ -22,17 +22,29 @@ double angle_in_range(double angle)
     return nearest_angle;
 }
 
-DubinPoint getNearestNode(DubinPoint position, std::vector<Point2D> nodes)
+DubinPoint get_nearest_node(DubinPoint position, std::vector<Point2D> nodes, bool angle_approx)
 {
     DubinPoint p;
     double dist_min=POINT_COORD_MAX, dist;
     for(int i=0; i<(int)nodes.size(); i++)
     {
-        dist=distance(position.get_point(), nodes.at(i));
+        dist = distance(position.get_point(), nodes.at(i));
+
         if(dist<dist_min)
         {
-            dist_min=dist;
-            p=DubinPoint(nodes.at(i),angle_in_range(position.th));
+            bool filtered=false;
+            //filter for other case: approximation with angle
+            if(angle_approx && dist>=0.1) //if set, choose only points in direction of robot +-60° or very close points (10 cm)
+            {
+                double diff_angle=modpi(position.th - atan2(nodes.at(i).y-position.y, nodes.at(i).x-position.x));
+                filtered = diff_angle < -M_PI/3 || diff_angle > M_PI/3;
+
+            }
+            if(!filtered)
+            {
+                dist_min = dist;
+                p=DubinPoint(nodes.at(i),angle_in_range(position.th));
+            }
         }
     }
     return p;
@@ -106,8 +118,8 @@ double scoreP(Point2D evader_2, Path path_p, RoadMap& r)
 
 bool PayoffMatrix::compute_move(DubinPoint pursuer, DubinPoint evader, Path& path_pursuer, Path& path_evader)
 {
-    pursuer = getNearestNode(pursuer, map.get_nodes());
-    evader = getNearestNode(evader, map.get_nodes());
+    pursuer = get_nearest_node(pursuer, map.get_nodes(), false);
+    evader = get_nearest_node(evader, map.get_nodes(), true);
     std::vector<Path> path_p, path_e;
     std::vector<Point2D> possible_p;
 
