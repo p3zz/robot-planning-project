@@ -17,13 +17,13 @@ using namespace std;
 
 int main()
 {
-  init_seed(0);
-  cout << "The seed is " << get_seed() << endl;
+  //Seed::init_seed(0);
+  cout << "The seed is " << Seed::get_seed() << endl;
   DubinPoint pursuer(2,8,M_PI*1.75);
   DubinPoint evader(8,2,M_PI*0.75);
   
   // Construct random room
-  srand(get_seed());
+  srand(Seed::get_seed());
   Polygon dim_room({ Point2D(0,0), Point2D(10,0), Point2D(10,10), Point2D(0,10) });
   Room room(dim_room);
   random_obstacles_side(&room, 4, 200);

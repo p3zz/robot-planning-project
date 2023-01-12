@@ -24,11 +24,12 @@ double modpi(double angle)
     return out;
 }
 
-int seed;
 
-void init_seed(int t_seed)
+int Seed::seed = 0;
+
+void Seed::init_seed(int t_seed)
 {
-    if(t_seed==0)
+    if(t_seed == 0)
     {
         srand(time(NULL));
         seed = rand();
@@ -37,7 +38,9 @@ void init_seed(int t_seed)
         seed = t_seed;
 }
 
-int get_seed()
+int Seed::get_seed()
 {
+    if(seed == 0)
+        init_seed(0);
     return seed;
 }

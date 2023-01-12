@@ -42,8 +42,8 @@ int main(int argc, char * argv[]) {
     for(auto &gate: dto.gates_position.get()){
         room.add_exit(gate);
     }
-    init_seed(0);
-    std::cout << "Seed: " << get_seed() << std::endl;
+    Seed::init_seed(0);
+    std::cout << "Seed: " << Seed::get_seed() << std::endl;
     RoadMap rm(room);
     DubinPoint pursuer(1, 1, M_PI*1.75);
     DubinPoint evader(7, 1, M_PI*0.75);
