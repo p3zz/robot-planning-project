@@ -27,7 +27,7 @@ class PayoffMatrix
         RoadMap map;
         Point2D pursuer, evader;
         PayoffMatrix(RoadMap map):map{map}{}
-        bool computeMove(DubinPoint pursuer, DubinPoint evader, Path& path_pursuer, Path& path_evader); //depth=2
+        bool compute_move(DubinPoint pursuer, DubinPoint evader, Path& path_pursuer, Path& path_evader); //depth=2
 };
 
 std::string get_path_json(Path& path_pursuer, Path& path_evader, double precision);

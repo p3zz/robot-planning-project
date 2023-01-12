@@ -104,7 +104,7 @@ double scoreP(Point2D evader_2, Path path_p, RoadMap& r)
     return scoreP;
 }
 
-bool PayoffMatrix::computeMove(DubinPoint pursuer, DubinPoint evader, Path& path_pursuer, Path& path_evader)
+bool PayoffMatrix::compute_move(DubinPoint pursuer, DubinPoint evader, Path& path_pursuer, Path& path_evader)
 {
     pursuer = getNearestNode(pursuer, map.get_nodes());
     evader = getNearestNode(evader, map.get_nodes());

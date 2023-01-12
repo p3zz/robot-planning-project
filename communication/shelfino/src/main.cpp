@@ -61,10 +61,10 @@ int main(int argc, char * argv[]) {
     PayoffMatrix mat(rm);
     Path p, e;
     // compute move
-    if(!mat.computeMove(pursuer, evader, p, e)){
+    if(!mat.compute_move(pursuer, evader, p, e)){
         return -1;
     }
-    if(!mat.computeMove(p.l1.get_dst(), e.l1.get_dst(), p, e)){
+    if(!mat.compute_move(p.l1.get_dst(), e.l1.get_dst(), p, e)){
         return -1;
     }
     // write moves

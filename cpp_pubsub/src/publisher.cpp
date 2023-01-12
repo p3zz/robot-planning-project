@@ -48,7 +48,7 @@ int main()
   //Construct Payoff Matrix
   PayoffMatrix mat(map);
   Path p, e;
-  if(mat.computeMove(pursuer, evader, p, e))
+  if(mat.compute_move(pursuer, evader, p, e))
   {
     ofstream myfile;
     myfile.open("moves.json", std::ofstream::trunc);
