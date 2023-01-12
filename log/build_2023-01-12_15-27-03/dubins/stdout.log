@@ -1,0 +1,65 @@
+-- The C compiler identification is GNU 11.3.0
+-- The CXX compiler identification is GNU 11.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter 
+-- Found utils: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/utils/share/utils/cmake)
+-- Found shapes: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/cmake)
+-- Found ament_cmake_gtest: 1.3.3 (/opt/ros/humble/share/ament_cmake_gtest/cmake)
+-- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/p3zz/Documents/uni/robot-planning-project/build/dubins
+[ 20%] [32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o[0m
+[ 30%] [32mBuilding CXX object CMakeFiles/dubins.dir/src/dubins.cpp.o[0m
+[ 30%] [32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[ 40%] [32m[1mLinking CXX static library libgtest_main.a[0m
+[ 40%] Built target gtest_main
+[ 50%] [32m[1mLinking CXX static library libdubins.a[0m
+[ 50%] Built target dubins
+[ 60%] [32m[1mLinking CXX static library libgtest.a[0m
+[ 60%] Built target gtest
+[ 80%] [32mBuilding CXX object CMakeFiles/test_dubins.dir/test/performance.cpp.o[0m
+[ 80%] [32mBuilding CXX object CMakeFiles/test_dubins.dir/test/collisions.cpp.o[0m
+[ 90%] [32mBuilding CXX object CMakeFiles/test_dubins.dir/test/main.cpp.o[0m
+[100%] [32m[1mLinking CXX executable test_dubins[0m
+[100%] Built target test_dubins
+-- Install configuration: ""
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/environment/library_path.sh
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/environment/library_path.dsv
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/include/dubins
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/include/dubins/dubins.hpp
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/lib/libdubins.a
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/lib/dubins/test_dubins
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/ament_index/resource_index/package_run_dependencies/dubins
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/ament_index/resource_index/parent_prefix_path/dubins
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/environment/ament_prefix_path.sh
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/environment/ament_prefix_path.dsv
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/environment/path.sh
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/environment/path.dsv
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/local_setup.bash
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/local_setup.sh
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/local_setup.zsh
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/local_setup.dsv
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/package.dsv
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/ament_index/resource_index/packages/dubins
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/cmake/dubinsExport.cmake
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/cmake/dubinsExport-noconfig.cmake
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/cmake/ament_cmake_export_targets-extras.cmake
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/cmake/dubinsConfig.cmake
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/cmake/dubinsConfig-version.cmake
+-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/package.xml

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/test_shapes.dir/test/segment.cpp.o CMakeFiles/test_shapes.dir/test/circle.cpp.o CMakeFiles/test_shapes.dir/test/polygon.cpp.o CMakeFiles/test_shapes.dir/test/main.cpp.o -o test_shapes  gtest/libgtest_main.a gtest/libgtest.a libshapes.a -pthread /home/p3zz/Documents/uni/robot-planning-project/install/utils/lib/libutils.a 

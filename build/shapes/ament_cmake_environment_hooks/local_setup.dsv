@@ -1,0 +1,3 @@
+source;share/shapes/environment/ament_prefix_path.sh
+source;share/shapes/environment/library_path.sh
+source;share/shapes/environment/path.sh

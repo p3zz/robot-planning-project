@@ -127,54 +127,30 @@ nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
   return path;
 }
 
-template <typename T>
-class SafeValue{
-    private:
-        T value;
-        bool valid;    
-
-    public:
-        SafeValue(){}
-        SafeValue(T value):value{value}, valid{false}{}
-
-        T get(){
-            if(valid){
-                return value;
-            }
-            return T();
-        }
-
-        void set(T v){
-            value = v;
-            valid = true;
-        }
-
-        bool is_valid(){
-            return valid;
-        }
-
-};
-
 class ShelfinoDto {
     public:
         ShelfinoDto(){
-            gates_position = SafeValue<std::vector<Point2D>>();
-            map_borders = SafeValue<Polygon>(Polygon());
-            obstacles = SafeValue<std::vector<Polygon>>();
-            pose = SafeValue<DubinPoint>(DubinPoint(0,0,0));
-            path_to_follow = SafeValue<DubinCurve>(DubinCurve());
+            gates_position = std::nullopt;
+            map_borders = std::nullopt;
+            obstacles = std::nullopt;
+            pursuer_pose = std::nullopt;
+            evader_pose = std::nullopt;
+            roadmap = std::nullopt;
+            path_to_follow = std::nullopt;
         }
 
-        SafeValue<std::vector<Point2D>> gates_position;
-        SafeValue<Polygon> map_borders;
-        SafeValue<std::vector<Polygon>> obstacles;
-        SafeValue<DubinPoint> pose;
-        SafeValue<DubinCurve> path_to_follow;
+        std::optional<std::vector<Point2D>> gates_position;
+        std::optional<Polygon> map_borders;
+        std::optional<std::vector<Polygon>> obstacles;
+        std::optional<DubinPoint> pursuer_pose;
+        std::optional<DubinPoint> evader_pose;
+        std::optional<RoadMap> roadmap;
+        std::optional<DubinCurve> path_to_follow;
 };
 
 class GatesSubscriber : public rclcpp::Node{
     public:
-        GatesSubscriber(SafeValue<std::vector<Point2D>>& gates_position) : 
+        GatesSubscriber(std::optional<std::vector<Point2D>>& gates_position) : 
             Node("gates_subscriber"), gates_position{gates_position} {
                 subscription_ = this->create_subscription<geometry_msgs::msg::PoseArray>(
                 "gate_position", 10, std::bind(&GatesSubscriber::topic_callback, this, _1));
@@ -186,19 +162,19 @@ class GatesSubscriber : public rclcpp::Node{
           for(auto &pose: msg.poses){
             gates.push_back(Point2D(pose.position.x, pose.position.y));
           }
-          gates_position.set(gates);
-          for(auto &gate: gates_position.get()){
+          gates_position.emplace(gates);
+          for(auto &gate: gates_position.value()){
             RCLCPP_INFO(this->get_logger(), "Gate received: (%f, %f)", gate.x, gate.y);
           }
         }
         rclcpp::Subscription<geometry_msgs::msg::PoseArray>::SharedPtr subscription_;
-        SafeValue<std::vector<Point2D>>& gates_position;
+        std::optional<std::vector<Point2D>>& gates_position;
 };
 
 
 class WallsSubscriber : public rclcpp::Node{
     public:
-        WallsSubscriber(SafeValue<Polygon>& map_borders) : 
+        WallsSubscriber(std::optional<Polygon>& map_borders) : 
             Node("walls_subscriber"), map_borders{map_borders} {
                 subscription_ = this->create_subscription<geometry_msgs::msg::Polygon>(
                 "map_borders", 10, std::bind(&WallsSubscriber::topic_callback, this, _1));
@@ -206,27 +182,27 @@ class WallsSubscriber : public rclcpp::Node{
 
     private:
         void topic_callback(const geometry_msgs::msg::Polygon & msg) const {
-          map_borders.set(borders_from_msg(msg));
+          map_borders.emplace(borders_from_msg(msg));
           RCLCPP_INFO(this->get_logger(), "Borders received");
-          for(auto &v: map_borders.get().vertexes){
+          for(auto &v: map_borders.value().vertexes){
             RCLCPP_INFO(this->get_logger(), "Border: (%f, %f)", v.x, v.y);
           }
         }
         rclcpp::Subscription<geometry_msgs::msg::Polygon>::SharedPtr subscription_;
-        SafeValue<Polygon>& map_borders;
+        std::optional<Polygon>& map_borders;
 };
 
 class ObstaclesSubscriber : public rclcpp::Node{
 public:
-    ObstaclesSubscriber(SafeValue<std::vector<Polygon>>& obstacles) : Node("obstacles_subscriber"), obstacles{obstacles} {
+    ObstaclesSubscriber(std::optional<std::vector<Polygon>>& obstacles) : Node("obstacles_subscriber"), obstacles{obstacles} {
         subscription_ = this->create_subscription<custom_msgs::msg::ObstacleArrayMsg>(
         "obstacles", 10, std::bind(&ObstaclesSubscriber::topic_callback, this, _1));
     }
 
 private:
     void topic_callback(const custom_msgs::msg::ObstacleArrayMsg & msg) const {
-        obstacles.set(obstacles_from_msg(msg));
-        for(auto &ob: obstacles.get()){
+        obstacles.emplace(obstacles_from_msg(msg));
+        for(auto &ob: obstacles.value()){
           RCLCPP_INFO(this->get_logger(), "Obstacle received");
           for(auto &v: ob.vertexes){  
             RCLCPP_INFO(this->get_logger(), "Vertex: (%f, %f)", v.x, v.y);
@@ -234,12 +210,31 @@ private:
         }
     }
     rclcpp::Subscription<custom_msgs::msg::ObstacleArrayMsg>::SharedPtr subscription_;
-    SafeValue<std::vector<Polygon>>& obstacles;
+    std::optional<std::vector<Polygon>>& obstacles;
+};
+
+class PoseSubscriber : public rclcpp::Node{
+  public:
+      PoseSubscriber(std::optional<DubinPoint>& pose, std::string topic) : Node(topic), pose{pose} {
+          subscription_ = this->create_subscription<geometry_msgs::msg::Pose>(
+          topic, 10, std::bind(&PoseSubscriber::topic_callback, this, _1));
+      }
+
+  private:
+      void topic_callback(const geometry_msgs::msg::Pose& msg) const {
+        tf2::Quaternion q(msg.orientation.x, msg.orientation.y, msg.orientation.z, msg.orientation.w);
+        tf2::Matrix3x3 m(q);
+        double roll, pitch, yaw;
+        m.getRPY(roll, pitch, yaw);
+        pose.emplace(DubinPoint(msg.position.x, msg.position.y, yaw));
+      }
+      rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr subscription_;
+      std::optional<DubinPoint>& pose;
 };
 
 class PoseListener : public rclcpp::Node {
 public:
-  PoseListener(SafeValue<DubinPoint>& pose): Node("shelfino2_listener"), pose{pose}{
+  PoseListener(std::optional<DubinPoint>& pose): Node("shelfino2_listener"), pose{pose}{
     target_frame_ = this->declare_parameter<std::string>("target_frame", "shelfino2/base_link");
 
     tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
@@ -265,25 +260,26 @@ private:
     tf2::Matrix3x3 m(q);
     double roll, pitch, yaw;
     m.getRPY(roll, pitch, yaw);
-    pose.set(DubinPoint(t.transform.translation.x, t.transform.translation.y, yaw));
+    pose.emplace(DubinPoint(t.transform.translation.x, t.transform.translation.y, yaw));
   }
 
   rclcpp::TimerBase::SharedPtr timer_{nullptr};
   std::shared_ptr<tf2_ros::TransformListener> tf_listener_{nullptr};
   std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
   std::string target_frame_;
-  SafeValue<DubinPoint>& pose;
+  std::optional<DubinPoint>& pose;
 };
 
 class RoadmapPublisher : public rclcpp::Node
 {
   public:
-    RoadmapPublisher(RoadMap rm): Node("roadmap_publisher"), count_(0) {
+    RoadmapPublisher(std::optional<RoadMap>& roadmap): Node("roadmap_publisher"), count_(0) {
       publisher_ = this->create_publisher<custom_msgs::msg::GeometryGraph>("roadmap", 10);
+      if(!roadmap.has_value())return;
       std_msgs::msg::Header h;
       h.stamp = this->get_clock()->now();
-      auto message = msg_from_roadmap(rm, h);
-      // publisher_->publish(message);
+      auto message = msg_from_roadmap(roadmap.value(), h);
+      publisher_->publish(message);
     }
 
   private:
@@ -296,27 +292,27 @@ class FollowPathClient : public rclcpp::Node {
 
     using FollowPath = nav2_msgs::action::FollowPath;
     using GoalHandleFollowPath = rclcpp_action::ClientGoalHandle<FollowPath>;
-    FollowPathClient(SafeValue<DubinCurve>& curve) : Node("follow_path_client"), curve{curve} {
+    FollowPathClient(std::optional<DubinCurve>& curve) : Node("follow_path_client"), curve{curve} {
       this->client_ptr_ = rclcpp_action::create_client<FollowPath>(this,"follow_path");
     }
 
 private:
   rclcpp_action::Client<FollowPath>::SharedPtr client_ptr_;
-  SafeValue<DubinCurve>& curve;
+  std::optional<DubinCurve>& curve;
 
   void send_goal(){
     if (!this->client_ptr_->wait_for_action_server()) {
       return;
     }
 
-    if(!curve.is_valid()){
+    if(!curve.has_value()){
       return;
     }
 
     auto path_msg = FollowPath::Goal();
     std_msgs::msg::Header h;
     h.stamp = this->get_clock()->now();
-    path_msg.path = msg_from_curve(curve.get(), h);
+    path_msg.path = msg_from_curve(curve.value(), h);
 
     auto send_goal_options = rclcpp_action::Client<FollowPath>::SendGoalOptions();
     send_goal_options.feedback_callback = std::bind(&FollowPathClient::feedback_callback, this, _1, _2);

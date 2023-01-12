@@ -1,0 +1,49 @@
+[0.025s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8
+[0.078s] [35m[1mConsolidate compiler generated dependencies of target shelfino[0m
+[0.107s] [ 50%] [32mBuilding CXX object CMakeFiles/shelfino.dir/src/main.cpp.o[0m
+[4.521s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.521s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In member function ‘[01m[Kvoid GatesSubscriber::topic_callback(const PoseArray&)[m[K’:
+[4.521s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:166:42:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::optional<std::vector<Point2D> >[m[K’ has no member named ‘[01m[Kget[m[K’
+[4.521s]   166 |           for(auto &gate: gates_position.[01;31m[Kget[m[K()){
+[4.522s]       |                                          [01;31m[K^~~[m[K
+[4.599s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In member function ‘[01m[Kvoid WallsSubscriber::topic_callback(const Polygon&) const[m[K’:
+[4.600s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:185:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::optional<Polygon>[m[K’ has no member named ‘[01m[Kempalce[m[K’; did you mean ‘[01m[Kemplace[m[K’?
+[4.600s]   185 |           map_borders.[01;31m[Kempalce[m[K(borders_from_msg(msg));
+[4.600s]       |                       [01;31m[K^~~~~~~[m[K
+[4.600s]       |                       [32m[Kemplace[m[K
+[4.600s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:187:36:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::optional<Polygon>[m[K’ has no member named ‘[01m[Kget[m[K’
+[4.600s]   187 |           for(auto &v: map_borders.[01;31m[Kget[m[K().vertexes){
+[4.600s]       |                                    [01;31m[K^~~[m[K
+[4.670s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In member function ‘[01m[Kvoid ObstaclesSubscriber::topic_callback(const ObstacleArrayMsg&) const[m[K’:
+[4.670s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:205:33:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::optional<std::vector<Polygon> >[m[K’ has no member named ‘[01m[Kget[m[K’
+[4.670s]   205 |         for(auto &ob: obstacles.[01;31m[Kget[m[K()){
+[4.670s]       |                                 [01;31m[K^~~[m[K
+[4.784s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In constructor ‘[01m[KRoadmapPublisher::RoadmapPublisher(std::optional<RoadMap>&)[m[K’:
+[4.784s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:281:47:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::optional<RoadMap>[m[K’ has no member named ‘[01m[Kget[m[K’
+[4.784s]   281 |       auto message = msg_from_roadmap(roadmap.[01;31m[Kget[m[K(), h);
+[4.784s]       |                                               [01;31m[K^~~[m[K
+[4.813s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In member function ‘[01m[Kvoid FollowPathClient::send_goal()[m[K’:
+[4.813s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:315:42:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::optional<DubinCurve>[m[K’ has no member named ‘[01m[Kget[m[K’
+[4.813s]   315 |     path_msg.path = msg_from_curve(curve.[01;31m[Kget[m[K(), h);
+[4.813s]       |                                          [01;31m[K^~~[m[K
+[4.888s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[4.888s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:48:31:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::optional<Polygon>[m[K’ has no member named ‘[01m[Kget_value[m[K’; did you mean ‘[01m[Khas_value[m[K’?
+[4.888s]    48 |     Room room(dto.map_borders.[01;31m[Kget_value[m[K());
+[4.888s]       |                               [01;31m[K^~~~~~~~~[m[K
+[4.889s]       |                               [32m[Khas_value[m[K
+[4.889s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:50:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::optional<std::vector<Polygon> >[m[K’ has no member named ‘[01m[Kget_value[m[K’; did you mean ‘[01m[Khas_value[m[K’?
+[4.889s]    50 |     for(auto &obstacle: dto.obstacles.[01;31m[Kget_value[m[K()){
+[4.889s]       |                                       [01;31m[K^~~~~~~~~[m[K
+[4.889s]       |                                       [32m[Khas_value[m[K
+[4.890s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:54:40:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::optional<std::vector<Point2D> >[m[K’ has no member named ‘[01m[Kget_value[m[K’; did you mean ‘[01m[Khas_value[m[K’?
+[4.890s]    54 |     for(auto &gate: dto.gates_position.[01;31m[Kget_value[m[K()){
+[4.890s]       |                                        [01;31m[K^~~~~~~~~[m[K
+[4.890s]       |                                        [32m[Khas_value[m[K
+[4.890s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:75:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::optional<DubinCurve>[m[K’ has no member named ‘[01m[Kset[m[K’; did you mean ‘[01m[Kreset[m[K’?
+[4.890s]    75 |     dto.path_to_follow.[01;31m[Kset[m[K(p.l1.get_curve());
+[4.891s]       |                        [01;31m[K^~~[m[K
+[4.891s]       |                        [32m[Kreset[m[K
+[13.477s] gmake[2]: *** [CMakeFiles/shelfino.dir/build.make:76: CMakeFiles/shelfino.dir/src/main.cpp.o] Error 1
+[13.477s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/shelfino.dir/all] Error 2
+[13.477s] gmake: *** [Makefile:146: all] Error 2
+[13.480s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino' returned '2': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8

@@ -1,0 +1,25 @@
+[0.021s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8
+[0.069s] [35m[1mConsolidate compiler generated dependencies of target shelfino[0m
+[0.095s] [ 50%] [32mBuilding CXX object CMakeFiles/shelfino.dir/src/main.cpp.o[0m
+[4.382s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.382s] /home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp: In instantiation of ‘[01m[KSafeValue<T>::SafeValue() [with T = RoadMap][m[K’:
+[4.382s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:157:22:[m[K   required from here
+[4.382s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:20:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KRoadMap::RoadMap()[m[K’
+[4.382s]   137 |         SafeValue()[01;31m[K{[m[K}
+[4.382s]       |                    [01;31m[K^[m[K
+[4.383s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:28[m[K,
+[4.383s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.383s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/install/map/include/map/map.hpp:74:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KRoadMap::RoadMap(Room)[m[K’
+[4.383s]    74 |         [01;36m[KRoadMap[m[K(Room r):r{r}{}
+[4.383s]       |         [01;36m[K^~~~~~~[m[K
+[4.383s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/install/map/include/map/map.hpp:74:9:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[4.383s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/install/map/include/map/map.hpp:66:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KRoadMap::RoadMap(const RoadMap&)[m[K’
+[4.383s]    66 | class [01;36m[KRoadMap[m[K
+[4.384s]       |       [01;36m[K^~~~~~~[m[K
+[4.384s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/install/map/include/map/map.hpp:66:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[4.384s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/install/map/include/map/map.hpp:66:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KRoadMap::RoadMap(RoadMap&&)[m[K’
+[4.384s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/install/map/include/map/map.hpp:66:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[11.496s] gmake[2]: *** [CMakeFiles/shelfino.dir/build.make:76: CMakeFiles/shelfino.dir/src/main.cpp.o] Error 1
+[11.496s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/shelfino.dir/all] Error 2
+[11.496s] gmake: *** [Makefile:146: all] Error 2
+[11.498s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino' returned '2': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8

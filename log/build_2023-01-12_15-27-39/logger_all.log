@@ -1,0 +1,234 @@
+[0.303s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'map']
+[0.303s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['map'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f00bd5b7d30>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f00bdf533a0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f00bdf533a0>>)
+[0.325s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.325s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.325s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.325s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.326s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.326s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.326s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/p3zz/Documents/uni/robot-planning-project'
+[0.326s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.326s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.326s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.326s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.326s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.326s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.326s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.326s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.326s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extensions ['ignore', 'ignore_ament_install']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extension 'ignore'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extension 'ignore_ament_install'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extensions ['colcon_pkg']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extension 'colcon_pkg'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extensions ['colcon_meta']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extension 'colcon_meta'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extensions ['ros']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extension 'ros'
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extensions ['cmake', 'python']
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extension 'cmake'
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extension 'python'
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extensions ['python_setup_py']
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication) by extension 'python_setup_py'
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication/custom_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication/custom_msgs) by extension 'ignore'
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication/custom_msgs) by extension 'ignore_ament_install'
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication/custom_msgs) by extensions ['colcon_pkg']
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication/custom_msgs) by extension 'colcon_pkg'
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication/custom_msgs) by extensions ['colcon_meta']
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication/custom_msgs) by extension 'colcon_meta'
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication/custom_msgs) by extensions ['ros']
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(communication/custom_msgs) by extension 'ros'
+[0.352s] DEBUG:colcon.colcon_core.package_identification:Package 'communication/custom_msgs' with type 'ros.ament_cmake' and name 'custom_msgs'
+[0.352s] Level 1:colcon.colcon_core.package_identification:_identify(communication/shelfino) by extensions ['ignore', 'ignore_ament_install']
+[0.352s] Level 1:colcon.colcon_core.package_identification:_identify(communication/shelfino) by extension 'ignore'
+[0.352s] Level 1:colcon.colcon_core.package_identification:_identify(communication/shelfino) by extension 'ignore_ament_install'
+[0.353s] Level 1:colcon.colcon_core.package_identification:_identify(communication/shelfino) by extensions ['colcon_pkg']
+[0.353s] Level 1:colcon.colcon_core.package_identification:_identify(communication/shelfino) by extension 'colcon_pkg'
+[0.353s] Level 1:colcon.colcon_core.package_identification:_identify(communication/shelfino) by extensions ['colcon_meta']
+[0.353s] Level 1:colcon.colcon_core.package_identification:_identify(communication/shelfino) by extension 'colcon_meta'
+[0.353s] Level 1:colcon.colcon_core.package_identification:_identify(communication/shelfino) by extensions ['ros']
+[0.353s] Level 1:colcon.colcon_core.package_identification:_identify(communication/shelfino) by extension 'ros'
+[0.354s] DEBUG:colcon.colcon_core.package_identification:Package 'communication/shelfino' with type 'ros.ament_cmake' and name 'shelfino'
+[0.354s] Level 1:colcon.colcon_core.package_identification:_identify(cpp_pubsub) by extensions ['ignore', 'ignore_ament_install']
+[0.354s] Level 1:colcon.colcon_core.package_identification:_identify(cpp_pubsub) by extension 'ignore'
+[0.354s] Level 1:colcon.colcon_core.package_identification:_identify(cpp_pubsub) by extension 'ignore_ament_install'
+[0.354s] Level 1:colcon.colcon_core.package_identification:_identify(cpp_pubsub) by extensions ['colcon_pkg']
+[0.354s] Level 1:colcon.colcon_core.package_identification:_identify(cpp_pubsub) by extension 'colcon_pkg'
+[0.354s] Level 1:colcon.colcon_core.package_identification:_identify(cpp_pubsub) by extensions ['colcon_meta']
+[0.354s] Level 1:colcon.colcon_core.package_identification:_identify(cpp_pubsub) by extension 'colcon_meta'
+[0.354s] Level 1:colcon.colcon_core.package_identification:_identify(cpp_pubsub) by extensions ['ros']
+[0.355s] Level 1:colcon.colcon_core.package_identification:_identify(cpp_pubsub) by extension 'ros'
+[0.356s] DEBUG:colcon.colcon_core.package_identification:Package 'cpp_pubsub' with type 'ros.ament_cmake' and name 'cpp_pubsub'
+[0.356s] Level 1:colcon.colcon_core.package_identification:_identify(decisions) by extensions ['ignore', 'ignore_ament_install']
+[0.356s] Level 1:colcon.colcon_core.package_identification:_identify(decisions) by extension 'ignore'
+[0.356s] Level 1:colcon.colcon_core.package_identification:_identify(decisions) by extension 'ignore_ament_install'
+[0.356s] Level 1:colcon.colcon_core.package_identification:_identify(decisions) by extensions ['colcon_pkg']
+[0.356s] Level 1:colcon.colcon_core.package_identification:_identify(decisions) by extension 'colcon_pkg'
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(decisions) by extensions ['colcon_meta']
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(decisions) by extension 'colcon_meta'
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(decisions) by extensions ['ros']
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(decisions) by extension 'ros'
+[0.357s] DEBUG:colcon.colcon_core.package_identification:Package 'decisions' with type 'ros.ament_cmake' and name 'decisions'
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extensions ['ignore', 'ignore_ament_install']
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extension 'ignore'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extension 'ignore_ament_install'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extensions ['colcon_pkg']
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extension 'colcon_pkg'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extensions ['colcon_meta']
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extension 'colcon_meta'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extensions ['ros']
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extension 'ros'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extensions ['cmake', 'python']
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extension 'cmake'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extension 'python'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extensions ['python_setup_py']
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(disegnino) by extension 'python_setup_py'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(dubins) by extensions ['ignore', 'ignore_ament_install']
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(dubins) by extension 'ignore'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(dubins) by extension 'ignore_ament_install'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(dubins) by extensions ['colcon_pkg']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(dubins) by extension 'colcon_pkg'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(dubins) by extensions ['colcon_meta']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(dubins) by extension 'colcon_meta'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(dubins) by extensions ['ros']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(dubins) by extension 'ros'
+[0.359s] DEBUG:colcon.colcon_core.package_identification:Package 'dubins' with type 'ros.ament_cmake' and name 'dubins'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(map) by extensions ['ignore', 'ignore_ament_install']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(map) by extension 'ignore'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(map) by extension 'ignore_ament_install'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(map) by extensions ['colcon_pkg']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(map) by extension 'colcon_pkg'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(map) by extensions ['colcon_meta']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(map) by extension 'colcon_meta'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(map) by extensions ['ros']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(map) by extension 'ros'
+[0.361s] DEBUG:colcon.colcon_core.package_identification:Package 'map' with type 'ros.ament_cmake' and name 'map'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(shapes) by extensions ['ignore', 'ignore_ament_install']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(shapes) by extension 'ignore'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(shapes) by extension 'ignore_ament_install'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(shapes) by extensions ['colcon_pkg']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(shapes) by extension 'colcon_pkg'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(shapes) by extensions ['colcon_meta']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(shapes) by extension 'colcon_meta'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(shapes) by extensions ['ros']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(shapes) by extension 'ros'
+[0.362s] DEBUG:colcon.colcon_core.package_identification:Package 'shapes' with type 'ros.ament_cmake' and name 'shapes'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(utils) by extensions ['ignore', 'ignore_ament_install']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(utils) by extension 'ignore'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(utils) by extension 'ignore_ament_install'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(utils) by extensions ['colcon_pkg']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(utils) by extension 'colcon_pkg'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(utils) by extensions ['colcon_meta']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(utils) by extension 'colcon_meta'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(utils) by extensions ['ros']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(utils) by extension 'ros'
+[0.363s] DEBUG:colcon.colcon_core.package_identification:Package 'utils' with type 'ros.ament_cmake' and name 'utils'
+[0.363s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.363s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.363s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.363s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.364s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.390s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'cpp_pubsub' in 'cpp_pubsub'
+[0.390s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'custom_msgs' in 'communication/custom_msgs'
+[0.390s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'decisions' in 'decisions'
+[0.390s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'dubins' in 'dubins'
+[0.390s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'shapes' in 'shapes'
+[0.390s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'utils' in 'utils'
+[0.390s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'shelfino' in 'communication/shelfino'
+[0.391s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.391s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.394s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 4 installed packages in /home/p3zz/Documents/uni/robot-planning-project/install
+[0.396s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 322 installed packages in /opt/ros/humble
+[0.397s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.481s] Level 5:colcon.colcon_core.verb:set package 'map' build argument 'cmake_args' from command line to 'None'
+[0.481s] Level 5:colcon.colcon_core.verb:set package 'map' build argument 'cmake_target' from command line to 'None'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'map' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'map' build argument 'cmake_clean_cache' from command line to 'False'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'map' build argument 'cmake_clean_first' from command line to 'False'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'map' build argument 'cmake_force_configure' from command line to 'False'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'map' build argument 'ament_cmake_args' from command line to 'None'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'map' build argument 'catkin_cmake_args' from command line to 'None'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'map' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.482s] DEBUG:colcon.colcon_core.verb:Building package 'map' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/p3zz/Documents/uni/robot-planning-project/build/map', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/p3zz/Documents/uni/robot-planning-project/install/map', 'merge_install': False, 'path': '/home/p3zz/Documents/uni/robot-planning-project/map', 'symlink_install': False, 'test_result_base': None}
+[0.483s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.489s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.489s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/p3zz/Documents/uni/robot-planning-project/map' with build type 'ament_cmake'
+[0.490s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/p3zz/Documents/uni/robot-planning-project/map'
+[0.496s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.497s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.497s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.511s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/map': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/map -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/map
+[1.399s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/map' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/map -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/map
+[1.402s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/map': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/map -- -j8 -l8
+[7.669s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/map' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/map -- -j8 -l8
+[7.715s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/map': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/p3zz/Documents/uni/robot-planning-project/build/map
+[7.730s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(map)
+[7.732s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/map' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/p3zz/Documents/uni/robot-planning-project/build/map
+[7.737s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map' for CMake module files
+[7.738s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map' for CMake config files
+[7.738s] Level 1:colcon.colcon_core.shell:create_environment_hook('map', 'cmake_prefix_path')
+[7.739s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/hook/cmake_prefix_path.ps1'
+[7.740s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/hook/cmake_prefix_path.dsv'
+[7.740s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/hook/cmake_prefix_path.sh'
+[7.741s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map/lib'
+[7.741s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map/bin'
+[7.741s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map/lib/pkgconfig/map.pc'
+[7.742s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map/lib/python3.10/site-packages'
+[7.742s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map/bin'
+[7.743s] INFO:colcon.colcon_core.shell:Creating package script '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/package.ps1'
+[7.744s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/package.dsv'
+[7.745s] INFO:colcon.colcon_core.shell:Creating package script '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/package.sh'
+[7.745s] INFO:colcon.colcon_core.shell:Creating package script '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/package.bash'
+[7.746s] INFO:colcon.colcon_core.shell:Creating package script '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/package.zsh'
+[7.746s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/p3zz/Documents/uni/robot-planning-project/install/map/share/colcon-core/packages/map)
+[7.782s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(map)
+[7.783s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map' for CMake module files
+[7.784s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map' for CMake config files
+[7.784s] Level 1:colcon.colcon_core.shell:create_environment_hook('map', 'cmake_prefix_path')
+[7.785s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/hook/cmake_prefix_path.ps1'
+[7.786s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/hook/cmake_prefix_path.dsv'
+[7.786s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/hook/cmake_prefix_path.sh'
+[7.787s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map/lib'
+[7.787s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map/bin'
+[7.787s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map/lib/pkgconfig/map.pc'
+[7.788s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map/lib/python3.10/site-packages'
+[7.788s] Level 1:colcon.colcon_core.environment:checking '/home/p3zz/Documents/uni/robot-planning-project/install/map/bin'
+[7.791s] INFO:colcon.colcon_core.shell:Creating package script '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/package.ps1'
+[7.792s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/package.dsv'
+[7.792s] INFO:colcon.colcon_core.shell:Creating package script '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/package.sh'
+[7.793s] INFO:colcon.colcon_core.shell:Creating package script '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/package.bash'
+[7.793s] INFO:colcon.colcon_core.shell:Creating package script '/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/package.zsh'
+[7.794s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/p3zz/Documents/uni/robot-planning-project/install/map/share/colcon-core/packages/map)
+[7.794s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[7.794s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[7.795s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[7.795s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[7.801s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[7.801s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[7.801s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[7.814s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[7.816s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/p3zz/Documents/uni/robot-planning-project/install/local_setup.ps1'
+[7.818s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/p3zz/Documents/uni/robot-planning-project/install/_local_setup_util_ps1.py'
+[7.821s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/p3zz/Documents/uni/robot-planning-project/install/setup.ps1'
+[7.823s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/p3zz/Documents/uni/robot-planning-project/install/local_setup.sh'
+[7.824s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/p3zz/Documents/uni/robot-planning-project/install/_local_setup_util_sh.py'
+[7.825s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/p3zz/Documents/uni/robot-planning-project/install/setup.sh'
+[7.827s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/p3zz/Documents/uni/robot-planning-project/install/local_setup.bash'
+[7.828s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/p3zz/Documents/uni/robot-planning-project/install/setup.bash'
+[7.831s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/p3zz/Documents/uni/robot-planning-project/install/local_setup.zsh'
+[7.831s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/p3zz/Documents/uni/robot-planning-project/install/setup.zsh'

@@ -1,0 +1,13 @@
+[0.025s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8
+[0.076s] [35m[1mConsolidate compiler generated dependencies of target shelfino[0m
+[0.103s] [ 50%] [32mBuilding CXX object CMakeFiles/shelfino.dir/src/main.cpp.o[0m
+[4.338s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.338s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In member function ‘[01m[Kvoid WallsSubscriber::topic_callback(const Polygon&) const[m[K’:
+[4.338s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:185:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::optional<Polygon>[m[K’ has no member named ‘[01m[Kempalce[m[K’; did you mean ‘[01m[Kemplace[m[K’?
+[4.339s]   185 |           map_borders.[01;31m[Kempalce[m[K(borders_from_msg(msg));
+[4.339s]       |                       [01;31m[K^~~~~~~[m[K
+[4.339s]       |                       [32m[Kemplace[m[K
+[12.324s] gmake[2]: *** [CMakeFiles/shelfino.dir/build.make:76: CMakeFiles/shelfino.dir/src/main.cpp.o] Error 1
+[12.325s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/shelfino.dir/all] Error 2
+[12.325s] gmake: *** [Makefile:146: all] Error 2
+[12.328s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino' returned '2': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8

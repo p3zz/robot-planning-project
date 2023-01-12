@@ -1,0 +1,229 @@
+[0.000000] (-) TimerEvent: {}
+[0.000164] (-) JobUnselected: {'identifier': 'cpp_pubsub'}
+[0.000202] (-) JobUnselected: {'identifier': 'custom_msgs'}
+[0.000232] (-) JobUnselected: {'identifier': 'decisions'}
+[0.000251] (-) JobUnselected: {'identifier': 'dubins'}
+[0.000805] (-) JobUnselected: {'identifier': 'map'}
+[0.000899] (-) JobUnselected: {'identifier': 'shapes'}
+[0.000919] (-) JobUnselected: {'identifier': 'utils'}
+[0.000939] (shelfino) JobQueued: {'identifier': 'shelfino', 'dependencies': OrderedDict([('custom_msgs', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs'), ('shapes', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes')])}
+[0.001208] (shelfino) JobStarted: {'identifier': 'shelfino'}
+[0.015623] (shelfino) JobProgress: {'identifier': 'shelfino', 'progress': 'cmake'}
+[0.016277] (shelfino) JobProgress: {'identifier': 'shelfino', 'progress': 'build'}
+[0.017019] (shelfino) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino', '--', '-j8', '-l8'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib:/home/p3zz/Documents/uni/robot-planning-project/install/decisions/lib:/home/p3zz/Documents/uni/robot-planning-project/install/map/lib:/home/p3zz/Documents/uni/robot-planning-project/install/dubins/lib:/home/p3zz/Documents/uni/robot-planning-project/install/shapes/lib:/home/p3zz/Documents/uni/robot-planning-project/install/utils/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz/Documents/uni/Shelfino_ROS2'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '3417'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1815,unix/p3zz-X510UQR:/tmp/.ICE-unix/1815'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/b52d2f49_e7e0_47cb_a4d8_e638532aed2a'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.LN40Y1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.120'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble')]), 'shell': False}
+[0.071768] (shelfino) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target shelfino\x1b[0m\n'}
+[0.098967] (-) TimerEvent: {}
+[0.103314] (shelfino) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/shelfino.dir/src/main.cpp.o\x1b[0m\n'}
+[0.199094] (-) TimerEvent: {}
+[0.299381] (-) TimerEvent: {}
+[0.399653] (-) TimerEvent: {}
+[0.499902] (-) TimerEvent: {}
+[0.600392] (-) TimerEvent: {}
+[0.700671] (-) TimerEvent: {}
+[0.800967] (-) TimerEvent: {}
+[0.901230] (-) TimerEvent: {}
+[1.001526] (-) TimerEvent: {}
+[1.101773] (-) TimerEvent: {}
+[1.202049] (-) TimerEvent: {}
+[1.302337] (-) TimerEvent: {}
+[1.402622] (-) TimerEvent: {}
+[1.502891] (-) TimerEvent: {}
+[1.603175] (-) TimerEvent: {}
+[1.703471] (-) TimerEvent: {}
+[1.803747] (-) TimerEvent: {}
+[1.904047] (-) TimerEvent: {}
+[2.004331] (-) TimerEvent: {}
+[2.104590] (-) TimerEvent: {}
+[2.204826] (-) TimerEvent: {}
+[2.305107] (-) TimerEvent: {}
+[2.405356] (-) TimerEvent: {}
+[2.505617] (-) TimerEvent: {}
+[2.605886] (-) TimerEvent: {}
+[2.706205] (-) TimerEvent: {}
+[2.806512] (-) TimerEvent: {}
+[2.906805] (-) TimerEvent: {}
+[3.007089] (-) TimerEvent: {}
+[3.107393] (-) TimerEvent: {}
+[3.207668] (-) TimerEvent: {}
+[3.308013] (-) TimerEvent: {}
+[3.408311] (-) TimerEvent: {}
+[3.508574] (-) TimerEvent: {}
+[3.608859] (-) TimerEvent: {}
+[3.709121] (-) TimerEvent: {}
+[3.809438] (-) TimerEvent: {}
+[3.900431] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[3.901119] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KShelfinoDto::ShelfinoDto()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.901275] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KSafeValue<std::vector<Point2D> >::SafeValue()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.901444] (shelfino) StderrLine: {'line': b'  156 |         ShelfinoDto()\x1b[01;31m\x1b[K{\x1b[m\x1b[K\n'}
+[3.901735] (shelfino) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.901807] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<T>::SafeValue(T) [with T = std::vector<Point2D>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.901877] (shelfino) StderrLine: {'line': b'  137 |         \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K(T value):value{value}, valid{false}{}\n'}
+[3.901945] (shelfino) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.902010] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.902078] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<std::vector<Point2D> >::SafeValue(const SafeValue<std::vector<Point2D> >&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.902147] (shelfino) StderrLine: {'line': b'  131 | class \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K{\n'}
+[3.902213] (shelfino) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.902278] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.902345] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<std::vector<Point2D> >::SafeValue(SafeValue<std::vector<Point2D> >&&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.902421] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.902533] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KSafeValue<Polygon>::SafeValue()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.902642] (shelfino) StderrLine: {'line': b'  156 |         ShelfinoDto()\x1b[01;31m\x1b[K{\x1b[m\x1b[K\n'}
+[3.902742] (shelfino) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.902832] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<T>::SafeValue(T) [with T = Polygon]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.902904] (shelfino) StderrLine: {'line': b'  137 |         \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K(T value):value{value}, valid{false}{}\n'}
+[3.902980] (shelfino) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.903048] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.903114] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<Polygon>::SafeValue(const SafeValue<Polygon>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.903188] (shelfino) StderrLine: {'line': b'  131 | class \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K{\n'}
+[3.903256] (shelfino) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.903321] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.903401] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<Polygon>::SafeValue(SafeValue<Polygon>&&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.903508] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.903617] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KSafeValue<std::vector<Polygon> >::SafeValue()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.903729] (shelfino) StderrLine: {'line': b'  156 |         ShelfinoDto()\x1b[01;31m\x1b[K{\x1b[m\x1b[K\n'}
+[3.903801] (shelfino) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.903868] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<T>::SafeValue(T) [with T = std::vector<Polygon>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.903937] (shelfino) StderrLine: {'line': b'  137 |         \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K(T value):value{value}, valid{false}{}\n'}
+[3.904003] (shelfino) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.904070] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.904139] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<std::vector<Polygon> >::SafeValue(const SafeValue<std::vector<Polygon> >&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.904207] (shelfino) StderrLine: {'line': b'  131 | class \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K{\n'}
+[3.904274] (shelfino) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.904341] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.904468] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<std::vector<Polygon> >::SafeValue(SafeValue<std::vector<Polygon> >&&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.904572] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.904673] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KSafeValue<DubinPoint>::SafeValue()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.904747] (shelfino) StderrLine: {'line': b'  156 |         ShelfinoDto()\x1b[01;31m\x1b[K{\x1b[m\x1b[K\n'}
+[3.904813] (shelfino) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.904880] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<T>::SafeValue(T) [with T = DubinPoint]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.904949] (shelfino) StderrLine: {'line': b'  137 |         \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K(T value):value{value}, valid{false}{}\n'}
+[3.905016] (shelfino) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.905081] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.905151] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kconstexpr SafeValue<DubinPoint>::SafeValue(const SafeValue<DubinPoint>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.905218] (shelfino) StderrLine: {'line': b'  131 | class \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K{\n'}
+[3.905291] (shelfino) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.905379] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.905486] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kconstexpr SafeValue<DubinPoint>::SafeValue(SafeValue<DubinPoint>&&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.905587] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.905691] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KSafeValue<DubinPoint>::SafeValue()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.905763] (shelfino) StderrLine: {'line': b'  156 |         ShelfinoDto()\x1b[01;31m\x1b[K{\x1b[m\x1b[K\n'}
+[3.905829] (shelfino) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.905896] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<T>::SafeValue(T) [with T = DubinPoint]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.905975] (shelfino) StderrLine: {'line': b'  137 |         \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K(T value):value{value}, valid{false}{}\n'}
+[3.906047] (shelfino) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.906113] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.906180] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kconstexpr SafeValue<DubinPoint>::SafeValue(const SafeValue<DubinPoint>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.906246] (shelfino) StderrLine: {'line': b'  131 | class \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K{\n'}
+[3.906313] (shelfino) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.906422] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.906523] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kconstexpr SafeValue<DubinPoint>::SafeValue(SafeValue<DubinPoint>&&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.906622] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.906692] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KSafeValue<RoadMap>::SafeValue()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.906794] (shelfino) StderrLine: {'line': b'  156 |         ShelfinoDto()\x1b[01;31m\x1b[K{\x1b[m\x1b[K\n'}
+[3.906865] (shelfino) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.906934] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<T>::SafeValue(T) [with T = RoadMap]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.907004] (shelfino) StderrLine: {'line': b'  137 |         \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K(T value):value{value}, valid{false}{}\n'}
+[3.907071] (shelfino) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.907191] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.907308] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<RoadMap>::SafeValue(const SafeValue<RoadMap>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.907422] (shelfino) StderrLine: {'line': b'  131 | class \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K{\n'}
+[3.907521] (shelfino) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.907632] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.907712] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<RoadMap>::SafeValue(SafeValue<RoadMap>&&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.907782] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.907849] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KSafeValue<DubinCurve>::SafeValue()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.907916] (shelfino) StderrLine: {'line': b'  156 |         ShelfinoDto()\x1b[01;31m\x1b[K{\x1b[m\x1b[K\n'}
+[3.907982] (shelfino) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.908048] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<T>::SafeValue(T) [with T = DubinCurve]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.908116] (shelfino) StderrLine: {'line': b'  137 |         \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K(T value):value{value}, valid{false}{}\n'}
+[3.908183] (shelfino) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.908248] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.908354] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<DubinCurve>::SafeValue(const SafeValue<DubinCurve>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.908487] (shelfino) StderrLine: {'line': b'  131 | class \x1b[01;36m\x1b[KSafeValue\x1b[m\x1b[K{\n'}
+[3.908588] (shelfino) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.908659] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.908727] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KSafeValue<DubinCurve>::SafeValue(SafeValue<DubinCurve>&&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.908795] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[3.909497] (-) TimerEvent: {}
+[4.009715] (-) TimerEvent: {}
+[4.110004] (-) TimerEvent: {}
+[4.210284] (-) TimerEvent: {}
+[4.310550] (-) TimerEvent: {}
+[4.410841] (-) TimerEvent: {}
+[4.511124] (-) TimerEvent: {}
+[4.611389] (-) TimerEvent: {}
+[4.711658] (-) TimerEvent: {}
+[4.811959] (-) TimerEvent: {}
+[4.912221] (-) TimerEvent: {}
+[5.012469] (-) TimerEvent: {}
+[5.112756] (-) TimerEvent: {}
+[5.213043] (-) TimerEvent: {}
+[5.313339] (-) TimerEvent: {}
+[5.413672] (-) TimerEvent: {}
+[5.514009] (-) TimerEvent: {}
+[5.614293] (-) TimerEvent: {}
+[5.714563] (-) TimerEvent: {}
+[5.814881] (-) TimerEvent: {}
+[5.915171] (-) TimerEvent: {}
+[6.015467] (-) TimerEvent: {}
+[6.115761] (-) TimerEvent: {}
+[6.216044] (-) TimerEvent: {}
+[6.316319] (-) TimerEvent: {}
+[6.416589] (-) TimerEvent: {}
+[6.516888] (-) TimerEvent: {}
+[6.617182] (-) TimerEvent: {}
+[6.717438] (-) TimerEvent: {}
+[6.817703] (-) TimerEvent: {}
+[6.918002] (-) TimerEvent: {}
+[7.018293] (-) TimerEvent: {}
+[7.118589] (-) TimerEvent: {}
+[7.218888] (-) TimerEvent: {}
+[7.319264] (-) TimerEvent: {}
+[7.419636] (-) TimerEvent: {}
+[7.519894] (-) TimerEvent: {}
+[7.620177] (-) TimerEvent: {}
+[7.720485] (-) TimerEvent: {}
+[7.820732] (-) TimerEvent: {}
+[7.921020] (-) TimerEvent: {}
+[8.021308] (-) TimerEvent: {}
+[8.121619] (-) TimerEvent: {}
+[8.221933] (-) TimerEvent: {}
+[8.322228] (-) TimerEvent: {}
+[8.422519] (-) TimerEvent: {}
+[8.522780] (-) TimerEvent: {}
+[8.623092] (-) TimerEvent: {}
+[8.723397] (-) TimerEvent: {}
+[8.823719] (-) TimerEvent: {}
+[8.924020] (-) TimerEvent: {}
+[9.024343] (-) TimerEvent: {}
+[9.124632] (-) TimerEvent: {}
+[9.224958] (-) TimerEvent: {}
+[9.325262] (-) TimerEvent: {}
+[9.425581] (-) TimerEvent: {}
+[9.525909] (-) TimerEvent: {}
+[9.626252] (-) TimerEvent: {}
+[9.726586] (-) TimerEvent: {}
+[9.826877] (-) TimerEvent: {}
+[9.927178] (-) TimerEvent: {}
+[10.027477] (-) TimerEvent: {}
+[10.127755] (-) TimerEvent: {}
+[10.228047] (-) TimerEvent: {}
+[10.328323] (-) TimerEvent: {}
+[10.428571] (-) TimerEvent: {}
+[10.528860] (-) TimerEvent: {}
+[10.629155] (-) TimerEvent: {}
+[10.729463] (-) TimerEvent: {}
+[10.829748] (-) TimerEvent: {}
+[10.930026] (-) TimerEvent: {}
+[11.030312] (-) TimerEvent: {}
+[11.130601] (-) TimerEvent: {}
+[11.230891] (-) TimerEvent: {}
+[11.331146] (-) TimerEvent: {}
+[11.431431] (-) TimerEvent: {}
+[11.531731] (-) TimerEvent: {}
+[11.546047] (shelfino) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/shelfino.dir/build.make:76: CMakeFiles/shelfino.dir/src/main.cpp.o] Error 1\n'}
+[11.546315] (shelfino) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/shelfino.dir/all] Error 2\n'}
+[11.546655] (shelfino) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[11.548664] (shelfino) CommandEnded: {'returncode': 2}
+[11.593874] (shelfino) JobEnded: {'identifier': 'shelfino', 'rc': 2}
+[11.604296] (-) EventReactorShutdown: {}

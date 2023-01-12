@@ -1,0 +1,26 @@
+[0.024s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8
+[0.075s] [35m[1mConsolidate compiler generated dependencies of target shelfino[0m
+[0.101s] [ 50%] [32mBuilding CXX object CMakeFiles/shelfino.dir/src/main.cpp.o[0m
+[22.082s] [100%] [32m[1mLinking CXX executable shelfino[0m
+[23.723s] [100%] Built target shelfino
+[23.736s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino' returned '0': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8
+[23.779s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --install /home/p3zz/Documents/uni/robot-planning-project/build/shelfino
+[23.787s] -- Install configuration: ""
+[23.787s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/lib/shelfino/shelfino
+[23.801s] -- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/shelfino/lib/shelfino/shelfino" to ""
+[23.801s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/ament_index/resource_index/package_run_dependencies/shelfino
+[23.801s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/ament_index/resource_index/parent_prefix_path/shelfino
+[23.801s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/environment/ament_prefix_path.sh
+[23.801s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/environment/ament_prefix_path.dsv
+[23.801s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/environment/path.sh
+[23.802s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/environment/path.dsv
+[23.802s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/local_setup.bash
+[23.802s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/local_setup.sh
+[23.802s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/local_setup.zsh
+[23.802s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/local_setup.dsv
+[23.802s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/package.dsv
+[23.803s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/ament_index/resource_index/packages/shelfino
+[23.803s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/cmake/shelfinoConfig.cmake
+[23.803s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/cmake/shelfinoConfig-version.cmake
+[23.803s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/package.xml
+[23.806s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino' returned '0': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --install /home/p3zz/Documents/uni/robot-planning-project/build/shelfino

@@ -1,0 +1,108 @@
+In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In constructor ‘[01m[KShelfinoDto::ShelfinoDto()[m[K’:
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KSafeValue<std::vector<Point2D> >::SafeValue()[m[K’
+  156 |         ShelfinoDto()[01;31m[K{[m[K
+      |                      [01;31m[K^[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<T>::SafeValue(T) [with T = std::vector<Point2D>][m[K’
+  137 |         [01;36m[KSafeValue[m[K(T value):value{value}, valid{false}{}
+      |         [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<std::vector<Point2D> >::SafeValue(const SafeValue<std::vector<Point2D> >&)[m[K’
+  131 | class [01;36m[KSafeValue[m[K{
+      |       [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<std::vector<Point2D> >::SafeValue(SafeValue<std::vector<Point2D> >&&)[m[K’
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KSafeValue<Polygon>::SafeValue()[m[K’
+  156 |         ShelfinoDto()[01;31m[K{[m[K
+      |                      [01;31m[K^[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<T>::SafeValue(T) [with T = Polygon][m[K’
+  137 |         [01;36m[KSafeValue[m[K(T value):value{value}, valid{false}{}
+      |         [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<Polygon>::SafeValue(const SafeValue<Polygon>&)[m[K’
+  131 | class [01;36m[KSafeValue[m[K{
+      |       [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<Polygon>::SafeValue(SafeValue<Polygon>&&)[m[K’
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KSafeValue<std::vector<Polygon> >::SafeValue()[m[K’
+  156 |         ShelfinoDto()[01;31m[K{[m[K
+      |                      [01;31m[K^[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<T>::SafeValue(T) [with T = std::vector<Polygon>][m[K’
+  137 |         [01;36m[KSafeValue[m[K(T value):value{value}, valid{false}{}
+      |         [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<std::vector<Polygon> >::SafeValue(const SafeValue<std::vector<Polygon> >&)[m[K’
+  131 | class [01;36m[KSafeValue[m[K{
+      |       [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<std::vector<Polygon> >::SafeValue(SafeValue<std::vector<Polygon> >&&)[m[K’
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KSafeValue<DubinPoint>::SafeValue()[m[K’
+  156 |         ShelfinoDto()[01;31m[K{[m[K
+      |                      [01;31m[K^[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<T>::SafeValue(T) [with T = DubinPoint][m[K’
+  137 |         [01;36m[KSafeValue[m[K(T value):value{value}, valid{false}{}
+      |         [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr SafeValue<DubinPoint>::SafeValue(const SafeValue<DubinPoint>&)[m[K’
+  131 | class [01;36m[KSafeValue[m[K{
+      |       [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr SafeValue<DubinPoint>::SafeValue(SafeValue<DubinPoint>&&)[m[K’
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KSafeValue<DubinPoint>::SafeValue()[m[K’
+  156 |         ShelfinoDto()[01;31m[K{[m[K
+      |                      [01;31m[K^[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<T>::SafeValue(T) [with T = DubinPoint][m[K’
+  137 |         [01;36m[KSafeValue[m[K(T value):value{value}, valid{false}{}
+      |         [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr SafeValue<DubinPoint>::SafeValue(const SafeValue<DubinPoint>&)[m[K’
+  131 | class [01;36m[KSafeValue[m[K{
+      |       [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr SafeValue<DubinPoint>::SafeValue(SafeValue<DubinPoint>&&)[m[K’
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KSafeValue<RoadMap>::SafeValue()[m[K’
+  156 |         ShelfinoDto()[01;31m[K{[m[K
+      |                      [01;31m[K^[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<T>::SafeValue(T) [with T = RoadMap][m[K’
+  137 |         [01;36m[KSafeValue[m[K(T value):value{value}, valid{false}{}
+      |         [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<RoadMap>::SafeValue(const SafeValue<RoadMap>&)[m[K’
+  131 | class [01;36m[KSafeValue[m[K{
+      |       [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<RoadMap>::SafeValue(SafeValue<RoadMap>&&)[m[K’
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:156:22:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KSafeValue<DubinCurve>::SafeValue()[m[K’
+  156 |         ShelfinoDto()[01;31m[K{[m[K
+      |                      [01;31m[K^[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<T>::SafeValue(T) [with T = DubinCurve][m[K’
+  137 |         [01;36m[KSafeValue[m[K(T value):value{value}, valid{false}{}
+      |         [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:137:9:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<DubinCurve>::SafeValue(const SafeValue<DubinCurve>&)[m[K’
+  131 | class [01;36m[KSafeValue[m[K{
+      |       [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KSafeValue<DubinCurve>::SafeValue(SafeValue<DubinCurve>&&)[m[K’
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:131:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:157:61:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K([m[K’ token
+  157 |             gates_position = SafeValue<std::vector<Point2D>>[01;31m[K([m[Kstd::vector<Point2D>);
+      |                                                             [01;31m[K^[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:157:82:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K)[m[K’ token
+  157 |             gates_position = SafeValue<std::vector<Point2D>>(std::vector<Point2D>[01;31m[K)[m[K;
+      |                                                                                  [01;31m[K^[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:159:56:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K([m[K’ token
+  159 |             obstacles = SafeValue<std::vector<Polygon>>[01;31m[K([m[Kstd::vector<Polygon>);
+      |                                                        [01;31m[K^[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:159:77:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K)[m[K’ token
+  159 |             obstacles = SafeValue<std::vector<Polygon>>(std::vector<Polygon>[01;31m[K)[m[K;
+      |                                                                             [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/shelfino.dir/build.make:76: CMakeFiles/shelfino.dir/src/main.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/shelfino.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

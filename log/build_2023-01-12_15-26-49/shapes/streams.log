@@ -1,0 +1,71 @@
+[0.018s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/shapes': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/shapes -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/shapes
+[0.100s] -- The C compiler identification is GNU 11.3.0
+[0.165s] -- The CXX compiler identification is GNU 11.3.0
+[0.172s] -- Detecting C compiler ABI info
+[0.245s] -- Detecting C compiler ABI info - done
+[0.255s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.256s] -- Detecting C compile features
+[0.256s] -- Detecting C compile features - done
+[0.262s] -- Detecting CXX compiler ABI info
+[0.341s] -- Detecting CXX compiler ABI info - done
+[0.351s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.352s] -- Detecting CXX compile features
+[0.352s] -- Detecting CXX compile features - done
+[0.355s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.558s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter 
+[0.668s] -- Found utils: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/utils/share/utils/cmake)
+[0.679s] -- Found ament_cmake_gtest: 1.3.3 (/opt/ros/humble/share/ament_cmake_gtest/cmake)
+[0.683s] -- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[0.687s] -- Looking for pthread.h
+[0.765s] -- Looking for pthread.h - found
+[0.765s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.844s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.846s] -- Found Threads: TRUE  
+[0.910s] -- Configuring done
+[0.922s] -- Generating done
+[0.923s] -- Build files have been written to: /home/p3zz/Documents/uni/robot-planning-project/build/shapes
+[0.928s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/shapes' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/shapes -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/shapes
+[0.931s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/shapes': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shapes -- -j8 -l8
+[0.981s] [  9%] [32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o[0m
+[0.981s] [ 18%] [32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[0.981s] [ 27%] [32mBuilding CXX object CMakeFiles/shapes.dir/src/shapes.cpp.o[0m
+[1.772s] [ 36%] [32m[1mLinking CXX static library libshapes.a[0m
+[1.803s] [ 36%] Built target shapes
+[2.208s] [ 45%] [32m[1mLinking CXX static library libgtest_main.a[0m
+[2.244s] [ 45%] Built target gtest_main
+[4.641s] [ 54%] [32m[1mLinking CXX static library libgtest.a[0m
+[4.704s] [ 54%] Built target gtest
+[4.724s] [ 72%] [32mBuilding CXX object CMakeFiles/test_shapes.dir/test/circle.cpp.o[0m
+[4.724s] [ 81%] [32mBuilding CXX object CMakeFiles/test_shapes.dir/test/polygon.cpp.o[0m
+[4.724s] [ 81%] [32mBuilding CXX object CMakeFiles/test_shapes.dir/test/segment.cpp.o[0m
+[4.725s] [ 90%] [32mBuilding CXX object CMakeFiles/test_shapes.dir/test/main.cpp.o[0m
+[6.835s] [100%] [32m[1mLinking CXX executable test_shapes[0m
+[7.046s] [100%] Built target test_shapes
+[7.058s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/shapes' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shapes -- -j8 -l8
+[7.108s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/shapes': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/p3zz/Documents/uni/robot-planning-project/build/shapes
+[7.115s] -- Install configuration: ""
+[7.115s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/environment/library_path.sh
+[7.116s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/environment/library_path.dsv
+[7.116s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/include/shapes
+[7.116s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/include/shapes/shapes.hpp
+[7.116s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/lib/libshapes.a
+[7.117s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/lib/shapes/test_shapes
+[7.119s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/ament_index/resource_index/package_run_dependencies/shapes
+[7.119s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/ament_index/resource_index/parent_prefix_path/shapes
+[7.119s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/environment/ament_prefix_path.sh
+[7.119s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/environment/ament_prefix_path.dsv
+[7.119s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/environment/path.sh
+[7.120s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/environment/path.dsv
+[7.120s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/local_setup.bash
+[7.120s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/local_setup.sh
+[7.120s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/local_setup.zsh
+[7.120s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/local_setup.dsv
+[7.121s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/package.dsv
+[7.121s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/ament_index/resource_index/packages/shapes
+[7.121s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/cmake/shapesExport.cmake
+[7.121s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/cmake/shapesExport-noconfig.cmake
+[7.121s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/cmake/ament_cmake_export_targets-extras.cmake
+[7.122s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/cmake/shapesConfig.cmake
+[7.122s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/cmake/shapesConfig-version.cmake
+[7.122s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/package.xml
+[7.125s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/shapes' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/p3zz/Documents/uni/robot-planning-project/build/shapes

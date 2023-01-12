@@ -1,0 +1,33 @@
+-- The C compiler identification is GNU 11.3.0
+-- The CXX compiler identification is GNU 11.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter 
+-- Found utils: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/utils/share/utils/cmake)
+[31mCMake Error at CMakeLists.txt:11 (find_package):
+  By not providing "Findmap.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "map", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "map" with any of
+  the following names:
+
+    mapConfig.cmake
+    map-config.cmake
+
+  Add the installation prefix of "map" to CMAKE_PREFIX_PATH or set "map_DIR"
+  to a directory containing one of the above files.  If "map" provides a
+  separate development package or SDK, be sure it has been installed.
+
+[0m
+-- Configuring incomplete, errors occurred!
+See also "/home/p3zz/Documents/uni/robot-planning-project/build/decisions/CMakeFiles/CMakeOutput.log".
