@@ -15,8 +15,8 @@ class Point2D{
         Point2D(double x, double y):x{x},y{y}{}
 
         friend bool operator== (const Point2D& first, const Point2D& second) {return first.x == second.x && first.y == second.y;}
-        friend std::ostream& operator<<(std::ostream& os, const Point2D& p){return os<<"("<<p.x<<";"<<p.y<<")";}
 };
+string operator + (string s, Point2D& p);
 
 class Segment {
     public:

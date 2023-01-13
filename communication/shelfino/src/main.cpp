@@ -12,7 +12,7 @@ void subscriber_body(ShelfinoDto& dto){
     executor.add_node(obstacles_subscriber);
     executor.add_node(pose_listener);
     executor.add_node(follow_path_client);
-    std::cout<<"spinning"<<std::endl;
+    Logger(Logger::INFO, "Spinning");
     executor.spin();
     rclcpp::shutdown();
 }
@@ -42,8 +42,7 @@ int main(int argc, char * argv[]) {
     for(auto &gate: dto.gates_position.get()){
         room.add_exit(gate);
     }
-    Seed::init_seed(0);
-    std::cout << "Seed: " << Seed::get_seed() << std::endl;
+    Logger(Logger::INFO, "Seed: " + to_string(Seed::get_seed()));
     RoadMap rm(room);
     DubinPoint pursuer(1, 1, M_PI*1.75);
     DubinPoint evader(7, 1, M_PI*0.75);

@@ -1,4 +1,5 @@
 #include "utils/utils.h"
+#include <iomanip>
 
 // if t is 0, the result has no impact 
 double sinc(double t){
@@ -43,4 +44,34 @@ int Seed::get_seed()
     if(seed == 0)
         init_seed(0);
     return seed;
+}
+
+string operator + (string s, ROSTimer &timer) { 
+    return s + to_string(timer.chk()) + " sec"; 
+}
+
+ROSTimer Logger::start;
+
+Logger::Logger(type t, string message)
+{
+    cerr << "[" << fixed << setprecision(3) << setw(8) <<  start.chk() << "]";
+    switch(t)
+    {
+        case ERROR:
+            cerr << setw(9) << "ERROR:";
+            break;
+        case WARNING:
+            cerr << setw(9) << "WARNING:";
+            break;
+        case INFO:
+            cerr << setw(9) << "INFO:";
+            break;
+    }
+    cerr << " " << message << endl;
+}
+
+Logger::Logger(type t, stringstream& message)
+{
+    Logger(t, message.str());
+    message.str(string());
 }

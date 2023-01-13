@@ -15,9 +15,8 @@ class Path
         DubinPoint p2;
         DubinLink l2;
         Path(){}
-
-        friend std::ostream& operator<<(std::ostream& os, Path& path){return os<<" -"<<path.l1.get_curve()<<"-> "<<path.p1<<" -"<<path.l2.get_curve()<<"-> "<<path.p2;}
 };
+string operator + (string s, Path& path);
 
 
 class PayoffMatrix

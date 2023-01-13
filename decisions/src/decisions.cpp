@@ -187,7 +187,7 @@ bool PayoffMatrix::compute_move(DubinPoint pursuer, DubinPoint evader, Path& pat
     }
     if(index_move_e==-1)
     {
-        cerr << "No moves found for evader" << endl;
+        Logger(Logger::ERROR, "No moves found for evader");
         return false;
     }
 
@@ -204,7 +204,7 @@ bool PayoffMatrix::compute_move(DubinPoint pursuer, DubinPoint evader, Path& pat
     }
     if(index_move_p==-1)
     {
-        cerr << "No moves found for pursuer" << endl;
+        Logger(Logger::ERROR, "No moves found for pursuer");
         return false;
     }
     
@@ -290,4 +290,11 @@ std::string get_path_json(Path& path_pursuer, Path& path_evader, double precisio
     s += "}";
 
     return s;   
+}
+
+string operator + (string s, Path& path)
+{
+    DubinCurve first=path.l1.get_curve();
+    DubinCurve second=path.l2.get_curve();
+    return s+" -"+first+"-> "+path.p1+" -"+second+"-> "+path.p2;
 }

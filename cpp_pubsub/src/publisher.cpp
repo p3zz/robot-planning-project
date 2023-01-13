@@ -11,13 +11,12 @@ using namespace std;
 
 int main()
 {
-  //Seed::init_seed(0);
-  cout << "INFO: The seed is " << Seed::get_seed() << endl;
+  Logger(Logger::INFO, "The seed is " + to_string(Seed::get_seed()));
   DubinPoint pursuer(2,8,M_PI*1.75);
   DubinPoint evader(8,2,M_PI*0.75);
+  ROSTimer mytimer;
   
   // Construct random room
-  ROSTime mytimer;
   srand(Seed::get_seed());
   Polygon dim_room({ Point2D(0,0), Point2D(0,10), Point2D(10,10), Point2D(10,0) });
   Room room(dim_room);
@@ -25,8 +24,7 @@ int main()
   room.add_exit(Point2D(0,2));
   room.add_exit(Point2D(8,10));
 
-  double chk = mytimer.chk();
-  cout << "INFO: Time passed to construct room: " << chk << endl;
+  Logger(Logger::INFO, "Time passed to construct room: " + mytimer);
   mytimer.rst();
 
   //Construct roadmap
@@ -40,12 +38,11 @@ int main()
   }
   else
   {
-    cerr<<"General error roadmap"<<endl;
+    Logger(Logger::ERROR, "General error roadmap");
     return 1;
   }
 
-  chk = mytimer.chk();
-  cout << "INFO: Time passed to construct roadmap: " << chk << endl;
+  Logger(Logger::INFO, "Time passed to construct roadmap: " + mytimer);
   mytimer.rst();
   
   //Construct Payoff Matrix
@@ -60,12 +57,11 @@ int main()
   }
   else
   {
-    cerr<<"General error matrix"<<endl;
+    Logger(Logger::ERROR, "General error matrix");
     return 2;
   }
 
-  chk = mytimer.chk();
-  cout << "INFO: Time passed to compute matrix: " << chk << endl;
+  Logger(Logger::INFO, "Time passed to ompute matrix: " + mytimer);
   mytimer.rst();
   
   return 0;
