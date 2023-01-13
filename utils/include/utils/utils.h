@@ -18,6 +18,17 @@ class Seed
         static int get_seed();
 };
 
+class ROSTime
+{
+    private:
+        clock_t t;
+    public:
+        ROSTime(){t = clock();}
+        double chk(){ return (clock()-t)/(double)CLOCKS_PER_SEC; }
+        void rst(){t = clock();}
+        double chk_rst(){ double ret=chk(); rst(); return ret; }
+};
+
 double mod2pi(double angle);
 double modpi(double angle);
 double sinc(double t);

@@ -1,10 +1,4 @@
-#include <chrono>
-#include <functional>
-#include <memory>
-#include <math.h>
 #include <cstdlib>
-#include <vector>
-#include <thread>
 #include <iostream>
 #include <fstream>
 
@@ -18,17 +12,22 @@ using namespace std;
 int main()
 {
   //Seed::init_seed(0);
-  cout << "The seed is " << Seed::get_seed() << endl;
+  cout << "INFO: The seed is " << Seed::get_seed() << endl;
   DubinPoint pursuer(2,8,M_PI*1.75);
   DubinPoint evader(8,2,M_PI*0.75);
   
   // Construct random room
+  ROSTime mytimer;
   srand(Seed::get_seed());
-  Polygon dim_room({ Point2D(0,0), Point2D(10,0), Point2D(10,10), Point2D(0,10) });
+  Polygon dim_room({ Point2D(0,0), Point2D(0,10), Point2D(10,10), Point2D(10,0) });
   Room room(dim_room);
   random_obstacles_side(&room, 4, 200);
   room.add_exit(Point2D(0,2));
   room.add_exit(Point2D(8,10));
+
+  double chk = mytimer.chk();
+  cout << "INFO: Time passed to construct room: " << chk << endl;
+  mytimer.rst();
 
   //Construct roadmap
   RoadMap map(room);
@@ -44,6 +43,10 @@ int main()
     cerr<<"General error roadmap"<<endl;
     return 1;
   }
+
+  chk = mytimer.chk();
+  cout << "INFO: Time passed to construct roadmap: " << chk << endl;
+  mytimer.rst();
   
   //Construct Payoff Matrix
   PayoffMatrix mat(map);
@@ -60,6 +63,10 @@ int main()
     cerr<<"General error matrix"<<endl;
     return 2;
   }
+
+  chk = mytimer.chk();
+  cout << "INFO: Time passed to compute matrix: " << chk << endl;
+  mytimer.rst();
   
   return 0;
 }
