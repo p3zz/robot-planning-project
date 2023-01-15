@@ -1,3 +1,0 @@
-source;share/decisions/environment/ament_prefix_path.sh
-source;share/decisions/environment/library_path.sh
-source;share/decisions/environment/path.sh

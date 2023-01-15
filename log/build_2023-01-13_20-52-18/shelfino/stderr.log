@@ -1,4 +1,0 @@
-[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:[m[K In function ‘[01m[Kvoid service_body(ShelfinoDto&)[m[K’:
-[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:27:32:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kdto[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
-   27 | void service_body([01;35m[KShelfinoDto& dto[m[K){
-      |                   [01;35m[K~~~~~~~~~~~~~^~~[m[K

@@ -1,9 +1,0 @@
-{
-  "package_name": "custom_msgs",
-  "non_idl_tuples": [
-    "/home/p3zz/Documents/uni/robot-planning-project/communication/custom_msgs:msg/ObstacleMsg.msg",
-    "/home/p3zz/Documents/uni/robot-planning-project/communication/custom_msgs:msg/ObstacleArrayMsg.msg",
-    "/home/p3zz/Documents/uni/robot-planning-project/communication/custom_msgs:msg/Edges.msg",
-    "/home/p3zz/Documents/uni/robot-planning-project/communication/custom_msgs:msg/GeometryGraph.msg"
-  ]
-}
