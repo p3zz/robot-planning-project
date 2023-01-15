@@ -22,7 +22,7 @@ find_package(nav_msgs REQUIRED)
 
 include_directories(include)
 
-add_executable(shelfino src/follow_client.cpp src/obstacles.cpp src/gates.cpp src/roadmap.cpp src/walls.cpp src/main.cpp)
+add_executable(shelfino src/pose.cpp src/follow_client.cpp src/obstacles.cpp src/gates.cpp src/roadmap.cpp src/walls.cpp src/main.cpp)
 
 ament_target_dependencies(shelfino rclcpp rclcpp_action custom_msgs utils shapes dubins map decisions geometry_msgs tf2 tf2_ros nav2_msgs nav_msgs)
 
