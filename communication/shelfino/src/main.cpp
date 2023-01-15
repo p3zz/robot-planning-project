@@ -26,7 +26,7 @@ void publisher_body(ShelfinoDto& dto){
 
 void service_body(ShelfinoDto& dto){
     rclcpp::executors::SingleThreadedExecutor executor;
-    auto follow_path_client = std::make_shared<FollowPathClient>(dto.path_to_follow);
+    auto follow_path_client = std::make_shared<FollowPathClient>(dto.roadmap, dto.path_to_follow, dto.evader_pose, dto.pursuer_pose);
     executor.add_node(follow_path_client);
     std::cout<<"service"<<std::endl;
     executor.spin();

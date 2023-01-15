@@ -279,6 +279,7 @@ class RoadmapPublisher : public rclcpp::Node
       h.stamp = this->get_clock()->now();
       auto message = msg_from_roadmap(roadmap.value(), h);
       publisher_->publish(message);
+      std::cout<<"roadmap sent"<<std::endl;
     }
 
   private:
@@ -291,13 +292,18 @@ class FollowPathClient : public rclcpp::Node {
 
     using FollowPath = nav2_msgs::action::FollowPath;
     using GoalHandleFollowPath = rclcpp_action::ClientGoalHandle<FollowPath>;
-    FollowPathClient(std::optional<DubinCurve>& curve) : Node("follow_path_client"), curve{curve} {
-      this->client_ptr_ = rclcpp_action::create_client<FollowPath>(this,"follow_path");
+    FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose)
+      : Node("follow_path_client"), map{map}, path{path}, evader_pose{evader_pose}, pursuer_pose{pursuer_pose}{
+      this->client_ptr_ = rclcpp_action::create_client<FollowPath>(this, "follow_path");
+      std::cout<<"client ready"<<std::endl;
     }
 
-private:
-  rclcpp_action::Client<FollowPath>::SharedPtr client_ptr_;
-  std::optional<DubinCurve>& curve;
+  private:
+    rclcpp_action::Client<FollowPath>::SharedPtr client_ptr_;
+    std::optional<DubinCurve>& path;
+    std::optional<RoadMap>& map;
+    std::optional<DubinPoint>& evader_pose;
+    std::optional<DubinPoint>& pursuer_pose;
 
   void send_goal(){
     if (!this->client_ptr_->wait_for_action_server()) {
