@@ -1,0 +1,182 @@
+[0.023s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8
+[0.075s] [35m[1mConsolidate compiler generated dependencies of target shelfino[0m
+[0.103s] [ 50%] [32mBuilding CXX object CMakeFiles/shelfino.dir/src/main.cpp.o[0m
+[4.472s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.473s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In constructor ‘[01m[KFollowPathClient::FollowPathClient(std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&)[m[K’:
+[4.473s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:305:29:[m[K [01;35m[Kwarning: [m[K‘[01m[KFollowPathClient::map[m[K’ will be initialized after [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[4.473s]   305 |     std::optional<RoadMap>& [01;35m[Kmap[m[K;
+[4.473s]       |                             [01;35m[K^~~[m[K
+[4.474s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:304:32:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kstd::optional<DubinCurve>& FollowPathClient::path[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[4.474s]   304 |     std::optional<DubinCurve>& [01;35m[Kpath[m[K;
+[4.474s]       |                                [01;35m[K^~~~[m[K
+[4.474s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.474s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:296:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[4.475s]   296 |     [01;35m[KFollowPathClient[m[K(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose)
+[4.475s]       |     [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[4.475s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:23[m[K,
+[4.475s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+[4.475s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+[4.475s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+[4.476s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+[4.476s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+[4.476s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[4.476s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[4.476s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[4.476s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:8[m[K,
+[4.477s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.477s] /opt/ros/humble/include/rclcpp/rclcpp/client.hpp: In instantiation of ‘[01m[Kclass rclcpp::Client<nav2_msgs::action::FollowPath>[m[K’:
+[4.477s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:125:1:[m[K   required by substitution of ‘[01m[Ktemplate<class ServiceT> typename rclcpp::Client<ServiceT>::SharedPtr rclcpp::Node::create_client(const string&, const rmw_qos_profile_t&, rclcpp::CallbackGroup::SharedPtr) [with ServiceT = nav2_msgs::action::FollowPath][m[K’
+[4.477s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:298:52:[m[K   required from here
+[4.477s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:374:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KRequest[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.477s]   374 |   using [01;31m[KRequest[m[K = typename ServiceT::Request;
+[4.478s]       |         [01;31m[K^~~~~~~[m[K
+[4.478s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:375:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.478s]   375 |   using [01;31m[KResponse[m[K = typename ServiceT::Response;
+[4.478s]       |         [01;31m[K^~~~~~~~[m[K
+[4.478s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:377:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KRequest[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.478s]   377 |   using [01;31m[KSharedRequest[m[K = typename ServiceT::Request::SharedPtr;
+[4.479s]       |         [01;31m[K^~~~~~~~~~~~~[m[K
+[4.479s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:378:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.479s]   378 |   using [01;31m[KSharedResponse[m[K = typename ServiceT::Response::SharedPtr;
+[4.479s]       |         [01;31m[K^~~~~~~~~~~~~~[m[K
+[4.479s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:380:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.480s]   380 |   using [01;31m[KPromise[m[K = std::promise<SharedResponse>;
+[4.480s]       |         [01;31m[K^~~~~~~[m[K
+[4.480s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:381:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KRequest[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.480s]   381 |   using [01;31m[KPromiseWithRequest[m[K = std::promise<std::pair<SharedRequest, SharedResponse>>;
+[4.480s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[4.480s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:383:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.481s]   383 |   using [01;31m[KSharedPromise[m[K = std::shared_ptr<Promise>;
+[4.481s]       |         [01;31m[K^~~~~~~~~~~~~[m[K
+[4.481s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:384:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KRequest[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.481s]   384 |   using [01;31m[KSharedPromiseWithRequest[m[K = std::shared_ptr<PromiseWithRequest>;
+[4.481s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.481s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:386:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.481s]   386 |   using [01;31m[KFuture[m[K = std::future<SharedResponse>;
+[4.481s]       |         [01;31m[K^~~~~~[m[K
+[4.482s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:387:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.482s]   387 |   using [01;31m[KSharedFuture[m[K = std::shared_future<SharedResponse>;
+[4.482s]       |         [01;31m[K^~~~~~~~~~~~[m[K
+[4.482s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:388:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KRequest[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.482s]   388 |   using [01;31m[KSharedFutureWithRequest[m[K = std::shared_future<std::pair<SharedRequest, SharedResponse>>;
+[4.482s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.482s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:390:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.483s]   390 |   using [01;31m[KCallbackType[m[K = std::function<void (SharedFuture)>;
+[4.483s]       |         [01;31m[K^~~~~~~~~~~~[m[K
+[4.483s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:391:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KRequest[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.483s]   391 |   using [01;31m[KCallbackWithRequestType[m[K = std::function<void (SharedFutureWithRequest)>;
+[4.483s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.483s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:513:3:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.484s]   513 |   [01;31m[Ktake_response[m[K(typename ServiceT::Response & response_out, rmw_request_id_t & request_header_out)
+[4.484s]       |   [01;31m[K^~~~~~~~~~~~~[m[K
+[4.484s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:643:3:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.484s]   643 |   [01;31m[Kasync_send_request[m[K(SharedRequest request, CallbackT && cb)
+[4.484s]       |   [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[4.484s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:674:3:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KRequest[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.484s]   674 |   [01;31m[Kasync_send_request[m[K(SharedRequest request, CallbackT && cb)
+[4.484s]       |   [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[4.485s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:782:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.485s]   782 |   using [01;31m[KCallbackTypeValueVariant[m[K = std::tuple<CallbackType, SharedFuture, Promise>;
+[4.485s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.485s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:783:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KRequest[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.485s]   783 |   using [01;31m[KCallbackWithRequestTypeValueVariant[m[K = std::tuple<
+[4.485s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.485s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:786:9:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.486s]   786 |   using [01;31m[KCallbackInfoVariant[m[K = std::variant<
+[4.486s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[4.486s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:809:3:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.486s]   809 |   [01;31m[Kget_and_erase_pending_request[m[K(int64_t request_number)
+[4.486s]       |   [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.486s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:831:3:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[4.486s]   831 |   [01;31m[Kpending_requests_[m[K;
+[4.486s]       |   [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[4.487s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.487s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:298:66:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Krclcpp_action::Client<nav2_msgs::action::FollowPath>::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >[m[K’} and ‘[01m[Krclcpp::Client<nav2_msgs::action::FollowPath>::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >[m[K’})
+[4.487s]   298 |       client_ptr_ = this->create_client<FollowPath>("follow_path"[01;31m[K)[m[K;
+[4.487s]       |                                                                  [01;31m[K^[m[K
+[4.487s] In file included from [01m[K/usr/include/c++/11/memory:77[m[K,
+[4.487s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:2[m[K,
+[4.487s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.487s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:363:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<const std::shared_ptr<_Yp>&> std::shared_ptr<_Tp>::operator=(const std::shared_ptr<_Yp>&) [with _Yp = _Yp; _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>][m[K’
+[4.488s]   363 |         [01;36m[Koperator[m[K=(const shared_ptr<_Yp>& __r) noexcept
+[4.488s]       |         [01;36m[K^~~~~~~~[m[K
+[4.488s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:363:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[4.488s] /usr/include/c++/11/bits/shared_ptr.h: In substitution of ‘[01m[Ktemplate<class _Tp> template<class _Arg> using _Assignable = typename std::enable_if<std::is_assignable<std::__shared_ptr<_Tp>&, _Arg>::value, std::shared_ptr<_Tp>&>::type [with _Arg = const std::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >&; _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>][m[K’:
+[4.488s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:363:2:[m[K   required by substitution of ‘[01m[Ktemplate<class _Yp> std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >::_Assignable<const std::shared_ptr<_Tp>&> std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >::operator=<_Yp>(const std::shared_ptr<_Tp>&) [with _Yp = rclcpp::Client<nav2_msgs::action::FollowPath>][m[K’
+[4.488s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:298:66:[m[K   required from here
+[4.488s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:130:15:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[Ktype[m[K’ in ‘[01m[Kstruct std::enable_if<false, std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >&>[m[K’
+[4.488s]   130 |         using [01;31m[K_Assignable[m[K = typename enable_if<
+[4.489s]       |               [01;31m[K^~~~~~~~~~~[m[K
+[4.489s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:374:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<std::auto_ptr<_Up> > std::shared_ptr<_Tp>::operator=(std::auto_ptr<_Up>&&) [with _Yp = _Yp; _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>][m[K’
+[4.489s]   374 |         [01;36m[Koperator[m[K=(auto_ptr<_Yp>&& __r)
+[4.489s]       |         [01;36m[K^~~~~~~~[m[K
+[4.489s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:374:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[4.489s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.489s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:298:66:[m[K [01;36m[Knote: [m[K  ‘[01m[Krclcpp::Client<nav2_msgs::action::FollowPath>::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >[m[K’} is not derived from ‘[01m[Kstd::auto_ptr<_Up>[m[K’
+[4.490s]   298 |       client_ptr_ = this->create_client<FollowPath>("follow_path"[01;36m[K)[m[K;
+[4.490s]       |                                                                  [01;36m[K^[m[K
+[4.490s] In file included from [01m[K/usr/include/c++/11/memory:77[m[K,
+[4.490s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:2[m[K,
+[4.490s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.490s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:391:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<std::shared_ptr<_Yp> > std::shared_ptr<_Tp>::operator=(std::shared_ptr<_Yp>&&) [with _Yp = _Yp; _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>][m[K’
+[4.490s]   391 |         [01;36m[Koperator[m[K=(shared_ptr<_Yp>&& __r) noexcept
+[4.490s]       |         [01;36m[K^~~~~~~~[m[K
+[4.491s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:391:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[4.491s] /usr/include/c++/11/bits/shared_ptr.h: In substitution of ‘[01m[Ktemplate<class _Tp> template<class _Arg> using _Assignable = typename std::enable_if<std::is_assignable<std::__shared_ptr<_Tp>&, _Arg>::value, std::shared_ptr<_Tp>&>::type [with _Arg = std::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >; _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>][m[K’:
+[4.491s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:391:2:[m[K   required by substitution of ‘[01m[Ktemplate<class _Yp> std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >::_Assignable<std::shared_ptr<_Tp> > std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >::operator=<_Yp>(std::shared_ptr<_Tp>&&) [with _Yp = rclcpp::Client<nav2_msgs::action::FollowPath>][m[K’
+[4.491s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:298:66:[m[K   required from here
+[4.491s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:130:15:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[Ktype[m[K’ in ‘[01m[Kstruct std::enable_if<false, std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >&>[m[K’
+[4.491s]   130 |         using [01;31m[K_Assignable[m[K = typename enable_if<
+[4.491s]       |               [01;31m[K^~~~~~~~~~~[m[K
+[4.491s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:399:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Yp, class _Del> std::shared_ptr<_Tp>::_Assignable<std::unique_ptr<_Up, _Ep> > std::shared_ptr<_Tp>::operator=(std::unique_ptr<_Up, _Ep>&&) [with _Yp = _Yp; _Del = _Del; _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>][m[K’
+[4.491s]   399 |         [01;36m[Koperator[m[K=(unique_ptr<_Yp, _Del>&& __r)
+[4.491s]       |         [01;36m[K^~~~~~~~[m[K
+[4.491s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:399:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[4.492s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.492s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:298:66:[m[K [01;36m[Knote: [m[K  ‘[01m[Krclcpp::Client<nav2_msgs::action::FollowPath>::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >[m[K’} is not derived from ‘[01m[Kstd::unique_ptr<_Tp, _Dp>[m[K’
+[4.492s]   298 |       client_ptr_ = this->create_client<FollowPath>("follow_path"[01;36m[K)[m[K;
+[4.492s]       |                                                                  [01;36m[K^[m[K
+[4.492s] In file included from [01m[K/usr/include/c++/11/memory:77[m[K,
+[4.492s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:2[m[K,
+[4.492s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.492s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:359:19:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::shared_ptr<_Tp>& std::shared_ptr<_Tp>::operator=(const std::shared_ptr<_Tp>&) [with _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>][m[K’
+[4.492s]   359 |       shared_ptr& [01;36m[Koperator[m[K=(const shared_ptr&) noexcept = default;
+[4.492s]       |                   [01;36m[K^~~~~~~~[m[K
+[4.492s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:359:29:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Krclcpp::Client<nav2_msgs::action::FollowPath>::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >[m[K’} to ‘[01m[Kconst std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >&[m[K’
+[4.492s]   359 |       shared_ptr& operator=([01;36m[Kconst shared_ptr&[m[K) noexcept = default;
+[4.492s]       |                             [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[4.493s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:383:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::shared_ptr<_Tp>& std::shared_ptr<_Tp>::operator=(std::shared_ptr<_Tp>&&) [with _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>][m[K’
+[4.493s]   383 |       [01;36m[Koperator[m[K=(shared_ptr&& __r) noexcept
+[4.493s]       |       [01;36m[K^~~~~~~~[m[K
+[4.493s] [01m[K/usr/include/c++/11/bits/shared_ptr.h:383:30:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Krclcpp::Client<nav2_msgs::action::FollowPath>::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >[m[K’} to ‘[01m[Kstd::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >&&[m[K’
+[4.493s]   383 |       operator=([01;36m[Kshared_ptr&& __r[m[K) noexcept
+[4.493s]       |                 [01;36m[K~~~~~~~~~~~~~^~~[m[K
+[8.954s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:23[m[K,
+[8.954s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+[8.955s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+[8.955s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+[8.955s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+[8.955s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+[8.955s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[8.955s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[8.955s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[8.956s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:8[m[K,
+[8.956s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[8.956s] /opt/ros/humble/include/rclcpp/rclcpp/client.hpp: In instantiation of ‘[01m[Kstd::shared_ptr<void> rclcpp::Client<ServiceT>::create_response() [with ServiceT = nav2_msgs::action::FollowPath][m[K’:
+[8.956s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:523:3:[m[K   required from here
+[8.956s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:525:34:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[8.956s]   525 |     return std::shared_ptr<void>([01;31m[Knew typename ServiceT::Response()[m[K);
+[8.956s]       |                                  [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[8.956s] /opt/ros/humble/include/rclcpp/rclcpp/client.hpp: In instantiation of ‘[01m[Kvoid rclcpp::Client<ServiceT>::handle_response(std::shared_ptr<rmw_request_id_s>, std::shared_ptr<void>) [with ServiceT = nav2_msgs::action::FollowPath][m[K’:
+[8.957s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:546:3:[m[K   required from here
+[8.957s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:551:5:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[8.957s]   551 |     [01;31m[Koptional_pending_request[m[K = this->get_and_erase_pending_request(request_header->sequence_number);
+[8.957s]       |     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[8.957s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:551:5:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[8.957s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:556:32:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[KResponse[m[K’ in ‘[01m[Kstruct nav2_msgs::action::FollowPath[m[K’
+[8.957s]   556 |     auto typed_response = [01;31m[Kstd::static_pointer_cast<typename ServiceT::Response>[m[K(
+[8.957s]       |                           [01;31m[K~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[12.015s] gmake[2]: *** [CMakeFiles/shelfino.dir/build.make:76: CMakeFiles/shelfino.dir/src/main.cpp.o] Error 1
+[12.015s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/shelfino.dir/all] Error 2
+[12.015s] gmake: *** [Makefile:146: all] Error 2
+[12.017s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino' returned '2': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8

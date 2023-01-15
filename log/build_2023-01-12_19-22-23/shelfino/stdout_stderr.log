@@ -1,0 +1,5 @@
+[35m[1mConsolidate compiler generated dependencies of target shelfino[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/shelfino.dir/src/main.cpp.o[0m
+gmake[2]: *** [CMakeFiles/shelfino.dir/build.make:76: CMakeFiles/shelfino.dir/src/main.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/shelfino.dir/all] Interrupt
+gmake: *** [Makefile:146: all] Interrupt

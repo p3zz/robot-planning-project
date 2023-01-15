@@ -1,0 +1,310 @@
+[0.016s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/communication/custom_msgs -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs
+[0.079s] -- The C compiler identification is GNU 11.3.0
+[0.144s] -- The CXX compiler identification is GNU 11.3.0
+[0.155s] -- Detecting C compiler ABI info
+[0.234s] -- Detecting C compiler ABI info - done
+[0.245s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.245s] -- Detecting C compile features
+[0.245s] -- Detecting C compile features - done
+[0.252s] -- Detecting CXX compiler ABI info
+[0.343s] -- Detecting CXX compiler ABI info - done
+[0.355s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.355s] -- Detecting CXX compile features
+[0.355s] -- Detecting CXX compile features - done
+[0.358s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.559s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter 
+[0.670s] -- Found builtin_interfaces: 1.2.1 (/opt/ros/humble/share/builtin_interfaces/cmake)
+[0.711s] -- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.718s] -- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.728s] -- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.744s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.766s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.787s] -- Found geometry_msgs: 4.2.2 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.919s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[1.282s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[1.780s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.005s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.033s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.6", minimum required is "3.6") 
+[2.035s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[2.066s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.6", minimum required is "3.5") 
+[2.066s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.066s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[2.066s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[2.089s] -- Found PythonExtra: .so  
+[2.166s] -- Configuring done
+[2.218s] -- Generating done
+[2.221s] -- Build files have been written to: /home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs
+[2.232s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/communication/custom_msgs -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs
+[2.234s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs -- -j8 -l8
+[2.283s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[2.298s] [  3%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[2.309s] [  3%] Built target ament_cmake_python_copy_custom_msgs
+[2.771s] running egg_info
+[2.772s] creating custom_msgs.egg-info
+[2.773s] writing custom_msgs.egg-info/PKG-INFO
+[2.773s] writing dependency_links to custom_msgs.egg-info/dependency_links.txt
+[2.773s] writing top-level names to custom_msgs.egg-info/top_level.txt
+[2.773s] writing manifest file 'custom_msgs.egg-info/SOURCES.txt'
+[2.776s] reading manifest file 'custom_msgs.egg-info/SOURCES.txt'
+[2.777s] writing manifest file 'custom_msgs.egg-info/SOURCES.txt'
+[2.809s] [  3%] Built target ament_cmake_python_build_custom_msgs_egg
+[3.076s] [  3%] Built target custom_msgs__cpp
+[3.088s] [  5%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_generator_c.dir/rosidl_generator_c/custom_msgs/msg/detail/edges__functions.c.o[0m
+[3.089s] [  7%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_generator_c.dir/rosidl_generator_c/custom_msgs/msg/detail/geometry_graph__functions.c.o[0m
+[3.090s] [  9%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_generator_c.dir/rosidl_generator_c/custom_msgs/msg/detail/obstacle_array_msg__functions.c.o[0m
+[3.090s] [ 10%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_generator_c.dir/rosidl_generator_c/custom_msgs/msg/detail/obstacle_msg__functions.c.o[0m
+[3.092s] [ 12%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[3.093s] [ 14%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[3.095s] [ 16%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[3.206s] [ 18%] [32m[1mLinking C shared library libcustom_msgs__rosidl_generator_c.so[0m
+[3.256s] [ 18%] Built target custom_msgs__rosidl_generator_c
+[3.272s] [ 20%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[3.275s] [ 23%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[3.275s] [ 23%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[4.225s] [ 25%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_msgs/msg/detail/obstacle_msg__type_support.cpp.o[0m
+[4.241s] [ 27%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_msgs/msg/detail/obstacle_array_msg__type_support.cpp.o[0m
+[4.271s] [ 29%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/custom_msgs/msg/obstacle_msg__type_support.cpp.o[0m
+[4.303s] [ 30%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/custom_msgs/msg/obstacle_array_msg__type_support.cpp.o[0m
+[4.319s] [ 32%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_msgs/msg/detail/dds_fastrtps/obstacle_msg__type_support.cpp.o[0m
+[4.335s] [ 34%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/custom_msgs/msg/obstacle_msg__type_support.cpp.o[0m
+[4.417s] [ 36%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_msgs/msg/detail/edges__type_support.cpp.o[0m
+[4.438s] [ 38%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/custom_msgs/msg/edges__type_support.cpp.o[0m
+[4.530s] [ 40%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/custom_msgs/msg/geometry_graph__type_support.cpp.o[0m
+[4.597s] [ 41%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_msgs/msg/detail/obstacle_msg__type_support.c.o[0m
+[4.635s] [ 43%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/custom_msgs/msg/detail/obstacle_msg__type_support_c.cpp.o[0m
+[4.666s] [ 45%] [32m[1mLinking CXX shared library libcustom_msgs__rosidl_typesupport_c.so[0m
+[4.708s] [ 47%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_msgs/msg/detail/obstacle_array_msg__type_support.c.o[0m
+[4.823s] [ 49%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_msgs/msg/detail/edges__type_support.c.o[0m
+[4.876s] [ 49%] Built target custom_msgs__rosidl_typesupport_c
+[4.932s] [ 50%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_msgs/msg/detail/geometry_graph__type_support.cpp.o[0m
+[4.956s] [ 52%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_msgs/msg/detail/geometry_graph__type_support.c.o[0m
+[5.106s] [ 54%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_msgs/msg/detail/dds_fastrtps/obstacle_array_msg__type_support.cpp.o[0m
+[5.153s] [ 56%] [32m[1mLinking C shared library libcustom_msgs__rosidl_typesupport_introspection_c.so[0m
+[5.159s] [ 58%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/custom_msgs/msg/obstacle_array_msg__type_support.cpp.o[0m
+[5.354s] [ 58%] Built target custom_msgs__rosidl_typesupport_introspection_c
+[5.395s] [ 60%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_msgs/msg/detail/dds_fastrtps/edges__type_support.cpp.o[0m
+[5.413s] [ 61%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_msgs/msg/detail/dds_fastrtps/geometry_graph__type_support.cpp.o[0m
+[5.487s] [ 63%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/custom_msgs/msg/detail/obstacle_array_msg__type_support_c.cpp.o[0m
+[5.649s] [ 65%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/custom_msgs/msg/edges__type_support.cpp.o[0m
+[5.756s] [ 67%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/custom_msgs/msg/geometry_graph__type_support.cpp.o[0m
+[5.863s] [ 69%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/custom_msgs/msg/detail/edges__type_support_c.cpp.o[0m
+[6.342s] [ 70%] [32mBuilding CXX object CMakeFiles/custom_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/custom_msgs/msg/detail/geometry_graph__type_support_c.cpp.o[0m
+[6.655s] [ 72%] [32m[1mLinking CXX shared library libcustom_msgs__rosidl_typesupport_cpp.so[0m
+[6.700s] [ 74%] [32m[1mLinking CXX shared library libcustom_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[6.736s] [ 74%] Built target custom_msgs__rosidl_typesupport_cpp
+[6.769s] [ 76%] [32m[1mLinking CXX shared library libcustom_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[6.888s] [ 76%] Built target custom_msgs__rosidl_typesupport_fastrtps_cpp
+[7.049s] [ 76%] Built target custom_msgs__rosidl_typesupport_introspection_cpp
+[7.687s] [ 78%] [32m[1mLinking CXX shared library libcustom_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[8.536s] [ 78%] Built target custom_msgs__rosidl_typesupport_fastrtps_c
+[8.763s] [ 78%] Built target custom_msgs
+[9.005s] [ 80%] [34m[1mGenerating Python code for ROS interfaces[0m
+[14.454s] [ 80%] Built target custom_msgs__py
+[14.477s] [ 83%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_generator_py.dir/rosidl_generator_py/custom_msgs/msg/_geometry_graph_s.c.o[0m
+[14.478s] [ 83%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_generator_py.dir/rosidl_generator_py/custom_msgs/msg/_obstacle_array_msg_s.c.o[0m
+[14.478s] [ 85%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_generator_py.dir/rosidl_generator_py/custom_msgs/msg/_obstacle_msg_s.c.o[0m
+[14.479s] [ 87%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_generator_py.dir/rosidl_generator_py/custom_msgs/msg/_edges_s.c.o[0m
+[14.716s] [ 89%] [32m[1mLinking C shared library rosidl_generator_py/custom_msgs/libcustom_msgs__rosidl_generator_py.so[0m
+[14.766s] [ 89%] Built target custom_msgs__rosidl_generator_py
+[14.789s] [ 90%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/custom_msgs/_custom_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[14.790s] [ 92%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/custom_msgs/_custom_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[14.792s] [ 94%] [32mBuilding C object CMakeFiles/custom_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/custom_msgs/_custom_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[14.935s] [ 96%] [32m[1mLinking C shared library rosidl_generator_py/custom_msgs/custom_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[14.939s] [ 98%] [32m[1mLinking C shared library rosidl_generator_py/custom_msgs/custom_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[14.948s] [100%] [32m[1mLinking C shared library rosidl_generator_py/custom_msgs/custom_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[14.991s] [100%] Built target custom_msgs__rosidl_typesupport_introspection_c__pyext
+[14.991s] [100%] Built target custom_msgs__rosidl_typesupport_c__pyext
+[14.999s] [100%] Built target custom_msgs__rosidl_typesupport_fastrtps_c__pyext
+[15.012s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs -- -j8 -l8
+[15.183s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs
+[15.191s] -- Install configuration: ""
+[15.191s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/ament_index/resource_index/rosidl_interfaces/custom_msgs
+[15.192s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs
+[15.192s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg
+[15.192s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/obstacle_array_msg.h
+[15.192s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/geometry_graph.h
+[15.193s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/obstacle_msg.h
+[15.193s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/edges.h
+[15.193s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail
+[15.193s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__struct.h
+[15.193s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__type_support.h
+[15.194s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__functions.c
+[15.194s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__functions.h
+[15.194s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__functions.h
+[15.194s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__functions.h
+[15.194s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__type_support.h
+[15.194s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__functions.c
+[15.195s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__functions.c
+[15.195s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__type_support.h
+[15.195s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__functions.h
+[15.195s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__struct.h
+[15.195s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__type_support.h
+[15.195s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__functions.c
+[15.196s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__struct.h
+[15.196s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__struct.h
+[15.196s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/rosidl_generator_c__visibility_control.h
+[15.196s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/environment/library_path.sh
+[15.196s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/environment/library_path.dsv
+[15.196s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_generator_c.so
+[15.197s] -- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_generator_c.so" to ""
+[15.197s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs
+[15.197s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg
+[15.197s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[15.197s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail
+[15.198s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__rosidl_typesupport_fastrtps_c.h
+[15.198s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__rosidl_typesupport_fastrtps_c.h
+[15.198s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__rosidl_typesupport_fastrtps_c.h
+[15.198s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__rosidl_typesupport_fastrtps_c.h
+[15.198s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_typesupport_fastrtps_c.so
+[15.198s] -- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[15.199s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs
+[15.199s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg
+[15.199s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/obstacle_msg.hpp
+[15.199s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/edges.hpp
+[15.199s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/geometry_graph.hpp
+[15.199s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/obstacle_array_msg.hpp
+[15.200s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail
+[15.200s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__builder.hpp
+[15.200s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__struct.hpp
+[15.200s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__builder.hpp
+[15.200s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__struct.hpp
+[15.201s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__traits.hpp
+[15.201s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__traits.hpp
+[15.201s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__traits.hpp
+[15.201s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__struct.hpp
+[15.201s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__traits.hpp
+[15.201s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__struct.hpp
+[15.202s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__builder.hpp
+[15.202s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__builder.hpp
+[15.202s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs
+[15.202s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg
+[15.202s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[15.202s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail
+[15.203s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__rosidl_typesupport_fastrtps_cpp.hpp
+[15.203s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__rosidl_typesupport_fastrtps_cpp.hpp
+[15.203s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__rosidl_typesupport_fastrtps_cpp.hpp
+[15.203s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/dds_fastrtps
+[15.203s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__rosidl_typesupport_fastrtps_cpp.hpp
+[15.203s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_typesupport_fastrtps_cpp.so
+[15.204s] -- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[15.204s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs
+[15.204s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg
+[15.204s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[15.204s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail
+[15.204s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__rosidl_typesupport_introspection_c.h
+[15.205s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__type_support.c
+[15.205s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__type_support.c
+[15.205s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__type_support.c
+[15.205s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__rosidl_typesupport_introspection_c.h
+[15.205s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__rosidl_typesupport_introspection_c.h
+[15.205s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__type_support.c
+[15.205s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__rosidl_typesupport_introspection_c.h
+[15.205s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_typesupport_introspection_c.so
+[15.206s] -- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_typesupport_introspection_c.so" to ""
+[15.206s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_typesupport_c.so
+[15.207s] -- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_typesupport_c.so" to ""
+[15.207s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs
+[15.207s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg
+[15.207s] -- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail
+[15.207s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__type_support.cpp
+[15.207s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/edges__rosidl_typesupport_introspection_cpp.hpp
+[15.207s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__rosidl_typesupport_introspection_cpp.hpp
+[15.207s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__rosidl_typesupport_introspection_cpp.hpp
+[15.208s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_array_msg__type_support.cpp
+[15.208s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__type_support.cpp
+[15.208s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/obstacle_msg__rosidl_typesupport_introspection_cpp.hpp
+[15.208s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/include/custom_msgs/custom_msgs/msg/detail/geometry_graph__type_support.cpp
+[15.208s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_typesupport_introspection_cpp.so
+[15.209s] -- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[15.209s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_typesupport_cpp.so
+[15.210s] -- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_typesupport_cpp.so" to ""
+[15.210s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/environment/pythonpath.sh
+[15.210s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/environment/pythonpath.dsv
+[15.210s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs-0.1.2-py3.10.egg-info
+[15.210s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs-0.1.2-py3.10.egg-info/dependency_links.txt
+[15.210s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs-0.1.2-py3.10.egg-info/PKG-INFO
+[15.211s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs-0.1.2-py3.10.egg-info/SOURCES.txt
+[15.211s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs-0.1.2-py3.10.egg-info/top_level.txt
+[15.211s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs
+[15.211s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/custom_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[15.211s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/_custom_msgs_s.ep.rosidl_typesupport_c.c
+[15.211s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/libcustom_msgs__rosidl_generator_py.so
+[15.212s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg
+[15.212s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/_edges.py
+[15.212s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/_obstacle_array_msg.py
+[15.212s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/_geometry_graph.py
+[15.212s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/_obstacle_msg.py
+[15.212s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/_obstacle_array_msg_s.c
+[15.213s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/_edges_s.c
+[15.213s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/__init__.py
+[15.213s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/_geometry_graph_s.c
+[15.213s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/_obstacle_msg_s.c
+[15.213s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/_custom_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[15.213s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/_custom_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[15.214s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/custom_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[15.214s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/__init__.py
+[15.214s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/custom_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[15.257s] Listing '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs'...
+[15.257s] Compiling '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/__init__.py'...
+[15.257s] Listing '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg'...
+[15.258s] Compiling '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/__init__.py'...
+[15.258s] Compiling '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/_edges.py'...
+[15.258s] Compiling '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/_geometry_graph.py'...
+[15.258s] Compiling '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/_obstacle_array_msg.py'...
+[15.258s] Compiling '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/msg/_obstacle_msg.py'...
+[15.263s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/custom_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[15.263s] -- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/custom_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[15.263s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/custom_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[15.264s] -- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/custom_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[15.264s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/custom_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[15.265s] -- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages/custom_msgs/custom_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[15.265s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_generator_py.so
+[15.266s] -- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib/libcustom_msgs__rosidl_generator_py.so" to ""
+[15.266s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/msg/ObstacleMsg.idl
+[15.266s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/msg/ObstacleArrayMsg.idl
+[15.266s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/msg/Edges.idl
+[15.267s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/msg/GeometryGraph.idl
+[15.267s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/msg/ObstacleMsg.msg
+[15.267s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/msg/ObstacleArrayMsg.msg
+[15.267s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/msg/Edges.msg
+[15.267s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/msg/GeometryGraph.msg
+[15.268s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/ament_index/resource_index/package_run_dependencies/custom_msgs
+[15.268s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/ament_index/resource_index/parent_prefix_path/custom_msgs
+[15.268s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/environment/ament_prefix_path.sh
+[15.268s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/environment/ament_prefix_path.dsv
+[15.269s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/environment/path.sh
+[15.269s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/environment/path.dsv
+[15.269s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/local_setup.bash
+[15.269s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/local_setup.sh
+[15.269s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/local_setup.zsh
+[15.270s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/local_setup.dsv
+[15.270s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/package.dsv
+[15.270s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/ament_index/resource_index/packages/custom_msgs
+[15.270s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/export_custom_msgs__rosidl_generator_cExport.cmake
+[15.270s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/export_custom_msgs__rosidl_generator_cExport-noconfig.cmake
+[15.271s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/export_custom_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[15.271s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/export_custom_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[15.271s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/export_custom_msgs__rosidl_generator_cppExport.cmake
+[15.271s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/export_custom_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[15.271s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/export_custom_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[15.271s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/custom_msgs__rosidl_typesupport_introspection_cExport.cmake
+[15.272s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/custom_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[15.272s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/custom_msgs__rosidl_typesupport_cExport.cmake
+[15.272s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/custom_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[15.272s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/custom_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[15.273s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/custom_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[15.273s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/custom_msgs__rosidl_typesupport_cppExport.cmake
+[15.273s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/custom_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[15.273s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/export_custom_msgs__rosidl_generator_pyExport.cmake
+[15.273s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/export_custom_msgs__rosidl_generator_pyExport-noconfig.cmake
+[15.274s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/rosidl_cmake-extras.cmake
+[15.274s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[15.274s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[15.274s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[15.274s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[15.275s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[15.275s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[15.275s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/custom_msgsConfig.cmake
+[15.275s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake/custom_msgsConfig-version.cmake
+[15.275s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/package.xml
+[15.279s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/p3zz/Documents/uni/robot-planning-project/build/custom_msgs

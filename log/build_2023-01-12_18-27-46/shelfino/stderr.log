@@ -1,0 +1,44 @@
+In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:299:6:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ after class definition
+  299 |     }
+      |      [01;31m[K^[m[K
+      |      [32m[K;[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In constructor ‘[01m[KFollowPathClient::FollowPathClient(std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&)[m[K’:
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:296:37:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KFollowPathClient[m[K’ does not have any field named ‘[01m[Kmap[m[K’
+  296 |       : Node("follow_path_client"), [01;31m[Kmap[m[K{map}, path{path}, evader_pose{evader_pose}, pursuer_pose{pursuer_pose}{
+      |                                     [01;31m[K^~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:296:47:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KFollowPathClient[m[K’ does not have any field named ‘[01m[Kpath[m[K’
+  296 |       : Node("follow_path_client"), map{map}, [01;31m[Kpath[m[K{path}, evader_pose{evader_pose}, pursuer_pose{pursuer_pose}{
+      |                                               [01;31m[K^~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:296:59:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KFollowPathClient[m[K’ does not have any field named ‘[01m[Kevader_pose[m[K’
+  296 |       : Node("follow_path_client"), map{map}, path{path}, [01;31m[Kevader_pose[m[K{evader_pose}, pursuer_pose{pursuer_pose}{
+      |                                                           [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:296:85:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KFollowPathClient[m[K’ does not have any field named ‘[01m[Kpursuer_pose[m[K’
+  296 |    : Node("follow_path_client"), map{map}, path{path}, evader_pose{evader_pose}, [01;31m[Kpursuer_pose[m[K{pursuer_pose}{
+      |                                                                                  [01;31m[K^~~~~~~~~~~~[m[K
+
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:297:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass FollowPathClient[m[K’ has no member named ‘[01m[Kclient_ptr_[m[K’
+  297 |         this->[01;31m[Kclient_ptr_[m[K = rclcpp_action::create_client<FollowPath>(this,"follow_path");
+      |               [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K At global scope:
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:301:3:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kprivate[m[K’
+  301 |   [01;31m[Kprivate[m[K:
+      |   [01;31m[K^~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:303:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath[m[K’ declared as reference but not initialized
+  303 |     std::optional<DubinCurve>& [01;31m[Kpath[m[K;
+      |                                [01;31m[K^~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:304:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kmap[m[K’ declared as reference but not initialized
+  304 |     std::optional<RoadMap>& [01;31m[Kmap[m[K;
+      |                             [01;31m[K^~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:305:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kevader_pose[m[K’ declared as reference but not initialized
+  305 |     std::optional<DubinPoint>& [01;31m[Kevader_pose[m[K;
+      |                                [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:306:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kpursuer_pose[m[K’ declared as reference but not initialized
+  306 |     std::optional<DubinPoint>& [01;31m[Kpursuer_pose[m[K;
+      |                                [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:362:1:[m[K [01;31m[Kerror: [m[Kexpected declaration before ‘[01m[K}[m[K’ token
+  362 | [01;31m[K}[m[K;
+      | [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/shelfino.dir/build.make:76: CMakeFiles/shelfino.dir/src/main.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/shelfino.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

@@ -1,0 +1,44 @@
+[0.024s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8
+[0.054s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.222s] -- Found rclcpp: 16.0.2 (/opt/ros/humble/share/rclcpp/cmake)
+[0.261s] -- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.264s] -- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.271s] -- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.284s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.301s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.370s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.372s] -- Found rmw_fastrtps_cpp: 6.2.2 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.513s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.723s] -- Found rclcpp_action: 16.0.2 (/opt/ros/humble/share/rclcpp_action/cmake)
+[0.830s] -- Found geometry_msgs: 4.2.2 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.882s] -- Found custom_msgs: 0.1.2 (/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/share/custom_msgs/cmake)
+[0.976s] -- Found shapes: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/cmake)
+[0.977s] -- Found dubins: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/cmake)
+[0.978s] -- Found map: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/cmake)
+[0.979s] -- Found utils: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/utils/share/utils/cmake)
+[0.981s] -- Found decisions: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/cmake)
+[0.982s] -- Found tf2: 0.25.1 (/opt/ros/humble/share/tf2/cmake)
+[0.992s] -- Found tf2_ros: 0.25.1 (/opt/ros/humble/share/tf2_ros/cmake)
+[1.280s] -- Found nav2_msgs: 1.1.3 (/opt/ros/humble/share/nav2_msgs/cmake)
+[1.616s] [31mCMake Error at /opt/ros/humble/share/rclcpp_components/cmake/rclcpp_components_register_node.cmake:72 (add_executable):
+[1.616s]   add_executable cannot create target "shelfino" because another target with
+[1.617s]   the same name already exists.  The existing target is an executable created
+[1.617s]   in source directory
+[1.617s]   "/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino".
+[1.617s]   See documentation for policy CMP0002 for more details.
+[1.617s] Call Stack (most recent call first):
+[1.617s]   CMakeLists.txt:29 (rclcpp_components_register_node)
+[1.618s] 
+[1.618s] [0m
+[1.618s] -- Found ament_lint_auto: 0.12.4 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.696s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.697s] -- Configured cppcheck include dirs: /home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include
+[1.697s] -- Configured cppcheck exclude dirs and/or files: 
+[1.698s] -- Added test 'lint_cmake' to check CMake code style
+[1.699s] -- Added test 'uncrustify' to check C / C++ code style
+[1.700s] -- Configured uncrustify additional arguments: 
+[1.700s] -- Added test 'xmllint' to check XML markup files
+[1.701s] -- Configuring incomplete, errors occurred!
+[1.702s] See also "/home/p3zz/Documents/uni/robot-planning-project/build/shelfino/CMakeFiles/CMakeOutput.log".
+[1.711s] gmake: *** [Makefile:267: cmake_check_build_system] Error 1
+[1.713s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino' returned '2': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8

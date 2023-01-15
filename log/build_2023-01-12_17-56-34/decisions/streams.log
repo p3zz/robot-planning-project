@@ -1,0 +1,62 @@
+[0.018s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/decisions': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/decisions -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/decisions
+[0.080s] -- The C compiler identification is GNU 11.3.0
+[0.148s] -- The CXX compiler identification is GNU 11.3.0
+[0.156s] -- Detecting C compiler ABI info
+[0.233s] -- Detecting C compiler ABI info - done
+[0.243s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.243s] -- Detecting C compile features
+[0.244s] -- Detecting C compile features - done
+[0.247s] -- Detecting CXX compiler ABI info
+[0.336s] -- Detecting CXX compiler ABI info - done
+[0.346s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.347s] -- Detecting CXX compile features
+[0.347s] -- Detecting CXX compile features - done
+[0.350s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.538s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter 
+[0.638s] -- Found utils: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/utils/share/utils/cmake)
+[0.639s] -- Found map: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/map/share/map/cmake)
+[0.640s] -- Found dubins: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/dubins/share/dubins/cmake)
+[0.642s] -- Found shapes: 0.0.0 (/home/p3zz/Documents/uni/robot-planning-project/install/shapes/share/shapes/cmake)
+[0.647s] -- Found ament_lint_auto: 0.12.4 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.736s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.736s] -- Configured cppcheck include dirs: /home/p3zz/Documents/uni/robot-planning-project/decisions/include
+[0.736s] -- Configured cppcheck exclude dirs and/or files: 
+[0.737s] -- Added test 'lint_cmake' to check CMake code style
+[0.739s] -- Added test 'uncrustify' to check C / C++ code style
+[0.739s] -- Configured uncrustify additional arguments: 
+[0.739s] -- Added test 'xmllint' to check XML markup files
+[0.742s] -- Configuring done
+[0.748s] -- Generating done
+[0.750s] -- Build files have been written to: /home/p3zz/Documents/uni/robot-planning-project/build/decisions
+[0.755s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/decisions' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/p3zz/Documents/uni/robot-planning-project/decisions -DCMAKE_INSTALL_PREFIX=/home/p3zz/Documents/uni/robot-planning-project/install/decisions
+[0.757s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/decisions': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/decisions -- -j8 -l8
+[0.811s] [ 50%] [32mBuilding CXX object CMakeFiles/decisions.dir/src/decisions.cpp.o[0m
+[2.376s] [100%] [32m[1mLinking CXX static library libdecisions.a[0m
+[2.412s] [100%] Built target decisions
+[2.423s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/decisions' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/decisions -- -j8 -l8
+[2.466s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/decisions': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/p3zz/Documents/uni/robot-planning-project/build/decisions
+[2.473s] -- Install configuration: ""
+[2.474s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/environment/library_path.sh
+[2.474s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/environment/library_path.dsv
+[2.474s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/include/decisions
+[2.474s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/include/decisions/decisions.hpp
+[2.474s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/lib/libdecisions.a
+[2.475s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/ament_index/resource_index/package_run_dependencies/decisions
+[2.475s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/ament_index/resource_index/parent_prefix_path/decisions
+[2.475s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/environment/ament_prefix_path.sh
+[2.476s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/environment/ament_prefix_path.dsv
+[2.476s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/environment/path.sh
+[2.476s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/environment/path.dsv
+[2.476s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/local_setup.bash
+[2.476s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/local_setup.sh
+[2.477s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/local_setup.zsh
+[2.477s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/local_setup.dsv
+[2.477s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/package.dsv
+[2.477s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/ament_index/resource_index/packages/decisions
+[2.478s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/cmake/decisionsExport.cmake
+[2.478s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/cmake/decisionsExport-noconfig.cmake
+[2.478s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/cmake/ament_cmake_export_targets-extras.cmake
+[2.478s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/cmake/decisionsConfig.cmake
+[2.479s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/cmake/decisionsConfig-version.cmake
+[2.479s] -- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/decisions/share/decisions/package.xml
+[2.481s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/decisions' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/p3zz/Documents/uni/robot-planning-project/build/decisions

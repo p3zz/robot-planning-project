@@ -63,18 +63,21 @@ int main(int argc, char * argv[]) {
     if(!rm.construct_roadmap(60, 4, 0.5, 500, pursuer.get_point(), evader.get_point())){
         return 1;
     }
-    // launch roadmap publisher
+    dto.roadmap.emplace(rm);
+    // // launch roadmap publisher
     std::thread publisher(publisher_body, std::ref(dto));
     publisher.detach();
+
+    // // compute move
+    // // TODO the computation of the next move must be done by the follow_path client 
     PayoffMatrix mat(rm);
     Path p, e;
-    // compute move
     if(!mat.computeMove(pursuer, evader, p, e)){
         return 1;
     }
     dto.path_to_follow.emplace(p.l1.get_curve());
     // launch roadmap publisher
     std::thread service(service_body, std::ref(dto));
-    service.detach();
+    service.join();
     return 0;
 }

@@ -1,0 +1,316 @@
+[0.000000] (-) TimerEvent: {}
+[0.000440] (-) JobUnselected: {'identifier': 'cpp_pubsub'}
+[0.000497] (-) JobUnselected: {'identifier': 'custom_msgs'}
+[0.000555] (-) JobUnselected: {'identifier': 'decisions'}
+[0.000602] (-) JobUnselected: {'identifier': 'dubins'}
+[0.000943] (-) JobUnselected: {'identifier': 'map'}
+[0.001062] (-) JobUnselected: {'identifier': 'shapes'}
+[0.001226] (-) JobUnselected: {'identifier': 'utils'}
+[0.001285] (shelfino) JobQueued: {'identifier': 'shelfino', 'dependencies': OrderedDict([('custom_msgs', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs'), ('shapes', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes')])}
+[0.001337] (shelfino) JobStarted: {'identifier': 'shelfino'}
+[0.017353] (shelfino) JobProgress: {'identifier': 'shelfino', 'progress': 'cmake'}
+[0.018118] (shelfino) JobProgress: {'identifier': 'shelfino', 'progress': 'build'}
+[0.018934] (shelfino) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino', '--', '-j8', '-l8'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib:/home/p3zz/Documents/uni/robot-planning-project/install/decisions/lib:/home/p3zz/Documents/uni/robot-planning-project/install/map/lib:/home/p3zz/Documents/uni/robot-planning-project/install/dubins/lib:/home/p3zz/Documents/uni/robot-planning-project/install/shapes/lib:/home/p3zz/Documents/uni/robot-planning-project/install/utils/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz/Documents/uni/Shelfino_ROS2'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '3417'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1815,unix/p3zz-X510UQR:/tmp/.ICE-unix/1815'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/b52d2f49_e7e0_47cb_a4d8_e638532aed2a'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.LN40Y1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.120'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble')]), 'shell': False}
+[0.073408] (shelfino) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target shelfino\x1b[0m\n'}
+[0.098512] (-) TimerEvent: {}
+[0.101813] (shelfino) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/shelfino.dir/src/main.cpp.o\x1b[0m\n'}
+[0.198613] (-) TimerEvent: {}
+[0.298948] (-) TimerEvent: {}
+[0.399245] (-) TimerEvent: {}
+[0.499541] (-) TimerEvent: {}
+[0.599843] (-) TimerEvent: {}
+[0.700171] (-) TimerEvent: {}
+[0.800503] (-) TimerEvent: {}
+[0.900797] (-) TimerEvent: {}
+[1.001095] (-) TimerEvent: {}
+[1.101444] (-) TimerEvent: {}
+[1.201786] (-) TimerEvent: {}
+[1.302082] (-) TimerEvent: {}
+[1.402404] (-) TimerEvent: {}
+[1.502720] (-) TimerEvent: {}
+[1.603034] (-) TimerEvent: {}
+[1.703368] (-) TimerEvent: {}
+[1.803703] (-) TimerEvent: {}
+[1.904010] (-) TimerEvent: {}
+[2.004306] (-) TimerEvent: {}
+[2.104633] (-) TimerEvent: {}
+[2.204959] (-) TimerEvent: {}
+[2.305289] (-) TimerEvent: {}
+[2.405611] (-) TimerEvent: {}
+[2.505925] (-) TimerEvent: {}
+[2.606272] (-) TimerEvent: {}
+[2.706582] (-) TimerEvent: {}
+[2.806880] (-) TimerEvent: {}
+[2.907209] (-) TimerEvent: {}
+[3.007542] (-) TimerEvent: {}
+[3.107837] (-) TimerEvent: {}
+[3.208148] (-) TimerEvent: {}
+[3.308441] (-) TimerEvent: {}
+[3.408762] (-) TimerEvent: {}
+[3.509102] (-) TimerEvent: {}
+[3.609385] (-) TimerEvent: {}
+[3.709676] (-) TimerEvent: {}
+[3.809973] (-) TimerEvent: {}
+[3.910296] (-) TimerEvent: {}
+[4.010599] (-) TimerEvent: {}
+[4.110924] (-) TimerEvent: {}
+[4.211274] (-) TimerEvent: {}
+[4.311658] (-) TimerEvent: {}
+[4.411952] (-) TimerEvent: {}
+[4.457058] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[4.457260] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KFollowPathClient::FollowPathClient(std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.457589] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:304:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KFollowPathClient::map\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.457985] (shelfino) StderrLine: {'line': b'  304 |     std::optional<RoadMap>& \x1b[01;35m\x1b[Kmap\x1b[m\x1b[K;\n'}
+[4.458114] (shelfino) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.458238] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:303:32:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::optional<DubinCurve>& FollowPathClient::path\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.458370] (shelfino) StderrLine: {'line': b'  303 |     std::optional<DubinCurve>& \x1b[01;35m\x1b[Kpath\x1b[m\x1b[K;\n'}
+[4.458510] (shelfino) StderrLine: {'line': b'      |                                \x1b[01;35m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[4.458638] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[4.458761] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:295:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.458886] (shelfino) StderrLine: {'line': b'  295 |     \x1b[01;35m\x1b[KFollowPathClient\x1b[m\x1b[K(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose)\n'}
+[4.459009] (shelfino) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.459136] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:23\x1b[m\x1b[K,\n'}
+[4.459277] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[4.459418] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[4.459563] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[4.459700] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[4.459843] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[4.459982] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[4.460132] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[4.460273] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[4.460414] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:8\x1b[m\x1b[K,\n'}
+[4.460551] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[4.460697] (shelfino) StderrLine: {'line': b'/opt/ros/humble/include/rclcpp/rclcpp/client.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kclass rclcpp::Client<nav2_msgs::action::FollowPath>\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.460835] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:125:1:\x1b[m\x1b[K   required by substitution of \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class ServiceT> typename rclcpp::Client<ServiceT>::SharedPtr rclcpp::Node::create_client(const string&, const rmw_qos_profile_t&, rclcpp::CallbackGroup::SharedPtr) [with ServiceT = nav2_msgs::action::FollowPath]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.460979] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:297:58:\x1b[m\x1b[K   required from here\n'}
+[4.461116] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:374:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KRequest\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.461255] (shelfino) StderrLine: {'line': b'  374 |   using \x1b[01;31m\x1b[KRequest\x1b[m\x1b[K = typename ServiceT::Request;\n'}
+[4.461406] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[4.461541] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:375:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.461681] (shelfino) StderrLine: {'line': b'  375 |   using \x1b[01;31m\x1b[KResponse\x1b[m\x1b[K = typename ServiceT::Response;\n'}
+[4.461810] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[4.461943] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:377:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KRequest\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.462065] (shelfino) StderrLine: {'line': b'  377 |   using \x1b[01;31m\x1b[KSharedRequest\x1b[m\x1b[K = typename ServiceT::Request::SharedPtr;\n'}
+[4.462212] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.462345] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:378:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.462481] (shelfino) StderrLine: {'line': b'  378 |   using \x1b[01;31m\x1b[KSharedResponse\x1b[m\x1b[K = typename ServiceT::Response::SharedPtr;\n'}
+[4.462602] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.462721] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:380:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.462856] (shelfino) StderrLine: {'line': b'  380 |   using \x1b[01;31m\x1b[KPromise\x1b[m\x1b[K = std::promise<SharedResponse>;\n'}
+[4.462977] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[4.463097] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:381:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KRequest\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.463218] (shelfino) StderrLine: {'line': b'  381 |   using \x1b[01;31m\x1b[KPromiseWithRequest\x1b[m\x1b[K = std::promise<std::pair<SharedRequest, SharedResponse>>;\n'}
+[4.463346] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.463466] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:383:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.463589] (shelfino) StderrLine: {'line': b'  383 |   using \x1b[01;31m\x1b[KSharedPromise\x1b[m\x1b[K = std::shared_ptr<Promise>;\n'}
+[4.463708] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.463828] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:384:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KRequest\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.463955] (shelfino) StderrLine: {'line': b'  384 |   using \x1b[01;31m\x1b[KSharedPromiseWithRequest\x1b[m\x1b[K = std::shared_ptr<PromiseWithRequest>;\n'}
+[4.464080] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.464188] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:386:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.464327] (shelfino) StderrLine: {'line': b'  386 |   using \x1b[01;31m\x1b[KFuture\x1b[m\x1b[K = std::future<SharedResponse>;\n'}
+[4.464467] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[4.464711] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:387:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.465048] (shelfino) StderrLine: {'line': b'  387 |   using \x1b[01;31m\x1b[KSharedFuture\x1b[m\x1b[K = std::shared_future<SharedResponse>;\n'}
+[4.465429] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.465555] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:388:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KRequest\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.465681] (shelfino) StderrLine: {'line': b'  388 |   using \x1b[01;31m\x1b[KSharedFutureWithRequest\x1b[m\x1b[K = std::shared_future<std::pair<SharedRequest, SharedResponse>>;\n'}
+[4.465803] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.465924] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:390:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.466059] (shelfino) StderrLine: {'line': b'  390 |   using \x1b[01;31m\x1b[KCallbackType\x1b[m\x1b[K = std::function<void (SharedFuture)>;\n'}
+[4.466179] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.466298] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:391:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KRequest\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.466433] (shelfino) StderrLine: {'line': b'  391 |   using \x1b[01;31m\x1b[KCallbackWithRequestType\x1b[m\x1b[K = std::function<void (SharedFutureWithRequest)>;\n'}
+[4.466556] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.466685] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:513:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.466813] (shelfino) StderrLine: {'line': b'  513 |   \x1b[01;31m\x1b[Ktake_response\x1b[m\x1b[K(typename ServiceT::Response & response_out, rmw_request_id_t & request_header_out)\n'}
+[4.466934] (shelfino) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.467054] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:643:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.467184] (shelfino) StderrLine: {'line': b'  643 |   \x1b[01;31m\x1b[Kasync_send_request\x1b[m\x1b[K(SharedRequest request, CallbackT && cb)\n'}
+[4.467305] (shelfino) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.467425] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:674:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KRequest\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.467546] (shelfino) StderrLine: {'line': b'  674 |   \x1b[01;31m\x1b[Kasync_send_request\x1b[m\x1b[K(SharedRequest request, CallbackT && cb)\n'}
+[4.467666] (shelfino) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.467784] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:782:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.467905] (shelfino) StderrLine: {'line': b'  782 |   using \x1b[01;31m\x1b[KCallbackTypeValueVariant\x1b[m\x1b[K = std::tuple<CallbackType, SharedFuture, Promise>;\n'}
+[4.468027] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.468154] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:783:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KRequest\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.468265] (shelfino) StderrLine: {'line': b'  783 |   using \x1b[01;31m\x1b[KCallbackWithRequestTypeValueVariant\x1b[m\x1b[K = std::tuple<\n'}
+[4.468380] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.468525] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:786:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.468663] (shelfino) StderrLine: {'line': b'  786 |   using \x1b[01;31m\x1b[KCallbackInfoVariant\x1b[m\x1b[K = std::variant<\n'}
+[4.468800] (shelfino) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.468938] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:809:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.469078] (shelfino) StderrLine: {'line': b'  809 |   \x1b[01;31m\x1b[Kget_and_erase_pending_request\x1b[m\x1b[K(int64_t request_number)\n'}
+[4.469216] (shelfino) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.469355] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:831:3:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.469493] (shelfino) StderrLine: {'line': b'  831 |   \x1b[01;31m\x1b[Kpending_requests_\x1b[m\x1b[K;\n'}
+[4.469774] (shelfino) StderrLine: {'line': b'      |   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.469909] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[4.470042] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:297:72:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno match for \xe2\x80\x98\x1b[01m\x1b[Koperator=\x1b[m\x1b[K\xe2\x80\x99 (operand types are \xe2\x80\x98\x1b[01m\x1b[Krclcpp_action::Client<nav2_msgs::action::FollowPath>::SharedPtr\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >\x1b[m\x1b[K\xe2\x80\x99} and \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Client<nav2_msgs::action::FollowPath>::SharedPtr\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >\x1b[m\x1b[K\xe2\x80\x99})\n'}
+[4.470189] (shelfino) StderrLine: {'line': b'  297 |       this->client_ptr_ = this->create_client<FollowPath>("follow_path"\x1b[01;31m\x1b[K)\x1b[m\x1b[K;\n'}
+[4.470323] (shelfino) StderrLine: {'line': b'      |                                                                        \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.470469] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/11/memory:77\x1b[m\x1b[K,\n'}
+[4.470602] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:2\x1b[m\x1b[K,\n'}
+[4.470735] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[4.470868] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:363:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<const std::shared_ptr<_Yp>&> std::shared_ptr<_Tp>::operator=(const std::shared_ptr<_Yp>&) [with _Yp = _Yp; _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.471016] (shelfino) StderrLine: {'line': b'  363 |         \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K=(const shared_ptr<_Yp>& __r) noexcept\n'}
+[4.471162] (shelfino) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[4.471295] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:363:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[4.471429] (shelfino) StderrLine: {'line': b'/usr/include/c++/11/bits/shared_ptr.h: In substitution of \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> template<class _Arg> using _Assignable = typename std::enable_if<std::is_assignable<std::__shared_ptr<_Tp>&, _Arg>::value, std::shared_ptr<_Tp>&>::type [with _Arg = const std::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >&; _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.471567] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:363:2:\x1b[m\x1b[K   required by substitution of \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Yp> std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >::_Assignable<const std::shared_ptr<_Tp>&> std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >::operator=<_Yp>(const std::shared_ptr<_Tp>&) [with _Yp = rclcpp::Client<nav2_msgs::action::FollowPath>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.471708] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:297:72:\x1b[m\x1b[K   required from here\n'}
+[4.471841] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:130:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[Ktype\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct std::enable_if<false, std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >&>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.471978] (shelfino) StderrLine: {'line': b'  130 |         using \x1b[01;31m\x1b[K_Assignable\x1b[m\x1b[K = typename enable_if<\n'}
+[4.472111] (shelfino) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.472244] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:374:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<std::auto_ptr<_Up> > std::shared_ptr<_Tp>::operator=(std::auto_ptr<_Up>&&) [with _Yp = _Yp; _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.472380] (shelfino) StderrLine: {'line': b'  374 |         \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K=(auto_ptr<_Yp>&& __r)\n'}
+[4.472513] (shelfino) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[4.472646] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:374:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[4.472778] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[4.472911] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:297:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Client<nav2_msgs::action::FollowPath>::SharedPtr\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >\x1b[m\x1b[K\xe2\x80\x99} is not derived from \xe2\x80\x98\x1b[01m\x1b[Kstd::auto_ptr<_Up>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.473057] (shelfino) StderrLine: {'line': b'  297 |       this->client_ptr_ = this->create_client<FollowPath>("follow_path"\x1b[01;36m\x1b[K)\x1b[m\x1b[K;\n'}
+[4.473191] (shelfino) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K^\x1b[m\x1b[K\n'}
+[4.473323] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/11/memory:77\x1b[m\x1b[K,\n'}
+[4.473460] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:2\x1b[m\x1b[K,\n'}
+[4.473579] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[4.473695] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:391:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Yp> std::shared_ptr<_Tp>::_Assignable<std::shared_ptr<_Yp> > std::shared_ptr<_Tp>::operator=(std::shared_ptr<_Yp>&&) [with _Yp = _Yp; _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.473815] (shelfino) StderrLine: {'line': b'  391 |         \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K=(shared_ptr<_Yp>&& __r) noexcept\n'}
+[4.473931] (shelfino) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[4.474060] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:391:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[4.474195] (shelfino) StderrLine: {'line': b'/usr/include/c++/11/bits/shared_ptr.h: In substitution of \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> template<class _Arg> using _Assignable = typename std::enable_if<std::is_assignable<std::__shared_ptr<_Tp>&, _Arg>::value, std::shared_ptr<_Tp>&>::type [with _Arg = std::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >; _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.474344] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:391:2:\x1b[m\x1b[K   required by substitution of \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Yp> std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >::_Assignable<std::shared_ptr<_Tp> > std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >::operator=<_Yp>(std::shared_ptr<_Tp>&&) [with _Yp = rclcpp::Client<nav2_msgs::action::FollowPath>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.474497] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:297:72:\x1b[m\x1b[K   required from here\n'}
+[4.474618] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:130:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[Ktype\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct std::enable_if<false, std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >&>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.474738] (shelfino) StderrLine: {'line': b'  130 |         using \x1b[01;31m\x1b[K_Assignable\x1b[m\x1b[K = typename enable_if<\n'}
+[4.474854] (shelfino) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.474978] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:399:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Yp, class _Del> std::shared_ptr<_Tp>::_Assignable<std::unique_ptr<_Up, _Ep> > std::shared_ptr<_Tp>::operator=(std::unique_ptr<_Up, _Ep>&&) [with _Yp = _Yp; _Del = _Del; _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.475115] (shelfino) StderrLine: {'line': b'  399 |         \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K=(unique_ptr<_Yp, _Del>&& __r)\n'}
+[4.475249] (shelfino) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[4.475381] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:399:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[4.475514] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[4.475644] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:297:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Client<nav2_msgs::action::FollowPath>::SharedPtr\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >\x1b[m\x1b[K\xe2\x80\x99} is not derived from \xe2\x80\x98\x1b[01m\x1b[Kstd::unique_ptr<_Tp, _Dp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.475770] (shelfino) StderrLine: {'line': b'  297 |       this->client_ptr_ = this->create_client<FollowPath>("follow_path"\x1b[01;36m\x1b[K)\x1b[m\x1b[K;\n'}
+[4.475892] (shelfino) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K^\x1b[m\x1b[K\n'}
+[4.476025] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/11/memory:77\x1b[m\x1b[K,\n'}
+[4.476159] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:2\x1b[m\x1b[K,\n'}
+[4.476309] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[4.476455] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:359:19:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<_Tp>& std::shared_ptr<_Tp>::operator=(const std::shared_ptr<_Tp>&) [with _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.476594] (shelfino) StderrLine: {'line': b'  359 |       shared_ptr& \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K=(const shared_ptr&) noexcept = default;\n'}
+[4.476731] (shelfino) StderrLine: {'line': b'      |                   \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[4.476863] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:359:29:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Client<nav2_msgs::action::FollowPath>::SharedPtr\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >\x1b[m\x1b[K\xe2\x80\x99} to \xe2\x80\x98\x1b[01m\x1b[Kconst std::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.477002] (shelfino) StderrLine: {'line': b'  359 |       shared_ptr& operator=(\x1b[01;36m\x1b[Kconst shared_ptr&\x1b[m\x1b[K) noexcept = default;\n'}
+[4.477134] (shelfino) StderrLine: {'line': b'      |                             \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.477266] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:383:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<_Tp>& std::shared_ptr<_Tp>::operator=(std::shared_ptr<_Tp>&&) [with _Tp = rclcpp_action::Client<nav2_msgs::action::FollowPath>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.477401] (shelfino) StderrLine: {'line': b'  383 |       \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K=(shared_ptr&& __r) noexcept\n'}
+[4.477535] (shelfino) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[4.477667] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:383:30:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Client<nav2_msgs::action::FollowPath>::SharedPtr\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<rclcpp::Client<nav2_msgs::action::FollowPath> >\x1b[m\x1b[K\xe2\x80\x99} to \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<rclcpp_action::Client<nav2_msgs::action::FollowPath> >&&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.477803] (shelfino) StderrLine: {'line': b'  383 |       operator=(\x1b[01;36m\x1b[Kshared_ptr&& __r\x1b[m\x1b[K) noexcept\n'}
+[4.477940] (shelfino) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K~~~~~~~~~~~~~^~~\x1b[m\x1b[K\n'}
+[4.512058] (-) TimerEvent: {}
+[4.612348] (-) TimerEvent: {}
+[4.712692] (-) TimerEvent: {}
+[4.813008] (-) TimerEvent: {}
+[4.913342] (-) TimerEvent: {}
+[5.013654] (-) TimerEvent: {}
+[5.113966] (-) TimerEvent: {}
+[5.214279] (-) TimerEvent: {}
+[5.314574] (-) TimerEvent: {}
+[5.414890] (-) TimerEvent: {}
+[5.515227] (-) TimerEvent: {}
+[5.615547] (-) TimerEvent: {}
+[5.715861] (-) TimerEvent: {}
+[5.816182] (-) TimerEvent: {}
+[5.916516] (-) TimerEvent: {}
+[6.016820] (-) TimerEvent: {}
+[6.117087] (-) TimerEvent: {}
+[6.217356] (-) TimerEvent: {}
+[6.317718] (-) TimerEvent: {}
+[6.418050] (-) TimerEvent: {}
+[6.518328] (-) TimerEvent: {}
+[6.618625] (-) TimerEvent: {}
+[6.718949] (-) TimerEvent: {}
+[6.819271] (-) TimerEvent: {}
+[6.919590] (-) TimerEvent: {}
+[7.019885] (-) TimerEvent: {}
+[7.120215] (-) TimerEvent: {}
+[7.220496] (-) TimerEvent: {}
+[7.320829] (-) TimerEvent: {}
+[7.421193] (-) TimerEvent: {}
+[7.521524] (-) TimerEvent: {}
+[7.621811] (-) TimerEvent: {}
+[7.722059] (-) TimerEvent: {}
+[7.822390] (-) TimerEvent: {}
+[7.922673] (-) TimerEvent: {}
+[8.022980] (-) TimerEvent: {}
+[8.123243] (-) TimerEvent: {}
+[8.223541] (-) TimerEvent: {}
+[8.323886] (-) TimerEvent: {}
+[8.424158] (-) TimerEvent: {}
+[8.524477] (-) TimerEvent: {}
+[8.624853] (-) TimerEvent: {}
+[8.725139] (-) TimerEvent: {}
+[8.825463] (-) TimerEvent: {}
+[8.858184] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:23\x1b[m\x1b[K,\n'}
+[8.858358] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[8.858454] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[8.858531] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[8.858606] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[8.858680] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[8.858752] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[8.858825] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[8.858896] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[8.858967] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:8\x1b[m\x1b[K,\n'}
+[8.859040] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[8.859113] (shelfino) StderrLine: {'line': b'/opt/ros/humble/include/rclcpp/rclcpp/client.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<void> rclcpp::Client<ServiceT>::create_response() [with ServiceT = nav2_msgs::action::FollowPath]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.859189] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:523:3:\x1b[m\x1b[K   required from here\n'}
+[8.859261] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:525:34:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[8.859514] (shelfino) StderrLine: {'line': b'  525 |     return std::shared_ptr<void>(\x1b[01;31m\x1b[Knew typename ServiceT::Response()\x1b[m\x1b[K);\n'}
+[8.859612] (shelfino) StderrLine: {'line': b'      |                                  \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[8.859691] (shelfino) StderrLine: {'line': b'/opt/ros/humble/include/rclcpp/rclcpp/client.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid rclcpp::Client<ServiceT>::handle_response(std::shared_ptr<rmw_request_id_s>, std::shared_ptr<void>) [with ServiceT = nav2_msgs::action::FollowPath]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.859769] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:546:3:\x1b[m\x1b[K   required from here\n'}
+[8.859841] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:551:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[8.859915] (shelfino) StderrLine: {'line': b'  551 |     \x1b[01;31m\x1b[Koptional_pending_request\x1b[m\x1b[K = this->get_and_erase_pending_request(request_header->sequence_number);\n'}
+[8.859990] (shelfino) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[8.860062] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:551:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[8.860135] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:556:32:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[KResponse\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct nav2_msgs::action::FollowPath\x1b[m\x1b[K\xe2\x80\x99\n'}
+[8.860209] (shelfino) StderrLine: {'line': b'  556 |     auto typed_response = \x1b[01;31m\x1b[Kstd::static_pointer_cast<typename ServiceT::Response>\x1b[m\x1b[K(\n'}
+[8.860281] (shelfino) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[8.925602] (-) TimerEvent: {}
+[9.025875] (-) TimerEvent: {}
+[9.126183] (-) TimerEvent: {}
+[9.226501] (-) TimerEvent: {}
+[9.326796] (-) TimerEvent: {}
+[9.427117] (-) TimerEvent: {}
+[9.527479] (-) TimerEvent: {}
+[9.627826] (-) TimerEvent: {}
+[9.728197] (-) TimerEvent: {}
+[9.828563] (-) TimerEvent: {}
+[9.928870] (-) TimerEvent: {}
+[10.029212] (-) TimerEvent: {}
+[10.129553] (-) TimerEvent: {}
+[10.229894] (-) TimerEvent: {}
+[10.330234] (-) TimerEvent: {}
+[10.430519] (-) TimerEvent: {}
+[10.530836] (-) TimerEvent: {}
+[10.631139] (-) TimerEvent: {}
+[10.731407] (-) TimerEvent: {}
+[10.831726] (-) TimerEvent: {}
+[10.932057] (-) TimerEvent: {}
+[11.032396] (-) TimerEvent: {}
+[11.132683] (-) TimerEvent: {}
+[11.232970] (-) TimerEvent: {}
+[11.333302] (-) TimerEvent: {}
+[11.433623] (-) TimerEvent: {}
+[11.533909] (-) TimerEvent: {}
+[11.634227] (-) TimerEvent: {}
+[11.734558] (-) TimerEvent: {}
+[11.834826] (-) TimerEvent: {}
+[11.935085] (-) TimerEvent: {}
+[11.998119] (shelfino) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/shelfino.dir/build.make:76: CMakeFiles/shelfino.dir/src/main.cpp.o] Error 1\n'}
+[11.998491] (shelfino) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/shelfino.dir/all] Error 2\n'}
+[11.998685] (shelfino) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[12.001106] (shelfino) CommandEnded: {'returncode': 2}
+[12.035175] (-) TimerEvent: {}
+[12.052197] (shelfino) JobEnded: {'identifier': 'shelfino', 'rc': 2}
+[12.062627] (-) EventReactorShutdown: {}

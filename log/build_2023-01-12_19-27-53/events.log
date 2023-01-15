@@ -1,0 +1,500 @@
+[0.000000] (-) TimerEvent: {}
+[0.000605] (-) JobUnselected: {'identifier': 'cpp_pubsub'}
+[0.000819] (-) JobUnselected: {'identifier': 'custom_msgs'}
+[0.000962] (-) JobUnselected: {'identifier': 'decisions'}
+[0.004041] (-) JobUnselected: {'identifier': 'dubins'}
+[0.004496] (-) JobUnselected: {'identifier': 'map'}
+[0.004612] (-) JobUnselected: {'identifier': 'shapes'}
+[0.004692] (-) JobUnselected: {'identifier': 'utils'}
+[0.004829] (shelfino) JobQueued: {'identifier': 'shelfino', 'dependencies': OrderedDict([('custom_msgs', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs'), ('shapes', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes')])}
+[0.004940] (shelfino) JobStarted: {'identifier': 'shelfino'}
+[0.065323] (shelfino) JobProgress: {'identifier': 'shelfino', 'progress': 'cmake'}
+[0.068522] (shelfino) JobProgress: {'identifier': 'shelfino', 'progress': 'build'}
+[0.071548] (shelfino) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino', '--', '-j8', '-l8'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib:/home/p3zz/Documents/uni/robot-planning-project/install/decisions/lib:/home/p3zz/Documents/uni/robot-planning-project/install/map/lib:/home/p3zz/Documents/uni/robot-planning-project/install/dubins/lib:/home/p3zz/Documents/uni/robot-planning-project/install/shapes/lib:/home/p3zz/Documents/uni/robot-planning-project/install/utils/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz/Documents/uni/Shelfino_ROS2'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '3417'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1815,unix/p3zz-X510UQR:/tmp/.ICE-unix/1815'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/b52d2f49_e7e0_47cb_a4d8_e638532aed2a'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.LN40Y1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.120'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble')]), 'shell': False}
+[0.095441] (-) TimerEvent: {}
+[0.196071] (-) TimerEvent: {}
+[0.264615] (shelfino) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target shelfino\x1b[0m\n'}
+[0.296284] (-) TimerEvent: {}
+[0.371749] (shelfino) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/shelfino.dir/src/main.cpp.o\x1b[0m\n'}
+[0.396493] (-) TimerEvent: {}
+[0.497427] (-) TimerEvent: {}
+[0.598162] (-) TimerEvent: {}
+[0.698950] (-) TimerEvent: {}
+[0.799690] (-) TimerEvent: {}
+[0.900413] (-) TimerEvent: {}
+[1.001215] (-) TimerEvent: {}
+[1.102036] (-) TimerEvent: {}
+[1.202813] (-) TimerEvent: {}
+[1.303597] (-) TimerEvent: {}
+[1.404285] (-) TimerEvent: {}
+[1.505094] (-) TimerEvent: {}
+[1.605805] (-) TimerEvent: {}
+[1.706599] (-) TimerEvent: {}
+[1.807355] (-) TimerEvent: {}
+[1.908050] (-) TimerEvent: {}
+[2.008865] (-) TimerEvent: {}
+[2.109663] (-) TimerEvent: {}
+[2.210441] (-) TimerEvent: {}
+[2.311234] (-) TimerEvent: {}
+[2.412004] (-) TimerEvent: {}
+[2.512808] (-) TimerEvent: {}
+[2.613572] (-) TimerEvent: {}
+[2.714299] (-) TimerEvent: {}
+[2.815094] (-) TimerEvent: {}
+[2.915925] (-) TimerEvent: {}
+[3.016708] (-) TimerEvent: {}
+[3.117456] (-) TimerEvent: {}
+[3.218168] (-) TimerEvent: {}
+[3.319100] (-) TimerEvent: {}
+[3.420007] (-) TimerEvent: {}
+[3.520798] (-) TimerEvent: {}
+[3.621605] (-) TimerEvent: {}
+[3.722383] (-) TimerEvent: {}
+[3.823169] (-) TimerEvent: {}
+[3.923988] (-) TimerEvent: {}
+[4.025051] (-) TimerEvent: {}
+[4.125787] (-) TimerEvent: {}
+[4.226511] (-) TimerEvent: {}
+[4.327233] (-) TimerEvent: {}
+[4.428047] (-) TimerEvent: {}
+[4.528798] (-) TimerEvent: {}
+[4.629494] (-) TimerEvent: {}
+[4.730322] (-) TimerEvent: {}
+[4.831145] (-) TimerEvent: {}
+[4.931894] (-) TimerEvent: {}
+[5.032666] (-) TimerEvent: {}
+[5.133383] (-) TimerEvent: {}
+[5.234054] (-) TimerEvent: {}
+[5.334859] (-) TimerEvent: {}
+[5.435652] (-) TimerEvent: {}
+[5.536459] (-) TimerEvent: {}
+[5.637325] (-) TimerEvent: {}
+[5.738037] (-) TimerEvent: {}
+[5.838839] (-) TimerEvent: {}
+[5.939650] (-) TimerEvent: {}
+[6.040409] (-) TimerEvent: {}
+[6.141260] (-) TimerEvent: {}
+[6.242039] (-) TimerEvent: {}
+[6.342779] (-) TimerEvent: {}
+[6.443523] (-) TimerEvent: {}
+[6.544338] (-) TimerEvent: {}
+[6.645056] (-) TimerEvent: {}
+[6.745841] (-) TimerEvent: {}
+[6.846564] (-) TimerEvent: {}
+[6.947351] (-) TimerEvent: {}
+[7.048119] (-) TimerEvent: {}
+[7.148889] (-) TimerEvent: {}
+[7.249685] (-) TimerEvent: {}
+[7.350413] (-) TimerEvent: {}
+[7.451154] (-) TimerEvent: {}
+[7.551976] (-) TimerEvent: {}
+[7.652700] (-) TimerEvent: {}
+[7.753429] (-) TimerEvent: {}
+[7.854258] (-) TimerEvent: {}
+[7.955082] (-) TimerEvent: {}
+[8.055821] (-) TimerEvent: {}
+[8.156532] (-) TimerEvent: {}
+[8.257286] (-) TimerEvent: {}
+[8.358013] (-) TimerEvent: {}
+[8.458745] (-) TimerEvent: {}
+[8.559529] (-) TimerEvent: {}
+[8.660391] (-) TimerEvent: {}
+[8.761198] (-) TimerEvent: {}
+[8.861972] (-) TimerEvent: {}
+[8.962792] (-) TimerEvent: {}
+[9.063588] (-) TimerEvent: {}
+[9.164448] (-) TimerEvent: {}
+[9.265250] (-) TimerEvent: {}
+[9.366035] (-) TimerEvent: {}
+[9.466821] (-) TimerEvent: {}
+[9.567580] (-) TimerEvent: {}
+[9.668457] (-) TimerEvent: {}
+[9.769245] (-) TimerEvent: {}
+[9.870049] (-) TimerEvent: {}
+[9.970836] (-) TimerEvent: {}
+[10.071642] (-) TimerEvent: {}
+[10.172491] (-) TimerEvent: {}
+[10.273262] (-) TimerEvent: {}
+[10.374050] (-) TimerEvent: {}
+[10.474859] (-) TimerEvent: {}
+[10.575672] (-) TimerEvent: {}
+[10.676487] (-) TimerEvent: {}
+[10.777355] (-) TimerEvent: {}
+[10.878114] (-) TimerEvent: {}
+[10.978860] (-) TimerEvent: {}
+[11.079628] (-) TimerEvent: {}
+[11.180389] (-) TimerEvent: {}
+[11.281214] (-) TimerEvent: {}
+[11.381911] (-) TimerEvent: {}
+[11.482637] (-) TimerEvent: {}
+[11.583441] (-) TimerEvent: {}
+[11.684212] (-) TimerEvent: {}
+[11.785126] (-) TimerEvent: {}
+[11.885758] (-) TimerEvent: {}
+[11.986468] (-) TimerEvent: {}
+[12.087211] (-) TimerEvent: {}
+[12.188003] (-) TimerEvent: {}
+[12.288780] (-) TimerEvent: {}
+[12.389630] (-) TimerEvent: {}
+[12.490443] (-) TimerEvent: {}
+[12.591338] (-) TimerEvent: {}
+[12.692145] (-) TimerEvent: {}
+[12.792959] (-) TimerEvent: {}
+[12.893781] (-) TimerEvent: {}
+[12.994604] (-) TimerEvent: {}
+[13.095383] (-) TimerEvent: {}
+[13.196160] (-) TimerEvent: {}
+[13.296989] (-) TimerEvent: {}
+[13.397826] (-) TimerEvent: {}
+[13.498648] (-) TimerEvent: {}
+[13.599396] (-) TimerEvent: {}
+[13.700119] (-) TimerEvent: {}
+[13.801075] (-) TimerEvent: {}
+[13.901836] (-) TimerEvent: {}
+[14.002648] (-) TimerEvent: {}
+[14.103445] (-) TimerEvent: {}
+[14.204218] (-) TimerEvent: {}
+[14.305085] (-) TimerEvent: {}
+[14.405810] (-) TimerEvent: {}
+[14.506570] (-) TimerEvent: {}
+[14.607300] (-) TimerEvent: {}
+[14.708064] (-) TimerEvent: {}
+[14.808898] (-) TimerEvent: {}
+[14.909703] (-) TimerEvent: {}
+[15.010388] (-) TimerEvent: {}
+[15.111180] (-) TimerEvent: {}
+[15.211965] (-) TimerEvent: {}
+[15.312793] (-) TimerEvent: {}
+[15.413576] (-) TimerEvent: {}
+[15.514337] (-) TimerEvent: {}
+[15.615139] (-) TimerEvent: {}
+[15.715869] (-) TimerEvent: {}
+[15.816605] (-) TimerEvent: {}
+[15.917368] (-) TimerEvent: {}
+[16.018090] (-) TimerEvent: {}
+[16.118946] (-) TimerEvent: {}
+[16.219695] (-) TimerEvent: {}
+[16.320470] (-) TimerEvent: {}
+[16.421233] (-) TimerEvent: {}
+[16.521968] (-) TimerEvent: {}
+[16.622631] (-) TimerEvent: {}
+[16.723328] (-) TimerEvent: {}
+[16.824061] (-) TimerEvent: {}
+[16.924863] (-) TimerEvent: {}
+[17.025583] (-) TimerEvent: {}
+[17.126347] (-) TimerEvent: {}
+[17.227068] (-) TimerEvent: {}
+[17.327935] (-) TimerEvent: {}
+[17.428764] (-) TimerEvent: {}
+[17.529588] (-) TimerEvent: {}
+[17.567694] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[17.568549] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KFollowPathClient::FollowPathClient(const rclcpp::NodeOptions&, std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[17.569118] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:304:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KFollowPathClient::map\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[17.569594] (shelfino) StderrLine: {'line': b'  304 |     std::optional<RoadMap>& \x1b[01;35m\x1b[Kmap\x1b[m\x1b[K;\n'}
+[17.570089] (shelfino) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K^~~\x1b[m\x1b[K\n'}
+[17.570527] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:303:32:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::optional<DubinCurve>& FollowPathClient::path\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[17.571025] (shelfino) StderrLine: {'line': b'  303 |     std::optional<DubinCurve>& \x1b[01;35m\x1b[Kpath\x1b[m\x1b[K;\n'}
+[17.571467] (shelfino) StderrLine: {'line': b'      |                                \x1b[01;35m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[17.571913] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[17.572391] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:296:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[17.572912] (shelfino) StderrLine: {'line': b'  296 |     \x1b[01;35m\x1b[KFollowPathClient\x1b[m\x1b[K(const rclcpp::NodeOptions& options, std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose)\n'}
+[17.573434] (shelfino) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[17.629846] (-) TimerEvent: {}
+[17.730559] (-) TimerEvent: {}
+[17.831279] (-) TimerEvent: {}
+[17.932065] (-) TimerEvent: {}
+[18.032834] (-) TimerEvent: {}
+[18.133628] (-) TimerEvent: {}
+[18.234451] (-) TimerEvent: {}
+[18.335258] (-) TimerEvent: {}
+[18.436101] (-) TimerEvent: {}
+[18.536904] (-) TimerEvent: {}
+[18.637705] (-) TimerEvent: {}
+[18.738562] (-) TimerEvent: {}
+[18.839497] (-) TimerEvent: {}
+[18.940366] (-) TimerEvent: {}
+[19.041079] (-) TimerEvent: {}
+[19.141858] (-) TimerEvent: {}
+[19.242656] (-) TimerEvent: {}
+[19.343365] (-) TimerEvent: {}
+[19.444083] (-) TimerEvent: {}
+[19.544893] (-) TimerEvent: {}
+[19.645662] (-) TimerEvent: {}
+[19.746481] (-) TimerEvent: {}
+[19.847223] (-) TimerEvent: {}
+[19.948045] (-) TimerEvent: {}
+[20.048870] (-) TimerEvent: {}
+[20.149573] (-) TimerEvent: {}
+[20.250295] (-) TimerEvent: {}
+[20.351045] (-) TimerEvent: {}
+[20.451801] (-) TimerEvent: {}
+[20.552538] (-) TimerEvent: {}
+[20.653313] (-) TimerEvent: {}
+[20.754068] (-) TimerEvent: {}
+[20.854835] (-) TimerEvent: {}
+[20.955568] (-) TimerEvent: {}
+[21.056348] (-) TimerEvent: {}
+[21.157071] (-) TimerEvent: {}
+[21.257836] (-) TimerEvent: {}
+[21.358534] (-) TimerEvent: {}
+[21.459252] (-) TimerEvent: {}
+[21.560058] (-) TimerEvent: {}
+[21.660975] (-) TimerEvent: {}
+[21.761840] (-) TimerEvent: {}
+[21.862669] (-) TimerEvent: {}
+[21.963499] (-) TimerEvent: {}
+[22.064483] (-) TimerEvent: {}
+[22.165270] (-) TimerEvent: {}
+[22.266071] (-) TimerEvent: {}
+[22.366843] (-) TimerEvent: {}
+[22.467601] (-) TimerEvent: {}
+[22.568395] (-) TimerEvent: {}
+[22.669142] (-) TimerEvent: {}
+[22.769918] (-) TimerEvent: {}
+[22.870589] (-) TimerEvent: {}
+[22.971406] (-) TimerEvent: {}
+[23.072207] (-) TimerEvent: {}
+[23.173038] (-) TimerEvent: {}
+[23.273837] (-) TimerEvent: {}
+[23.374605] (-) TimerEvent: {}
+[23.475386] (-) TimerEvent: {}
+[23.576162] (-) TimerEvent: {}
+[23.677042] (-) TimerEvent: {}
+[23.777803] (-) TimerEvent: {}
+[23.878636] (-) TimerEvent: {}
+[23.979431] (-) TimerEvent: {}
+[24.080231] (-) TimerEvent: {}
+[24.181135] (-) TimerEvent: {}
+[24.281991] (-) TimerEvent: {}
+[24.382786] (-) TimerEvent: {}
+[24.483576] (-) TimerEvent: {}
+[24.584366] (-) TimerEvent: {}
+[24.685149] (-) TimerEvent: {}
+[24.785845] (-) TimerEvent: {}
+[24.886630] (-) TimerEvent: {}
+[24.987389] (-) TimerEvent: {}
+[25.088208] (-) TimerEvent: {}
+[25.189049] (-) TimerEvent: {}
+[25.289726] (-) TimerEvent: {}
+[25.390454] (-) TimerEvent: {}
+[25.491227] (-) TimerEvent: {}
+[25.592011] (-) TimerEvent: {}
+[25.692823] (-) TimerEvent: {}
+[25.793805] (-) TimerEvent: {}
+[25.894692] (-) TimerEvent: {}
+[25.935780] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h:33\x1b[m\x1b[K,\n'}
+[25.936582] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/bits/allocator.h:46\x1b[m\x1b[K,\n'}
+[25.937103] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/unordered_map:40\x1b[m\x1b[K,\n'}
+[25.937554] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/functional:61\x1b[m\x1b[K,\n'}
+[25.938035] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:1\x1b[m\x1b[K,\n'}
+[25.938512] (shelfino) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[25.938987] (shelfino) StderrLine: {'line': b'/usr/include/c++/11/ext/new_allocator.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid __gnu_cxx::new_allocator<_Tp>::construct(_Up*, _Args&& ...) [with _Up = FollowPathClient; _Args = {std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&}; _Tp = FollowPathClient]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[25.939472] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/alloc_traits.h:516:17:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstatic void std::allocator_traits<std::allocator<_Tp1> >::construct(std::allocator_traits<std::allocator<_Tp1> >::allocator_type&, _Up*, _Args&& ...) [with _Up = FollowPathClient; _Args = {std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&}; _Tp = FollowPathClient; std::allocator_traits<std::allocator<_Tp1> >::allocator_type = std::allocator<FollowPathClient>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[25.940013] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr_base.h:519:39:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::_Sp_counted_ptr_inplace<_Tp, _Alloc, _Lp>::_Sp_counted_ptr_inplace(_Alloc, _Args&& ...) [with _Args = {std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&}; _Tp = FollowPathClient; _Alloc = std::allocator<FollowPathClient>; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[25.940592] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr_base.h:650:16:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::__shared_count<_Lp>::__shared_count(_Tp*&, std::_Sp_alloc_shared_tag<_Alloc>, _Args&& ...) [with _Tp = FollowPathClient; _Alloc = std::allocator<FollowPathClient>; _Args = {std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&}; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[25.941159] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr_base.h:1342:14:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::__shared_ptr<_Tp, _Lp>::__shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<FollowPathClient>; _Args = {std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&}; _Tp = FollowPathClient; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[25.941663] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:409:59:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<_Tp>::shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<FollowPathClient>; _Args = {std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&}; _Tp = FollowPathClient]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[25.942112] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:862:14:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<_Tp> std::allocate_shared(const _Alloc&, _Args&& ...) [with _Tp = FollowPathClient; _Alloc = std::allocator<FollowPathClient>; _Args = {std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&}]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[25.942578] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/shared_ptr.h:878:39:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<_Tp> std::make_shared(_Args&& ...) [with _Tp = FollowPathClient; _Args = {std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&}]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[25.943107] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:29:65:\x1b[m\x1b[K   required from here\n'}
+[25.943551] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/ext/new_allocator.h:162:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KFollowPathClient::FollowPathClient(std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[25.944017] (shelfino) StderrLine: {'line': b'  162 |         { \x1b[01;31m\x1b[K::new((void *)__p) _Up(std::forward<_Args>(__args)...)\x1b[m\x1b[K; }\n'}
+[25.944511] (shelfino) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[25.945001] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[25.945437] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:296:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KFollowPathClient::FollowPathClient(const rclcpp::NodeOptions&, std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[25.945881] (shelfino) StderrLine: {'line': b'  296 |     \x1b[01;36m\x1b[KFollowPathClient\x1b[m\x1b[K(const rclcpp::NodeOptions& options, std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose)\n'}
+[25.946458] (shelfino) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[25.947331] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:296:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 5 arguments, 4 provided\n'}
+[25.994951] (-) TimerEvent: {}
+[26.095740] (-) TimerEvent: {}
+[26.196597] (-) TimerEvent: {}
+[26.297417] (-) TimerEvent: {}
+[26.398073] (-) TimerEvent: {}
+[26.498869] (-) TimerEvent: {}
+[26.599758] (-) TimerEvent: {}
+[26.700613] (-) TimerEvent: {}
+[26.801277] (-) TimerEvent: {}
+[26.902000] (-) TimerEvent: {}
+[27.002713] (-) TimerEvent: {}
+[27.103536] (-) TimerEvent: {}
+[27.204474] (-) TimerEvent: {}
+[27.305363] (-) TimerEvent: {}
+[27.406276] (-) TimerEvent: {}
+[27.507072] (-) TimerEvent: {}
+[27.607832] (-) TimerEvent: {}
+[27.708633] (-) TimerEvent: {}
+[27.809381] (-) TimerEvent: {}
+[27.910233] (-) TimerEvent: {}
+[28.011043] (-) TimerEvent: {}
+[28.111802] (-) TimerEvent: {}
+[28.212581] (-) TimerEvent: {}
+[28.313331] (-) TimerEvent: {}
+[28.414214] (-) TimerEvent: {}
+[28.515133] (-) TimerEvent: {}
+[28.616052] (-) TimerEvent: {}
+[28.717045] (-) TimerEvent: {}
+[28.817848] (-) TimerEvent: {}
+[28.918735] (-) TimerEvent: {}
+[29.019427] (-) TimerEvent: {}
+[29.120243] (-) TimerEvent: {}
+[29.221045] (-) TimerEvent: {}
+[29.321801] (-) TimerEvent: {}
+[29.422530] (-) TimerEvent: {}
+[29.523244] (-) TimerEvent: {}
+[29.623934] (-) TimerEvent: {}
+[29.724746] (-) TimerEvent: {}
+[29.825548] (-) TimerEvent: {}
+[29.926337] (-) TimerEvent: {}
+[30.027087] (-) TimerEvent: {}
+[30.127797] (-) TimerEvent: {}
+[30.228528] (-) TimerEvent: {}
+[30.329448] (-) TimerEvent: {}
+[30.430383] (-) TimerEvent: {}
+[30.531165] (-) TimerEvent: {}
+[30.632500] (-) TimerEvent: {}
+[30.733628] (-) TimerEvent: {}
+[30.834529] (-) TimerEvent: {}
+[30.935440] (-) TimerEvent: {}
+[31.036401] (-) TimerEvent: {}
+[31.137311] (-) TimerEvent: {}
+[31.238201] (-) TimerEvent: {}
+[31.339112] (-) TimerEvent: {}
+[31.440026] (-) TimerEvent: {}
+[31.540980] (-) TimerEvent: {}
+[31.641876] (-) TimerEvent: {}
+[31.742786] (-) TimerEvent: {}
+[31.843686] (-) TimerEvent: {}
+[31.944608] (-) TimerEvent: {}
+[32.045515] (-) TimerEvent: {}
+[32.146379] (-) TimerEvent: {}
+[32.247243] (-) TimerEvent: {}
+[32.348119] (-) TimerEvent: {}
+[32.449063] (-) TimerEvent: {}
+[32.549864] (-) TimerEvent: {}
+[32.650711] (-) TimerEvent: {}
+[32.751447] (-) TimerEvent: {}
+[32.852255] (-) TimerEvent: {}
+[32.953177] (-) TimerEvent: {}
+[33.054117] (-) TimerEvent: {}
+[33.155014] (-) TimerEvent: {}
+[33.256287] (-) TimerEvent: {}
+[33.357428] (-) TimerEvent: {}
+[33.458177] (-) TimerEvent: {}
+[33.559006] (-) TimerEvent: {}
+[33.659818] (-) TimerEvent: {}
+[33.760598] (-) TimerEvent: {}
+[33.861431] (-) TimerEvent: {}
+[33.962242] (-) TimerEvent: {}
+[34.063141] (-) TimerEvent: {}
+[34.164049] (-) TimerEvent: {}
+[34.265013] (-) TimerEvent: {}
+[34.365936] (-) TimerEvent: {}
+[34.466853] (-) TimerEvent: {}
+[34.567763] (-) TimerEvent: {}
+[34.668879] (-) TimerEvent: {}
+[34.769843] (-) TimerEvent: {}
+[34.870742] (-) TimerEvent: {}
+[34.971722] (-) TimerEvent: {}
+[35.072594] (-) TimerEvent: {}
+[35.173353] (-) TimerEvent: {}
+[35.274116] (-) TimerEvent: {}
+[35.375008] (-) TimerEvent: {}
+[35.475780] (-) TimerEvent: {}
+[35.576535] (-) TimerEvent: {}
+[35.677369] (-) TimerEvent: {}
+[35.778184] (-) TimerEvent: {}
+[35.878964] (-) TimerEvent: {}
+[35.979805] (-) TimerEvent: {}
+[36.080630] (-) TimerEvent: {}
+[36.181377] (-) TimerEvent: {}
+[36.282081] (-) TimerEvent: {}
+[36.382861] (-) TimerEvent: {}
+[36.483706] (-) TimerEvent: {}
+[36.584471] (-) TimerEvent: {}
+[36.685162] (-) TimerEvent: {}
+[36.785930] (-) TimerEvent: {}
+[36.886749] (-) TimerEvent: {}
+[36.987466] (-) TimerEvent: {}
+[37.088240] (-) TimerEvent: {}
+[37.189049] (-) TimerEvent: {}
+[37.289901] (-) TimerEvent: {}
+[37.390746] (-) TimerEvent: {}
+[37.491618] (-) TimerEvent: {}
+[37.592539] (-) TimerEvent: {}
+[37.693394] (-) TimerEvent: {}
+[37.794342] (-) TimerEvent: {}
+[37.895246] (-) TimerEvent: {}
+[37.996238] (-) TimerEvent: {}
+[38.097188] (-) TimerEvent: {}
+[38.198236] (-) TimerEvent: {}
+[38.299161] (-) TimerEvent: {}
+[38.400056] (-) TimerEvent: {}
+[38.501049] (-) TimerEvent: {}
+[38.601786] (-) TimerEvent: {}
+[38.702601] (-) TimerEvent: {}
+[38.803350] (-) TimerEvent: {}
+[38.904055] (-) TimerEvent: {}
+[39.004812] (-) TimerEvent: {}
+[39.105538] (-) TimerEvent: {}
+[39.206213] (-) TimerEvent: {}
+[39.306947] (-) TimerEvent: {}
+[39.407802] (-) TimerEvent: {}
+[39.508609] (-) TimerEvent: {}
+[39.609463] (-) TimerEvent: {}
+[39.710193] (-) TimerEvent: {}
+[39.810859] (-) TimerEvent: {}
+[39.911585] (-) TimerEvent: {}
+[40.012466] (-) TimerEvent: {}
+[40.113261] (-) TimerEvent: {}
+[40.214093] (-) TimerEvent: {}
+[40.314789] (-) TimerEvent: {}
+[40.415517] (-) TimerEvent: {}
+[40.516408] (-) TimerEvent: {}
+[40.617186] (-) TimerEvent: {}
+[40.717897] (-) TimerEvent: {}
+[40.818641] (-) TimerEvent: {}
+[40.919367] (-) TimerEvent: {}
+[41.020104] (-) TimerEvent: {}
+[41.120936] (-) TimerEvent: {}
+[41.221741] (-) TimerEvent: {}
+[41.322585] (-) TimerEvent: {}
+[41.423393] (-) TimerEvent: {}
+[41.524171] (-) TimerEvent: {}
+[41.625011] (-) TimerEvent: {}
+[41.725850] (-) TimerEvent: {}
+[41.826663] (-) TimerEvent: {}
+[41.927458] (-) TimerEvent: {}
+[42.028283] (-) TimerEvent: {}
+[42.129197] (-) TimerEvent: {}
+[42.229979] (-) TimerEvent: {}
+[42.330793] (-) TimerEvent: {}
+[42.431452] (-) TimerEvent: {}
+[42.532207] (-) TimerEvent: {}
+[42.633125] (-) TimerEvent: {}
+[42.733974] (-) TimerEvent: {}
+[42.834686] (-) TimerEvent: {}
+[42.935407] (-) TimerEvent: {}
+[43.036544] (-) TimerEvent: {}
+[43.137388] (-) TimerEvent: {}
+[43.238272] (-) TimerEvent: {}
+[43.339162] (-) TimerEvent: {}
+[43.440056] (-) TimerEvent: {}
+[43.540979] (-) TimerEvent: {}
+[43.642216] (-) TimerEvent: {}
+[43.743125] (-) TimerEvent: {}
+[43.843874] (-) TimerEvent: {}
+[43.944657] (-) TimerEvent: {}
+[44.045492] (-) TimerEvent: {}
+[44.146419] (-) TimerEvent: {}
+[44.247302] (-) TimerEvent: {}
+[44.348211] (-) TimerEvent: {}
+[44.449159] (-) TimerEvent: {}
+[44.550075] (-) TimerEvent: {}
+[44.601513] (shelfino) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/shelfino.dir/build.make:76: CMakeFiles/shelfino.dir/src/main.cpp.o] Error 1\n'}
+[44.602717] (shelfino) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/shelfino.dir/all] Error 2\n'}
+[44.603676] (shelfino) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[44.611905] (shelfino) CommandEnded: {'returncode': 2}
+[44.650278] (-) TimerEvent: {}
+[44.753113] (-) TimerEvent: {}
+[44.827773] (shelfino) JobEnded: {'identifier': 'shelfino', 'rc': 2}
+[44.839315] (-) EventReactorShutdown: {}

@@ -1,0 +1,8 @@
+[31mCMake Error at /opt/ros/humble/share/rclcpp_components/cmake/rclcpp_components_register_node.cmake:40 (message):
+  rclcpp_components_register_node macro requires a EXECUTABLE argument for
+  target shelfino
+Call Stack (most recent call first):
+  CMakeLists.txt:29 (rclcpp_components_register_node)
+
+[0m
+gmake: *** [Makefile:267: cmake_check_build_system] Error 1

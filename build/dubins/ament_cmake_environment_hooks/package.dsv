@@ -1,0 +1,4 @@
+source;share/dubins/local_setup.bash
+source;share/dubins/local_setup.dsv
+source;share/dubins/local_setup.sh
+source;share/dubins/local_setup.zsh

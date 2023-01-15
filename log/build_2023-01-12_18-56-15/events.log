@@ -1,0 +1,285 @@
+[0.000000] (-) TimerEvent: {}
+[0.000401] (-) JobUnselected: {'identifier': 'cpp_pubsub'}
+[0.000454] (-) JobUnselected: {'identifier': 'custom_msgs'}
+[0.000504] (-) JobUnselected: {'identifier': 'decisions'}
+[0.000584] (-) JobUnselected: {'identifier': 'dubins'}
+[0.000741] (-) JobUnselected: {'identifier': 'map'}
+[0.001003] (-) JobUnselected: {'identifier': 'shapes'}
+[0.001135] (-) JobUnselected: {'identifier': 'utils'}
+[0.001968] (shelfino) JobQueued: {'identifier': 'shelfino', 'dependencies': OrderedDict([('custom_msgs', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs'), ('shapes', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes')])}
+[0.002010] (shelfino) JobStarted: {'identifier': 'shelfino'}
+[0.022540] (shelfino) JobProgress: {'identifier': 'shelfino', 'progress': 'cmake'}
+[0.024753] (shelfino) JobProgress: {'identifier': 'shelfino', 'progress': 'build'}
+[0.024804] (shelfino) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino', '--', '-j8', '-l8'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib:/home/p3zz/Documents/uni/robot-planning-project/install/decisions/lib:/home/p3zz/Documents/uni/robot-planning-project/install/map/lib:/home/p3zz/Documents/uni/robot-planning-project/install/dubins/lib:/home/p3zz/Documents/uni/robot-planning-project/install/shapes/lib:/home/p3zz/Documents/uni/robot-planning-project/install/utils/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz/Documents/uni/Shelfino_ROS2'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '3417'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1815,unix/p3zz-X510UQR:/tmp/.ICE-unix/1815'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/b52d2f49_e7e0_47cb_a4d8_e638532aed2a'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.LN40Y1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.120'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble')]), 'shell': False}
+[0.080745] (shelfino) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target shelfino\x1b[0m\n'}
+[0.099949] (-) TimerEvent: {}
+[0.112123] (shelfino) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/shelfino.dir/src/main.cpp.o\x1b[0m\n'}
+[0.200094] (-) TimerEvent: {}
+[0.300497] (-) TimerEvent: {}
+[0.400749] (-) TimerEvent: {}
+[0.501053] (-) TimerEvent: {}
+[0.601346] (-) TimerEvent: {}
+[0.701687] (-) TimerEvent: {}
+[0.801960] (-) TimerEvent: {}
+[0.902271] (-) TimerEvent: {}
+[1.002587] (-) TimerEvent: {}
+[1.102907] (-) TimerEvent: {}
+[1.203252] (-) TimerEvent: {}
+[1.303575] (-) TimerEvent: {}
+[1.403848] (-) TimerEvent: {}
+[1.504183] (-) TimerEvent: {}
+[1.604465] (-) TimerEvent: {}
+[1.704773] (-) TimerEvent: {}
+[1.805096] (-) TimerEvent: {}
+[1.905429] (-) TimerEvent: {}
+[2.005727] (-) TimerEvent: {}
+[2.106049] (-) TimerEvent: {}
+[2.206326] (-) TimerEvent: {}
+[2.306642] (-) TimerEvent: {}
+[2.406935] (-) TimerEvent: {}
+[2.507286] (-) TimerEvent: {}
+[2.607624] (-) TimerEvent: {}
+[2.708019] (-) TimerEvent: {}
+[2.808324] (-) TimerEvent: {}
+[2.908619] (-) TimerEvent: {}
+[3.008971] (-) TimerEvent: {}
+[3.109298] (-) TimerEvent: {}
+[3.209626] (-) TimerEvent: {}
+[3.309918] (-) TimerEvent: {}
+[3.410263] (-) TimerEvent: {}
+[3.510598] (-) TimerEvent: {}
+[3.610940] (-) TimerEvent: {}
+[3.711292] (-) TimerEvent: {}
+[3.811635] (-) TimerEvent: {}
+[3.911992] (-) TimerEvent: {}
+[4.012475] (-) TimerEvent: {}
+[4.112833] (-) TimerEvent: {}
+[4.213158] (-) TimerEvent: {}
+[4.313489] (-) TimerEvent: {}
+[4.394688] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[4.394975] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KFollowPathClient::FollowPathClient(std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.395136] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:304:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KFollowPathClient::map\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.395281] (shelfino) StderrLine: {'line': b'  304 |     std::optional<RoadMap>& \x1b[01;35m\x1b[Kmap\x1b[m\x1b[K;\n'}
+[4.395428] (shelfino) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.395573] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:303:32:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::optional<DubinCurve>& FollowPathClient::path\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.395726] (shelfino) StderrLine: {'line': b'  303 |     std::optional<DubinCurve>& \x1b[01;35m\x1b[Kpath\x1b[m\x1b[K;\n'}
+[4.396004] (shelfino) StderrLine: {'line': b'      |                                \x1b[01;35m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[4.396170] (shelfino) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[4.396324] (shelfino) StderrLine: {'line': b'\x1b[01m\x1b[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:295:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.396573] (shelfino) StderrLine: {'line': b'  295 |     \x1b[01;35m\x1b[KFollowPathClient\x1b[m\x1b[K(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose)\n'}
+[4.396740] (shelfino) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.413607] (-) TimerEvent: {}
+[4.513956] (-) TimerEvent: {}
+[4.614399] (-) TimerEvent: {}
+[4.714761] (-) TimerEvent: {}
+[4.815145] (-) TimerEvent: {}
+[4.915478] (-) TimerEvent: {}
+[5.015810] (-) TimerEvent: {}
+[5.116157] (-) TimerEvent: {}
+[5.216492] (-) TimerEvent: {}
+[5.316869] (-) TimerEvent: {}
+[5.417200] (-) TimerEvent: {}
+[5.517543] (-) TimerEvent: {}
+[5.617931] (-) TimerEvent: {}
+[5.718288] (-) TimerEvent: {}
+[5.818626] (-) TimerEvent: {}
+[5.918963] (-) TimerEvent: {}
+[6.019300] (-) TimerEvent: {}
+[6.119626] (-) TimerEvent: {}
+[6.219922] (-) TimerEvent: {}
+[6.320202] (-) TimerEvent: {}
+[6.420465] (-) TimerEvent: {}
+[6.520785] (-) TimerEvent: {}
+[6.621081] (-) TimerEvent: {}
+[6.721428] (-) TimerEvent: {}
+[6.821728] (-) TimerEvent: {}
+[6.922182] (-) TimerEvent: {}
+[7.022523] (-) TimerEvent: {}
+[7.122873] (-) TimerEvent: {}
+[7.223198] (-) TimerEvent: {}
+[7.323524] (-) TimerEvent: {}
+[7.423880] (-) TimerEvent: {}
+[7.524201] (-) TimerEvent: {}
+[7.624467] (-) TimerEvent: {}
+[7.724788] (-) TimerEvent: {}
+[7.825120] (-) TimerEvent: {}
+[7.925409] (-) TimerEvent: {}
+[8.025719] (-) TimerEvent: {}
+[8.126066] (-) TimerEvent: {}
+[8.226421] (-) TimerEvent: {}
+[8.326779] (-) TimerEvent: {}
+[8.427134] (-) TimerEvent: {}
+[8.527518] (-) TimerEvent: {}
+[8.627867] (-) TimerEvent: {}
+[8.728246] (-) TimerEvent: {}
+[8.828609] (-) TimerEvent: {}
+[8.928947] (-) TimerEvent: {}
+[9.029278] (-) TimerEvent: {}
+[9.129651] (-) TimerEvent: {}
+[9.230001] (-) TimerEvent: {}
+[9.330423] (-) TimerEvent: {}
+[9.430784] (-) TimerEvent: {}
+[9.531149] (-) TimerEvent: {}
+[9.631515] (-) TimerEvent: {}
+[9.731871] (-) TimerEvent: {}
+[9.832223] (-) TimerEvent: {}
+[9.932590] (-) TimerEvent: {}
+[10.032939] (-) TimerEvent: {}
+[10.133285] (-) TimerEvent: {}
+[10.233636] (-) TimerEvent: {}
+[10.333982] (-) TimerEvent: {}
+[10.434322] (-) TimerEvent: {}
+[10.534664] (-) TimerEvent: {}
+[10.634998] (-) TimerEvent: {}
+[10.735342] (-) TimerEvent: {}
+[10.835705] (-) TimerEvent: {}
+[10.936058] (-) TimerEvent: {}
+[11.036464] (-) TimerEvent: {}
+[11.136775] (-) TimerEvent: {}
+[11.237094] (-) TimerEvent: {}
+[11.337481] (-) TimerEvent: {}
+[11.437826] (-) TimerEvent: {}
+[11.538181] (-) TimerEvent: {}
+[11.638532] (-) TimerEvent: {}
+[11.738939] (-) TimerEvent: {}
+[11.839285] (-) TimerEvent: {}
+[11.939634] (-) TimerEvent: {}
+[12.040003] (-) TimerEvent: {}
+[12.140380] (-) TimerEvent: {}
+[12.240730] (-) TimerEvent: {}
+[12.341084] (-) TimerEvent: {}
+[12.441395] (-) TimerEvent: {}
+[12.541739] (-) TimerEvent: {}
+[12.642067] (-) TimerEvent: {}
+[12.742421] (-) TimerEvent: {}
+[12.842782] (-) TimerEvent: {}
+[12.943151] (-) TimerEvent: {}
+[13.043481] (-) TimerEvent: {}
+[13.143773] (-) TimerEvent: {}
+[13.244084] (-) TimerEvent: {}
+[13.344384] (-) TimerEvent: {}
+[13.444666] (-) TimerEvent: {}
+[13.544984] (-) TimerEvent: {}
+[13.645301] (-) TimerEvent: {}
+[13.745613] (-) TimerEvent: {}
+[13.845991] (-) TimerEvent: {}
+[13.946308] (-) TimerEvent: {}
+[14.046615] (-) TimerEvent: {}
+[14.146915] (-) TimerEvent: {}
+[14.247249] (-) TimerEvent: {}
+[14.347513] (-) TimerEvent: {}
+[14.447767] (-) TimerEvent: {}
+[14.548023] (-) TimerEvent: {}
+[14.648321] (-) TimerEvent: {}
+[14.748597] (-) TimerEvent: {}
+[14.848890] (-) TimerEvent: {}
+[14.949191] (-) TimerEvent: {}
+[15.049489] (-) TimerEvent: {}
+[15.149782] (-) TimerEvent: {}
+[15.250080] (-) TimerEvent: {}
+[15.350382] (-) TimerEvent: {}
+[15.450642] (-) TimerEvent: {}
+[15.550955] (-) TimerEvent: {}
+[15.651322] (-) TimerEvent: {}
+[15.751682] (-) TimerEvent: {}
+[15.851929] (-) TimerEvent: {}
+[15.952226] (-) TimerEvent: {}
+[16.052470] (-) TimerEvent: {}
+[16.152735] (-) TimerEvent: {}
+[16.253024] (-) TimerEvent: {}
+[16.353326] (-) TimerEvent: {}
+[16.453635] (-) TimerEvent: {}
+[16.553944] (-) TimerEvent: {}
+[16.654242] (-) TimerEvent: {}
+[16.754545] (-) TimerEvent: {}
+[16.854844] (-) TimerEvent: {}
+[16.955138] (-) TimerEvent: {}
+[17.055436] (-) TimerEvent: {}
+[17.155728] (-) TimerEvent: {}
+[17.256014] (-) TimerEvent: {}
+[17.356315] (-) TimerEvent: {}
+[17.456628] (-) TimerEvent: {}
+[17.556938] (-) TimerEvent: {}
+[17.657246] (-) TimerEvent: {}
+[17.757546] (-) TimerEvent: {}
+[17.857846] (-) TimerEvent: {}
+[17.958148] (-) TimerEvent: {}
+[18.058449] (-) TimerEvent: {}
+[18.158745] (-) TimerEvent: {}
+[18.259025] (-) TimerEvent: {}
+[18.359318] (-) TimerEvent: {}
+[18.459615] (-) TimerEvent: {}
+[18.559940] (-) TimerEvent: {}
+[18.660230] (-) TimerEvent: {}
+[18.760476] (-) TimerEvent: {}
+[18.860777] (-) TimerEvent: {}
+[18.961080] (-) TimerEvent: {}
+[19.061379] (-) TimerEvent: {}
+[19.161680] (-) TimerEvent: {}
+[19.261979] (-) TimerEvent: {}
+[19.362279] (-) TimerEvent: {}
+[19.462580] (-) TimerEvent: {}
+[19.562879] (-) TimerEvent: {}
+[19.663179] (-) TimerEvent: {}
+[19.763483] (-) TimerEvent: {}
+[19.863788] (-) TimerEvent: {}
+[19.964266] (-) TimerEvent: {}
+[20.064647] (-) TimerEvent: {}
+[20.165003] (-) TimerEvent: {}
+[20.265314] (-) TimerEvent: {}
+[20.365614] (-) TimerEvent: {}
+[20.465870] (-) TimerEvent: {}
+[20.566176] (-) TimerEvent: {}
+[20.666483] (-) TimerEvent: {}
+[20.766752] (-) TimerEvent: {}
+[20.867029] (-) TimerEvent: {}
+[20.967364] (-) TimerEvent: {}
+[21.067707] (-) TimerEvent: {}
+[21.168092] (-) TimerEvent: {}
+[21.268440] (-) TimerEvent: {}
+[21.368812] (-) TimerEvent: {}
+[21.469116] (-) TimerEvent: {}
+[21.569515] (-) TimerEvent: {}
+[21.660831] (shelfino) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable shelfino\x1b[0m\n'}
+[21.669617] (-) TimerEvent: {}
+[21.769939] (-) TimerEvent: {}
+[21.870255] (-) TimerEvent: {}
+[21.970570] (-) TimerEvent: {}
+[22.070912] (-) TimerEvent: {}
+[22.171249] (-) TimerEvent: {}
+[22.271608] (-) TimerEvent: {}
+[22.371952] (-) TimerEvent: {}
+[22.472289] (-) TimerEvent: {}
+[22.572565] (-) TimerEvent: {}
+[22.672866] (-) TimerEvent: {}
+[22.773202] (-) TimerEvent: {}
+[22.873529] (-) TimerEvent: {}
+[22.973838] (-) TimerEvent: {}
+[23.074201] (-) TimerEvent: {}
+[23.148436] (shelfino) StdoutLine: {'line': b'[100%] Built target shelfino\n'}
+[23.161460] (shelfino) CommandEnded: {'returncode': 0}
+[23.174331] (-) TimerEvent: {}
+[23.193733] (shelfino) JobProgress: {'identifier': 'shelfino', 'progress': 'install'}
+[23.204173] (shelfino) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino'], 'cwd': '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'p3zz'), ('LC_TIME', 'it_IT.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/lib:/home/p3zz/Documents/uni/robot-planning-project/install/decisions/lib:/home/p3zz/Documents/uni/robot-planning-project/install/map/lib:/home/p3zz/Documents/uni/robot-planning-project/install/dubins/lib:/home/p3zz/Documents/uni/robot-planning-project/install/shapes/lib:/home/p3zz/Documents/uni/robot-planning-project/install/utils/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/p3zz'), ('OLDPWD', '/home/p3zz/Documents/uni/Shelfino_ROS2'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'it_IT.UTF-8'), ('SYSTEMD_EXEC_PID', '3417'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'p3zz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'p3zz'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/p3zz-X510UQR:@/tmp/.ICE-unix/1815,unix/p3zz-X510UQR:/tmp/.ICE-unix/1815'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'it_IT.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/b52d2f49_e7e0_47cb_a4d8_e638532aed2a'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'it_IT.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.LN40Y1'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.120'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'it_IT.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'it_IT.UTF-8'), ('LC_IDENTIFICATION', 'it_IT.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'it_IT.UTF-8'), ('LC_PAPER', 'it_IT.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble')]), 'shell': False}
+[23.212511] (shelfino) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[23.213067] (shelfino) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/lib/shelfino/shelfino\n'}
+[23.226209] (shelfino) StdoutLine: {'line': b'-- Set runtime path of "/home/p3zz/Documents/uni/robot-planning-project/install/shelfino/lib/shelfino/shelfino" to ""\n'}
+[23.226569] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/ament_index/resource_index/package_run_dependencies/shelfino\n'}
+[23.226795] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/ament_index/resource_index/parent_prefix_path/shelfino\n'}
+[23.227005] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/environment/ament_prefix_path.sh\n'}
+[23.227091] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/environment/ament_prefix_path.dsv\n'}
+[23.227341] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/environment/path.sh\n'}
+[23.227429] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/environment/path.dsv\n'}
+[23.227519] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/local_setup.bash\n'}
+[23.227595] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/local_setup.sh\n'}
+[23.227668] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/local_setup.zsh\n'}
+[23.227742] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/local_setup.dsv\n'}
+[23.227815] (shelfino) StdoutLine: {'line': b'-- Installing: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/package.dsv\n'}
+[23.227887] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/ament_index/resource_index/packages/shelfino\n'}
+[23.227959] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/cmake/shelfinoConfig.cmake\n'}
+[23.228031] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/cmake/shelfinoConfig-version.cmake\n'}
+[23.228177] (shelfino) StdoutLine: {'line': b'-- Up-to-date: /home/p3zz/Documents/uni/robot-planning-project/install/shelfino/share/shelfino/package.xml\n'}
+[23.230487] (shelfino) CommandEnded: {'returncode': 0}
+[23.274413] (-) TimerEvent: {}
+[23.289876] (shelfino) JobEnded: {'identifier': 'shelfino', 'rc': 0}
+[23.290650] (-) EventReactorShutdown: {}

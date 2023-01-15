@@ -1,0 +1,60 @@
+[0.022s] Invoking command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8
+[0.090s] [ 50%] [32mBuilding CXX object CMakeFiles/shelfino.dir/src/main.cpp.o[0m
+[4.445s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.445s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:287:33:[m[K [01;31m[Kerror: [m[K‘[01m[KString[m[K’ is not a member of ‘[01m[Kstd_msgs[m[K’
+[4.445s]   287 |     rclcpp::Publisher<std_msgs::[01;31m[KString[m[K>::SharedPtr publisher_;
+[4.445s]       |                                 [01;31m[K^~~~~~[m[K
+[4.446s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:287:39:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[4.446s]   287 |     rclcpp::Publisher<std_msgs::String[01;31m[K>[m[K::SharedPtr publisher_;
+[4.446s]       |                                       [01;31m[K^[m[K
+[4.446s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:287:42:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+[4.446s]   287 |     rclcpp::Publisher<std_msgs::String>::[01;31m[KSharedPtr[m[K publisher_;
+[4.446s]       |                                          [01;31m[K^~~~~~~~~[m[K
+[4.446s]       |                                                   [32m[K;[m[K
+[4.449s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:287:52:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ does not name a type; did you mean ‘[01m[Krmw_publisher_t[m[K’?
+[4.449s]   287 |     rclcpp::Publisher<std_msgs::String>::SharedPtr [01;31m[Kpublisher_[m[K;
+[4.449s]       |                                                    [01;31m[K^~~~~~~~~~[m[K
+[4.449s]       |                                                    [32m[Krmw_publisher_t[m[K
+[4.459s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In constructor ‘[01m[KRoadmapPublisher::RoadmapPublisher(std::optional<RoadMap>&)[m[K’:
+[4.459s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:277:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Krmw_publisher_t[m[K’?
+[4.459s]   277 |       [01;31m[Kpublisher_[m[K = this->create_publisher<std_msgs::String>("roadmap", 10);
+[4.459s]       |       [01;31m[K^~~~~~~~~~[m[K
+[4.459s]       |       [32m[Krmw_publisher_t[m[K
+[4.460s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:277:53:[m[K [01;31m[Kerror: [m[K‘[01m[KString[m[K’ is not a member of ‘[01m[Kstd_msgs[m[K’
+[4.460s]   277 |       publisher_ = this->create_publisher<std_msgs::[01;31m[KString[m[K>("roadmap", 10);
+[4.460s]       |                                                     [01;31m[K^~~~~~[m[K
+[4.460s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:277:60:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KRoadmapPublisher::create_publisher<<expression error> >(const char [8], int)[m[K’
+[4.461s]   277 |       publisher_ = [01;31m[Kthis->create_publisher<std_msgs::String>("roadmap", 10)[m[K;
+[4.461s]       |                    [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~[m[K
+[4.461s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[4.461s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+[4.461s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[4.461s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:8[m[K,
+[4.461s]                  from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.462s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:195:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)[m[K’
+[4.462s]   195 |   [01;36m[Kcreate_publisher[m[K(
+[4.462s]       |   [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[4.462s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:195:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[4.462s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.462s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:277:60:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[4.462s]   277 |       publisher_ = [01;31m[Kthis->create_publisher<std_msgs::String>("roadmap", 10)[m[K;
+[4.462s]       |                    [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~[m[K
+[4.463s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:276:46:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kroadmap[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[4.463s]   276 |     RoadmapPublisher([01;35m[Kstd::optional<RoadMap>& roadmap[m[K): Node("roadmap_publisher"), count_(0) {
+[4.463s]       |                      [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~[m[K
+[4.485s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.485s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:[m[K In constructor ‘[01m[KFollowPathClient::FollowPathClient(std::optional<RoadMap>&, std::optional<DubinCurve>&, std::optional<DubinPoint>&, std::optional<DubinPoint>&)[m[K’:
+[4.485s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:305:29:[m[K [01;35m[Kwarning: [m[K‘[01m[KFollowPathClient::map[m[K’ will be initialized after [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[4.485s]   305 |     std::optional<RoadMap>& [01;35m[Kmap[m[K;
+[4.485s]       |                             [01;35m[K^~~[m[K
+[4.486s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:304:32:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kstd::optional<DubinCurve>& FollowPathClient::path[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[4.486s]   304 |     std::optional<DubinCurve>& [01;35m[Kpath[m[K;
+[4.486s]       |                                [01;35m[K^~~~[m[K
+[4.486s] In file included from [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/src/main.cpp:1[m[K:
+[4.486s] [01m[K/home/p3zz/Documents/uni/robot-planning-project/communication/shelfino/include/shelfino/shelfino.hpp:296:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[4.486s]   296 |     [01;35m[KFollowPathClient[m[K(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose)
+[4.487s]       |     [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[11.877s] gmake[2]: *** [CMakeFiles/shelfino.dir/build.make:76: CMakeFiles/shelfino.dir/src/main.cpp.o] Error 1
+[11.877s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/shelfino.dir/all] Error 2
+[11.877s] gmake: *** [Makefile:146: all] Error 2
+[11.880s] Invoked command in '/home/p3zz/Documents/uni/robot-planning-project/build/shelfino' returned '2': CMAKE_PREFIX_PATH=/home/p3zz/Documents/uni/robot-planning-project/install/shapes:/home/p3zz/Documents/uni/robot-planning-project/install/custom_msgs:/home/p3zz/Documents/uni/robot-planning-project/install/shelfino:/home/p3zz/Documents/uni/robot-planning-project/install/decisions:/home/p3zz/Documents/uni/robot-planning-project/install/map:/home/p3zz/Documents/uni/robot-planning-project/install/dubins:/home/p3zz/Documents/uni/robot-planning-project/install/utils:/opt/ros/humble /usr/bin/cmake --build /home/p3zz/Documents/uni/robot-planning-project/build/shelfino -- -j8 -l8
