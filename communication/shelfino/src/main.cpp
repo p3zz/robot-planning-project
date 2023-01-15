@@ -59,23 +59,19 @@ int main(int argc, char * argv[]) {
     // TODO replace pursuer and evader position with the real one given by /tf
     DubinPoint pursuer(1, 1, M_PI*1.75);
     DubinPoint evader(7, 1, M_PI*0.75);
+    dto.evader_pose.emplace(evader);
+    dto.pursuer_pose.emplace(pursuer);
 
+    // build roadmap
     if(!rm.construct_roadmap(60, 4, 0.5, 500, pursuer.get_point(), evader.get_point())){
         return 1;
     }
     dto.roadmap.emplace(rm);
+    
     // // launch roadmap publisher
     std::thread publisher(publisher_body, std::ref(dto));
     publisher.detach();
 
-    // // compute move
-    // // TODO the computation of the next move must be done by the follow_path client 
-    PayoffMatrix mat(rm);
-    Path p, e;
-    if(!mat.compute_move(pursuer, evader, p, e)){
-        return 1;
-    }
-    dto.path_to_follow.emplace(p.l1.get_curve());
     // launch roadmap publisher
     std::thread service(service_body, std::ref(dto));
     service.join();
