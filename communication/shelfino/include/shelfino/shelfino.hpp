@@ -32,100 +32,6 @@ using std::placeholders::_1;
 using std::placeholders::_2;
 using namespace std::chrono_literals;
 
-std::vector<Polygon> obstacles_from_msg(custom_msgs::msg::ObstacleArrayMsg msg){
-  std::vector<Polygon> obstacles;
-  for(auto obstacle: msg.obstacles){
-    Polygon p;
-    for(auto point: obstacle.polygon.points){
-      p.add_v(Point2D(point.x, point.y));
-    }
-    obstacles.push_back(p);
-  }
-  return obstacles;
-}
-
-Polygon borders_from_msg(geometry_msgs::msg::Polygon msg){
-    Polygon borders;
-    for(auto p:msg.points){
-        borders.add_v(Point2D(p.x, p.y));
-    }
-    return borders;
-}
-
-custom_msgs::msg::GeometryGraph msg_from_roadmap(RoadMap rm, std_msgs::msg::Header h){
-  custom_msgs::msg::GeometryGraph gg;
-  std::vector<custom_msgs::msg::Edges> nodes_edges;
-  std::vector<geometry_msgs::msg::Point> nodes;
-  for(auto &node: rm.get_nodes()){
-    geometry_msgs::msg::Point p;
-    p.x = node.x;
-    p.y = node.y;
-    p.z = 0;
-    nodes.push_back(p);
-    std::vector<unsigned int> neighbors;
-    for(auto &link: rm.get_links()){
-      int i = -1;
-      if(node == link.node1){
-        i = rm.get_node_index(link.node2);
-      }
-      else if(node == link.node2){
-        i = rm.get_node_index(link.node1);
-      }
-      if(i > -1){
-        neighbors.push_back(i);
-      }
-    }
-    custom_msgs::msg::Edges edges;
-    edges.node_ids = neighbors;
-    nodes_edges.push_back(edges);
-  }
-
-  gg.header = h;
-  gg.nodes = nodes;
-  gg.edges = nodes_edges;
-
-  return gg;
-}
-
-geometry_msgs::msg::Quaternion to_quaternion(double pitch, double roll, double yaw){
-  const double half = 0.5;
-  double cr = cos(roll * half);
-  double sr = sin(roll * half);
-  double cp = cos(pitch * half);
-  double sp = sin(pitch * half);
-  double cy = cos(yaw * half);
-  double sy = sin(yaw * half);
-
-  geometry_msgs::msg::Quaternion q;
-  q.w = cr * cp * cy + sr * sp * sy;
-  q.x = sr * cp * cy - cr * sp * sy;
-  q.y = cr * sp * cy + sr * cp * sy;
-  q.z = cr * cp * sy - sr * sp * cy;
-
-  return q;
-}
-
-nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
-  nav_msgs::msg::Path path;
-  path.header = h;
-
-  geometry_msgs::msg::PoseStamped pose;
-  pose.header = h;
-  pose.header.frame_id = "map";
-
-  auto trajectory = curve.to_points_homogeneous(0.1);
-
-  for(auto p:trajectory){
-    pose.pose.position.x = p.x;
-    pose.pose.position.y = p.y;
-    pose.pose.position.z = 0;
-    pose.pose.orientation = to_quaternion(0,0,p.th);
-    path.poses.push_back(pose);
-  }
-
-  return path;
-}
-
 class ShelfinoDto {
     public:
         ShelfinoDto(){
@@ -147,67 +53,31 @@ class ShelfinoDto {
         std::optional<DubinCurve> path_to_follow;
 };
 
-class GatesSubscriber : public rclcpp::Node{
-    public:
-        GatesSubscriber(std::optional<std::vector<Point2D>>& gates_position) : 
-            Node("gates_subscriber"), gates_position{gates_position} {
-                subscription_ = this->create_subscription<geometry_msgs::msg::PoseArray>(
-                "gate_position", 10, std::bind(&GatesSubscriber::topic_callback, this, _1));
-        };
-
-    private:
-        void topic_callback(const geometry_msgs::msg::PoseArray& msg) {
-          std::vector<Point2D> gates;
-          for(auto &pose: msg.poses){
-            gates.push_back(Point2D(pose.position.x, pose.position.y));
-          }
-          gates_position.emplace(gates);
-          for(auto &gate: gates_position.value()){
-            RCLCPP_INFO(this->get_logger(), "Gate received: (%f, %f)", gate.x, gate.y);
-          }
-        }
-        rclcpp::Subscription<geometry_msgs::msg::PoseArray>::SharedPtr subscription_;
-        std::optional<std::vector<Point2D>>& gates_position;
+class GatesSubscriber : public rclcpp::Node {
+  public:
+    GatesSubscriber(std::optional<std::vector<Point2D>>& gates_position);
+  private:
+    void topic_callback(const geometry_msgs::msg::PoseArray& msg);
+    rclcpp::Subscription<geometry_msgs::msg::PoseArray>::SharedPtr subscription_;
+    std::optional<std::vector<Point2D>>& gates_position;
 };
 
-
 class WallsSubscriber : public rclcpp::Node{
-    public:
-        WallsSubscriber(std::optional<Polygon>& map_borders) : 
-            Node("walls_subscriber"), map_borders{map_borders} {
-                subscription_ = this->create_subscription<geometry_msgs::msg::Polygon>(
-                "map_borders", 10, std::bind(&WallsSubscriber::topic_callback, this, _1));
-        }
+  public:
+    WallsSubscriber(std::optional<Polygon>& map_borders); 
 
-    private:
-        void topic_callback(const geometry_msgs::msg::Polygon & msg) const {
-          map_borders.emplace(borders_from_msg(msg));
-          RCLCPP_INFO(this->get_logger(), "Borders received");
-          for(auto &v: map_borders.value().vertexes){
-            RCLCPP_INFO(this->get_logger(), "Border: (%f, %f)", v.x, v.y);
-          }
-        }
-        rclcpp::Subscription<geometry_msgs::msg::Polygon>::SharedPtr subscription_;
-        std::optional<Polygon>& map_borders;
+  private:
+    void topic_callback(const geometry_msgs::msg::Polygon & msg);
+    rclcpp::Subscription<geometry_msgs::msg::Polygon>::SharedPtr subscription_;
+    std::optional<Polygon>& map_borders;
 };
 
 class ObstaclesSubscriber : public rclcpp::Node{
-public:
-    ObstaclesSubscriber(std::optional<std::vector<Polygon>>& obstacles) : Node("obstacles_subscriber"), obstacles{obstacles} {
-        subscription_ = this->create_subscription<custom_msgs::msg::ObstacleArrayMsg>(
-        "obstacles", 10, std::bind(&ObstaclesSubscriber::topic_callback, this, _1));
-    }
+  public:
+    ObstaclesSubscriber(std::optional<std::vector<Polygon>>& obstacles);
 
-private:
-    void topic_callback(const custom_msgs::msg::ObstacleArrayMsg & msg) const {
-        obstacles.emplace(obstacles_from_msg(msg));
-        for(auto &ob: obstacles.value()){
-          RCLCPP_INFO(this->get_logger(), "Obstacle received");
-          for(auto &v: ob.vertexes){  
-            RCLCPP_INFO(this->get_logger(), "Vertex: (%f, %f)", v.x, v.y);
-          }
-        }
-    }
+  private:
+    void topic_callback(const custom_msgs::msg::ObstacleArrayMsg & msg);
     rclcpp::Subscription<custom_msgs::msg::ObstacleArrayMsg>::SharedPtr subscription_;
     std::optional<std::vector<Polygon>>& obstacles;
 };
@@ -269,18 +139,9 @@ private:
   std::optional<DubinPoint>& pose;
 };
 
-class RoadmapPublisher : public rclcpp::Node
-{
+class RoadmapPublisher : public rclcpp::Node{
   public:
-    RoadmapPublisher(std::optional<RoadMap>& roadmap): Node("roadmap_publisher"), count_(0) {
-      publisher_ = this->create_publisher<custom_msgs::msg::GeometryGraph>("roadmap", 10);
-      if(!roadmap.has_value())return;
-      std_msgs::msg::Header h;
-      h.stamp = this->get_clock()->now();
-      auto message = msg_from_roadmap(roadmap.value(), h);
-      publisher_->publish(message);
-      std::cout<<"roadmap sent"<<std::endl;
-    }
+    RoadmapPublisher(std::optional<RoadMap>& roadmap);
 
   private:
     rclcpp::Publisher<custom_msgs::msg::GeometryGraph>::SharedPtr publisher_;
@@ -288,15 +149,11 @@ class RoadmapPublisher : public rclcpp::Node
 };
 
 class FollowPathClient : public rclcpp::Node {
-  public:
+  using FollowPath = nav2_msgs::action::FollowPath;
+  using GoalHandleFollowPath = rclcpp_action::ClientGoalHandle<FollowPath>;
 
-    using FollowPath = nav2_msgs::action::FollowPath;
-    using GoalHandleFollowPath = rclcpp_action::ClientGoalHandle<FollowPath>;
-    FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose)
-      : Node("follow_path_client"), map{map}, path{path}, evader_pose{evader_pose}, pursuer_pose{pursuer_pose}{
-      this->client_ptr_ = rclcpp_action::create_client<FollowPath>(this, "follow_path");
-      std::cout<<"client ready"<<std::endl;
-    }
+  public:
+    FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose);
 
   private:
     rclcpp_action::Client<FollowPath>::SharedPtr client_ptr_;
@@ -305,58 +162,8 @@ class FollowPathClient : public rclcpp::Node {
     std::optional<DubinPoint>& evader_pose;
     std::optional<DubinPoint>& pursuer_pose;
 
-  void send_goal(){
-    if (!this->client_ptr_->wait_for_action_server()) {
-      return;
-    }
-
-    if(!curve.has_value()){
-      return;
-    }
-
-    auto path_msg = FollowPath::Goal();
-    std_msgs::msg::Header h;
-    h.stamp = this->get_clock()->now();
-    path_msg.path = msg_from_curve(curve.value(), h);
-
-    auto send_goal_options = rclcpp_action::Client<FollowPath>::SendGoalOptions();
-    send_goal_options.feedback_callback = std::bind(&FollowPathClient::feedback_callback, this, _1, _2);
-    send_goal_options.result_callback = std::bind(&FollowPathClient::result_callback, this, _1);
-    this->client_ptr_->async_send_goal(path_msg, send_goal_options);
-    RCLCPP_INFO(this->get_logger(), "Sending goal");
-  }
-
-  void goal_response_callback(const GoalHandleFollowPath::SharedPtr& goal_handle)
-  {
-    if (!goal_handle) {
-      RCLCPP_ERROR(this->get_logger(), "Goal was rejected by server");
-    } else {
-      RCLCPP_INFO(this->get_logger(), "Goal accepted by server, waiting for result");
-    }
-  }
-
-  void feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback){
-    RCLCPP_INFO(this->get_logger(), "Speed: %f, Distance to goal: %f", feedback->speed, feedback->distance_to_goal);
-    // send the next path once shelfino reaches the goal
-    if(feedback->distance_to_goal == 0){
-      this->send_goal();
-    }
-  }
-
-  void result_callback(const GoalHandleFollowPath::WrappedResult& result)
-  {
-    switch (result.code) {
-      case rclcpp_action::ResultCode::SUCCEEDED:
-        break;
-      case rclcpp_action::ResultCode::ABORTED:
-        RCLCPP_ERROR(this->get_logger(), "Goal was aborted");
-        return;
-      case rclcpp_action::ResultCode::CANCELED:
-        RCLCPP_ERROR(this->get_logger(), "Goal was canceled");
-        return;
-      default:
-        RCLCPP_ERROR(this->get_logger(), "Unknown result code");
-        return;
-    }
-  }
+    void send_goal();
+    void goal_response_callback(const GoalHandleFollowPath::SharedPtr& goal_handle);
+    void feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback);
+    void result_callback(const GoalHandleFollowPath::WrappedResult& result);
 };

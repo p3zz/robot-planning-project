@@ -10,15 +10,9 @@ void subscriber_body(ShelfinoDto& dto){
     executor.add_node(gate_subscriber);
     executor.add_node(walls_subscriber);
     executor.add_node(obstacles_subscriber);
-<<<<<<< HEAD
     executor.add_node(evader_pose_subscriber);
     executor.add_node(pursuer_pose_subscriber);
     std::cout<<"subscriber"<<std::endl;
-=======
-    executor.add_node(pose_listener);
-    executor.add_node(follow_path_client);
-    Logger(Logger::INFO, "Spinning");
->>>>>>> 3f102af5f10040fa7a02700dfcd632e5007374b7
     executor.spin();
     rclcpp::shutdown();
 }
@@ -78,7 +72,7 @@ int main(int argc, char * argv[]) {
     // // TODO the computation of the next move must be done by the follow_path client 
     PayoffMatrix mat(rm);
     Path p, e;
-    if(!mat.computeMove(pursuer, evader, p, e)){
+    if(!mat.compute_move(pursuer, evader, p, e)){
         return 1;
     }
     dto.path_to_follow.emplace(p.l1.get_curve());
