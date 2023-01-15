@@ -121,6 +121,7 @@ class FollowPathClient : public rclcpp::Node {
     std::optional<DubinPoint>& evader_pose;
     std::optional<DubinPoint>& pursuer_pose;
 
+    void compute_move();
     void send_goal();
     void goal_response_callback(const GoalHandleFollowPath::SharedPtr& goal_handle);
     void feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback);

@@ -42,6 +42,7 @@ nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
 FollowPathClient::FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose)
         : Node("follow_path_client"), map{map}, path{path}, evader_pose{evader_pose}, pursuer_pose{pursuer_pose}{
     client_ptr_ = rclcpp_action::create_client<FollowPath>(this, "follow_path");
+    this->compute_move();
     this->send_goal();
 }
 
@@ -50,24 +51,9 @@ void FollowPathClient::send_goal(){
     //     return;
     // }
 
-    if(!map.has_value()){
-        RCLCPP_ERROR(this->get_logger(), "Invalid roadmap");
-    }
-    PayoffMatrix pm(map.value());
-    Path p, e;
-    if(!pursuer_pose.has_value() || !evader_pose.has_value()){
-        RCLCPP_ERROR(this->get_logger(), "Cannot retrieve shelfino position");
+    if(!path.has_value()){
         return;
     }
-
-    if(!pm.compute_move(pursuer_pose.value(), evader_pose.value(), p, e)){
-        RCLCPP_ERROR(this->get_logger(), "No further moves found");
-        return;
-    }
-
-    path.emplace(p.l1.get_curve());
-
-    RCLCPP_INFO(this->get_logger(), "Path computed");
 
     auto path_msg = FollowPath::Goal();
     std_msgs::msg::Header h;
@@ -81,21 +67,49 @@ void FollowPathClient::send_goal(){
     RCLCPP_INFO(this->get_logger(), "Sending goal");
 }
 
-  void FollowPathClient::goal_response_callback(const GoalHandleFollowPath::SharedPtr& goal_handle){
+void FollowPathClient::goal_response_callback(const GoalHandleFollowPath::SharedPtr& goal_handle){
     if (!goal_handle) {
-      RCLCPP_ERROR(this->get_logger(), "Goal was rejected by server");
+        RCLCPP_ERROR(this->get_logger(), "Goal was rejected by server");
     } else {
-      RCLCPP_INFO(this->get_logger(), "Goal accepted by server, waiting for result");
+        RCLCPP_INFO(this->get_logger(), "Goal accepted by server, waiting for result");
     }
-  }
+}
 
-  void FollowPathClient::feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback){
+void FollowPathClient::feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback){
     RCLCPP_INFO(this->get_logger(), "Speed: %f, Distance to goal: %f", feedback->speed, feedback->distance_to_goal);
 
-    if(feedback->distance_to_goal < 0.5){
-      this->send_goal();
+    if(feedback->distance_to_goal < 0.5 && !path.has_value()){
+        this->compute_move();
     }
-  }
+
+    if(feedback->distance_to_goal == 0){
+        path.reset();
+    }
+
+}
+
+void FollowPathClient::compute_move(){
+    if(!map.has_value()){
+        RCLCPP_ERROR(this->get_logger(), "Invalid roadmap");
+    }
+    
+    if(!pursuer_pose.has_value() || !evader_pose.has_value()){
+        RCLCPP_ERROR(this->get_logger(), "Cannot retrieve shelfino position");
+        return;
+    }
+
+    PayoffMatrix pm(map.value());
+    Path p, e;
+    if(!pm.compute_move(pursuer_pose.value(), evader_pose.value(), p, e)){
+        RCLCPP_ERROR(this->get_logger(), "No further moves found");
+        return;
+    }
+
+    path.emplace(p.l1.get_curve());
+
+    RCLCPP_INFO(this->get_logger(), "Path computed");
+
+}
 
 void FollowPathClient::result_callback(const GoalHandleFollowPath::WrappedResult& result){
     switch (result.code) {
