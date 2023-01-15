@@ -85,7 +85,7 @@ bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, dou
     if(knn>KNN_MAX) return false;
     
     //Create nodes
-    srand(get_seed());
+    srand(Seed::get_seed());
     const double k_room_space=r.get_approx_area()/points;
     const double k_base=std::pow(0.1,1/tms_max); //base to decrease k_distance to 10% at tms_max
     nodes.push_back(p_pos); //add pursuer position as a node

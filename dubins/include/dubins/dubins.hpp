@@ -48,8 +48,8 @@ class DubinPoint{
         Point2D get_point(){return Point2D(x,y);}
 
         friend bool operator== (const DubinPoint& first, const DubinPoint& second) {return first.x == second.x && first.y == second.y && first.th <= second.th*1.03 && first.th >= second.th*0.97;}
-        friend std::ostream& operator<<(std::ostream& os, const DubinPoint& dp){return os<<"("<<dp.x<<";"<<dp.y<<";"<<(int)(dp.th*180/M_PI)<<")";}
 };
+string operator + (string s, DubinPoint& dp);
 
 // arc (portion of dubin curve)
 class DubinArc {
@@ -64,9 +64,8 @@ class DubinArc {
         DubinPoint get_dest();
         std::vector<DubinPoint> to_points(int n_points);
         std::vector<DubinPoint> to_points_homogeneous(double sens);
-
-        friend std::ostream& operator<<(std::ostream& os, const DubinArc& da){return os<<(da.k==-1?"R":(da.k==1?"L":"S"));}
 };
+string operator + (string s, DubinArc& da);
 
 class DubinCurve {
     public:
@@ -87,9 +86,8 @@ class DubinCurve {
 
         std::vector<DubinPoint> to_points(int n);
         std::vector<DubinPoint> to_points_homogeneous(double sens);
-
-        friend std::ostream& operator<<(std::ostream& os, const DubinCurve& dc){return os<<dc.arcs.at(0)<<dc.arcs.at(1)<<dc.arcs.at(2);}
 };
+string operator + (string s, DubinCurve& dc);
 
 class DubinLink{
     private:

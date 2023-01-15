@@ -15,8 +15,8 @@ class Point2D{
         Point2D(double x, double y):x{x},y{y}{}
 
         friend bool operator== (const Point2D& first, const Point2D& second) {return first.x == second.x && first.y == second.y;}
-        friend std::ostream& operator<<(std::ostream& os, const Point2D& p){return os<<"("<<p.x<<";"<<p.y<<")";}
 };
+string operator + (string s, Point2D& p);
 
 class Segment {
     public:
@@ -63,6 +63,7 @@ bool intersect(Circle c, Segment s, Point2D start, Point2D end);
 bool intersect(Polygon p, Segment s);
 double distance(Point2D p1, Point2D p2);
 Polygon inflate(Polygon p, double offset);
+Polygon inflate_reverse(Polygon p, double offset);
 Polygon inflate_2(Polygon p, double offset);
 Polygon regular_polygon(Point2D center, double radius, int n);
 

@@ -32,6 +32,20 @@ bool intersect(Segment s1, Segment s2, double& t_s1, double& t_s2){
     return is_bounded(t_s1, 0, 1) && is_bounded(t_s2, 0, 1);
 }
 
+bool intersect(Segment s1, Segment s2, Point2D& p){
+    double det = (s2.node2.x - s2.node1.x) * (s1.node1.y - s1.node2.y) - (s1.node1.x - s1.node2.x) * (s2.node2.y - s2.node1.y);
+    
+    if(det == 0){
+        // check if the segments overlap
+        return s1.contains(s2.node1) || s1.contains(s2.node2) || s2.contains(s1.node1) || s2.contains(s1.node2);
+    }
+
+    double t = ((s2.node1.y - s2.node2.y) * (s1.node1.x - s2.node1.x) + (s2.node2.x - s2.node1.x) * (s1.node1.y - s2.node1.y)) / det;
+    double u = ((s1.node1.y - s1.node2.y) * (s1.node1.x - s2.node1.x) + (s1.node2.x - s1.node1.x) * (s1.node1.y - s2.node1.y)) / det;
+    p = Point2D(t*s1.node2.x+(1-t)*s1.node1.x, t*s1.node2.y+(1-t)*s1.node1.y);
+    return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
+}
+
 bool intersect(Circle circle, Segment s, Point2D start, Point2D end){
     std::vector<Point2D> intersections = {};
 
@@ -241,21 +255,29 @@ Polygon inflate(Polygon p, double offset){
         p_new.add_v(new_side.node1);
         p_new.add_v(new_side.node2);
     }
+    return p_new;
+}
 
-    // min angle = 45 deg
-    // TODO add the control between the last side and the first side !
-    // const double MIN_ANGLE = M_PI * 0.25;
-    // for(int i=1;i<(int)sides.size();i++){
-    //     auto prev_side = sides.at(i-1); 
-    //     auto curr_side = sides.at(i);
-    //     if(angle_between(prev_side, curr_side) < MIN_ANGLE){
-    //         auto new_node1 = translate(prev_side.node2, offset, prev_side.get_angle());
-    //         Segment curr_reverse(curr_side.node2, curr_side.node1);
-    //         auto new_node2 = translate(prev_side.node2, offset, curr_reverse.get_angle());
-    //         p_new.add_v(new_node1);
-    //         p_new.add_v(new_node2);
-    //     }
-    // }
+Polygon inflate_reverse(Polygon p, double offset){
+    Polygon p_new;
+    auto sides = p.get_sides();
+
+    //last side
+    double th = sides.at(p.get_size()-1).get_angle();
+    th += (M_PI * 1.5);
+    th = mod2pi(th);
+    auto prev_side = translate(sides.at(p.get_size()-1), offset, th);
+
+    for(auto side: sides){
+        double th = side.get_angle();
+        th += (M_PI * 1.5);
+        th = mod2pi(th);
+        auto new_side = translate(side, offset, th);
+        Point2D p;
+        intersect(new_side, prev_side, p);
+        p_new.add_v(p);
+        prev_side = new_side;
+    }
     return p_new;
 }
 
@@ -326,4 +348,9 @@ Polygon regular_polygon(Point2D center, double radius, int n){
 Point2D avg_point(Point2D p1, Point2D p2)
 {
     return Point2D((p1.x+p2.x)/2, (p1.y+p2.y)/2);
+}
+
+string operator + (string s, Point2D& p)
+{
+    return s+"("+to_string(p.x)+";"+to_string(p.y)+")";
 }

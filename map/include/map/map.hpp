@@ -28,6 +28,7 @@ class Room
     public:
         Room(Polygon dimensions):dimensions{dimensions}
         {
+            //get approximate dimensions (rounded up to a rectangle)
             double min_x=999999, min_y=999999, max_x=-999999, max_y=-999999;
             for(auto &v: dimensions.vertexes)
             {
@@ -39,13 +40,15 @@ class Room
             approx_h = max_y-min_y;
             approx_w = max_x-min_x;
             approx_area=0;
+
+            //get approximate area (rounded down to small squares of 1 cm2)
             for(double p_x=min_x; p_x<=max_x; p_x+=0.01)
                 for(double p_y=min_y; p_y<=max_y; p_y+=0.01)
                     if(dimensions.contains(Point2D(p_x,p_y)))
                         approx_area+=0.0001;
             
-            //to change with inflated dimensions!!!!!!!!!!!!!!!!!!!!
-            dimensions_inflated = dimensions;
+            //inflate room
+            dimensions_inflated = inflate_reverse(dimensions, ROBOT_CIRCLE*1.1);
         }
         void add_obstacle(Polygon o){obstacles.push_back(o); obstacles_inflated.push_back(inflate(o, ROBOT_CIRCLE*1.1));}
         Polygon get_obstacle(int index){return obstacles.at(index);}

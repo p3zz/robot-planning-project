@@ -413,3 +413,18 @@ bool intersect(DubinCurve c, Polygon p, int n){
     }
     return false;
 }
+
+string operator + (string s, DubinPoint& dp)
+{
+    return s+"("+to_string(dp.x)+";"+to_string(dp.y)+";"+to_string((int)(dp.th*180/M_PI))+")";
+}
+
+string operator + (string s, DubinArc& da)
+{
+    return s+(da.k==-1?"R":(da.k==1?"L":"S"));
+}
+
+string operator + (string s, DubinCurve& dc)
+{
+    return s+dc.arcs.at(0)+dc.arcs.at(1)+dc.arcs.at(2);
+}
