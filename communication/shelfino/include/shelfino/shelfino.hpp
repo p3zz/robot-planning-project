@@ -64,14 +64,13 @@ custom_msgs::msg::GeometryGraph msg_from_roadmap(RoadMap rm, std_msgs::msg::Head
     nodes.push_back(p);
     std::vector<unsigned int> neighbors;
     for(auto &link: rm.get_links()){
-      Point2D neighbor;
+      int i = -1;
       if(node == link.node1){
-        neighbor = link.node2;
+        i = rm.get_node_index(link.node2);
       }
       else if(node == link.node2){
-        neighbor = link.node1;
+        i = rm.get_node_index(link.node1);
       }
-      auto i = rm.get_node_index(neighbor);
       if(i > -1){
         neighbors.push_back(i);
       }
