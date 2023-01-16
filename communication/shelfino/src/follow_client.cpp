@@ -26,7 +26,7 @@ nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
   pose.header = h;
   pose.header.frame_id = "map";
 
-  auto trajectory = curve.to_points_homogeneous(0.1);
+  auto trajectory = curve.to_points(50);
 
   for(auto p:trajectory){
     pose.pose.position.x = p.x;
@@ -41,16 +41,19 @@ nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
 
 FollowPathClient::FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose)
         : Node("follow_path_client"), map{map}, path{path}, evader_pose{evader_pose}, pursuer_pose{pursuer_pose}{
-    client_ptr_ = rclcpp_action::create_client<FollowPath>(this, "follow_path");
+    client_ptr_ = rclcpp_action::create_client<FollowPath>(this, "shelfino1/follow_path");
     this->compute_move();
     this->send_goal();
 }
 
 void FollowPathClient::send_goal(){
-    // if (!this->client_ptr_->wait_for_action_server()) {
-    //     return;
-    // }
+    RCLCPP_INFO(this->get_logger(), "Waiting for action server");
+    if (!this->client_ptr_->wait_for_action_server()) {
+        RCLCPP_ERROR(this->get_logger(), "Action server not found");
+        return;
+    }
 
+    RCLCPP_INFO(this->get_logger(), "Action server found");
     if(!path.has_value()){
         return;
     }
@@ -59,6 +62,12 @@ void FollowPathClient::send_goal(){
     std_msgs::msg::Header h;
     h.stamp = this->get_clock()->now();
     path_msg.path = msg_from_curve(path.value(), h);
+
+    RCLCPP_INFO(this->get_logger(), "Message: ");
+    for(auto pose: path_msg.path.poses){
+        RCLCPP_INFO(this->get_logger(), "(x: %f, y: %f, z: %f, thx: %f, thy: %f, thz: %f, thw: %f)", pose.pose.position.x, pose.pose.position.y, pose.pose.position.z,
+        pose.pose.orientation.x, pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w);
+    }
 
     auto send_goal_options = rclcpp_action::Client<FollowPath>::SendGoalOptions();
     send_goal_options.feedback_callback = std::bind(&FollowPathClient::feedback_callback, this, _1, _2);

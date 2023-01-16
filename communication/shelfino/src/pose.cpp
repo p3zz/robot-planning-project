@@ -3,6 +3,7 @@
 PoseSubscriber::PoseSubscriber(std::optional<DubinPoint>& pose, std::string topic) : Node(topic), pose{pose} {
     subscription_ = this->create_subscription<geometry_msgs::msg::Pose>(
     topic, 10, std::bind(&PoseSubscriber::topic_callback, this, _1));
+    RCLCPP_INFO(this->get_logger(), "Waiting");
 }
 
 void PoseSubscriber::topic_callback(const geometry_msgs::msg::Pose& msg) {
@@ -11,6 +12,7 @@ void PoseSubscriber::topic_callback(const geometry_msgs::msg::Pose& msg) {
     double roll, pitch, yaw;
     m.getRPY(roll, pitch, yaw);
     pose.emplace(DubinPoint(msg.position.x, msg.position.y, yaw));
+    RCLCPP_INFO(this->get_logger(), "Pose received: (x: %f, y: %f, th: %f)", pose.value().x, pose.value().y, pose.value().th);
 }
 
 PoseListener::PoseListener(std::optional<DubinPoint>& pose): Node("shelfino2_listener"), pose{pose}{

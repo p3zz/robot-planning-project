@@ -4,6 +4,7 @@ GatesSubscriber::GatesSubscriber(std::optional<std::vector<Point2D>>& gates_posi
     Node("gates_subscriber"), gates_position{gates_position} {
         subscription_ = this->create_subscription<geometry_msgs::msg::PoseArray>(
         "gate_position", 10, std::bind(&GatesSubscriber::topic_callback, this, _1));
+        RCLCPP_INFO(this->get_logger(), "Waiting");
 }
 
 void GatesSubscriber::topic_callback(const geometry_msgs::msg::PoseArray& msg) {
