@@ -21,6 +21,7 @@ string operator + (string s, Point2D& p);
 class Segment {
     public:
         Point2D node1, node2;
+        Segment(){};
         Segment(Point2D node1, Point2D node2):node1{node1},node2{node2}{};
 
         bool contains(Point2D p);
@@ -66,5 +67,7 @@ Polygon inflate(Polygon p, double offset);
 Polygon inflate_reverse(Polygon p, double offset);
 Polygon inflate_2(Polygon p, double offset);
 Polygon regular_polygon(Point2D center, double radius, int n);
+Segment belong(Polygon pol, Point2D p, double offset);
+Point2D translate(Point2D p, double offset, double th);
 
 #endif

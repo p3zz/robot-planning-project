@@ -354,3 +354,22 @@ string operator + (string s, Point2D& p)
 {
     return s+"("+to_string(p.x)+";"+to_string(p.y)+")";
 }
+
+Segment belong(Polygon pol, Point2D p, double offset)
+{
+    for(auto side: pol.get_sides())
+    {
+        Polygon temp;
+        Point2D t = translate(side.node1, offset, 0.5*M_PI);
+        temp.add_v(t);
+        t = translate(side.node1, offset, 1.5*M_PI);
+        temp.add_v(t);
+        t = translate(side.node2, offset, 1.5*M_PI);
+        temp.add_v(t);
+        t = translate(side.node2, offset, 0.5*M_PI);
+        temp.add_v(t);
+        if(temp.contains(p))
+            return side;
+    }
+    return Segment();
+}

@@ -25,6 +25,7 @@ class Room
         std::vector<Polygon> obstacles;
         std::vector<Polygon> obstacles_inflated;
         std::vector<Point2D> exits;
+        std::vector<Point2D> exits_inflated;
     public:
         Room(Polygon dimensions):dimensions{dimensions}
         {
@@ -56,8 +57,14 @@ class Room
         Polygon get_inflated_obstacle(int index){return obstacles_inflated.at(index);}
         std::vector<Polygon> get_inflated_obstacles(){return obstacles_inflated;};
         int get_num_obstacles(){return obstacles.size();}
-        void add_exit(Point2D exit){exits.push_back(exit);}
-        Point2D get_exit(int index){return exits.at(index);}
+        void add_exit(Point2D exit){
+            exits.push_back(exit);
+            Segment s = belong(dimensions, exit, 0.1);
+            double th = mod2pi(atan2(s.node2.y-s.node1.y, s.node2.x-s.node1.x)+1.5*M_PI);
+            Point2D exit_inflated = translate(exit, ROBOT_CIRCLE*1.2, th);
+            exits_inflated.push_back(exit_inflated);
+        }
+        Point2D get_exit(int index, bool inflated){if(inflated) return exits_inflated.at(index); return exits.at(index);}
         int get_num_exits(){return exits.size();}
         Polygon get_dimensions(bool inflated){if(inflated) return dimensions_inflated; return dimensions;}
         double get_approx_height(){return approx_h;}

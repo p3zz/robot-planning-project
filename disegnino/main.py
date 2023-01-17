@@ -17,6 +17,7 @@ def main():
     roadmap = data['roadmap']
     nodes = roadmap['nodes']
     links = roadmap['links']
+    exits = roadmap['exits']
     obstacles = roadmap['obstacles']
 
     for obstacle in obstacles:
@@ -28,17 +29,23 @@ def main():
         vertices = [Point(v['x']*100, hRcm-v['y']*100) for v in obstacle['normal']]
         c = Polygon(vertices)
         c.setFill("green")
-        c.draw(win)   
+        c.draw(win)  
+
+    for ex in exits:
+        c = Circle(Point(ex['normal']['x']*100, hRcm-ex['normal']['y']*100), 8)
+        c.setFill('blue')
+        c.setOutline("blue")
+        c.draw(win)
+        c = Circle(Point(ex['inflated']['x']*100, hRcm-ex['inflated']['y']*100), 8)
+        c.setFill('blue')
+        c.setOutline("blue")
+        c.draw(win)
+        l = Line(Point(ex['normal']['x']*100, hRcm-ex['normal']['y']*100), Point(ex['inflated']['x']*100, hRcm-ex['inflated']['y']*100))
+        l.setWidth(1)
+        l.setFill('blue')
+        l.draw(win)
 
     for point in nodes:
-        if point['x'] == 0 or point['x'] == 10:
-            r = Rectangle(Point(point['x']*100-10, hRcm-point['y']*100-20), Point(point['x']*100+10, hRcm-point['y']*100+20))
-            r.setFill("blue")
-            r.draw(win)
-        elif point['y'] == 0 or point['y'] == 10:
-            r = Rectangle(Point(point['x']*100-20, hRcm-point['y']*100-10), Point(point['x']*100+20, hRcm-point['y']*100+10))
-            r.setFill("blue")
-            r.draw(win)
         c = Circle(Point(point['x']*100, hRcm-point['y']*100), 5)
         c.setFill("black")
         c.draw(win)

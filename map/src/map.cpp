@@ -113,7 +113,7 @@ bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, dou
 
     //Add exit nodes
     for(int i=0; i<r.get_num_exits(); i++)
-        nodes.push_back(r.get_exit(i));
+        nodes.push_back(r.get_exit(i, true));
     
     //Create links
     for (int i=0; i<(int)nodes.size(); i++)
@@ -219,6 +219,13 @@ std::string RoadMap::get_json()
         }
         json+="]}";
         if(i+1<r.get_num_obstacles()) json+=",";
+    }
+    json+="],\"exits\":[";
+    for(int i=0; i<r.get_num_exits();i++)
+    {
+        json+="{\"normal\": {\"x\":"+std::to_string(r.get_exit(i, false).x)+",\"y\":"+std::to_string(r.get_exit(i, false).y)+"},";
+        json+="\"inflated\": {\"x\":"+std::to_string(r.get_exit(i, true).x)+",\"y\":"+std::to_string(r.get_exit(i, true).y)+"}}";
+        if(i+1<r.get_num_exits()) json+=",";
     }
     json+="]}}";
     return json;
