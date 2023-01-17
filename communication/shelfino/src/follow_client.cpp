@@ -21,6 +21,7 @@ geometry_msgs::msg::Quaternion to_quaternion(double pitch, double roll, double y
 nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
   nav_msgs::msg::Path path;
   path.header = h;
+  path.header.frame_id = "map";
 
   geometry_msgs::msg::PoseStamped pose;
   pose.header = h;
@@ -41,7 +42,7 @@ nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
 
 FollowPathClient::FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose)
         : Node("follow_path_client"), map{map}, path{path}, evader_pose{evader_pose}, pursuer_pose{pursuer_pose}{
-    client_ptr_ = rclcpp_action::create_client<FollowPath>(this, "shelfino1/follow_path");
+    client_ptr_ = rclcpp_action::create_client<FollowPath>(this, "shelfino2/follow_path");
     this->compute_move();
     this->send_goal();
 }
@@ -62,6 +63,7 @@ void FollowPathClient::send_goal(){
     std_msgs::msg::Header h;
     h.stamp = this->get_clock()->now();
     path_msg.path = msg_from_curve(path.value(), h);
+    path_msg.controller_id = "FollowPath";
 
     RCLCPP_INFO(this->get_logger(), "Message: ");
     for(auto pose: path_msg.path.poses){
@@ -92,6 +94,7 @@ void FollowPathClient::feedback_callback(GoalHandleFollowPath::SharedPtr, const 
     }
 
     if(feedback->distance_to_goal == 0){
+        this->send_goal();
         path.reset();
     }
 

@@ -8,6 +8,9 @@ GatesSubscriber::GatesSubscriber(std::optional<std::vector<Point2D>>& gates_posi
 }
 
 void GatesSubscriber::topic_callback(const geometry_msgs::msg::PoseArray& msg) {
+    if(gates_position.has_value()){
+        return;
+    }
     std::vector<Point2D> gates;
     for(auto &pose: msg.poses){
         gates.push_back(Point2D(pose.position.x, pose.position.y));

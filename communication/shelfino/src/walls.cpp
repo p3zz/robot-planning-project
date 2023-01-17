@@ -16,6 +16,9 @@ WallsSubscriber::WallsSubscriber(std::optional<Polygon>& map_borders) :
 }
 
 void WallsSubscriber::topic_callback(const geometry_msgs::msg::Polygon & msg) {
+    if(map_borders.has_value()){
+        return;
+    }
     map_borders.emplace(borders_from_msg(msg));
     RCLCPP_INFO(this->get_logger(), "Borders received");
     for(auto &v: map_borders.value().vertexes){

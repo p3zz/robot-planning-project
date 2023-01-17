@@ -5,8 +5,8 @@ void subscriber_body(ShelfinoDto& dto){
     auto gate_subscriber = std::make_shared<GatesSubscriber>(dto.gates_position);
     auto walls_subscriber = std::make_shared<WallsSubscriber>(dto.map_borders);
     auto obstacles_subscriber = std::make_shared<ObstaclesSubscriber>(dto.obstacles);
-    auto evader_pose_subscriber = std::make_shared<PoseSubscriber>(dto.evader_pose, "evader_pose");
-    auto pursuer_pose_subscriber = std::make_shared<PoseSubscriber>(dto.pursuer_pose, "pursuer_pose");
+    auto evader_pose_subscriber = std::make_shared<PoseSubscriber>(dto.evader_pose, "shelfino1/transform", "shelfino1_transform");
+    auto pursuer_pose_subscriber = std::make_shared<PoseSubscriber>(dto.pursuer_pose, "shelfino2/transform", "shelfino2_transform");
     executor.add_node(gate_subscriber);
     executor.add_node(walls_subscriber);
     executor.add_node(obstacles_subscriber);
@@ -53,22 +53,28 @@ int main(int argc, char * argv[]) {
     for(auto &gate: dto.gates_position.value()){
         room.add_exit(gate);
     }
-    // build roadmap
-    RoadMap rm(room);
 
     while(!dto.pursuer_pose.has_value() || !dto.evader_pose.has_value()){}
 
     // build roadmap
+    RoadMap rm(room);
+
+    std::cout<<"Building roadmap"<<std::endl;
+
+    // build roadmap
     if(!rm.construct_roadmap(60, 4, 0.5, 500, dto.pursuer_pose.value().get_point(), dto.evader_pose.value().get_point())){
+        std::cout<<"Error while building roadmap"<<std::endl;
         return 1;
     }
+
+    std::cout<<"Roadmap built"<<std::endl;
+
     dto.roadmap.emplace(rm);
     
     // // launch roadmap publisher
     std::thread publisher(publisher_body, std::ref(dto));
     publisher.detach();
 
-    // launch roadmap publisher
     std::thread service(service_body, std::ref(dto));
     service.join();
     return 0;

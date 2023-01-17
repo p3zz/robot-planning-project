@@ -19,6 +19,9 @@ ObstaclesSubscriber::ObstaclesSubscriber(std::optional<std::vector<Polygon>>& ob
 }
 
 void ObstaclesSubscriber::topic_callback(const custom_msgs::msg::ObstacleArrayMsg & msg) {
+    if(obstacles.has_value()){
+      return;
+    }
     obstacles.emplace(obstacles_from_msg(msg));
     for(auto &ob: obstacles.value()){
         RCLCPP_INFO(this->get_logger(), "Obstacle received");

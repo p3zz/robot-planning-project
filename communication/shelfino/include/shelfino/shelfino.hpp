@@ -77,26 +77,26 @@ class ObstaclesSubscriber : public rclcpp::Node{
 
 class PoseSubscriber : public rclcpp::Node{
   public:
-      PoseSubscriber(std::optional<DubinPoint>& pose, std::string topic);
+      PoseSubscriber(std::optional<DubinPoint>& pose, std::string topic, std::string node_name);
 
   private:
-      void topic_callback(const geometry_msgs::msg::Pose& msg);
-      rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr subscription_;
+      void topic_callback(const geometry_msgs::msg::TransformStamped& msg);
+      rclcpp::Subscription<geometry_msgs::msg::TransformStamped>::SharedPtr subscription_;
       std::optional<DubinPoint>& pose;
 };
 
-class PoseListener : public rclcpp::Node {
-  public:
-    PoseListener(std::optional<DubinPoint>& pose);
+// class PoseListener : public rclcpp::Node {
+//   public:
+//     PoseListener(std::optional<DubinPoint>& pose);
 
-private:
-  void timer_callback();
-  rclcpp::TimerBase::SharedPtr timer_{nullptr};
-  std::shared_ptr<tf2_ros::TransformListener> tf_listener_{nullptr};
-  std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
-  std::string target_frame_;
-  std::optional<DubinPoint>& pose;
-};
+// private:
+//   void timer_callback();
+//   rclcpp::TimerBase::SharedPtr timer_{nullptr};
+//   std::shared_ptr<tf2_ros::TransformListener> tf_listener_{nullptr};
+//   std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
+//   std::string target_frame_;
+//   std::optional<DubinPoint>& pose;
+// };
 
 class RoadmapPublisher : public rclcpp::Node{
   public:
