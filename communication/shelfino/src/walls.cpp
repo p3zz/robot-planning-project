@@ -10,8 +10,9 @@ Polygon borders_from_msg(geometry_msgs::msg::Polygon msg){
 
 WallsSubscriber::WallsSubscriber(std::optional<Polygon>& map_borders) : 
     Node("walls_subscriber"), map_borders{map_borders} {
+        auto qos = rclcpp::QoS(rclcpp::KeepLast(1), rmw_qos_profile_sensor_data);
         subscription_ = this->create_subscription<geometry_msgs::msg::Polygon>(
-        "map_borders", 10, std::bind(&WallsSubscriber::topic_callback, this, _1));
+        "map_borders", qos, std::bind(&WallsSubscriber::topic_callback, this, _1));
     RCLCPP_INFO(this->get_logger(), "Waiting");
 }
 

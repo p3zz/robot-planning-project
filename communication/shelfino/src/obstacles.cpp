@@ -13,8 +13,9 @@ std::vector<Polygon> obstacles_from_msg(custom_msgs::msg::ObstacleArrayMsg msg){
 }
 
 ObstaclesSubscriber::ObstaclesSubscriber(std::optional<std::vector<Polygon>>& obstacles) : Node("obstacles_subscriber"), obstacles{obstacles} {
+    auto qos = rclcpp::QoS(rclcpp::KeepLast(1), rmw_qos_profile_sensor_data);
     subscription_ = this->create_subscription<custom_msgs::msg::ObstacleArrayMsg>(
-      "obstacles", 10, std::bind(&ObstaclesSubscriber::topic_callback, this, _1));
+      "obstacles", qos, std::bind(&ObstaclesSubscriber::topic_callback, this, _1));
     RCLCPP_INFO(this->get_logger(), "Waiting");
 }
 

@@ -2,8 +2,9 @@
 
 GatesSubscriber::GatesSubscriber(std::optional<std::vector<Point2D>>& gates_position) : 
     Node("gates_subscriber"), gates_position{gates_position} {
+        auto qos = rclcpp::QoS(rclcpp::KeepLast(1), rmw_qos_profile_sensor_data);
         subscription_ = this->create_subscription<geometry_msgs::msg::PoseArray>(
-        "gate_position", 10, std::bind(&GatesSubscriber::topic_callback, this, _1));
+        "gate_position", qos, std::bind(&GatesSubscriber::topic_callback, this, _1));
         RCLCPP_INFO(this->get_logger(), "Waiting");
 }
 
