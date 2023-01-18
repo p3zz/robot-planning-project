@@ -88,16 +88,6 @@ void FollowPathClient::goal_response_callback(const GoalHandleFollowPath::Shared
 
 void FollowPathClient::feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback){
     RCLCPP_INFO(this->get_logger(), "Speed: %f, Distance to goal: %f", feedback->speed, feedback->distance_to_goal);
-
-    if(feedback->distance_to_goal < 0.2 && !path.has_value()){
-        this->compute_move();
-    }
-
-    if(feedback->distance_to_goal == 0){
-        this->send_goal();
-        path.reset();
-    }
-
 }
 
 void FollowPathClient::compute_move(){
@@ -126,6 +116,8 @@ void FollowPathClient::compute_move(){
 void FollowPathClient::result_callback(const GoalHandleFollowPath::WrappedResult& result){
     switch (result.code) {
         case rclcpp_action::ResultCode::SUCCEEDED:
+            this->compute_move();
+            this->send_goal();
             break;
         case rclcpp_action::ResultCode::ABORTED:
             RCLCPP_ERROR(this->get_logger(), "Goal was aborted");
