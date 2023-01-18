@@ -8,6 +8,9 @@ PoseSubscriber::PoseSubscriber(std::optional<DubinPoint>& pose, std::string topi
 }
 
 void PoseSubscriber::topic_callback(const geometry_msgs::msg::TransformStamped& msg) {
+    if(pose.has_value()){
+        return;
+    }
     tf2::Quaternion q(msg.transform.rotation.x, msg.transform.rotation.y, msg.transform.rotation.z, msg.transform.rotation.w);
     tf2::Matrix3x3 m(q);
     double roll, pitch, yaw;
