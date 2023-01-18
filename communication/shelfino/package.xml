@@ -11,9 +11,9 @@
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
-  <depend>custom_msgs</depend>
   <depend>shapes</depend>
-
+  <depend>obstacles_msgs</depend>
+  <depend>graph_msgs</depend>
   <export>
     <build_type>ament_cmake</build_type>
   </export>

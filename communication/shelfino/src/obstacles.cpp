@@ -1,6 +1,6 @@
 #include "shelfino/shelfino.hpp"
 
-std::vector<Polygon> obstacles_from_msg(custom_msgs::msg::ObstacleArrayMsg msg){
+std::vector<Polygon> obstacles_from_msg(obstacles_msgs::msg::ObstacleArrayMsg msg){
   std::vector<Polygon> obstacles;
   for(auto obstacle: msg.obstacles){
     Polygon p;
@@ -14,12 +14,12 @@ std::vector<Polygon> obstacles_from_msg(custom_msgs::msg::ObstacleArrayMsg msg){
 
 ObstaclesSubscriber::ObstaclesSubscriber(std::optional<std::vector<Polygon>>& obstacles) : Node("obstacles_subscriber"), obstacles{obstacles} {
     auto qos = rclcpp::QoS(rclcpp::KeepLast(1), rmw_qos_profile_sensor_data);
-    subscription_ = this->create_subscription<custom_msgs::msg::ObstacleArrayMsg>(
+    subscription_ = this->create_subscription<obstacles_msgs::msg::ObstacleArrayMsg>(
       "obstacles", qos, std::bind(&ObstaclesSubscriber::topic_callback, this, _1));
     RCLCPP_INFO(this->get_logger(), "Waiting");
 }
 
-void ObstaclesSubscriber::topic_callback(const custom_msgs::msg::ObstacleArrayMsg & msg) {
+void ObstaclesSubscriber::topic_callback(const obstacles_msgs::msg::ObstacleArrayMsg & msg) {
     if(obstacles.has_value()){
       return;
     }

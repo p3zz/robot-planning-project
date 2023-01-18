@@ -9,7 +9,6 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(custom_msgs REQUIRED)
 find_package(shapes REQUIRED)
 find_package(dubins REQUIRED)
 find_package(map REQUIRED)
@@ -19,12 +18,14 @@ find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(nav2_msgs)
 find_package(nav_msgs REQUIRED)
+find_package(obstacles_msgs REQUIRED)
+find_package(graph_msgs REQUIRED)
 
 include_directories(include)
 
-add_executable(shelfino src/pose.cpp src/follow_client.cpp src/obstacles.cpp src/gates.cpp src/roadmap.cpp src/walls.cpp src/main.cpp)
+add_executable(shelfino "src/path.cpp" src/pose.cpp src/follow_client.cpp src/obstacles.cpp src/gates.cpp src/roadmap.cpp src/walls.cpp src/main.cpp)
 
-ament_target_dependencies(shelfino rclcpp rclcpp_action custom_msgs utils shapes dubins map decisions geometry_msgs tf2 tf2_ros nav2_msgs nav_msgs)
+ament_target_dependencies(shelfino rclcpp rclcpp_action utils shapes dubins map decisions geometry_msgs tf2 tf2_ros nav2_msgs nav_msgs obstacles_msgs graph_msgs)
 
 install(
   TARGETS shelfino

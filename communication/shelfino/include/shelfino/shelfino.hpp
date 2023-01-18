@@ -8,10 +8,10 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 #include "std_msgs/msg/header.hpp"
-#include "custom_msgs/msg/obstacle_array_msg.hpp"
-#include "custom_msgs/msg/obstacle_msg.hpp"
-#include "custom_msgs/msg/geometry_graph.hpp"
-#include "custom_msgs/msg/edges.hpp"
+#include "obstacles_msgs/msg/obstacle_array_msg.hpp"
+#include "obstacles_msgs/msg/obstacle_msg.hpp"
+#include "graph_msgs/msg/geometry_graph.hpp"
+#include "graph_msgs/msg/edges.hpp"
 #include "geometry_msgs/msg/pose.hpp"
 #include "geometry_msgs/msg/pose_array.hpp"
 #include "geometry_msgs/msg/polygon.hpp"
@@ -70,8 +70,8 @@ class ObstaclesSubscriber : public rclcpp::Node{
     ObstaclesSubscriber(std::optional<std::vector<Polygon>>& obstacles);
 
   private:
-    void topic_callback(const custom_msgs::msg::ObstacleArrayMsg & msg);
-    rclcpp::Subscription<custom_msgs::msg::ObstacleArrayMsg>::SharedPtr subscription_;
+    void topic_callback(const obstacles_msgs::msg::ObstacleArrayMsg & msg);
+    rclcpp::Subscription<obstacles_msgs::msg::ObstacleArrayMsg>::SharedPtr subscription_;
     std::optional<std::vector<Polygon>>& obstacles;
 };
 
@@ -85,25 +85,12 @@ class PoseSubscriber : public rclcpp::Node{
       std::optional<DubinPoint>& pose;
 };
 
-// class PoseListener : public rclcpp::Node {
-//   public:
-//     PoseListener(std::optional<DubinPoint>& pose);
-
-// private:
-//   void timer_callback();
-//   rclcpp::TimerBase::SharedPtr timer_{nullptr};
-//   std::shared_ptr<tf2_ros::TransformListener> tf_listener_{nullptr};
-//   std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
-//   std::string target_frame_;
-//   std::optional<DubinPoint>& pose;
-// };
-
 class RoadmapPublisher : public rclcpp::Node{
   public:
     RoadmapPublisher(std::optional<RoadMap>& roadmap);
 
   private:
-    rclcpp::Publisher<custom_msgs::msg::GeometryGraph>::SharedPtr publisher_;
+    rclcpp::Publisher<graph_msgs::msg::GeometryGraph>::SharedPtr publisher_;
     size_t count_;
 };
 
@@ -127,3 +114,17 @@ class FollowPathClient : public rclcpp::Node {
     void feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback);
     void result_callback(const GoalHandleFollowPath::WrappedResult& result);
 };
+
+class PathPublisher : public rclcpp::Node {
+  public:
+    PathPublisher(std::optional<DubinCurve>& path);
+
+  private:
+    void timer_callback();
+    rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr publisher_;
+    std::optional<DubinCurve>& path;
+    rclcpp::TimerBase::SharedPtr timer_;
+};
+
+geometry_msgs::msg::Quaternion to_quaternion(double pitch, double roll, double yaw);
+nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h);

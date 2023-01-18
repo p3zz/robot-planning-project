@@ -17,8 +17,12 @@ void subscriber_body(ShelfinoDto& dto){
 }
 
 void publisher_body(ShelfinoDto& dto){
+    rclcpp::executors::SingleThreadedExecutor executor;
     auto roadmap_publisher = std::make_shared<RoadmapPublisher>(dto.roadmap);
-    rclcpp::spin(roadmap_publisher);
+    auto path_publisher = std::make_shared<PathPublisher>(dto.path_to_follow);
+    executor.add_node(roadmap_publisher);
+    executor.add_node(path_publisher);
+    executor.spin();
     rclcpp::shutdown();
 }
 
@@ -54,6 +58,7 @@ int main(int argc, char * argv[]) {
         room.add_exit(gate);
     }
 
+    dto.evader_pose.emplace(DubinPoint(-1.7,-3.9,0));
     while(!dto.pursuer_pose.has_value() || !dto.evader_pose.has_value()){}
 
     // build roadmap

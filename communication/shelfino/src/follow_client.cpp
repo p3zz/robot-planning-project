@@ -89,7 +89,7 @@ void FollowPathClient::goal_response_callback(const GoalHandleFollowPath::Shared
 void FollowPathClient::feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback){
     RCLCPP_INFO(this->get_logger(), "Speed: %f, Distance to goal: %f", feedback->speed, feedback->distance_to_goal);
 
-    if(feedback->distance_to_goal < 0.5 && !path.has_value()){
+    if(feedback->distance_to_goal < 0.2 && !path.has_value()){
         this->compute_move();
     }
 

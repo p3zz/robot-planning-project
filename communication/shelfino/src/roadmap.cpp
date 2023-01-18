@@ -1,8 +1,8 @@
 #include "shelfino/shelfino.hpp"
 
-custom_msgs::msg::GeometryGraph msg_from_roadmap(RoadMap rm, std_msgs::msg::Header h){
-  custom_msgs::msg::GeometryGraph gg;
-  std::vector<custom_msgs::msg::Edges> nodes_edges;
+graph_msgs::msg::GeometryGraph msg_from_roadmap(RoadMap rm, std_msgs::msg::Header h){
+  graph_msgs::msg::GeometryGraph gg;
+  std::vector<graph_msgs::msg::Edges> nodes_edges;
   std::vector<geometry_msgs::msg::Point> nodes;
   for(auto &node: rm.get_nodes()){
     geometry_msgs::msg::Point p;
@@ -23,7 +23,7 @@ custom_msgs::msg::GeometryGraph msg_from_roadmap(RoadMap rm, std_msgs::msg::Head
         neighbors.push_back(i);
       }
     }
-    custom_msgs::msg::Edges edges;
+    graph_msgs::msg::Edges edges;
     edges.node_ids = neighbors;
     nodes_edges.push_back(edges);
   }
@@ -36,11 +36,12 @@ custom_msgs::msg::GeometryGraph msg_from_roadmap(RoadMap rm, std_msgs::msg::Head
 }
 
 RoadmapPublisher::RoadmapPublisher(std::optional<RoadMap>& roadmap): Node("roadmap_publisher"), count_(0) {
-    publisher_ = this->create_publisher<custom_msgs::msg::GeometryGraph>("roadmap", 10);
+    publisher_ = this->create_publisher<graph_msgs::msg::GeometryGraph>("roadmap", 10);
+    RCLCPP_INFO(this->get_logger(), "Ready to publish");
     if(!roadmap.has_value())return;
     std_msgs::msg::Header h;
     h.stamp = this->get_clock()->now();
     auto message = msg_from_roadmap(roadmap.value(), h);
     publisher_->publish(message);
-    std::cout<<"roadmap sent"<<std::endl;
+    RCLCPP_INFO(this->get_logger(), "Publishing");
 }
