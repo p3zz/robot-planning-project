@@ -72,11 +72,11 @@ double scoreE(Point2D pursuer_2, Path path_e, RoadMap& r)
     double score_th=0;
     for(int i=0; i<r.get_room().get_num_exits(); i++)
     {
-        double d=distance(path_e.p2.get_point(), r.get_room().get_exit(i));
+        double d=distance(path_e.p2.get_point(), r.get_room().get_exit(i, false));
         if(d<min_exit)
         {
             min_exit=d;
-            score_th=score_angle(path_e.p2, r.get_room().get_exit(i));
+            score_th=score_angle(path_e.p2, r.get_room().get_exit(i, false));
         }
     }
 
@@ -100,7 +100,7 @@ double scoreP(Point2D evader_2, Path path_p, RoadMap& r)
     int index_exit;
     for(int i=0; i<r.get_room().get_num_exits(); i++) //more probable exit chosen by evader
     {
-        double d=distance(evader_2, r.get_room().get_exit(i));
+        double d=distance(evader_2, r.get_room().get_exit(i,false));
         if(d<min_exit)
         {
             min_exit=d;
@@ -108,9 +108,9 @@ double scoreP(Point2D evader_2, Path path_p, RoadMap& r)
         }
     }
     //Distance between pursuer and exit
-    double distanceExit = distance(path_p.p2.get_point(), r.get_room().get_exit(index_exit));
+    double distanceExit = distance(path_p.p2.get_point(), r.get_room().get_exit(index_exit, false));
     //Score for direction
-    double score_th = score_angle(path_p.p2, avg_point(evader_2, r.get_room().get_exit(index_exit)));
+    double score_th = score_angle(path_p.p2, avg_point(evader_2, r.get_room().get_exit(index_exit, false)));
     
     double scoreP = center - distancePE *1.5 - distanceExit *0.75 - len_path *0.75 + score_th * 4;
     return scoreP;
