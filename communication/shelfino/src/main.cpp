@@ -19,17 +19,21 @@ void subscriber_body(ShelfinoDto& dto){
 void publisher_body(ShelfinoDto& dto){
     rclcpp::executors::SingleThreadedExecutor executor;
     auto roadmap_publisher = std::make_shared<RoadmapPublisher>(dto.roadmap);
-    auto path_publisher = std::make_shared<PathPublisher>(dto.path_to_follow);
+    auto path_evader_publisher = std::make_shared<PathPublisher>(dto.evader_path_to_follow, "shelfino1/plan");
+    auto path_pursuer_publisher = std::make_shared<PathPublisher>(dto.pursuer_path_to_follow, "shelfino2/plan");
     executor.add_node(roadmap_publisher);
-    executor.add_node(path_publisher);
+    executor.add_node(path_evader_publisher);
+    executor.add_node(path_pursuer_publisher);
     executor.spin();
     rclcpp::shutdown();
 }
 
 void service_body(ShelfinoDto& dto){
     rclcpp::executors::SingleThreadedExecutor executor;
-    auto follow_path_client = std::make_shared<FollowPathClient>(dto.roadmap, dto.path_to_follow, dto.evader_pose, dto.pursuer_pose);
-    executor.add_node(follow_path_client);
+    auto follow_path_evader_client = std::make_shared<FollowPathClient>(dto.roadmap, dto.evader_path_to_follow, dto.evader_pose, dto.pursuer_pose, Shelfino::Evader, "shelfino1/follow_path");
+    auto follow_path_pursuer_client = std::make_shared<FollowPathClient>(dto.roadmap, dto.pursuer_path_to_follow, dto.evader_pose, dto.pursuer_pose, Shelfino::Pursuer, "shelfino2/follow_path");
+    executor.add_node(follow_path_evader_client);
+    executor.add_node(follow_path_pursuer_client);
     executor.spin();
     rclcpp::shutdown();
 }
@@ -73,6 +77,11 @@ int main(int argc, char * argv[]) {
     }
 
     std::cout<<"Roadmap built"<<std::endl;
+
+    // std::ofstream myfile;
+    // myfile.open ("map.json", std::ofstream::trunc);
+    // myfile << rm.get_json();
+    // myfile.close();
 
     dto.roadmap.emplace(rm);
     

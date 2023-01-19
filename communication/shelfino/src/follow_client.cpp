@@ -40,9 +40,10 @@ nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
   return path;
 }
 
-FollowPathClient::FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose)
-        : Node("follow_path_client"), map{map}, path{path}, evader_pose{evader_pose}, pursuer_pose{pursuer_pose}{
-    client_ptr_ = rclcpp_action::create_client<FollowPath>(this, "shelfino2/follow_path");
+FollowPathClient::FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose,
+    std::optional<DubinPoint>& pursuer_pose, Shelfino which, std::string service_name)
+        : Node("follow_path_client"), map{map}, path{path}, evader_pose{evader_pose}, pursuer_pose{pursuer_pose}, which{which}, service_name{service_name}{
+    client_ptr_ = rclcpp_action::create_client<FollowPath>(this, service_name);
     this->compute_move();
     this->send_goal();
 }
@@ -107,7 +108,12 @@ void FollowPathClient::compute_move(){
         return;
     }
 
-    path.emplace(p.l1.get_curve());
+    if(which == Shelfino::Pursuer){
+        path.emplace(p.l1.get_curve());
+    }
+    else{
+        path.emplace(e.l1.get_curve());
+    }
 
     RCLCPP_INFO(this->get_logger(), "Path computed");
 

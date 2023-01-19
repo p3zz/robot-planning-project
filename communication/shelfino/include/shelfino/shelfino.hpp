@@ -32,10 +32,15 @@ using std::placeholders::_1;
 using std::placeholders::_2;
 using namespace std::chrono_literals;
 
+enum Shelfino{
+    Pursuer,
+    Evader
+};
+
 class ShelfinoDto {
     public:
         ShelfinoDto():gates_position{std::nullopt}, map_borders{std::nullopt}, obstacles{std::nullopt},
-          pursuer_pose{std::nullopt}, evader_pose{std::nullopt}, roadmap{std::nullopt}, path_to_follow{std::nullopt}{}
+          pursuer_pose{std::nullopt}, evader_pose{std::nullopt}, roadmap{std::nullopt}, evader_path_to_follow{std::nullopt}, pursuer_path_to_follow{std::nullopt}{}
 
         std::optional<std::vector<Point2D>> gates_position;
         std::optional<Polygon> map_borders;
@@ -43,7 +48,8 @@ class ShelfinoDto {
         std::optional<DubinPoint> pursuer_pose;
         std::optional<DubinPoint> evader_pose;
         std::optional<RoadMap> roadmap;
-        std::optional<DubinCurve> path_to_follow;
+        std::optional<DubinCurve> evader_path_to_follow;
+        std::optional<DubinCurve> pursuer_path_to_follow;
 };
 
 class GatesSubscriber : public rclcpp::Node {
@@ -99,7 +105,7 @@ class FollowPathClient : public rclcpp::Node {
   using GoalHandleFollowPath = rclcpp_action::ClientGoalHandle<FollowPath>;
 
   public:
-    FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose);
+    FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose, Shelfino which, std::string service_name);
 
   private:
     rclcpp_action::Client<FollowPath>::SharedPtr client_ptr_;
@@ -107,6 +113,8 @@ class FollowPathClient : public rclcpp::Node {
     std::optional<RoadMap>& map;
     std::optional<DubinPoint>& evader_pose;
     std::optional<DubinPoint>& pursuer_pose;
+    Shelfino which;
+    std::string service_name;
 
     void compute_move();
     void send_goal();
@@ -117,7 +125,7 @@ class FollowPathClient : public rclcpp::Node {
 
 class PathPublisher : public rclcpp::Node {
   public:
-    PathPublisher(std::optional<DubinCurve>& path);
+    PathPublisher(std::optional<DubinCurve>& path, std::string topic_name);
 
   private:
     void timer_callback();
