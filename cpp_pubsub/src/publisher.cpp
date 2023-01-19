@@ -11,18 +11,19 @@ using namespace std;
 
 int main()
 {
+  Seed::init_seed(1920815646);
   Logger(Logger::INFO, "The seed is " + to_string(Seed::get_seed()));
-  DubinPoint pursuer(2,8,M_PI*1.75);
-  DubinPoint evader(8,2,M_PI*0.75);
+  DubinPoint pursuer(7,10,M_PI*1.75);
+  DubinPoint evader(13,10,M_PI*0.75);
   ROSTimer mytimer;
   
   // Construct random room
   srand(Seed::get_seed());
-  Polygon dim_room({ Point2D(0,0), Point2D(0,10), Point2D(10,10), Point2D(10,0) });
+  Polygon dim_room({ Point2D(10,5), Point2D(5,10), Point2D(10,15), Point2D(15,10) });
   Room room(dim_room);
-  random_obstacles_side(&room, 4, 200);
-  room.add_exit(Point2D(0,2));
-  room.add_exit(Point2D(8,10));
+  random_obstacles_side(&room, 2, 100);
+  room.add_exit(Point2D(7,8));
+  room.add_exit(Point2D(7,12));
 
   Logger(Logger::INFO, "Time passed to construct room: " + mytimer);
   mytimer.rst();

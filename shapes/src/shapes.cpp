@@ -258,7 +258,7 @@ Polygon inflate(Polygon p, double offset){
     return p_new;
 }
 
-Polygon inflate_reverse(Polygon p, double offset){
+Polygon deflate(Polygon p, double offset){
     Polygon p_new;
     auto sides = p.get_sides();
 
