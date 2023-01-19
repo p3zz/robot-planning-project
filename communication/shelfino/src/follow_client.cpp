@@ -41,8 +41,8 @@ nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
 }
 
 FollowPathClient::FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose,
-    std::optional<DubinPoint>& pursuer_pose, Shelfino which, std::string service_name)
-        : Node("follow_path_client"), map{map}, path{path}, evader_pose{evader_pose}, pursuer_pose{pursuer_pose}, which{which}, service_name{service_name}{
+    std::optional<DubinPoint>& pursuer_pose, Shelfino which, std::string service_name, std::string node_name)
+        : Node(node_name), map{map}, path{path}, evader_pose{evader_pose}, pursuer_pose{pursuer_pose}, which{which}, service_name{service_name}{
     client_ptr_ = rclcpp_action::create_client<FollowPath>(this, service_name);
     this->compute_move();
     this->send_goal();
@@ -88,7 +88,6 @@ void FollowPathClient::goal_response_callback(const GoalHandleFollowPath::Shared
 }
 
 void FollowPathClient::feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback){
-    RCLCPP_INFO(this->get_logger(), "Speed: %f, Distance to goal: %f", feedback->speed, feedback->distance_to_goal);
 }
 
 void FollowPathClient::compute_move(){
@@ -108,10 +107,25 @@ void FollowPathClient::compute_move(){
         return;
     }
 
+    // if pursuer and evader have the same destination or the destination of the evader is the start of the pursuer, catch!
+    if(e.l1.get_dst() == p.l1.get_dst() || e.l1.get_dst() == p.l1.get_src()){
+        RCLCPP_INFO(this->get_logger(), "Pursuer reaches the evader");
+        exit(1);
+    }
+
+    // if the evader reaches the destination, :(
+    auto room = map.value().get_room();
+    for(int i=0;i<room.get_num_exits();i++){
+        Point2D dst(e.l1.get_dst().x, e.l1.get_dst().y);
+        if(dst == room.get_exit(i, true)){
+            RCLCPP_ERROR(this->get_logger(), "Evader reaches the gate");
+            exit(2);
+        }
+    }
+
     if(which == Shelfino::Pursuer){
         path.emplace(p.l1.get_curve());
-    }
-    else{
+    } else {
         path.emplace(e.l1.get_curve());
     }
 
@@ -122,10 +136,9 @@ void FollowPathClient::compute_move(){
 void FollowPathClient::result_callback(const GoalHandleFollowPath::WrappedResult& result){
     switch (result.code) {
         case rclcpp_action::ResultCode::SUCCEEDED:
+        case rclcpp_action::ResultCode::ABORTED:
             this->compute_move();
             this->send_goal();
-            break;
-        case rclcpp_action::ResultCode::ABORTED:
             RCLCPP_ERROR(this->get_logger(), "Goal was aborted");
             return;
         case rclcpp_action::ResultCode::CANCELED:

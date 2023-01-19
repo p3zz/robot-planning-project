@@ -16,7 +16,7 @@ void PoseSubscriber::topic_callback(const geometry_msgs::msg::TransformStamped& 
     // if(pose.has_value()){
     //     return;
     // }
-    RCLCPP_INFO(this->get_logger(), "Pose received: (x: %f, y: %f, th: %f)", pose.value().x, pose.value().y, pose.value().th);
+    // RCLCPP_INFO(this->get_logger(), "Pose received: (x: %f, y: %f, th: %f)", pose.value().x, pose.value().y, pose.value().th);
 }
 
 // PoseListener::PoseListener(std::optional<DubinPoint>& pose): Node("shelfino2_listener"), pose{pose}{

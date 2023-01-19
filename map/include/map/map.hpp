@@ -51,9 +51,9 @@ class Room
                         approx_area+=0.0001;
             
             //inflate room
-            dimensions_deflated = deflate(dimensions, ROBOT_CIRCLE*1.1);
+            dimensions_deflated = deflate(dimensions, ROBOT_CIRCLE);
         }
-        void add_obstacle(Polygon o){obstacles.push_back(o); obstacles_inflated.push_back(inflate(o, ROBOT_CIRCLE*1.1));}
+        void add_obstacle(Polygon o){obstacles.push_back(o); obstacles_inflated.push_back(inflate(o, ROBOT_CIRCLE));}
         Polygon get_obstacle(int index){return obstacles.at(index);}
         std::vector<Polygon> get_obstacles(){return obstacles;};
         Polygon get_inflated_obstacle(int index){return obstacles_inflated.at(index);}
