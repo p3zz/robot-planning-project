@@ -104,8 +104,8 @@ bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, dou
                 k_distance=std::pow(k_base,tms)*k_distance_init;//bigger is k_distance, more homogeneus the map, much diffcult the spawning of points
                 distance_pts=k_room_space*k_distance;
             }
-            node.x = int(rand() % int((r.get_approx_width())*100)) / 100.0;  //cm sensibility, consider room border
-            node.y = int(rand() % int((r.get_approx_height())*100)) / 100.0; //cm sensibility, consider room border
+            node.x = int(rand() % int(r.get_approx_width()*100)) / 100.0 + r.get_offset_x();  //cm sensibility, consider room border
+            node.y = int(rand() % int(r.get_approx_height()*100)) / 100.0 + r.get_offset_y(); //cm sensibility, consider room border
             count--;
         }while(!check_sparse(node, nodes, distance_pts) || point_collides(node, this->r) || !r.get_dimensions(true).contains(node)); //check for sparse nodes
         nodes.push_back(node);
@@ -189,7 +189,22 @@ bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, dou
 std::string RoadMap::get_json()
 {
     std::string json="";
-    json += "{\"roadmap\":";
+
+    json += "{\"room\": {\"h\":"+std::to_string(r.get_approx_height())+",\"w\":"+std::to_string(r.get_approx_width())+",\"min_x\":"+std::to_string(r.get_offset_x())+",\"min_y\":"+std::to_string(r.get_offset_y());
+    json += ",\"vertexes\": [";
+    for(int i=0; i<(int)r.get_dimensions(false).vertexes.size();i++)
+    {
+        json+="{\"x\":"+std::to_string(r.get_dimensions(false).get_v(i).x)+",\"y\":"+std::to_string(r.get_dimensions(false).get_v(i).y)+"}";
+        if(i+1<(int)r.get_dimensions(false).vertexes.size()) json+=",";
+    }
+    json += "],\"vertexes_deflated\": [";
+    for(int i=0; i<(int)r.get_dimensions(true).vertexes.size();i++)
+    {
+        json+="{\"x\":"+std::to_string(r.get_dimensions(true).get_v(i).x)+",\"y\":"+std::to_string(r.get_dimensions(true).get_v(i).y)+"}";
+        if(i+1<(int)r.get_dimensions(true).vertexes.size()) json+=",";
+    }
+    
+    json += "]},\"roadmap\":";
     json += "{\"nodes\":[";
     for(int i=0; i<(int)nodes.size();i++)
     {
@@ -253,31 +268,31 @@ DubinLink RoadMap::get_dubin_link(DubinPoint dp1, DubinPoint dp2)
 
 void random_obstacles_side(Room* room, int num_obstacles, const int max_side)
 {
-  Point2D* centers = new Point2D[num_obstacles];
-  for(int i=0; i<num_obstacles; i++)
-  {
-    Polygon o;
-    bool check;
-    do{
-      centers[i].x = ((rand()%(int)(room->get_approx_width()*100-max_side))+max_side/2)/100.0;
-      centers[i].y = ((rand()%(int)(room->get_approx_height()*100-max_side))+max_side/2)/100.0;
-      check=true;
-      if(!room->get_dimensions(true).contains(centers[i]))
-        check=false;
-      for(int j=0;j<i && check;j++)
-        if(distance(centers[j], centers[i])<max_side/100.0*sqrt(2))
-        {
-          check=false;
-          break;
-        }
-    }while(!check);
-    Point2D center(centers[i]);
-    o.add_v(Point2D(center.x+((rand() %(max_side/4))-(max_side/2))/100.0,center.y+((rand() %(max_side/4))+(max_side/4))/100.0));
-    o.add_v(Point2D(center.x+((rand() %(max_side/4))+(max_side/4))/100.0,center.y+((rand() %(max_side/4))+(max_side/4))/100.0));
-    o.add_v(Point2D(center.x+((rand() %(max_side/4))+(max_side/4))/100.0,center.y+((rand() %(max_side/4))-(max_side/2))/100.0));
-    o.add_v(Point2D(center.x+((rand() %(max_side/4))-(max_side/2))/100.0,center.y+((rand() %(max_side/4))-(max_side/2))/100.0));
-    room->add_obstacle(o);
-  }
+    Point2D* centers = new Point2D[num_obstacles];
+    for(int i=0; i<num_obstacles; i++)
+    {
+        Polygon o;
+        bool check;
+        do{
+        centers[i].x = ((rand()%(int)((room->get_approx_width())*100-max_side))+max_side/2)/100.0+room->get_offset_x();
+        centers[i].y = ((rand()%(int)((room->get_approx_height())*100-max_side))+max_side/2)/100.0+room->get_offset_y();
+        check=true;
+        if(!room->get_dimensions(true).contains(centers[i]))
+            check=false;
+        for(int j=0;j<i && check;j++)
+            if(distance(centers[j], centers[i])<max_side/100.0*sqrt(2))
+            {
+            check=false;
+            break;
+            }
+        }while(!check);
+        Point2D center(centers[i]);
+        o.add_v(Point2D(center.x+((rand() %(max_side/4))-(max_side/2))/100.0,center.y+((rand() %(max_side/4))+(max_side/4))/100.0));
+        o.add_v(Point2D(center.x+((rand() %(max_side/4))+(max_side/4))/100.0,center.y+((rand() %(max_side/4))+(max_side/4))/100.0));
+        o.add_v(Point2D(center.x+((rand() %(max_side/4))+(max_side/4))/100.0,center.y+((rand() %(max_side/4))-(max_side/2))/100.0));
+        o.add_v(Point2D(center.x+((rand() %(max_side/4))-(max_side/2))/100.0,center.y+((rand() %(max_side/4))-(max_side/2))/100.0));
+        room->add_obstacle(o);
+    }
 }
 
 void random_obstacles_vertexes(Room* room, int num_obstacles, int vertexes_n){

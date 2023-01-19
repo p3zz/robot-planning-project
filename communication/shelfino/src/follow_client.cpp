@@ -62,7 +62,7 @@ void FollowPathClient::send_goal(){
 
     auto path_msg = FollowPath::Goal();
     std_msgs::msg::Header h;
-    h.stamp = this->get_clock()->now();
+    h.stamp = this->get_clock()->now() + 2000;
     path_msg.path = msg_from_curve(path.value(), h);
     path_msg.controller_id = "FollowPath";
 

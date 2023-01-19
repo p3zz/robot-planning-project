@@ -20,8 +20,8 @@ class Room
 {
     private: 
         Polygon dimensions;
-        Polygon dimensions_inflated;
-        double approx_h, approx_w, approx_area;
+        Polygon dimensions_deflated;
+        double approx_h, approx_w, approx_area, off_x, off_y;
         std::vector<Polygon> obstacles;
         std::vector<Polygon> obstacles_inflated;
         std::vector<Point2D> exits;
@@ -38,6 +38,8 @@ class Room
                 if(v.y < min_y) min_y=v.y;
                 if(v.y > max_y) max_y=v.y;
             }
+            off_x = min_x;
+            off_y = min_y;
             approx_h = max_y-min_y;
             approx_w = max_x-min_x;
             approx_area=0;
@@ -49,7 +51,7 @@ class Room
                         approx_area+=0.0001;
             
             //inflate room
-            dimensions_inflated = inflate_reverse(dimensions, ROBOT_CIRCLE*1.1);
+            dimensions_deflated = deflate(dimensions, ROBOT_CIRCLE*1.1);
         }
         void add_obstacle(Polygon o){obstacles.push_back(o); obstacles_inflated.push_back(inflate(o, ROBOT_CIRCLE*1.1));}
         Polygon get_obstacle(int index){return obstacles.at(index);}
@@ -66,10 +68,12 @@ class Room
         }
         Point2D get_exit(int index, bool inflated){if(inflated) return exits_inflated.at(index); return exits.at(index);}
         int get_num_exits(){return exits.size();}
-        Polygon get_dimensions(bool inflated){if(inflated) return dimensions_inflated; return dimensions;}
+        Polygon get_dimensions(bool deflated){if(deflated) return dimensions_deflated; return dimensions;}
         double get_approx_height(){return approx_h;}
         double get_approx_width(){return approx_w;}
         double get_approx_area(){return approx_area;}
+        double get_offset_x(){return off_x;}
+        double get_offset_y(){return off_y;}
 
 };
 

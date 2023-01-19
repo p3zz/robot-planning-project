@@ -64,7 +64,7 @@ bool intersect(Circle c, Segment s, Point2D start, Point2D end);
 bool intersect(Polygon p, Segment s);
 double distance(Point2D p1, Point2D p2);
 Polygon inflate(Polygon p, double offset);
-Polygon inflate_reverse(Polygon p, double offset);
+Polygon deflate(Polygon p, double offset);
 Polygon inflate_2(Polygon p, double offset);
 Polygon regular_polygon(Point2D center, double radius, int n);
 Segment belong(Polygon pol, Point2D p, double offset);
