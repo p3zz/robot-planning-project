@@ -105,7 +105,8 @@ class FollowPathClient : public rclcpp::Node {
   using GoalHandleFollowPath = rclcpp_action::ClientGoalHandle<FollowPath>;
 
   public:
-    FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose, std::optional<DubinPoint>& pursuer_pose, Shelfino which, std::string service_name);
+    FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose,
+      std::optional<DubinPoint>& pursuer_pose, Shelfino which, std::string service_name, std::string node_name);
 
   private:
     rclcpp_action::Client<FollowPath>::SharedPtr client_ptr_;
@@ -125,7 +126,7 @@ class FollowPathClient : public rclcpp::Node {
 
 class PathPublisher : public rclcpp::Node {
   public:
-    PathPublisher(std::optional<DubinCurve>& path, std::string topic_name);
+    PathPublisher(std::optional<DubinCurve>& path, std::string topic_name, std::string node_name);
 
   private:
     void timer_callback();

@@ -1,6 +1,6 @@
 #include "shelfino/shelfino.hpp"
 
-PathPublisher::PathPublisher(std::optional<DubinCurve>& path, std::string topic_name) : Node("path_publisher"), path{path} {    
+PathPublisher::PathPublisher(std::optional<DubinCurve>& path, std::string topic_name, std::string node_name) : Node(node_name), path{path} {    
     publisher_ = this->create_publisher<nav_msgs::msg::Path>(topic_name, 10);
     timer_ = this->create_wall_timer(1s, std::bind(&PathPublisher::timer_callback, this));
     RCLCPP_INFO(this->get_logger(), "Ready to publish");
