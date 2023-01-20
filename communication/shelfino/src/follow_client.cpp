@@ -40,9 +40,8 @@ nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
   return path;
 }
 
-FollowPathClient::FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose,
-    std::optional<DubinPoint>& pursuer_pose, Shelfino which, std::string service_name, std::string node_name)
-        : Node(node_name), map{map}, path{path}, evader_pose{evader_pose}, pursuer_pose{pursuer_pose}, which{which}, service_name{service_name}{
+FollowPathClient::FollowPathClient(std::optional<RoadMap>& map, ShelfinoType type, ShelfinoDto& evader, ShelfinoDto& pursuer,
+    std::string service_name, std::string node_name) : Node(node_name), map{map}, evader{evader}, pursuer{pursuer}, type{type}{
     client_ptr_ = rclcpp_action::create_client<FollowPath>(this, service_name);
     this->compute_move();
     this->send_goal();
@@ -52,18 +51,20 @@ void FollowPathClient::send_goal(){
     RCLCPP_INFO(this->get_logger(), "Waiting for action server");
     if (!this->client_ptr_->wait_for_action_server()) {
         RCLCPP_ERROR(this->get_logger(), "Action server not found");
-        return;
+        exit(2);
     }
-
     RCLCPP_INFO(this->get_logger(), "Action server found");
-    if(!path.has_value()){
-        return;
-    }
 
     auto path_msg = FollowPath::Goal();
     std_msgs::msg::Header h;
     h.stamp = this->get_clock()->now();
-    path_msg.path = msg_from_curve(path.value(), h);
+
+    if(type == ShelfinoType::Pursuer){
+        path_msg.path = msg_from_curve(pursuer.path_to_follow.value(), h);
+    }else{
+        path_msg.path = msg_from_curve(evader.path_to_follow.value(), h);
+    }
+
     path_msg.controller_id = "FollowPath";
 
     RCLCPP_INFO(this->get_logger(), "Message: ");
@@ -73,38 +74,33 @@ void FollowPathClient::send_goal(){
     }
 
     auto send_goal_options = rclcpp_action::Client<FollowPath>::SendGoalOptions();
-    send_goal_options.feedback_callback = std::bind(&FollowPathClient::feedback_callback, this, _1, _2);
     send_goal_options.result_callback = std::bind(&FollowPathClient::result_callback, this, _1);
     this->client_ptr_->async_send_goal(path_msg, send_goal_options);
     RCLCPP_INFO(this->get_logger(), "Sending goal");
 }
 
-void FollowPathClient::goal_response_callback(const GoalHandleFollowPath::SharedPtr& goal_handle){
-    if (!goal_handle) {
-        RCLCPP_ERROR(this->get_logger(), "Goal was rejected by server");
-    } else {
-        RCLCPP_INFO(this->get_logger(), "Goal accepted by server, waiting for result");
-    }
-}
-
-void FollowPathClient::feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback){
-}
-
-void FollowPathClient::compute_move(){
+bool FollowPathClient::compute_move(){
+    // check if the map exists
     if(!map.has_value()){
         RCLCPP_ERROR(this->get_logger(), "Invalid roadmap");
+        return false;
     }
     
-    if(!pursuer_pose.has_value() || !evader_pose.has_value()){
+    // check if both pursuer and evader poses exist
+    if(!pursuer.pose.has_value() || !evader.pose.has_value()){
         RCLCPP_ERROR(this->get_logger(), "Cannot retrieve shelfino position");
-        return;
+        return false;
     }
+
+    // wait until both shelfinos are idle (not moving)
+    while(evader.status == ShelfinoStatus::Moving || pursuer.status == ShelfinoStatus::Moving){}
 
     PayoffMatrix pm(map.value());
     Path p, e;
-    if(!pm.compute_move(pursuer_pose.value(), evader_pose.value(), p, e)){
+    // if there are no moves found for both shelfinos, exit
+    if(!pm.compute_move(pursuer.pose.value(), evader.pose.value(), p, e)){
         RCLCPP_ERROR(this->get_logger(), "No further moves found");
-        return;
+        exit(2);
     }
 
     // if pursuer and evader have the same destination or the destination of the evader is the start of the pursuer, catch!
@@ -123,22 +119,21 @@ void FollowPathClient::compute_move(){
         }
     }
 
-    if(which == Shelfino::Pursuer){
-        path.emplace(p.l1.get_curve());
-    } else {
-        path.emplace(e.l1.get_curve());
-    }
+    pursuer.path_to_follow.emplace(p.l1.get_curve());
+    evader.path_to_follow.emplace(e.l1.get_curve());
 
     RCLCPP_INFO(this->get_logger(), "Path computed");
 
+    return true;
 }
 
 void FollowPathClient::result_callback(const GoalHandleFollowPath::WrappedResult& result){
     switch (result.code) {
         case rclcpp_action::ResultCode::SUCCEEDED:
         case rclcpp_action::ResultCode::ABORTED:
-            this->compute_move();
-            this->send_goal();
+            if(this->compute_move()){
+                this->send_goal();
+            }
             RCLCPP_ERROR(this->get_logger(), "Goal was aborted");
             return;
         case rclcpp_action::ResultCode::CANCELED:

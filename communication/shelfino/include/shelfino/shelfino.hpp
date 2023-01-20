@@ -32,24 +32,33 @@ using std::placeholders::_1;
 using std::placeholders::_2;
 using namespace std::chrono_literals;
 
-enum Shelfino{
+enum ShelfinoType {
     Pursuer,
     Evader
 };
 
-class ShelfinoDto {
-    public:
-        ShelfinoDto():gates_position{std::nullopt}, map_borders{std::nullopt}, obstacles{std::nullopt},
-          pursuer_pose{std::nullopt}, evader_pose{std::nullopt}, roadmap{std::nullopt}, evader_path_to_follow{std::nullopt}, pursuer_path_to_follow{std::nullopt}{}
+enum ShelfinoStatus {
+  Idle,
+  Moving
+};
 
+class EnvironmentDto {
+    public:
         std::optional<std::vector<Point2D>> gates_position;
         std::optional<Polygon> map_borders;
         std::optional<std::vector<Polygon>> obstacles;
-        std::optional<DubinPoint> pursuer_pose;
-        std::optional<DubinPoint> evader_pose;
         std::optional<RoadMap> roadmap;
-        std::optional<DubinCurve> evader_path_to_follow;
-        std::optional<DubinCurve> pursuer_path_to_follow;
+
+        EnvironmentDto():gates_position{std::nullopt}, map_borders{std::nullopt}, obstacles{std::nullopt}, roadmap{std::nullopt}{}
+};
+
+class ShelfinoDto {
+  public:
+    std::optional<DubinPoint> pose;
+    std::optional<DubinCurve> path_to_follow;
+    ShelfinoStatus status;
+
+    ShelfinoDto():pose{std::nullopt}, path_to_follow{path_to_follow}, status{ShelfinoStatus::Idle} {}
 };
 
 class GatesSubscriber : public rclcpp::Node {
@@ -105,22 +114,17 @@ class FollowPathClient : public rclcpp::Node {
   using GoalHandleFollowPath = rclcpp_action::ClientGoalHandle<FollowPath>;
 
   public:
-    FollowPathClient(std::optional<RoadMap>& map, std::optional<DubinCurve>& path, std::optional<DubinPoint>& evader_pose,
-      std::optional<DubinPoint>& pursuer_pose, Shelfino which, std::string service_name, std::string node_name);
+    FollowPathClient(std::optional<RoadMap>& map, ShelfinoType type, ShelfinoDto& evader, ShelfinoDto& pursuer, std::string service_name, std::string node_name);
 
   private:
     rclcpp_action::Client<FollowPath>::SharedPtr client_ptr_;
-    std::optional<DubinCurve>& path;
     std::optional<RoadMap>& map;
-    std::optional<DubinPoint>& evader_pose;
-    std::optional<DubinPoint>& pursuer_pose;
-    Shelfino which;
-    std::string service_name;
+    ShelfinoDto& evader;
+    ShelfinoDto& pursuer;
+    ShelfinoType type;
 
-    void compute_move();
+    bool compute_move();
     void send_goal();
-    void goal_response_callback(const GoalHandleFollowPath::SharedPtr& goal_handle);
-    void feedback_callback(GoalHandleFollowPath::SharedPtr, const std::shared_ptr<const FollowPath::Feedback> feedback);
     void result_callback(const GoalHandleFollowPath::WrappedResult& result);
 };
 

@@ -1,15 +1,15 @@
 #include "shelfino/shelfino.hpp"
 
-const std::string evader = "shelfino1";
-const std::string pursuer = "shelfino2";
+const std::string EVADER_NAMESPACE = "shelfino1";
+const std::string PURSUER_NAMESPACE = "shelfino2";
 
-void subscriber_body(ShelfinoDto& dto){
+void subscriber_body(EnvironmentDto& env, ShelfinoDto& evader, ShelfinoDto& pursuer){
     rclcpp::executors::SingleThreadedExecutor executor;
-    auto gate_subscriber = std::make_shared<GatesSubscriber>(dto.gates_position);
-    auto walls_subscriber = std::make_shared<WallsSubscriber>(dto.map_borders);
-    auto obstacles_subscriber = std::make_shared<ObstaclesSubscriber>(dto.obstacles);
-    auto evader_pose_subscriber = std::make_shared<PoseSubscriber>(dto.evader_pose, evader + "/transform", evader + "_transform");
-    auto pursuer_pose_subscriber = std::make_shared<PoseSubscriber>(dto.pursuer_pose, pursuer + "/transform", pursuer + "_transform");
+    auto gate_subscriber = std::make_shared<GatesSubscriber>(env.gates_position);
+    auto walls_subscriber = std::make_shared<WallsSubscriber>(env.map_borders);
+    auto obstacles_subscriber = std::make_shared<ObstaclesSubscriber>(env.obstacles);
+    auto evader_pose_subscriber = std::make_shared<PoseSubscriber>(evader.pose, EVADER_NAMESPACE + "/transform", EVADER_NAMESPACE + "_transform");
+    auto pursuer_pose_subscriber = std::make_shared<PoseSubscriber>(pursuer.pose, PURSUER_NAMESPACE + "/transform", PURSUER_NAMESPACE + "_transform");
     executor.add_node(gate_subscriber);
     executor.add_node(walls_subscriber);
     executor.add_node(obstacles_subscriber);
@@ -19,11 +19,11 @@ void subscriber_body(ShelfinoDto& dto){
     rclcpp::shutdown();
 }
 
-void publisher_body(ShelfinoDto& dto){
+void publisher_body(EnvironmentDto& env, ShelfinoDto& evader, ShelfinoDto& pursuer){
     rclcpp::executors::SingleThreadedExecutor executor;
-    auto roadmap_publisher = std::make_shared<RoadmapPublisher>(dto.roadmap);
-    auto path_evader_publisher = std::make_shared<PathPublisher>(dto.evader_path_to_follow, evader + "/plan", evader + "_plan");
-    auto path_pursuer_publisher = std::make_shared<PathPublisher>(dto.pursuer_path_to_follow, pursuer + "/plan", pursuer + "_plan");
+    auto roadmap_publisher = std::make_shared<RoadmapPublisher>(env.roadmap);
+    auto path_evader_publisher = std::make_shared<PathPublisher>(evader.path_to_follow, EVADER_NAMESPACE + "/plan", EVADER_NAMESPACE + "_plan");
+    auto path_pursuer_publisher = std::make_shared<PathPublisher>(pursuer.path_to_follow, PURSUER_NAMESPACE + "/plan", PURSUER_NAMESPACE + "_plan");
     executor.add_node(roadmap_publisher);
     executor.add_node(path_evader_publisher);
     executor.add_node(path_pursuer_publisher);
@@ -31,12 +31,10 @@ void publisher_body(ShelfinoDto& dto){
     rclcpp::shutdown();
 }
 
-void service_body(ShelfinoDto& dto){
+void service_body(EnvironmentDto& env, ShelfinoDto& evader, ShelfinoDto& pursuer){
     rclcpp::executors::SingleThreadedExecutor executor;
-    auto follow_path_evader_client = std::make_shared<FollowPathClient>(dto.roadmap, dto.evader_path_to_follow, dto.evader_pose,
-        dto.pursuer_pose, Shelfino::Evader, evader + "/follow_path", evader + "_follow_path");
-    auto follow_path_pursuer_client = std::make_shared<FollowPathClient>(dto.roadmap, dto.pursuer_path_to_follow, dto.evader_pose,
-        dto.pursuer_pose, Shelfino::Pursuer, pursuer + "/follow_path", pursuer + "_follow_path");
+    auto follow_path_evader_client = std::make_shared<FollowPathClient>(env.roadmap, evader, pursuer, ShelfinoType::Evader, EVADER_NAMESPACE + "/follow_path", EVADER_NAMESPACE + "_follow_path");
+    auto follow_path_pursuer_client = std::make_shared<FollowPathClient>(env.roadmap, evader, pursuer, ShelfinoType::Pursuer, PURSUER_NAMESPACE + "/follow_path", PURSUER_NAMESPACE + "_follow_path");
     executor.add_node(follow_path_evader_client);
     executor.add_node(follow_path_pursuer_client);
     executor.spin();
@@ -51,23 +49,25 @@ void service_body(ShelfinoDto& dto){
 
 int main(int argc, char * argv[]) {
     rclcpp::init(argc, argv);
-    auto dto = ShelfinoDto();
-    std::thread subscriber(subscriber_body, std::ref(dto));
+    auto env = EnvironmentDto();
+    auto evader = ShelfinoDto();
+    auto pursuer = ShelfinoDto();
+    std::thread subscriber(subscriber_body, std::ref(env), std::ref(evader), std::ref(pursuer));
     subscriber.detach();
     // wait for map borders, gate position and obstacles
-    while(!dto.gates_position.has_value() || !dto.map_borders.has_value() || !dto.obstacles.has_value()){}
+    while(!env.gates_position.has_value() || !env.map_borders.has_value() || !env.obstacles.has_value()){}
     // setup room
-    Room room(dto.map_borders.value());
+    Room room(env.map_borders.value());
     // setup obstacles
-    for(auto &obstacle: dto.obstacles.value()){
+    for(auto &obstacle: env.obstacles.value()){
         room.add_obstacle(obstacle);
     }
     // setup gates
-    for(auto &gate: dto.gates_position.value()){
+    for(auto &gate: env.gates_position.value()){
         room.add_exit(gate);
     }
 
-    while(!dto.pursuer_pose.has_value() || !dto.evader_pose.has_value()){}
+    while(!pursuer.pose.has_value() || !evader.pose.has_value()){}
 
     // build roadmap
     RoadMap rm(room);
@@ -75,25 +75,25 @@ int main(int argc, char * argv[]) {
     std::cout<<"Building roadmap"<<std::endl;
 
     // build roadmap
-    if(!rm.construct_roadmap(60, 4, 0.5, 500, dto.pursuer_pose.value().get_point(), dto.evader_pose.value().get_point())){
+    if(!rm.construct_roadmap(60, 4, 0.5, 500, pursuer.pose.value().get_point(), evader.pose.value().get_point())){
         std::cout<<"Error while building roadmap"<<std::endl;
         return 1;
     }
 
     std::cout<<"Roadmap built"<<std::endl;
 
-    std::ofstream myfile;
-    myfile.open ("map.json", std::ofstream::trunc);
-    myfile << rm.get_json();
-    myfile.close();
+    // std::ofstream myfile;
+    // myfile.open ("map.json", std::ofstream::trunc);
+    // myfile << rm.get_json();
+    // myfile.close();
 
-    dto.roadmap.emplace(rm);
+    env.roadmap.emplace(rm);
     
     // // launch roadmap publisher
-    std::thread publisher(publisher_body, std::ref(dto));
+    std::thread publisher(publisher_body, std::ref(env), std::ref(evader), std::ref(pursuer));
     publisher.detach();
 
-    std::thread service(service_body, std::ref(dto));
+    std::thread service(service_body, std::ref(env), std::ref(evader), std::ref(pursuer));
     service.join();
     return 0;
 }
