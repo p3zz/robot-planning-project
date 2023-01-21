@@ -151,7 +151,7 @@ def main():
     moves_purser = data["moves_pursuer"]
     moves_evader = data["moves_evader"]
 
-    draw_moves(win, moves_purser, "green")
+    draw_moves(win, moves_purser, "green2")
     draw_moves(win, moves_evader, "orange")    
         
     keyString = ""
