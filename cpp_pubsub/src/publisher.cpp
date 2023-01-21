@@ -13,8 +13,8 @@ int main()
 {
   // Seed::init_seed(1920815646);
   // Logger(Logger::INFO, "The seed is " + to_string(Seed::get_seed()));
-  DubinPoint pursuer(3, 1, M_PI*1.75);
-  DubinPoint evader(1, 3, M_PI*0.75);
+  DubinPoint pursuer(-4.5, 0,  M_PI*1.75);
+  DubinPoint evader(4.5, 0, M_PI*0.75);
   ROSTimer mytimer;
   
   // Construct random room
@@ -23,9 +23,8 @@ int main()
   Room room(dim_room);
   room.add_obstacle(Polygon({Point2D(-1, 0), Point2D(-1, 1), Point2D(0, 1), Point2D(0, 0)}));
   room.add_obstacle(Polygon({Point2D(3, 0), Point2D(4, -1), Point2D(2, -1)}));
-  room.add_exit(Point2D(-5,-2));
-  room.add_exit(Point2D(-2,-5));
-
+  room.add_exit(Point2D(-2, 5));
+  room.add_exit(Point2D(2, -5));
   Logger(Logger::INFO, "Time passed to construct room: " + mytimer);
   mytimer.rst();
 
@@ -53,12 +52,33 @@ int main()
   std::vector<DubinLink> p_moves;
   std::vector<DubinLink> e_moves;
 
-  // while moves exists and both shelfinos don't compute the same destination etc..
-  while (mat.compute_move(p_last_src, e_last_src, p, e) && !(p.l1.get_dst() == e.l1.get_dst()) && !(p.l1.get_src() == e.l1.get_dst())){
+  // while moves exists
+  while (mat.compute_move(p_last_src, e_last_src, p, e)){
     p_last_src = p.l1.get_dst();
     e_last_src = e.l1.get_dst();
     p_moves.push_back(p.l1);
     e_moves.push_back(e.l1);
+    bool same_destination = p.l1.get_dst() == e.l1.get_dst();
+
+    bool idle_while_catching = p.l1.get_src() == e.l1.get_dst();
+    
+    bool evaded = false;
+    for(int i=0;i<room.get_num_exits();i++){
+      auto exit = room.get_exit(i, true);
+      auto e_dst = Point2D(e.l1.get_dst().x, e.l1.get_dst().y);
+      if(e_dst == exit){
+        evaded = true;
+      }
+    }
+
+    if(evaded) Logger(Logger::INFO, "Evader has reached the exit");
+    if(same_destination) Logger(Logger::INFO, "Evader and pursuer have computed the same destination");
+    if(idle_while_catching) Logger(Logger::INFO, "Evader has computed the position of pursuer as destination");
+
+    if(evaded || same_destination || idle_while_catching){
+      break;
+    }
+
     Logger(Logger::INFO, "Moves found");
   }
   
