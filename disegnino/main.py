@@ -98,7 +98,7 @@ def draw_moves(win, moves, color):
     lst_y = ty(moves[0]["y"])
     t = Text(Point(lst_x, lst_y-10), "0")
     t.setSize(14)
-    t.setFill(color)
+    t.setFill("black")
     t.draw(win)
     for move in moves[1:]:
         act_x = tx(move["x"])
@@ -111,7 +111,7 @@ def draw_moves(win, moves, color):
         if(move["marked"]):
             t = Text(Point(act_x, act_y-10), str(index))
             t.setSize(14)
-            t.setFill(color)
+            t.setFill("black")
             t.draw(win)
             index += 1
         lst_x=act_x
