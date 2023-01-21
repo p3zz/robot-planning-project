@@ -33,8 +33,8 @@ void publisher_body(EnvironmentDto& env, ShelfinoDto& evader, ShelfinoDto& pursu
 
 void service_body(EnvironmentDto& env, ShelfinoDto& evader, ShelfinoDto& pursuer){
     rclcpp::executors::SingleThreadedExecutor executor;
-    auto follow_path_evader_client = std::make_shared<FollowPathClient>(env.roadmap, evader, pursuer, ShelfinoType::Evader, EVADER_NAMESPACE + "/follow_path", EVADER_NAMESPACE + "_follow_path");
-    auto follow_path_pursuer_client = std::make_shared<FollowPathClient>(env.roadmap, evader, pursuer, ShelfinoType::Pursuer, PURSUER_NAMESPACE + "/follow_path", PURSUER_NAMESPACE + "_follow_path");
+    auto follow_path_evader_client = std::make_shared<FollowPathClient>(env.roadmap, ShelfinoType::Evader, evader, pursuer, EVADER_NAMESPACE + "/follow_path", EVADER_NAMESPACE + "_follow_path");
+    auto follow_path_pursuer_client = std::make_shared<FollowPathClient>(env.roadmap, ShelfinoType::Pursuer, evader, pursuer, PURSUER_NAMESPACE + "/follow_path", PURSUER_NAMESPACE + "_follow_path");
     executor.add_node(follow_path_evader_client);
     executor.add_node(follow_path_pursuer_client);
     executor.spin();

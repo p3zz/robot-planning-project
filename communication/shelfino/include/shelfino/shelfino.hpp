@@ -43,22 +43,25 @@ enum ShelfinoStatus {
 };
 
 class EnvironmentDto {
-    public:
-        std::optional<std::vector<Point2D>> gates_position;
-        std::optional<Polygon> map_borders;
-        std::optional<std::vector<Polygon>> obstacles;
-        std::optional<RoadMap> roadmap;
+  public:
 
-        EnvironmentDto():gates_position{std::nullopt}, map_borders{std::nullopt}, obstacles{std::nullopt}, roadmap{std::nullopt}{}
+    EnvironmentDto():gates_position{std::nullopt}, map_borders{std::nullopt}, obstacles{std::nullopt}, roadmap{std::nullopt}{}
+
+    std::optional<std::vector<Point2D>> gates_position;
+    std::optional<Polygon> map_borders;
+    std::optional<std::vector<Polygon>> obstacles;
+    std::optional<RoadMap> roadmap;
 };
 
 class ShelfinoDto {
   public:
+
+    ShelfinoDto():pose{std::nullopt}, path_to_follow{std::nullopt}, status{ShelfinoStatus::Idle} {}
+
     std::optional<DubinPoint> pose;
     std::optional<DubinCurve> path_to_follow;
     ShelfinoStatus status;
 
-    ShelfinoDto():pose{std::nullopt}, path_to_follow{path_to_follow}, status{ShelfinoStatus::Idle} {}
 };
 
 class GatesSubscriber : public rclcpp::Node {
