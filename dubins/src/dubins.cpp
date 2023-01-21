@@ -428,3 +428,19 @@ string operator + (string s, DubinCurve& dc)
 {
     return s+dc.arcs.at(0)+dc.arcs.at(1)+dc.arcs.at(2);
 }
+
+std::string DubinLink::to_json(double precision){
+    std::vector<DubinPoint> points = get_curve().to_points_homogeneous(precision);
+    std::string json;
+
+    for(auto &p:points){
+        json += "{";
+        json += "\"x\":" + to_string(p.x) + ",";
+        json += "\"y\":" + to_string(p.y) + ",";
+        // highlight first and last points of the curve
+        json += (p == points.front() ? "\"marked\": true" : "\"marked\": false");
+        json += (p == points.back() ? "}" : "},");
+    }
+ 
+    return json;
+}

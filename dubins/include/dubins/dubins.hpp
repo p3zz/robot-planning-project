@@ -101,6 +101,7 @@ class DubinLink{
         DubinPoint get_dst(){return dst;}
         DubinCurve get_curve(){return curve;}
         bool is_empty(){return empty;}
+        std::string to_json(double precision);
 };
 
 struct primitive{ 

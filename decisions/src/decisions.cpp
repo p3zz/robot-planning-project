@@ -214,79 +214,54 @@ bool PayoffMatrix::compute_move(DubinPoint pursuer, DubinPoint evader, Path& pat
     return true;
 }
 
-std::string get_path_json(Path& path_pursuer, Path& path_evader, double precision)
-{
+std::string get_pursuer_evader_path_json(Path path_pursuer, Path path_evader, double precision){
     std::string s;
 
     s += "{";
 
     std::vector<DubinPoint> points = path_pursuer.l1.get_curve().to_points_homogeneous(precision);
-    s +=    "\"moves_pursuer\":";
-    s +=        "[";
-    for(int i=0; i<(int)points.size(); i++)
-    {
-    s +=            "{";
-    s +=                "\"x\":"+to_string(points.at(i).x)+",";
-    s +=                "\"y\":"+to_string(points.at(i).y)+",";
-    s +=                "\"marked\": false";
-    s +=            "},";
-    }
-    points.clear();
-    points = path_pursuer.l2.get_curve().to_points_homogeneous(precision);
-    s +=            "{";
-    s +=                "\"x\":"+to_string(path_pursuer.p1.x)+",";
-    s +=                "\"y\":"+to_string(path_pursuer.p1.y)+",";
-    s +=                "\"marked\": true";
-    s +=            "},";
-    for(int i=0; i<(int)points.size(); i++)
-    {
-    s +=            "{";
-    s +=                "\"x\":"+to_string(points.at(i).x)+",";
-    s +=                "\"y\":"+to_string(points.at(i).y)+",";
-    s +=                "\"marked\": false";
-    s +=            "},";
-    }
-    s +=            "{";
-    s +=                "\"x\":"+to_string(path_pursuer.p2.x)+",";
-    s +=                "\"y\":"+to_string(path_pursuer.p2.y)+",";
-    s +=                "\"marked\": true";
-    s +=            "}";
-    s +=        "],";
+    s += "\"moves_pursuer\":";
+    s += "[";
+    s += path_pursuer.to_json(precision);
+    s += "],";
     
-    points.clear();
-    points = path_evader.l1.get_curve().to_points_homogeneous(precision);
-    s +=    "\"moves_evader\":";
-    s +=        "[";
-    for(int i=0; i<(int)points.size(); i++)
-    {
-    s +=            "{";
-    s +=                "\"x\":"+to_string(points.at(i).x)+",";
-    s +=                "\"y\":"+to_string(points.at(i).y)+",";
-    s +=                "\"marked\": false";
-    s +=            "},";
-    }
-    points.clear();
-    points = path_evader.l2.get_curve().to_points_homogeneous(precision);
-    s +=            "{";
-    s +=                "\"x\":"+to_string(path_evader.p1.x)+",";
-    s +=                "\"y\":"+to_string(path_evader.p1.y)+",";
-    s +=                "\"marked\": true";
-    s +=            "},";
-    for(int i=0; i<(int)points.size(); i++)
-    {
-    s +=            "{";
-    s +=                "\"x\":"+to_string(points.at(i).x)+",";
-    s +=                "\"y\":"+to_string(points.at(i).y)+",";
-    s +=                "\"marked\": false";
-    s +=            "},";
-    }
-    s +=            "{";
-    s +=                "\"x\":"+to_string(path_evader.p2.x)+",";
-    s +=                "\"y\":"+to_string(path_evader.p2.y)+",";
-    s +=                "\"marked\": true";
-    s +=            "}";
-    s +=        "]";
+    s += "\"moves_evader\":";
+    s += "[";
+    s += path_evader.to_json(precision);
+    s += "]";
+    s += "}";
 
+    return s;   
+}
+
+std::string get_pursuer_evader_moves_json(std::vector<DubinLink> pursuer_moves, std::vector<DubinLink> evader_moves, double precision){
+    std::string s;
+
+    s += "{";
+
+    s += "\"moves_pursuer\":";
+    s += "[";
+    auto index = 0;
+    for(auto &move: pursuer_moves){
+        s += move.to_json(precision);
+        if(index != (int)pursuer_moves.size() - 1){
+            s += ",";
+        }
+        index++;
+    }
+    s += "],";
+    
+    s += "\"moves_evader\":";
+    s += "[";
+    index = 0;
+    for(auto &move: evader_moves){
+        s += move.to_json(precision);
+        if(index != (int)evader_moves.size() - 1){
+            s += ",";
+        }
+        index++;
+    }
+    s += "]";
     s += "}";
 
     return s;   
@@ -297,4 +272,8 @@ string operator + (string s, Path& path)
     DubinCurve first=path.l1.get_curve();
     DubinCurve second=path.l2.get_curve();
     return s+" -"+first+"-> "+path.p1+" -"+second+"-> "+path.p2;
+}
+
+std::string Path::to_json(double precision){
+    return l1.to_json(precision) + "," + l2.to_json(precision);
 }
