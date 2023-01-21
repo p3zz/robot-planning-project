@@ -43,8 +43,14 @@ nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
 FollowPathClient::FollowPathClient(std::optional<RoadMap>& map, ShelfinoType type, ShelfinoDto& evader, ShelfinoDto& pursuer,
     std::string service_name, std::string node_name) : Node(node_name), map{map}, evader{evader}, pursuer{pursuer}, type{type}{
     client_ptr_ = rclcpp_action::create_client<FollowPath>(this, service_name);
-    this->compute_move();
-    this->send_goal();
+    if(this->compute_move()){
+        this->send_goal();
+        if(type == ShelfinoType::Pursuer){
+            pursuer.status = ShelfinoStatus::Moving;
+        }else{
+            evader.status = ShelfinoStatus::Moving;
+        }
+    }
 }
 
 void FollowPathClient::send_goal(){
@@ -131,8 +137,18 @@ void FollowPathClient::result_callback(const GoalHandleFollowPath::WrappedResult
     switch (result.code) {
         case rclcpp_action::ResultCode::SUCCEEDED:
         case rclcpp_action::ResultCode::ABORTED:
+            if(type == ShelfinoType::Pursuer){
+                pursuer.status = ShelfinoStatus::Idle;
+            }else{
+                evader.status = ShelfinoStatus::Idle;
+            }
             if(this->compute_move()){
                 this->send_goal();
+                if(type == ShelfinoType::Pursuer){
+                   pursuer.status = ShelfinoStatus::Moving;
+                }else{
+                    evader.status = ShelfinoStatus::Moving;
+                }
             }
             RCLCPP_ERROR(this->get_logger(), "Goal was aborted");
             return;
