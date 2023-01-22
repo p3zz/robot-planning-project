@@ -1,7 +1,49 @@
+### Packages
+- communication: subscribers, publishers and clients that communicate with Shelfino
+- decisions: planning logic
+- dubins: dubin logic
+- map: roadmap logic
+- shapes: basic shapes (polygon, segment, point) with collisions checks
+- utils
+- obstacles_msgs, graph_msgs: custom messages
+
+### Testing
+3 test suites:
+- dubins: dubin curve - segment, dubin curve - polygon collision checks
+- shapes: general collsion checks
+- map: roadmap build's performance
+
+To run a test:
+```bash
+colcon test --packages-select package_name --event-handler=console_direct+
+```
+
+### Simulation
+Step-by-step simulation using both pursuer and evader.
+To run the simulation:
+```bash
+ros2 run cpp_pubsub publisher
+```
+Once the simulation is completed, 2 files will be available: 
+- map.json: contains the configuration of the whole roadmap (map borders, nodes, links, obstacles and exits)
+- moves.json: contains the sequence of moves of both pursuer and evader
+
+To visualize only the map:
+```bash
+cd disegnino
+python3 main.py path/to/map  
+```
+
+To visualize the whole race:
+```bash
+cd disegnino
+python3 main.py path/to/map path/to/moves  
+```
+
 ### Build
 From the root dir
 ```bash
-colcon build --packages-select cpp_pubsub
+colcon build
 ```
 
 ### Run
@@ -10,24 +52,7 @@ Make the executable reachable:
 . install/setup.bash
 ```
 
-```bash
-ros2 run cpp_pubsub publisher
+Run the communication stack:
 ```
-### Test
-```bash
-colcon test --packages-select collisions --event-handler=console_direct+
+ros2 run shelfino shelfino
 ```
-
-## Collisions
-
-### segment/segment
-![segment_segmen_intersection](https://user-images.githubusercontent.com/84152495/204867692-210016da-d72c-479b-b5e6-1ad0e74572c4.png)
-
-### segment/circle
-![segment_circle_intersection](https://user-images.githubusercontent.com/84152495/204867856-3701396b-a975-4355-9c73-e82d65152227.png)
-
-### segment/arc
-![arc_segment_intersection](https://user-images.githubusercontent.com/84152495/204867933-0e69153b-77e3-4d62-bc3d-b66c5063b831.png)
-
-### Centre and radius of circle given 3 points
-![circle_centre_radius_given_points](https://user-images.githubusercontent.com/84152495/204868406-e6384deb-3b48-4066-85a0-ecc90c457760.png)
