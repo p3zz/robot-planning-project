@@ -15,6 +15,7 @@
 
 #define KNN_MAX 10
 #define POINT_COORD_MAX 999999
+#define MAX_CURVATURE 3
 
 class Room
 {

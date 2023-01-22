@@ -10,14 +10,6 @@
 #include <shapes/shapes.hpp>
 #include <map>
 
-
-#define DEBUG_MOBILE true
-
-#define MAX_LENGTH_TRAJ 500.0 // traj meter max
-#define CURV_MAX 3     // max meter curvature
-
-#define DOUBLE_MAX 1.79769e+308
-
 enum CurveType{
     LSL,
     RSR,
@@ -109,9 +101,10 @@ struct primitive{
     double curve1_len, curve2_len, curve3_len;
 };
 
-DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end);
-std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end);
+DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end, const double curvature);
+std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end, const double curvature);
 bool intersect(DubinCurve c, Polygon p);
+bool intersect(DubinCurve c, Segment s);
 bool intersect(DubinCurve c, Polygon p, int n);
 bool intersect_sides(DubinCurve c, Polygon p);
 

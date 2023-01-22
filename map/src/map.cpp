@@ -146,7 +146,7 @@ bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, dou
             for(double th_dst = 0; th_dst < 2 * M_PI; th_dst += step){
                 DubinPoint node2(link.node2.x, link.node2.y, th_dst);
                 // compute dubins from node1 to node2
-                auto curves = dubin_curves(node1, node2);
+                auto curves = dubin_curves(node1, node2, MAX_CURVATURE);
                 for(auto &curve: curves){
                     bool inter = intersect_sides(curve, dimensions_room);
                     if(!inter)
@@ -164,7 +164,7 @@ bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, dou
                 }
 
                 // compute dubins from node2 to node1
-                curves = dubin_curves(node2, node1);
+                curves = dubin_curves(node2, node1, MAX_CURVATURE);
                 for(auto &curve: curves){
                     bool inter = intersect_sides(curve, dimensions_room);
                     if(!inter)

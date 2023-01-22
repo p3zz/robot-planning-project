@@ -81,7 +81,7 @@ DubinPoint DubinArc::get_dest(){
     return DubinPoint(x,y,th);
 }
 
-Eigen::Vector4d scale_to_standard(DubinPoint p_start, DubinPoint p_end){    
+Eigen::Vector4d scale_to_standard(DubinPoint p_start, DubinPoint p_end, const double curvature){    
     double dx = p_end.x - p_start.x;
     double dy = p_end.y - p_start.y;
     double phi = atan2(dy,dx);
@@ -89,7 +89,7 @@ Eigen::Vector4d scale_to_standard(DubinPoint p_start, DubinPoint p_end){
 
     double scaled_th0 = mod2pi(p_start.th - phi);     
     double scaled_thf = mod2pi(p_end.th - phi);
-    double scaled_kmax = CURV_MAX*lambda;
+    double scaled_kmax = curvature * lambda;
     return Eigen::Vector4d(scaled_th0,scaled_thf,scaled_kmax,lambda);
 }
 
@@ -269,7 +269,7 @@ void sort_curves_by_length(std::vector<DubinCurve>& curves){
 }
 
 // return an ordered vector containing every dubin curve that links p_start to p_end
-std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end){
+std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end, const double curvature){
     std::vector<DubinCurve> curves;
     double const optimal_curves_n = 6;
 
@@ -282,7 +282,7 @@ std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end){
         { CurveType::LRL, {ArcType::Left,  ArcType::Right,  ArcType::Left} }
     };
 
-    Eigen::Vector4d scaled = scale_to_standard(p_start, p_end);
+    Eigen::Vector4d scaled = scale_to_standard(p_start, p_end, curvature);
 
     for(int i = 0 ; i < optimal_curves_n ; i++){
         CurveType ct = static_cast<CurveType>(i);
@@ -290,9 +290,9 @@ std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end){
         if(prim.ok){
             Eigen::Vector3d curves_len = scale_from_standard(scaled(3), prim.curve1_len, prim.curve2_len, prim.curve3_len);
             auto arc_types = CURVE_TO_ARC_TYPES.find(ct);
-            DubinArc arc0(p_start, curves_len(0), static_cast<int>(arc_types->second[0])*CURV_MAX);
-            DubinArc arc1(arc0.get_dest(), curves_len(1), static_cast<int>(arc_types->second[1])*CURV_MAX);
-            DubinArc arc2(arc1.get_dest(), curves_len(2), static_cast<int>(arc_types->second[2])*CURV_MAX);
+            DubinArc arc0(p_start, curves_len(0), static_cast<int>(arc_types->second[0])*curvature);
+            DubinArc arc1(arc0.get_dest(), curves_len(1), static_cast<int>(arc_types->second[1])*curvature);
+            DubinArc arc2(arc1.get_dest(), curves_len(2), static_cast<int>(arc_types->second[2])*curvature);
                         
             curves.push_back(DubinCurve(arc0, arc1, arc2));
         }
@@ -303,8 +303,8 @@ std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end){
     return curves;
 }
 
-DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end){
-    auto curves = dubin_curves(p_start, p_end);
+DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end, const double curvature){
+    auto curves = dubin_curves(p_start, p_end, curvature);
     if(curves.empty()){
         return DubinCurve();
     }
@@ -312,7 +312,7 @@ DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end){
 }
 
 bool intersect(DubinArc arc, Segment s){
-    // arc is straight, so just compute a single segment and check the insersection
+    // arc is straight, so just compute a single segment and check the intersection
     if(arc.k==0){
         Point2D source(arc.source.x, arc.source.y);
         auto arc_dest = arc.get_dest();
