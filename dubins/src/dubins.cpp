@@ -370,20 +370,14 @@ bool intersect(DubinCurve c, Polygon p){
     if(p.contains(src) || p.contains(mid) || p.contains(dst)){
         return true;
     }
+    return intersect_sides(c, p);
+}
+
+bool intersect_sides(DubinCurve c, Polygon p){
     for(auto side: p.get_sides()){
         if(intersect(c, side)){
             return true;
         }
-    }
-    return false;
-}
-
-bool intersect_sides(DubinCurve c, Polygon p){
-    for(int i=1; i < (int)p.vertexes.size(); i++)
-    {
-        Segment s(p.vertexes.at(i-1), p.vertexes.at(i));
-        if(intersect(c, s))
-            return true;
     }
     return false;
 }
