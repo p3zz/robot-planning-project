@@ -56,14 +56,11 @@ void Knn(Point2D node, std::vector<Point2D> candidates, int k, Point2D* nearest_
         nearest_distances[i]=POINT_COORD_MAX;
     
     //Test all candidates
-    for(int i=0; i<(int)candidates.size(); i++)
-    {
-        Point2D cand = candidates.at(i);
+    for(auto &cand: candidates){
         //different nodes
-        if(cand.x != node.x && cand.y != node.y)
-        {
+        if(cand.x != node.x && cand.y != node.y){
             //check if a node is better than others (starting from worst node)
-            double d=distance(cand, node);
+            double d = distance(cand, node);
             for(int j=k-1; j>=0; j--)
                 if(d<nearest_distances[j])
                 {
@@ -117,17 +114,12 @@ bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, dou
     }
     
     //Create links
-    for (int i=0; i<(int)nodes.size(); i++)
+    for (auto &node: nodes)
     {
-        //Compute KNN
-        Point2D node = nodes.at(i);
         Point2D node_knn[KNN_MAX];
         for(int j=0; j<knn; j++)
             node_knn[j]=Point2D(POINT_COORD_MAX, POINT_COORD_MAX);
         Knn(node, nodes, knn, node_knn, this->r);
-
-        //Check for collision with objects
-        //TODO
 
         //Insert link in the vector
         for (int j = 0; j < knn; j++)
@@ -250,20 +242,17 @@ std::string RoadMap::get_json()
 void RoadMap::get_attached_nodes(Point2D node, std::vector<Point2D> *attached_links)
 {
     attached_links->clear();
-    for(int i=0; i<(int)links.size(); i++)
-    {
-        if(node==links.at(i).node1)
-            attached_links->push_back(links.at(i).node2);
-        else if(node==links.at(i).node2)
-            attached_links->push_back(links.at(i).node1);
+    for(auto &link: links){
+        if(node==link.node1) attached_links->push_back(link.node2);
+        else if(node==link.node2) attached_links->push_back(link.node1);
     }
 }
 
 DubinLink RoadMap::get_dubin_link(DubinPoint dp1, DubinPoint dp2)
 {
-    for(int i=0; i<(int)dubin_links.size(); i++)
-        if(dubin_links[i].get_src() == dp1 && dubin_links[i].get_dst() == dp2)
-            return dubin_links[i];
+    for(auto &link: dubin_links)
+        if(link.get_src() == dp1 && link.get_dst() == dp2)
+            return link;
     return DubinLink();
 }
 
