@@ -21,8 +21,9 @@ int main()
   // srand(Seed::get_seed());
   Polygon dim_room({ Point2D(-5, -5), Point2D(-5,5), Point2D(5,5), Point2D(5,-5) });
   Room room(dim_room);
-  room.add_obstacle(Polygon({Point2D(-1, 0), Point2D(-1, 1), Point2D(0, 1), Point2D(0, 0)}));
-  room.add_obstacle(Polygon({Point2D(3, 0), Point2D(4, -1), Point2D(2, -1)}));
+  room.add_obstacle(Polygon({Point2D(-1, 0), Point2D(-1, 2), Point2D(0, 2), Point2D(0, 0)}));
+  room.add_obstacle(Polygon({Point2D(3, -1), Point2D(4, -2), Point2D(2, -2)}));
+  room.add_obstacle(Polygon({Point2D(-2, -3), Point2D(-2, -2), Point2D(-1, -2), Point2D(-1, -3)}));
   room.add_exit(Point2D(-2, 5));
   room.add_exit(Point2D(2, -5));
   Logger(Logger::INFO, "Time passed to construct room: " + mytimer);
