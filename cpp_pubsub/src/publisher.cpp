@@ -53,8 +53,10 @@ int main()
   std::vector<DubinLink> p_moves;
   std::vector<DubinLink> e_moves;
 
+  const int max_moves = 50;
+  int n_moves = 0;
   // while moves exists
-  while (mat.compute_move(p_last_src, e_last_src, p, e)){
+  while (mat.compute_move(p_last_src, e_last_src, p, e) && n_moves < max_moves){
     p_last_src = p.l1.get_dst();
     e_last_src = e.l1.get_dst();
     p_moves.push_back(p.l1);
@@ -80,7 +82,8 @@ int main()
       break;
     }
 
-    Logger(Logger::INFO, "Moves found");
+    
+    std::cout<<"["<<n_moves++<<"] Moves found"<<std::endl;
   }
   
   ofstream moves_file;
