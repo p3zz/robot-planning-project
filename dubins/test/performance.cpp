@@ -10,7 +10,7 @@ using std::chrono::milliseconds;
 
 auto p_src = DubinPoint(0, 0, M_PI/4);
 auto p_dst = DubinPoint(3, 4, M_PI/2);
-auto curve = dubins_shortest_path(p_src, p_dst);
+auto curve = dubins_shortest_path(p_src, p_dst, 3);
 
 Polygon p({ Point2D(4.5, 7.5), Point2D(5, 7.5), Point2D(5.49, 7.34), Point2D(6, 7),
             Point2D(6.28, 0.5), Point2D(6.2, 6), Point2D(5.74, 5.53), Point2D(4.99, 5.41),
