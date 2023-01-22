@@ -154,7 +154,7 @@ def main():
 
         if os.path.exists(abs_path):
 
-            f = open('moves.json')
+            f = open(abs_path)
             data = json.load(f)
             f.close()
 
