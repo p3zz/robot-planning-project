@@ -83,13 +83,18 @@ void Knn(Point2D node, std::vector<Point2D> candidates, int k, Point2D* nearest_
 bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, double tms_max, Point2D p_pos, Point2D e_pos)
 {
     if(knn>KNN_MAX) return false;
-    
+
+    //Add exit-pursuer-evader nodes
+    for(int i=0; i<r.get_num_exits(); i++)
+        nodes.push_back(r.get_exit(i, true));
+    nodes.push_back(p_pos); //add pursuer position as a node
+    nodes.push_back(e_pos); //add evader position as a node
+
     //Create nodes
     srand(Seed::get_seed());
     const double k_room_space=r.get_approx_area()/points;
     const double k_base=std::pow(0.1,1/tms_max); //base to decrease k_distance to 10% at tms_max
-    nodes.push_back(p_pos); //add pursuer position as a node
-    nodes.push_back(e_pos); //add evader position as a node
+    
     for (int i=2; i<points; i++)
     {
         double tms,k_distance,distance_pts;
@@ -110,10 +115,6 @@ bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, dou
         }while(!check_sparse(node, nodes, distance_pts) || point_collides(node, this->r) || !r.get_dimensions(true).contains(node)); //check for sparse nodes
         nodes.push_back(node);
     }
-
-    //Add exit nodes
-    for(int i=0; i<r.get_num_exits(); i++)
-        nodes.push_back(r.get_exit(i, true));
     
     //Create links
     for (int i=0; i<(int)nodes.size(); i++)
