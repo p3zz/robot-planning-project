@@ -1,6 +1,8 @@
 from graphics import *
 from os.path import exists
 import json
+import sys
+import os
 
 def tx(x):
     return x*100-offX
@@ -120,10 +122,17 @@ def draw_moves(win, moves, color):
 
 def main():
 
-    if not exists('map.json'):
+    script_dir = os.path.dirname(__file__)
+
+    if len(sys.argv) < 2:
+        print("not enough arguments")
         return
 
-    f = open('map.json')
+    abs_path = os.path.join(script_dir, sys.argv[1])
+    if not os.path.exists(abs_path):
+        print("map file missing")
+        return    
+    f = open(abs_path)
     data = json.load(f)
     f.close()
 
@@ -139,21 +148,22 @@ def main():
     # Map
     draw_map(win, data)
 
-    ## Moves ##
+    if len(sys.argv) > 2:
 
-    if not exists('moves.json'):
-        return
+        abs_path = os.path.join(script_dir, sys.argv[2])
 
-    f = open('moves.json')
-    data = json.load(f)
-    f.close()
+        if os.path.exists(abs_path):
 
-    moves_purser = data["moves_pursuer"]
-    moves_evader = data["moves_evader"]
+            f = open('moves.json')
+            data = json.load(f)
+            f.close()
 
-    draw_moves(win, moves_purser, "green2")
-    draw_moves(win, moves_evader, "orange")    
-        
+            moves_purser = data["moves_pursuer"]
+            moves_evader = data["moves_evader"]
+
+            draw_moves(win, moves_purser, "green2")
+            draw_moves(win, moves_evader, "orange")    
+                
     keyString = ""
     while keyString!="q":
         keyString = win.getKey() # Pause to view result
