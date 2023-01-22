@@ -27,6 +27,7 @@ class Segment {
         bool contains(Point2D p);
         Point2D get_interceptor(double t);
         double get_angle();
+        double get_slope();
 };
 
 class Circle{

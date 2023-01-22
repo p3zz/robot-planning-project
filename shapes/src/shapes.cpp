@@ -236,9 +236,9 @@ Segment translate(Segment s, double offset, double th){
 }
 
 double angle_between(Segment s1, Segment s2){
-    double th1 = s1.get_angle();
-    double th2 = s2.get_angle();
-    return mod2pi((th1 + th2) * 0.5);
+    double y = s2.get_slope() - s1.get_slope();
+    double x = 1 + s1.get_slope() * s2.get_slope();
+    return mod2pi(atan2(y,x));
 }
 
 // TODO add test with close angles
@@ -246,14 +246,29 @@ Polygon inflate(Polygon p, double offset){
     Polygon p_new;
     auto sides = p.get_sides();
 
-    for(auto side: sides){
-        double th = side.get_angle();
+    for(int i=0;i<(int)sides.size();i++){
+        int index = i;
+        auto curr_side = sides[index];
+        double th = curr_side.get_angle();
         // compute the perpendicular angle
         th += (M_PI * 0.5);
         th = mod2pi(th);
-        auto new_side = translate(side, offset, th);
+        auto new_side = translate(curr_side, offset, th);
         p_new.add_v(new_side.node1);
         p_new.add_v(new_side.node2);
+
+        // doing this we can check the last side with the first one
+        if(index + 1 == (int)sides.size()){
+            index = -1;
+        }
+        auto next_side = sides[index + 1];
+        if(angle_between(curr_side, next_side) < M_PI * 0.3){
+            std::cout<<angle_between(curr_side, next_side)<<std::endl;
+            auto curr_p_new = translate(curr_side.node2, offset, curr_side.get_angle());
+            auto next_p_new = translate(next_side.node1, offset, mod2pi(next_side.get_angle() + M_PI));
+            p_new.add_v(next_p_new);
+            p_new.add_v(curr_p_new);
+        }
     }
     return p_new;
 }
@@ -325,7 +340,16 @@ Polygon inflate_2(Polygon p, double offset){
 double Segment::get_angle(){
     double delta_x = node2.x - node1.x;
     double delta_y = node2.y - node1.y;
-    return atan2(delta_y, delta_x);
+    return mod2pi(atan2(delta_y, delta_x));
+}
+
+double Segment::get_slope(){
+    double delta_x = node2.x - node1.x;
+    double delta_y = node2.y - node1.y;
+    if(delta_x == 0){
+        return std::numeric_limits<double>::max();
+    }
+    return delta_y / delta_x;
 }
 
 // build a regular polygon of n vertices given a radius and a center 
