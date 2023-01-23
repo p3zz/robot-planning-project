@@ -1,5 +1,5 @@
 ### Packages
-- middleware: subscribers, publishers and clients that communicate with Shelfino
+- navigation: subscribers, publishers and clients that communicate with Shelfino
 - planner: planning logic
 - dubins: dubin logic
 - map: roadmap logic
