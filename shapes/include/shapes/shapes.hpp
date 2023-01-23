@@ -20,9 +20,9 @@ string operator + (string s, Point2D& p);
 
 class Segment2D {
     public:
-        Point2D node1, node2;
+        Point2D p1, p2;
         Segment2D(){};
-        Segment2D(Point2D node1, Point2D node2):node1{node1},node2{node2}{};
+        Segment2D(Point2D p1, Point2D p2):p1{p1},p2{p2}{};
 
         bool contains(Point2D p);
         Point2D get_interceptor(double t);

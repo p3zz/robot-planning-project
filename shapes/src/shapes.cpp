@@ -5,44 +5,44 @@ bool is_bounded(double val, double min, double max){
 }
 
 bool intersect(Segment2D s1, Segment2D s2){
-    double det = (s2.node2.x - s2.node1.x) * (s1.node1.y - s1.node2.y) - (s1.node1.x - s1.node2.x) * (s2.node2.y - s2.node1.y);
+    double det = (s2.p2.x - s2.p1.x) * (s1.p1.y - s1.p2.y) - (s1.p1.x - s1.p2.x) * (s2.p2.y - s2.p1.y);
     
     if(det == 0){
         // check if the segments overlap
-        return s1.contains(s2.node1) || s1.contains(s2.node2) || s2.contains(s1.node1) || s2.contains(s1.node2);
+        return s1.contains(s2.p1) || s1.contains(s2.p2) || s2.contains(s1.p1) || s2.contains(s1.p2);
     }
 
-    double t = ((s2.node1.y - s2.node2.y) * (s1.node1.x - s2.node1.x) + (s2.node2.x - s2.node1.x) * (s1.node1.y - s2.node1.y)) / det;
-    double u = ((s1.node1.y - s1.node2.y) * (s1.node1.x - s2.node1.x) + (s1.node2.x - s1.node1.x) * (s1.node1.y - s2.node1.y)) / det;
+    double t = ((s2.p1.y - s2.p2.y) * (s1.p1.x - s2.p1.x) + (s2.p2.x - s2.p1.x) * (s1.p1.y - s2.p1.y)) / det;
+    double u = ((s1.p1.y - s1.p2.y) * (s1.p1.x - s2.p1.x) + (s1.p2.x - s1.p1.x) * (s1.p1.y - s2.p1.y)) / det;
     return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
 }
 
 bool intersect(Segment2D s1, Segment2D s2, double& t_s1, double& t_s2){
-    double det = (s2.node2.x - s2.node1.x) * (s1.node1.y - s1.node2.y) - (s1.node1.x - s1.node2.x) * (s2.node2.y - s2.node1.y);
+    double det = (s2.p2.x - s2.p1.x) * (s1.p1.y - s1.p2.y) - (s1.p1.x - s1.p2.x) * (s2.p2.y - s2.p1.y);
 
     if(det == 0){
         // check if the segments overlap
         t_s1=-1;
         t_s2=-1;
-        return s1.contains(s2.node1) || s1.contains(s2.node2) || s2.contains(s1.node1) || s2.contains(s1.node2);
+        return s1.contains(s2.p1) || s1.contains(s2.p2) || s2.contains(s1.p1) || s2.contains(s1.p2);
     }
 
-    t_s1 = ((s2.node1.y - s2.node2.y) * (s1.node1.x - s2.node1.x) + (s2.node2.x - s2.node1.x) * (s1.node1.y - s2.node1.y)) / det;
-    t_s2 = ((s1.node1.y - s1.node2.y) * (s1.node1.x - s2.node1.x) + (s1.node2.x - s1.node1.x) * (s1.node1.y - s2.node1.y)) / det;
+    t_s1 = ((s2.p1.y - s2.p2.y) * (s1.p1.x - s2.p1.x) + (s2.p2.x - s2.p1.x) * (s1.p1.y - s2.p1.y)) / det;
+    t_s2 = ((s1.p1.y - s1.p2.y) * (s1.p1.x - s2.p1.x) + (s1.p2.x - s1.p1.x) * (s1.p1.y - s2.p1.y)) / det;
     return is_bounded(t_s1, 0, 1) && is_bounded(t_s2, 0, 1);
 }
 
 bool intersect(Segment2D s1, Segment2D s2, Point2D& p){
-    double det = (s2.node2.x - s2.node1.x) * (s1.node1.y - s1.node2.y) - (s1.node1.x - s1.node2.x) * (s2.node2.y - s2.node1.y);
+    double det = (s2.p2.x - s2.p1.x) * (s1.p1.y - s1.p2.y) - (s1.p1.x - s1.p2.x) * (s2.p2.y - s2.p1.y);
     
     if(det == 0){
         // check if the segments overlap
-        return s1.contains(s2.node1) || s1.contains(s2.node2) || s2.contains(s1.node1) || s2.contains(s1.node2);
+        return s1.contains(s2.p1) || s1.contains(s2.p2) || s2.contains(s1.p1) || s2.contains(s1.p2);
     }
 
-    double t = ((s2.node1.y - s2.node2.y) * (s1.node1.x - s2.node1.x) + (s2.node2.x - s2.node1.x) * (s1.node1.y - s2.node1.y)) / det;
-    double u = ((s1.node1.y - s1.node2.y) * (s1.node1.x - s2.node1.x) + (s1.node2.x - s1.node1.x) * (s1.node1.y - s2.node1.y)) / det;
-    p = Point2D(t*s1.node2.x+(1-t)*s1.node1.x, t*s1.node2.y+(1-t)*s1.node1.y);
+    double t = ((s2.p1.y - s2.p2.y) * (s1.p1.x - s2.p1.x) + (s2.p2.x - s2.p1.x) * (s1.p1.y - s2.p1.y)) / det;
+    double u = ((s1.p1.y - s1.p2.y) * (s1.p1.x - s2.p1.x) + (s1.p2.x - s1.p1.x) * (s1.p1.y - s2.p1.y)) / det;
+    p = Point2D(t*s1.p2.x+(1-t)*s1.p1.x, t*s1.p2.y+(1-t)*s1.p1.y);
     return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
 }
 
@@ -53,11 +53,11 @@ bool intersect(Circle circle, Segment2D s, Point2D start, Point2D end){
         return false;
     }
 
-    double delta_x = s.node2.x - s.node1.x;
-    double delta_y = s.node2.y - s.node1.y;
+    double delta_x = s.p2.x - s.p1.x;
+    double delta_y = s.p2.y - s.p1.y;
     double a = pow(delta_x,2) + pow(delta_y,2);
-    double b = delta_x * (s.node1.x - circle.c.x) + delta_y * (s.node1.y - circle.c.y);
-    double cc = pow(s.node1.x - circle.c.x, 2) + pow(s.node1.y - circle.c.y, 2) - pow(circle.r,2);
+    double b = delta_x * (s.p1.x - circle.c.x) + delta_y * (s.p1.y - circle.c.y);
+    double cc = pow(s.p1.x - circle.c.x, 2) + pow(s.p1.y - circle.c.y, 2) - pow(circle.r,2);
     double delta = b*b - a*cc;
     if(delta < 0 || a == 0){
         return false;
@@ -103,7 +103,7 @@ bool intersect(Circle circle, Segment2D s, Point2D start, Point2D end){
 }
 
 bool intersect(Polygon p, Segment2D s){
-    if(p.contains(s.node1) || p.contains(s.node2)){
+    if(p.contains(s.p1) || p.contains(s.p2)){
         return true;
     }
     auto sides = p.get_sides();
@@ -116,17 +116,17 @@ bool intersect(Polygon p, Segment2D s){
 }
 
 bool Segment2D::contains(Point2D p){
-    double m = (node1.y - node2.y) / (node1.x - node2.x);
-    double q = (node1.x * node2.y - node2.x * node1.y) / (node1.x - node2.x);
+    double m = (p1.y - p2.y) / (p1.x - p2.x);
+    double q = (p1.x * p2.y - p2.x * p1.y) / (p1.x - p2.x);
     double const err_threshold = 0.05;
     double err = abs(p.y - (m * p.x) - q);
     bool line_contains_p = is_bounded(err, 0, err_threshold);
-    return line_contains_p && is_bounded(p.x, node1.x, node2.x) && is_bounded(p.y, node1.y, node2.y);
+    return line_contains_p && is_bounded(p.x, p1.x, p2.x) && is_bounded(p.y, p1.y, p2.y);
 }
 
 
 Point2D Segment2D::get_interceptor(double t){
-    return Point2D(node1.x + t*(node2.x - node1.x), node1.y + t*(node2.y - node1.y));
+    return Point2D(p1.x + t*(p2.x - p1.x), p1.y + t*(p2.y - p1.y));
 }
 
 double Circle::get_angle(Point2D p){
@@ -205,7 +205,7 @@ bool Polygon::contains(Point2D p){
     auto sides = this->get_sides();
     for (auto side: sides){
         //Compute the cross product
-        double d = (p.x - side.node1.x) * (side.node2.y - side.node1.y) - (p.y - side.node1.y) * (side.node2.x - side.node1.x);
+        double d = (p.x - side.p1.x) * (side.p2.y - side.p1.y) - (p.y - side.p1.y) * (side.p2.x - side.p1.x);
 
         if (d > 0) pos++;
         if (d < 0) neg++;
@@ -230,8 +230,8 @@ Point2D translate(Point2D p, double offset, double th){
 }
 
 Segment2D translate(Segment2D s, double offset, double th){
-    Point2D node1_new = translate(s.node1, offset, th);
-    Point2D node2_new = translate(s.node2, offset, th);
+    Point2D node1_new = translate(s.p1, offset, th);
+    Point2D node2_new = translate(s.p2, offset, th);
     return Segment2D(node1_new, node2_new);
 }
 
@@ -254,8 +254,8 @@ Polygon inflate(Polygon p, double offset){
         th += (M_PI * 0.5);
         th = mod2pi(th);
         auto new_side = translate(curr_side, offset, th);
-        p_new.add_v(new_side.node1);
-        p_new.add_v(new_side.node2);
+        p_new.add_v(new_side.p1);
+        p_new.add_v(new_side.p2);
 
         // doing this we can check the last side with the first one
         if(index + 1 == (int)sides.size()){
@@ -264,8 +264,8 @@ Polygon inflate(Polygon p, double offset){
         auto next_side = sides[index + 1];
         if(angle_between(curr_side, next_side) < M_PI * 0.3){
             std::cout<<angle_between(curr_side, next_side)<<std::endl;
-            auto curr_p_new = translate(curr_side.node2, offset, curr_side.get_angle());
-            auto next_p_new = translate(next_side.node1, offset, mod2pi(next_side.get_angle() + M_PI));
+            auto curr_p_new = translate(curr_side.p2, offset, curr_side.get_angle());
+            auto next_p_new = translate(next_side.p1, offset, mod2pi(next_side.get_angle() + M_PI));
             p_new.add_v(next_p_new);
             p_new.add_v(curr_p_new);
         }
@@ -309,9 +309,9 @@ Polygon inflate_2(Polygon p, double offset){
         auto new_side = translate(side, offset, th_norm);
         // crazy scale the size of the new side so we ensure that the collision happens
         double const scale = 10;        
-        double s_length = distance(new_side.node1, new_side.node2);
-        auto new_node1 = translate(new_side.node1, s_length * scale, th + M_PI);
-        auto new_node2 = translate(new_side.node2, s_length * scale, th);
+        double s_length = distance(new_side.p1, new_side.p2);
+        auto new_node1 = translate(new_side.p1, s_length * scale, th + M_PI);
+        auto new_node2 = translate(new_side.p2, s_length * scale, th);
         new_sides.push_back(Segment2D(new_node1, new_node2));
     }
 
@@ -336,16 +336,16 @@ Polygon inflate_2(Polygon p, double offset){
 }
 
 // returns the angle [0, 2*PI] between the segment and the x axis
-// the direction is from node1 to node2
+// the direction is from p1 to p2
 double Segment2D::get_angle(){
-    double delta_x = node2.x - node1.x;
-    double delta_y = node2.y - node1.y;
+    double delta_x = p2.x - p1.x;
+    double delta_y = p2.y - p1.y;
     return mod2pi(atan2(delta_y, delta_x));
 }
 
 double Segment2D::get_slope(){
-    double delta_x = node2.x - node1.x;
-    double delta_y = node2.y - node1.y;
+    double delta_x = p2.x - p1.x;
+    double delta_y = p2.y - p1.y;
     if(delta_x == 0){
         return std::numeric_limits<double>::max();
     }
@@ -384,13 +384,13 @@ Segment2D belong(Polygon pol, Point2D p, double offset)
     for(auto side: pol.get_sides())
     {
         Polygon temp;
-        Point2D t = translate(side.node1, offset, 0.5*M_PI);
+        Point2D t = translate(side.p1, offset, 0.5*M_PI);
         temp.add_v(t);
-        t = translate(side.node1, offset, 1.5*M_PI);
+        t = translate(side.p1, offset, 1.5*M_PI);
         temp.add_v(t);
-        t = translate(side.node2, offset, 1.5*M_PI);
+        t = translate(side.p2, offset, 1.5*M_PI);
         temp.add_v(t);
-        t = translate(side.node2, offset, 0.5*M_PI);
+        t = translate(side.p2, offset, 0.5*M_PI);
         temp.add_v(t);
         if(temp.contains(p))
             return side;

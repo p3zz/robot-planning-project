@@ -1,10 +1,10 @@
 #include "map/map.hpp"
 using namespace std;
 
-bool link_exists(Point2D node1, Point2D node2, std::vector<Segment2D> links)
+bool link_exists(Point2D p1, Point2D p2, std::vector<Segment2D> links)
 {
     for(int i=0; i<(int)links.size(); i++)
-        if(links.at(i).node1.x == node2.x && links.at(i).node1.y == node2.y && links.at(i).node2.x == node1.x && links.at(i).node2.y == node1.y)
+        if(links.at(i).p1.x == p2.x && links.at(i).p1.y == p2.y && links.at(i).p2.x == p1.x && links.at(i).p2.y == p1.y)
             return true;
     return false;
 }
@@ -135,9 +135,9 @@ bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, dou
         // compute every dubins curve for each M_PI/4 
         double step = M_PI * 0.25;
         for(double th_src = 0; th_src < 2 * M_PI; th_src += step){
-            DubinPoint node1(link.node1.x, link.node1.y, th_src);
+            DubinPoint node1(link.p1.x, link.p1.y, th_src);
             for(double th_dst = 0; th_dst < 2 * M_PI; th_dst += step){
-                DubinPoint node2(link.node2.x, link.node2.y, th_dst);
+                DubinPoint node2(link.p2.x, link.p2.y, th_dst);
                 // compute dubins from node1 to node2
                 auto curves = dubin_curves(node1, node2, MAX_CURVATURE);
                 for(auto &curve: curves){
@@ -207,7 +207,7 @@ std::string RoadMap::get_json()
     json+="],\"links\":[";
     for(int i=0; i<(int)links.size();i++)
     {
-        json+="{\"node1\":{\"x\":"+std::to_string(links[i].node1.x)+",\"y\":"+std::to_string(links[i].node1.y)+"},\"node2\":{\"x\":"+std::to_string(links[i].node2.x)+",\"y\":"+std::to_string(links[i].node2.y)+"}}";
+        json+="{\"node1\":{\"x\":"+std::to_string(links[i].p1.x)+",\"y\":"+std::to_string(links[i].p1.y)+"},\"p2\":{\"x\":"+std::to_string(links[i].p2.x)+",\"y\":"+std::to_string(links[i].p2.y)+"}}";
         if(i+1<(int)links.size()) json+=",";
     }
     json+="],\"obstacles\":[";
@@ -243,8 +243,8 @@ void RoadMap::get_attached_nodes(Point2D node, std::vector<Point2D> *attached_li
 {
     attached_links->clear();
     for(auto &link: links){
-        if(node==link.node1) attached_links->push_back(link.node2);
-        else if(node==link.node2) attached_links->push_back(link.node1);
+        if(node==link.p1) attached_links->push_back(link.p2);
+        else if(node==link.p2) attached_links->push_back(link.p1);
     }
 }
 

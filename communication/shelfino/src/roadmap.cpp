@@ -13,11 +13,11 @@ graph_msgs::msg::GeometryGraph msg_from_roadmap(RoadMap rm, std_msgs::msg::Heade
     std::vector<unsigned int> neighbors;
     for(auto &link: rm.get_links()){
       int i = -1;
-      if(node == link.node1){
-        i = rm.get_node_index(link.node2);
+      if(node == link.p1){
+        i = rm.get_node_index(link.p2);
       }
-      else if(node == link.node2){
-        i = rm.get_node_index(link.node1);
+      else if(node == link.p2){
+        i = rm.get_node_index(link.p1);
       }
       if(i > -1){
         neighbors.push_back(i);

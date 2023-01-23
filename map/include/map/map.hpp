@@ -63,7 +63,7 @@ class Room
         void add_exit(Point2D exit){
             exits.push_back(exit);
             Segment2D s = belong(dimensions, exit, 0.1);
-            double th = mod2pi(atan2(s.node2.y-s.node1.y, s.node2.x-s.node1.x)+1.5*M_PI);
+            double th = mod2pi(atan2(s.p2.y-s.p1.y, s.p2.x-s.p1.x)+1.5*M_PI);
             Point2D exit_inflated = translate(exit, ROBOT_CIRCLE*1.2, th);
             exits_inflated.push_back(exit_inflated);
         }
