@@ -13,12 +13,15 @@ pip3 install graphics.py
 
 ### Run
 
-
-
+To visualize only the map:
 ```bash
-python3 main.py
+cd disegnino
+python3 main.py path/to/map  
 ```
 
-
-
+To visualize the whole race:
+```bash
+cd disegnino
+python3 main.py path/to/map path/to/moves  
+```
 

@@ -1,6 +1,6 @@
 ### Packages
-- communication: subscribers, publishers and clients that communicate with Shelfino
-- decisions: planning logic
+- navigation: subscribers, publishers and clients that communicate with Shelfino
+- planner: planning logic
 - dubins: dubin logic
 - map: roadmap logic
 - shapes: basic shapes (polygon, segment, point) with collisions checks
