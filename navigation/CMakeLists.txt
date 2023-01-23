@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(shelfino)
+project(navigation)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -23,12 +23,12 @@ find_package(graph_msgs REQUIRED)
 
 include_directories(include)
 
-add_executable(shelfino "src/path.cpp" src/pose.cpp src/follow_client.cpp src/obstacles.cpp src/gates.cpp src/roadmap.cpp src/walls.cpp src/main.cpp)
+add_executable(navigation "src/path.cpp" src/pose.cpp src/follow_client.cpp src/obstacles.cpp src/gates.cpp src/roadmap.cpp src/walls.cpp src/main.cpp)
 
-ament_target_dependencies(shelfino rclcpp rclcpp_action utils shapes dubins map planner geometry_msgs tf2 tf2_ros nav2_msgs nav_msgs obstacles_msgs graph_msgs)
+ament_target_dependencies(navigation rclcpp rclcpp_action utils shapes dubins map planner geometry_msgs tf2 tf2_ros nav2_msgs nav_msgs obstacles_msgs graph_msgs)
 
 install(
-  TARGETS shelfino
+  TARGETS navigation
   DESTINATION lib/${PROJECT_NAME}
 )
 

@@ -1,4 +1,4 @@
-#include "shelfino/shelfino.hpp"
+#include "navigation/navigation.hpp"
 
 GatesSubscriber::GatesSubscriber(std::optional<std::vector<Point2D>>& gates_position) : 
     Node("gates_subscriber"), gates_position{gates_position} {

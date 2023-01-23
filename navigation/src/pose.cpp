@@ -1,4 +1,4 @@
-#include "shelfino/shelfino.hpp"
+#include "navigation/navigation.hpp"
 
 PoseSubscriber::PoseSubscriber(std::optional<DubinPoint>& pose, std::string topic, std::string node_name) : Node(node_name), pose{pose} {
     auto qos = rclcpp::QoS(rclcpp::KeepLast(1), rmw_qos_profile_sensor_data);

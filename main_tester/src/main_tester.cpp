@@ -13,8 +13,8 @@ int main()
 {
   // Seed::init_seed(1920815646);
   // Logger(Logger::INFO, "The seed is " + to_string(Seed::get_seed()));
-  DubinPoint pursuer(-4.5, 0,  M_PI*1.75);
-  DubinPoint evader(4.5, 0, M_PI*0.75);
+  DubinPoint pursuer(-4.5, 4.5,  M_PI*1.75);
+  DubinPoint evader(4.5, -4.5, M_PI*0.75);
   ROSTimer mytimer;
   
   // Construct random room
@@ -24,14 +24,14 @@ int main()
   room.add_obstacle(Polygon({Point2D(-1, 0), Point2D(-1, 2), Point2D(0, 2), Point2D(0, 0)}));
   room.add_obstacle(Polygon({Point2D(3, -1), Point2D(4, -2), Point2D(2, -2)}));
   room.add_obstacle(Polygon({Point2D(-2, -3), Point2D(-2, -2), Point2D(-1, -2), Point2D(-1, -3)}));
-  room.add_exit(Point2D(-2, 5));
-  room.add_exit(Point2D(2, -5));
+  room.add_exit(Point2D(-5, -4.5));
+  room.add_exit(Point2D(5, 4.5));
   Logger(Logger::INFO, "Time passed to construct room: " + mytimer);
   mytimer.rst();
 
   //Construct roadmap
   RoadMap map(room);
-  if(!map.construct_roadmap(60, 4, 0.5, 500, pursuer.get_point(), evader.get_point())){
+  if(!map.construct_roadmap(100, 5, 0.5, 500, pursuer.get_point(), evader.get_point())){
     Logger(Logger::ERROR, "General error roadmap");
     return 1;
   }

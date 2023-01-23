@@ -1,4 +1,4 @@
-#include "shelfino/shelfino.hpp"
+#include "navigation/navigation.hpp"
 
 std::vector<Polygon> obstacles_from_msg(obstacles_msgs::msg::ObstacleArrayMsg msg){
   std::vector<Polygon> obstacles;

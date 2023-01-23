@@ -1,4 +1,4 @@
-#include "shelfino/shelfino.hpp"
+#include "navigation/navigation.hpp"
 
 PathPublisher::PathPublisher(std::optional<DubinCurve>& path, std::string topic_name, std::string node_name) : Node(node_name), path{path} {    
     publisher_ = this->create_publisher<nav_msgs::msg::Path>(topic_name, 10);
