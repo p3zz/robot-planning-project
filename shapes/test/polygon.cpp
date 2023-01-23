@@ -108,7 +108,7 @@ TEST(Polygon, InflateSquare){
 }
 
 TEST(Polygon, Inflate2_1){
-    auto new_polygon = inflate_2(polygon, 2);
+    auto new_polygon = inflate_intersect(polygon, 2);
     EXPECT_EQ(new_polygon.get_size(), polygon.get_size());
 
     auto point = new_polygon.get_v(0);

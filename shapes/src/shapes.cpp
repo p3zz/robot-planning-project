@@ -296,7 +296,7 @@ Polygon deflate(Polygon p, double offset){
     return p_new;
 }
 
-Polygon inflate_2(Polygon p, double offset){
+Polygon inflate_intersect(Polygon p, double offset){
     Polygon p_new;
     std::vector<Segment2D> new_sides;
     auto sides = p.get_sides();

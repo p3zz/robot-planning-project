@@ -66,7 +66,7 @@ bool intersect(Polygon p, Segment2D s);
 double distance(Point2D p1, Point2D p2);
 Polygon inflate(Polygon p, double offset);
 Polygon deflate(Polygon p, double offset);
-Polygon inflate_2(Polygon p, double offset);
+Polygon inflate_intersect(Polygon p, double offset);
 Polygon regular_polygon(Point2D center, double radius, int n);
 Segment2D belong(Polygon pol, Point2D p, double offset);
 Point2D translate(Point2D p, double offset, double th);
