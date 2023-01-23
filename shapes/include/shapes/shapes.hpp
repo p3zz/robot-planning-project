@@ -60,7 +60,6 @@ class Polygon{
 Point2D avg_point(Point2D p1, Point2D p2);
 Circle get_circle(Point2D p1, Point2D p2, Point2D p3);
 bool intersect(Segment2D s1, Segment2D s2);
-bool intersect(Segment2D s1, Segment2D s2, double& t_s1, double& t_s2);
 bool intersect(Circle c, Segment2D s, Point2D start, Point2D end);
 bool intersect(Polygon p, Segment2D s);
 double distance(Point2D p1, Point2D p2);

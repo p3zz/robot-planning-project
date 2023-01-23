@@ -4,19 +4,6 @@ bool is_bounded(double val, double min, double max){
     return val>=min && val<=max;
 }
 
-bool intersect(Segment2D s1, Segment2D s2){
-    double det = (s2.p2.x - s2.p1.x) * (s1.p1.y - s1.p2.y) - (s1.p1.x - s1.p2.x) * (s2.p2.y - s2.p1.y);
-    
-    if(det == 0){
-        // check if the segments overlap
-        return s1.contains(s2.p1) || s1.contains(s2.p2) || s2.contains(s1.p1) || s2.contains(s1.p2);
-    }
-
-    double t = ((s2.p1.y - s2.p2.y) * (s1.p1.x - s2.p1.x) + (s2.p2.x - s2.p1.x) * (s1.p1.y - s2.p1.y)) / det;
-    double u = ((s1.p1.y - s1.p2.y) * (s1.p1.x - s2.p1.x) + (s1.p2.x - s1.p1.x) * (s1.p1.y - s2.p1.y)) / det;
-    return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
-}
-
 bool intersect(Segment2D s1, Segment2D s2, double& t_s1, double& t_s2){
     double det = (s2.p2.x - s2.p1.x) * (s1.p1.y - s1.p2.y) - (s1.p1.x - s1.p2.x) * (s2.p2.y - s2.p1.y);
 
@@ -44,6 +31,11 @@ bool intersect(Segment2D s1, Segment2D s2, Point2D& p){
     double u = ((s1.p1.y - s1.p2.y) * (s1.p1.x - s2.p1.x) + (s1.p2.x - s1.p1.x) * (s1.p1.y - s2.p1.y)) / det;
     p = Point2D(t*s1.p2.x+(1-t)*s1.p1.x, t*s1.p2.y+(1-t)*s1.p1.y);
     return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
+}
+
+bool intersect(Segment2D s1, Segment2D s2){
+    Point2D p;
+    return intersect(s1, s2, p);
 }
 
 bool intersect(Circle circle, Segment2D s, Point2D start, Point2D end){
