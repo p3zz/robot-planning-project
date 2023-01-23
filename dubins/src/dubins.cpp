@@ -311,13 +311,13 @@ DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end, const doub
     return curves.at(0);
 }
 
-bool intersect(DubinArc arc, Segment s){
+bool intersect(DubinArc arc, Segment2D s){
     // arc is straight, so just compute a single segment and check the intersection
     if(arc.k==0){
         Point2D source(arc.source.x, arc.source.y);
         auto arc_dest = arc.get_dest();
         Point2D dest(arc_dest.x, arc_dest.y);
-        Segment arc_s(source, dest);
+        Segment2D arc_s(source, dest);
         if(intersect(s, arc_s)){
             return true;
         }
@@ -354,7 +354,7 @@ bool intersect(DubinArc arc, Segment s){
 
 
 // check the collision between a dubin curve (3 arcs) and a segment
-bool intersect(DubinCurve c, Segment s){
+bool intersect(DubinCurve c, Segment2D s){
     for (auto arc:c.arcs){
         if(intersect(arc, s)){
             return true;
@@ -386,7 +386,7 @@ bool intersect_sides(DubinCurve c, Polygon p){
 // check the intersection between a dubin curve and a polygon,
 // but the curve is approximated by a sequence of n points
 bool intersect(DubinCurve c, Polygon p, int n){
-    std::vector<Segment> segments;
+    std::vector<Segment2D> segments;
     auto points = c.to_points(n);
 
     // link points with segments
@@ -395,7 +395,7 @@ bool intersect(DubinCurve c, Polygon p, int n){
         auto node2 = points.at(i);
         Point2D new_node1(node1.x, node1.y);
         Point2D new_node2(node2.x, node2.y);
-        segments.push_back(Segment(new_node1, new_node2));
+        segments.push_back(Segment2D(new_node1, new_node2));
     }
 
     for(auto dubin_seg: segments){

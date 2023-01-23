@@ -18,11 +18,11 @@ class Point2D{
 };
 string operator + (string s, Point2D& p);
 
-class Segment {
+class Segment2D {
     public:
         Point2D node1, node2;
-        Segment(){};
-        Segment(Point2D node1, Point2D node2):node1{node1},node2{node2}{};
+        Segment2D(){};
+        Segment2D(Point2D node1, Point2D node2):node1{node1},node2{node2}{};
 
         bool contains(Point2D p);
         Point2D get_interceptor(double t);
@@ -50,7 +50,7 @@ class Polygon{
         Polygon():vertexes{}{}
         Polygon(std::vector<Point2D> vertexes):vertexes{vertexes}{}
 
-        std::vector<Segment> get_sides();
+        std::vector<Segment2D> get_sides();
         bool contains(Point2D p);
         void add_v(Point2D v){vertexes.push_back(v);}
         Point2D get_v(int index){return vertexes.at(index);}
@@ -59,16 +59,16 @@ class Polygon{
 
 Point2D avg_point(Point2D p1, Point2D p2);
 Circle get_circle(Point2D p1, Point2D p2, Point2D p3);
-bool intersect(Segment s1, Segment s2);
-bool intersect(Segment s1, Segment s2, double& t_s1, double& t_s2);
-bool intersect(Circle c, Segment s, Point2D start, Point2D end);
-bool intersect(Polygon p, Segment s);
+bool intersect(Segment2D s1, Segment2D s2);
+bool intersect(Segment2D s1, Segment2D s2, double& t_s1, double& t_s2);
+bool intersect(Circle c, Segment2D s, Point2D start, Point2D end);
+bool intersect(Polygon p, Segment2D s);
 double distance(Point2D p1, Point2D p2);
 Polygon inflate(Polygon p, double offset);
 Polygon deflate(Polygon p, double offset);
 Polygon inflate_2(Polygon p, double offset);
 Polygon regular_polygon(Point2D center, double radius, int n);
-Segment belong(Polygon pol, Point2D p, double offset);
+Segment2D belong(Polygon pol, Point2D p, double offset);
 Point2D translate(Point2D p, double offset, double th);
 
 #endif

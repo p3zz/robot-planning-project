@@ -104,7 +104,7 @@ struct primitive{
 DubinCurve dubins_shortest_path(DubinPoint p_start, DubinPoint p_end, const double curvature);
 std::vector<DubinCurve> dubin_curves(DubinPoint p_start, DubinPoint p_end, const double curvature);
 bool intersect(DubinCurve c, Polygon p);
-bool intersect(DubinCurve c, Segment s);
+bool intersect(DubinCurve c, Segment2D s);
 bool intersect(DubinCurve c, Polygon p, int n);
 bool intersect_sides(DubinCurve c, Polygon p);
 

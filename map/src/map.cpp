@@ -1,7 +1,7 @@
 #include "map/map.hpp"
 using namespace std;
 
-bool link_exists(Point2D node1, Point2D node2, std::vector<Segment> links)
+bool link_exists(Point2D node1, Point2D node2, std::vector<Segment2D> links)
 {
     for(int i=0; i<(int)links.size(); i++)
         if(links.at(i).node1.x == node2.x && links.at(i).node1.y == node2.y && links.at(i).node2.x == node1.x && links.at(i).node2.y == node1.y)
@@ -9,7 +9,7 @@ bool link_exists(Point2D node1, Point2D node2, std::vector<Segment> links)
     return false;
 }
 
-bool link_collides(Segment link, Room r)
+bool link_collides(Segment2D link, Room r)
 {
     for(int i=0; i<r.get_num_obstacles(); i++)
         if(intersect(r.get_obstacle(i), link))
@@ -64,7 +64,7 @@ void Knn(Point2D node, std::vector<Point2D> candidates, int k, Point2D* nearest_
             for(int j=k-1; j>=0; j--)
                 if(d<nearest_distances[j])
                 {
-                    if(!link_collides(Segment(node, cand),r))
+                    if(!link_collides(Segment2D(node, cand),r))
                     { 
                         nearest_distances[j]=d;
                         nearest_nodes[j]=Point2D(cand.x, cand.y);
@@ -124,7 +124,7 @@ bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, dou
         //Insert link in the vector
         for (int j = 0; j < knn; j++)
             if(node_knn[j].x!=POINT_COORD_MAX && node_knn[j].y!=POINT_COORD_MAX && !link_exists(node, node_knn[j], links))
-                links.push_back(Segment(Point2D(node.x,node.y),Point2D(node_knn[j].x, node_knn[j].y)));      
+                links.push_back(Segment2D(Point2D(node.x,node.y),Point2D(node_knn[j].x, node_knn[j].y)));      
     }
 
     //Create Dubins Curves

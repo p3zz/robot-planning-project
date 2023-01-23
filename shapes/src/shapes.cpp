@@ -4,7 +4,7 @@ bool is_bounded(double val, double min, double max){
     return val>=min && val<=max;
 }
 
-bool intersect(Segment s1, Segment s2){
+bool intersect(Segment2D s1, Segment2D s2){
     double det = (s2.node2.x - s2.node1.x) * (s1.node1.y - s1.node2.y) - (s1.node1.x - s1.node2.x) * (s2.node2.y - s2.node1.y);
     
     if(det == 0){
@@ -17,7 +17,7 @@ bool intersect(Segment s1, Segment s2){
     return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
 }
 
-bool intersect(Segment s1, Segment s2, double& t_s1, double& t_s2){
+bool intersect(Segment2D s1, Segment2D s2, double& t_s1, double& t_s2){
     double det = (s2.node2.x - s2.node1.x) * (s1.node1.y - s1.node2.y) - (s1.node1.x - s1.node2.x) * (s2.node2.y - s2.node1.y);
 
     if(det == 0){
@@ -32,7 +32,7 @@ bool intersect(Segment s1, Segment s2, double& t_s1, double& t_s2){
     return is_bounded(t_s1, 0, 1) && is_bounded(t_s2, 0, 1);
 }
 
-bool intersect(Segment s1, Segment s2, Point2D& p){
+bool intersect(Segment2D s1, Segment2D s2, Point2D& p){
     double det = (s2.node2.x - s2.node1.x) * (s1.node1.y - s1.node2.y) - (s1.node1.x - s1.node2.x) * (s2.node2.y - s2.node1.y);
     
     if(det == 0){
@@ -46,7 +46,7 @@ bool intersect(Segment s1, Segment s2, Point2D& p){
     return is_bounded(t, 0, 1) && is_bounded(u, 0, 1);
 }
 
-bool intersect(Circle circle, Segment s, Point2D start, Point2D end){
+bool intersect(Circle circle, Segment2D s, Point2D start, Point2D end){
     std::vector<Point2D> intersections = {};
 
     if(!circle.contains(start) || !circle.contains(end)){
@@ -102,7 +102,7 @@ bool intersect(Circle circle, Segment s, Point2D start, Point2D end){
     return intersected;
 }
 
-bool intersect(Polygon p, Segment s){
+bool intersect(Polygon p, Segment2D s){
     if(p.contains(s.node1) || p.contains(s.node2)){
         return true;
     }
@@ -115,7 +115,7 @@ bool intersect(Polygon p, Segment s){
     return false;
 }
 
-bool Segment::contains(Point2D p){
+bool Segment2D::contains(Point2D p){
     double m = (node1.y - node2.y) / (node1.x - node2.x);
     double q = (node1.x * node2.y - node2.x * node1.y) / (node1.x - node2.x);
     double const err_threshold = 0.05;
@@ -125,7 +125,7 @@ bool Segment::contains(Point2D p){
 }
 
 
-Point2D Segment::get_interceptor(double t){
+Point2D Segment2D::get_interceptor(double t){
     return Point2D(node1.x + t*(node2.x - node1.x), node1.y + t*(node2.y - node1.y));
 }
 
@@ -187,13 +187,13 @@ Circle get_circle(Point2D p1, Point2D p2, Point2D p3){
 
 }
 
-std::vector<Segment> Polygon::get_sides(){
-    std::vector<Segment> sides = {};
+std::vector<Segment2D> Polygon::get_sides(){
+    std::vector<Segment2D> sides = {};
     for(int i=1;i<(int)vertexes.size();i++){
-        Segment side(vertexes[i-1],vertexes[i]);
+        Segment2D side(vertexes[i-1],vertexes[i]);
         sides.push_back(side);
     }
-    Segment side(vertexes.back(),vertexes.front());
+    Segment2D side(vertexes.back(),vertexes.front());
     sides.push_back(side);
     return sides;
 }
@@ -229,13 +229,13 @@ Point2D translate(Point2D p, double offset, double th){
     return Point2D(p.x + offset_x, p.y + offset_y);
 }
 
-Segment translate(Segment s, double offset, double th){
+Segment2D translate(Segment2D s, double offset, double th){
     Point2D node1_new = translate(s.node1, offset, th);
     Point2D node2_new = translate(s.node2, offset, th);
-    return Segment(node1_new, node2_new);
+    return Segment2D(node1_new, node2_new);
 }
 
-double angle_between(Segment s1, Segment s2){
+double angle_between(Segment2D s1, Segment2D s2){
     double y = s2.get_slope() - s1.get_slope();
     double x = 1 + s1.get_slope() * s2.get_slope();
     return mod2pi(atan2(y,x));
@@ -298,7 +298,7 @@ Polygon deflate(Polygon p, double offset){
 
 Polygon inflate_2(Polygon p, double offset){
     Polygon p_new;
-    std::vector<Segment> new_sides;
+    std::vector<Segment2D> new_sides;
     auto sides = p.get_sides();
 
     for(auto side: sides){
@@ -312,7 +312,7 @@ Polygon inflate_2(Polygon p, double offset){
         double s_length = distance(new_side.node1, new_side.node2);
         auto new_node1 = translate(new_side.node1, s_length * scale, th + M_PI);
         auto new_node2 = translate(new_side.node2, s_length * scale, th);
-        new_sides.push_back(Segment(new_node1, new_node2));
+        new_sides.push_back(Segment2D(new_node1, new_node2));
     }
 
     double t_s1, t_s2;
@@ -337,13 +337,13 @@ Polygon inflate_2(Polygon p, double offset){
 
 // returns the angle [0, 2*PI] between the segment and the x axis
 // the direction is from node1 to node2
-double Segment::get_angle(){
+double Segment2D::get_angle(){
     double delta_x = node2.x - node1.x;
     double delta_y = node2.y - node1.y;
     return mod2pi(atan2(delta_y, delta_x));
 }
 
-double Segment::get_slope(){
+double Segment2D::get_slope(){
     double delta_x = node2.x - node1.x;
     double delta_y = node2.y - node1.y;
     if(delta_x == 0){
@@ -379,7 +379,7 @@ string operator + (string s, Point2D& p)
     return s+"("+to_string(p.x)+";"+to_string(p.y)+")";
 }
 
-Segment belong(Polygon pol, Point2D p, double offset)
+Segment2D belong(Polygon pol, Point2D p, double offset)
 {
     for(auto side: pol.get_sides())
     {
@@ -395,5 +395,5 @@ Segment belong(Polygon pol, Point2D p, double offset)
         if(temp.contains(p))
             return side;
     }
-    return Segment();
+    return Segment2D();
 }

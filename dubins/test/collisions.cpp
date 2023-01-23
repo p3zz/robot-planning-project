@@ -24,7 +24,7 @@ TEST(DubinCurve, SegmentCollision1){
     DubinPoint dst(2.0, -4.58, M_PI * 0.5);
     auto curve = dubins_shortest_path(src, dst, 2);
     
-    Segment s(Point2D(1, -2.5), Point2D(1, -5.5));
+    Segment2D s(Point2D(1, -2.5), Point2D(1, -5.5));
     EXPECT_TRUE(intersect(curve, s));
 }
 
@@ -33,7 +33,7 @@ TEST(DubinCurve, SegmentCollision2){
     DubinPoint dst(2.0, -4.58, M_PI * 0.75);
     auto curve = dubins_shortest_path(src, dst, 2);
     
-    Segment s(Point2D(1, -2.5), Point2D(1, -5.5));
+    Segment2D s(Point2D(1, -2.5), Point2D(1, -5.5));
     EXPECT_FALSE(intersect(curve, s));
 }
 
@@ -42,7 +42,7 @@ TEST(DubinCurve, SegmentCollision3){
     DubinPoint dst(2.0, -4.58, M_PI * 0.75);
     auto curve = dubins_shortest_path(src, dst, 2);
     
-    Segment s(Point2D(0, -4), Point2D(4, -4));
+    Segment2D s(Point2D(0, -4), Point2D(4, -4));
     EXPECT_TRUE(intersect(curve, s));
 }
 
@@ -51,7 +51,7 @@ TEST(DubinCurve, SegmentCollision4){
     DubinPoint dst(2.0, -4.58, M_PI * 0.75);
     auto curve = dubins_shortest_path(src, dst, 2);
     
-    Segment s(Point2D(1.5, -6), Point2D(1.5, -2.5));
+    Segment2D s(Point2D(1.5, -6), Point2D(1.5, -2.5));
     EXPECT_TRUE(intersect(curve, s));
 }
 
@@ -60,7 +60,7 @@ TEST(DubinCurve, SegmentCollision5){
     DubinPoint dst(2.0, -4.58, M_PI * 0.5);
     auto curve = dubins_shortest_path(src, dst, 2);
     
-    Segment s(Point2D(1, -5.5), Point2D(1, -2.5));
+    Segment2D s(Point2D(1, -5.5), Point2D(1, -2.5));
     EXPECT_TRUE(intersect(curve, s));
 }
 
@@ -69,7 +69,7 @@ TEST(DubinCurve, SegmentCollision6){
     DubinPoint dst(2.0, -4.58, M_PI * 0.75);
     auto curve = dubins_shortest_path(src, dst, 2);
     
-    Segment s(Point2D(1, -5.5), Point2D(1, -2.5));
+    Segment2D s(Point2D(1, -5.5), Point2D(1, -2.5));
     EXPECT_FALSE(intersect(curve, s));
 }
 
@@ -78,7 +78,7 @@ TEST(DubinCurve, SegmentCollision7){
     DubinPoint dst(2.0, -4.58, M_PI * 0.75);
     auto curve = dubins_shortest_path(src, dst, 2);
     
-    Segment s(Point2D(4, -4), Point2D(0, -4));
+    Segment2D s(Point2D(4, -4), Point2D(0, -4));
     EXPECT_TRUE(intersect(curve, s));
 }
 
@@ -87,7 +87,7 @@ TEST(DubinCurve, SegmentCollision8){
     DubinPoint dst(2.0, -4.58, M_PI * 0.75);
     auto curve = dubins_shortest_path(src, dst, 2);
     
-    Segment s(Point2D(1.5, -6), Point2D(1.5, -2.5));
+    Segment2D s(Point2D(1.5, -6), Point2D(1.5, -2.5));
     EXPECT_TRUE(intersect(curve, s));
 }
 

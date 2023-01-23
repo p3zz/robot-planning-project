@@ -62,7 +62,7 @@ class Room
         int get_num_obstacles(){return obstacles.size();}
         void add_exit(Point2D exit){
             exits.push_back(exit);
-            Segment s = belong(dimensions, exit, 0.1);
+            Segment2D s = belong(dimensions, exit, 0.1);
             double th = mod2pi(atan2(s.node2.y-s.node1.y, s.node2.x-s.node1.x)+1.5*M_PI);
             Point2D exit_inflated = translate(exit, ROBOT_CIRCLE*1.2, th);
             exits_inflated.push_back(exit_inflated);
@@ -83,14 +83,14 @@ class RoadMap
     private:
         Room r;
         std::vector<Point2D> nodes;
-        std::vector<Segment> links;
+        std::vector<Segment2D> links;
         std::vector<DubinLink> dubin_links;
     public:
         RoadMap(Room r):r{r}{}
         //PRM ROADMAP
         bool construct_roadmap(int points, int knn, double k_distance_init, double tms_max, Point2D p_pos, Point2D e_pos); //k_distance_init initialize k_distance between 0.1 (inhomogeneus, very easy) and 1 (max homogeneus, very hard) which provides an homogeneus map, then decrease exponentially in time to reach 10% at time tms_max
         std::vector<Point2D> get_nodes(){return nodes;}
-        std::vector<Segment> get_links(){return links;}
+        std::vector<Segment2D> get_links(){return links;}
         int get_node_index(Point2D node);
         std::vector<DubinLink> get_curves(){return dubin_links;}
         void get_attached_nodes(Point2D node, std::vector<Point2D> *attached_nodes);

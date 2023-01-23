@@ -13,17 +13,17 @@ Polygon polygon({
 });
 
 TEST(Polygon, IntersectSegment1){
-    Segment s(Point2D(-3, -1), Point2D(1, 4));
+    Segment2D s(Point2D(-3, -1), Point2D(1, 4));
     EXPECT_TRUE(intersect(polygon, s));
 }
 
 TEST(Polygon, IntersectSegment2){
-    Segment s(Point2D(-3, -1), Point2D(3, -1));
+    Segment2D s(Point2D(-3, -1), Point2D(3, -1));
     EXPECT_FALSE(intersect(polygon, s));
 }
 
 TEST(Polygon, IntersectSegment3){
-    Segment s(Point2D(0, 4), Point2D(4, 0));
+    Segment2D s(Point2D(0, 4), Point2D(4, 0));
     EXPECT_TRUE(intersect(polygon, s));
 }
 
