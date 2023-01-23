@@ -22,7 +22,7 @@ colcon test --packages-select package_name --event-handler=console_direct+
 Step-by-step simulation using both pursuer and evader.
 To run the simulation:
 ```bash
-ros2 run cpp_pubsub publisher
+ros2 run main_tester main_tester
 ```
 Once the simulation is completed, 2 files will be available: 
 - map.json: contains the configuration of the whole roadmap (map borders, nodes, links, obstacles and exits)
@@ -54,5 +54,5 @@ Make the executable reachable:
 
 Run the communication stack:
 ```
-ros2 run shelfino shelfino
+ros2 run navigation navigation
 ```
