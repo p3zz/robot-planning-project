@@ -207,7 +207,7 @@ std::string RoadMap::get_json()
     json+="],\"links\":[";
     for(int i=0; i<(int)links.size();i++)
     {
-        json+="{\"node1\":{\"x\":"+std::to_string(links[i].p1.x)+",\"y\":"+std::to_string(links[i].p1.y)+"},\"p2\":{\"x\":"+std::to_string(links[i].p2.x)+",\"y\":"+std::to_string(links[i].p2.y)+"}}";
+        json+="{\"node1\":{\"x\":"+std::to_string(links[i].p1.x)+",\"y\":"+std::to_string(links[i].p1.y)+"},\"node2\":{\"x\":"+std::to_string(links[i].p2.x)+",\"y\":"+std::to_string(links[i].p2.y)+"}}";
         if(i+1<(int)links.size()) json+=",";
     }
     json+="],\"obstacles\":[";
