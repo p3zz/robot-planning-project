@@ -4,7 +4,7 @@
 
 #include "dubins/dubins.hpp"
 #include "map/map.hpp"
-#include "decisions/decisions.hpp"
+#include "planner/planner.hpp"
 
 using namespace std;
 

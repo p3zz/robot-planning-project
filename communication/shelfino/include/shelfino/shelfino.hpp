@@ -26,7 +26,7 @@
 #include "shapes/shapes.hpp"
 #include "dubins/dubins.hpp"
 #include "map/map.hpp"
-#include "decisions/decisions.hpp"
+#include "planner/planner.hpp"
 
 using std::placeholders::_1;
 using std::placeholders::_2;
