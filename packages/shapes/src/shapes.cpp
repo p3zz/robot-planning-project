@@ -248,7 +248,6 @@ Polygon inflate(Polygon p, double offset){
         }
         auto next_side = sides[index + 1];
         if(angle_between(curr_side, next_side) < M_PI * 0.3){
-            std::cout<<angle_between(curr_side, next_side)<<std::endl;
             auto curr_p_new = translate(curr_side.p2, offset, curr_side.get_angle());
             auto next_p_new = translate(next_side.p1, offset, mod2pi(next_side.get_angle() + M_PI));
             p_new.add_v(next_p_new);
