@@ -12,7 +12,7 @@ using namespace std;
 int main()
 {
   // Seed::init_seed(1920815646);
-  // Logger(Logger::INFO, "The seed is " + to_string(Seed::get_seed()));
+  Logger(Logger::INFO, "The seed is " + to_string(Seed::get_seed()));
   DubinPoint pursuer(-4.5, 4.5,  M_PI*1.75);
   DubinPoint evader(4.5, -4.5, M_PI*0.75);
   ROSTimer mytimer;
@@ -31,7 +31,7 @@ int main()
 
   //Construct roadmap
   RoadMap map(room);
-  if(!map.construct_roadmap(100, 5, 0.5, 500, pursuer.get_point(), evader.get_point())){
+  if(!map.construct_roadmap(60, 4, 0.5, 500, pursuer.get_point(), evader.get_point())){
     Logger(Logger::ERROR, "General error roadmap");
     return 1;
   }
@@ -67,8 +67,20 @@ int main()
     bool evaded = false;
     for(int i=0;i<room.get_num_exits();i++){
       auto exit = room.get_exit(i, true);
-      auto e_dst = Point2D(e.l1.get_dst().x, e.l1.get_dst().y);
-      evaded |= (e_dst == exit);
+      if(e.l1.get_dst().get_point() == exit)
+      {
+        evaded=true;
+        break;
+      }
+      if(e.l2.get_dst().get_point() == exit)
+      {
+        same_destination = p.l2.get_dst() == e.l2.get_dst();
+        idle_while_catching = p.l2.get_src() == e.l2.get_dst();
+        evaded=!(same_destination || idle_while_catching);
+        p_moves.push_back(p.l2);
+        e_moves.push_back(e.l2);
+        break;
+      }
     }
 
     if(evaded) Logger(Logger::INFO, "Evader has reached the exit");
@@ -79,8 +91,7 @@ int main()
       break;
     }
 
-    
-    std::cout<<"["<<n_moves++<<"] Moves found"<<std::endl;
+    Logger(Logger::INFO, "["+to_string(n_moves++)+"] Moves found");
   }
   
   ofstream moves_file;
