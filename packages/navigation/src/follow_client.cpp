@@ -46,6 +46,8 @@ FollowPathClient::FollowPathClient(std::optional<RoadMap>& map, ShelfinoType typ
     if(this->compute_move()){
         this->send_goal();
     }
+    timer_ = this->create_wall_timer(
+      500ms, std::bind(&FollowPathClient::timer_callback, this));
 }
 
 void FollowPathClient::send_goal(){
@@ -78,11 +80,6 @@ void FollowPathClient::send_goal(){
     send_goal_options.result_callback = std::bind(&FollowPathClient::result_callback, this, _1);
     this->client_ptr_->async_send_goal(path_msg, send_goal_options);
     RCLCPP_INFO(this->get_logger(), "Sending goal");
-    // if(type == ShelfinoType::Pursuer){
-    //     pursuer.status = ShelfinoStatus::Moving;
-    // }else{
-    //     evader.status = ShelfinoStatus::Moving;
-    // }
 }
 
 bool FollowPathClient::compute_move(){
@@ -104,22 +101,6 @@ bool FollowPathClient::compute_move(){
     if(!pm.compute_move(pursuer.pose.value(), evader.pose.value(), p, e)){
         RCLCPP_ERROR(this->get_logger(), "No further moves found");
         exit(2);
-    }
-
-    // if pursuer and evader have the same destination or the destination of the evader is the start of the pursuer, catch!
-    if(e.l1.get_dst() == p.l1.get_dst() || e.l1.get_dst() == p.l1.get_src()){
-        RCLCPP_INFO(this->get_logger(), "Pursuer reaches the evader");
-        exit(1);
-    }
-
-    // if the evader reaches the destination, :(
-    auto room = map.value().get_room();
-    for(int i=0;i<room.get_num_exits();i++){
-        Point2D dst(e.l1.get_dst().x, e.l1.get_dst().y);
-        if(dst == room.get_exit(i, true)){
-            RCLCPP_ERROR(this->get_logger(), "Evader reaches the gate");
-            exit(2);
-        }
     }
 
     if(type == ShelfinoType::Pursuer){
@@ -150,5 +131,22 @@ void FollowPathClient::result_callback(const GoalHandleFollowPath::WrappedResult
         default:
             RCLCPP_ERROR(this->get_logger(), "Unknown result code");
             return;
+    }
+}
+
+void FollowPathClient::timer_callback(){
+    Point2D e(evader.pose.value().x, evader.pose.value().y);
+    Point2D p(pursuer.pose.value().x, pursuer.pose.value().y);
+    if(distance(e,p) < ROBOT_CIRCLE * 2){
+        RCLCPP_INFO(this->get_logger(), "Pursuer has reached the evader");
+        exit(1);
+    }
+    auto room = map.value().get_room();
+    for(int i=0;i<room.get_num_exits();i++){
+      auto ex = room.get_exit(i, true);
+      if(distance(ex, e) < ROBOT_CIRCLE){
+        RCLCPP_INFO(this->get_logger(), "Evader has exited");
+        exit(1);
+      }
     }
 }

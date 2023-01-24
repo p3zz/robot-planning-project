@@ -126,10 +126,12 @@ class FollowPathClient : public rclcpp::Node {
     ShelfinoDto& evader;
     ShelfinoDto& pursuer;
     ShelfinoType type;
+    rclcpp::TimerBase::SharedPtr timer_;
 
     bool compute_move();
     void send_goal();
     void result_callback(const GoalHandleFollowPath::WrappedResult& result);
+    void timer_callback();
 };
 
 class PathPublisher : public rclcpp::Node {
