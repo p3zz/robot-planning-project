@@ -52,7 +52,6 @@ int main()
   auto e_last_src = evader;
   std::vector<DubinLink> p_moves;
   std::vector<DubinLink> e_moves;
-
   const int max_moves = 50;
   int n_moves = 0;
   // while moves exists
@@ -69,9 +68,7 @@ int main()
     for(int i=0;i<room.get_num_exits();i++){
       auto exit = room.get_exit(i, true);
       auto e_dst = Point2D(e.l1.get_dst().x, e.l1.get_dst().y);
-      if(e_dst == exit){
-        evaded = true;
-      }
+      evaded |= (e_dst == exit);
     }
 
     if(evaded) Logger(Logger::INFO, "Evader has reached the exit");

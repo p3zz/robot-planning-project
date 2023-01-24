@@ -60,7 +60,7 @@ class ShelfinoDto {
     ShelfinoDto():pose{std::nullopt}, path_to_follow{std::nullopt}, status{ShelfinoStatus::Init} {}
 
     std::optional<DubinPoint> pose;
-    std::optional<DubinCurve> path_to_follow;
+    std::optional<std::vector<DubinCurve>> path_to_follow;
     ShelfinoStatus status;
 
 };
@@ -136,14 +136,14 @@ class FollowPathClient : public rclcpp::Node {
 
 class PathPublisher : public rclcpp::Node {
   public:
-    PathPublisher(std::optional<DubinCurve>& path, std::string topic_name, std::string node_name);
+    PathPublisher(std::optional<std::vector<DubinCurve>>& path, std::string topic_name, std::string node_name);
 
   private:
     void timer_callback();
     rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr publisher_;
-    std::optional<DubinCurve>& path;
+    std::optional<std::vector<DubinCurve>>& path;
     rclcpp::TimerBase::SharedPtr timer_;
 };
 
 geometry_msgs::msg::Quaternion to_quaternion(double pitch, double roll, double yaw);
-nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h);
+nav_msgs::msg::Path msg_from_curves(std::vector<DubinCurve> curve, std_msgs::msg::Header h);

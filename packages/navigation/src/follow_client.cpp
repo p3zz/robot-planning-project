@@ -18,7 +18,7 @@ geometry_msgs::msg::Quaternion to_quaternion(double pitch, double roll, double y
   return q;
 }
 
-nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
+nav_msgs::msg::Path msg_from_curves(std::vector<DubinCurve> curves, std_msgs::msg::Header h){
   nav_msgs::msg::Path path;
   path.header = h;
   path.header.frame_id = "map";
@@ -27,14 +27,15 @@ nav_msgs::msg::Path msg_from_curve(DubinCurve curve, std_msgs::msg::Header h){
   pose.header = h;
   pose.header.frame_id = "map";
 
-  auto trajectory = curve.to_points(50);
-
-  for(auto p:trajectory){
-    pose.pose.position.x = p.x;
-    pose.pose.position.y = p.y;
-    pose.pose.position.z = 0;
-    pose.pose.orientation = to_quaternion(0,0,p.th);
-    path.poses.push_back(pose);
+  for(auto curve: curves){
+    auto trajectory = curve.to_points_homogeneous(0.05);
+    for(auto p:trajectory){
+        pose.pose.position.x = p.x;
+        pose.pose.position.y = p.y;
+        pose.pose.position.z = 0;
+        pose.pose.orientation = to_quaternion(0,0,p.th);
+        path.poses.push_back(pose);
+    }
   }
 
   return path;
@@ -63,9 +64,9 @@ void FollowPathClient::send_goal(){
     h.stamp = this->get_clock()->now();
 
     if(type == ShelfinoType::Pursuer){
-        path_msg.path = msg_from_curve(pursuer.path_to_follow.value(), h);
+        path_msg.path = msg_from_curves(pursuer.path_to_follow.value(), h);
     }else{
-        path_msg.path = msg_from_curve(evader.path_to_follow.value(), h);
+        path_msg.path = msg_from_curves(evader.path_to_follow.value(), h);
     }
 
     path_msg.controller_id = "FollowPath";
@@ -104,11 +105,19 @@ bool FollowPathClient::compute_move(){
     }
 
     if(type == ShelfinoType::Pursuer){
-        pursuer.path_to_follow.emplace(p.l1.get_curve());
+        pursuer.path_to_follow.emplace({p.l1.get_curve()});
     }else{
-        evader.path_to_follow.emplace(e.l1.get_curve());
+        auto room = map.value().get_room();
+        for(int i=0;i<room.get_num_exits();i++){
+            auto ex = room.get_exit(i, true);
+            Point2D dst(e.l2.get_dst().x, e.l2.get_dst().y);
+            if(dst == ex) {
+                evader.path_to_follow.emplace({e.l1.get_curve(), e.l2.get_curve()});
+            } else {
+                evader.path_to_follow.emplace({e.l1.get_curve()});
+            }
+        }
     }
-
     RCLCPP_INFO(this->get_logger(), "Path computed");
 
     return true;
