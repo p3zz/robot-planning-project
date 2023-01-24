@@ -71,12 +71,6 @@ void FollowPathClient::send_goal(){
 
     path_msg.controller_id = "FollowPath";
 
-    RCLCPP_INFO(this->get_logger(), "Message: ");
-    for(auto pose: path_msg.path.poses){
-        RCLCPP_INFO(this->get_logger(), "(x: %f, y: %f, z: %f, thx: %f, thy: %f, thz: %f, thw: %f)", pose.pose.position.x, pose.pose.position.y, pose.pose.position.z,
-        pose.pose.orientation.x, pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w);
-    }
-
     auto send_goal_options = rclcpp_action::Client<FollowPath>::SendGoalOptions();
     send_goal_options.result_callback = std::bind(&FollowPathClient::result_callback, this, _1);
     this->client_ptr_->async_send_goal(path_msg, send_goal_options);
