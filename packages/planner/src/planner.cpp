@@ -52,6 +52,8 @@ DubinPoint get_nearest_node(DubinPoint position, std::vector<Point2D> nodes, boo
 
 double score_angle(DubinPoint dp1, Point2D p2) //score from 0 to 1, based on proximity of angles
 {
+    if(distance(dp1.get_point(), p2) < 0.1)
+        return 1;
     double angle = atan2(p2.y-dp1.y, p2.x-dp1.x);
     return 1-abs(modpi(dp1.th-angle))/M_PI;
 }

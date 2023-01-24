@@ -76,6 +76,42 @@ void Knn(Point2D node, std::vector<Point2D> candidates, int k, Point2D* nearest_
     }
 }
 
+Room::Room(Polygon dimensions):dimensions{dimensions}
+{
+    //get approximate dimensions (rounded up to a rectangle)
+    double min_x=999999, min_y=999999, max_x=-999999, max_y=-999999;
+    for(auto &v: dimensions.vertexes)
+    {
+        if(v.x < min_x) min_x=v.x;
+        if(v.x > max_x) max_x=v.x;
+        if(v.y < min_y) min_y=v.y;
+        if(v.y > max_y) max_y=v.y;
+    }
+    off_x = min_x;
+    off_y = min_y;
+    approx_h = max_y-min_y;
+    approx_w = max_x-min_x;
+    approx_area=0;
+
+    //get approximate area (rounded down to small squares of 1 cm2)
+    for(double p_x=min_x; p_x<=max_x; p_x+=0.01)
+        for(double p_y=min_y; p_y<=max_y; p_y+=0.01)
+            if(dimensions.contains(Point2D(p_x,p_y)))
+                approx_area+=0.0001;
+    
+    //inflate room
+    dimensions_deflated = deflate(dimensions, ROBOT_CIRCLE);
+}
+
+void Room::add_exit(Point2D exit)
+{
+    exits.push_back(exit);
+    Segment2D s = belong(dimensions, exit, 0.1);
+    double th = mod2pi(atan2(s.p2.y-s.p1.y, s.p2.x-s.p1.x)+1.5*M_PI);
+    Point2D exit_inflated = translate(exit, ROBOT_CIRCLE*1.2, th);
+    exits_inflated.push_back(exit_inflated);
+}
+
 //PRM ROADMAP
 bool RoadMap::construct_roadmap(int points, int knn, double k_distance_init, double tms_max, Point2D p_pos, Point2D e_pos)
 {
