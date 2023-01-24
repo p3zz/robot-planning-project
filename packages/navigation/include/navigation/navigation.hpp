@@ -38,6 +38,7 @@ enum ShelfinoType {
 };
 
 enum ShelfinoStatus {
+  Init,
   Idle,
   Moving
 };
@@ -56,7 +57,7 @@ class EnvironmentDto {
 class ShelfinoDto {
   public:
 
-    ShelfinoDto():pose{std::nullopt}, path_to_follow{std::nullopt}, status{ShelfinoStatus::Idle} {}
+    ShelfinoDto():pose{std::nullopt}, path_to_follow{std::nullopt}, status{ShelfinoStatus::Init} {}
 
     std::optional<DubinPoint> pose;
     std::optional<DubinCurve> path_to_follow;

@@ -45,11 +45,6 @@ FollowPathClient::FollowPathClient(std::optional<RoadMap>& map, ShelfinoType typ
     client_ptr_ = rclcpp_action::create_client<FollowPath>(this, service_name);
     if(this->compute_move()){
         this->send_goal();
-        if(type == ShelfinoType::Pursuer){
-            pursuer.status = ShelfinoStatus::Moving;
-        }else{
-            evader.status = ShelfinoStatus::Moving;
-        }
     }
 }
 
@@ -83,6 +78,11 @@ void FollowPathClient::send_goal(){
     send_goal_options.result_callback = std::bind(&FollowPathClient::result_callback, this, _1);
     this->client_ptr_->async_send_goal(path_msg, send_goal_options);
     RCLCPP_INFO(this->get_logger(), "Sending goal");
+    // if(type == ShelfinoType::Pursuer){
+    //     pursuer.status = ShelfinoStatus::Moving;
+    // }else{
+    //     evader.status = ShelfinoStatus::Moving;
+    // }
 }
 
 bool FollowPathClient::compute_move(){
@@ -97,9 +97,6 @@ bool FollowPathClient::compute_move(){
         RCLCPP_ERROR(this->get_logger(), "Cannot retrieve shelfino position");
         return false;
     }
-
-    // wait until both shelfinos are idle (not moving)
-    while(evader.status == ShelfinoStatus::Moving || pursuer.status == ShelfinoStatus::Moving){}
 
     PayoffMatrix pm(map.value());
     Path p, e;
@@ -125,8 +122,11 @@ bool FollowPathClient::compute_move(){
         }
     }
 
-    pursuer.path_to_follow.emplace(p.l1.get_curve());
-    evader.path_to_follow.emplace(e.l1.get_curve());
+    if(type == ShelfinoType::Pursuer){
+        pursuer.path_to_follow.emplace(p.l1.get_curve());
+    }else{
+        evader.path_to_follow.emplace(e.l1.get_curve());
+    }
 
     RCLCPP_INFO(this->get_logger(), "Path computed");
 
@@ -134,26 +134,18 @@ bool FollowPathClient::compute_move(){
 }
 
 void FollowPathClient::result_callback(const GoalHandleFollowPath::WrappedResult& result){
+    
     switch (result.code) {
         case rclcpp_action::ResultCode::SUCCEEDED:
+            RCLCPP_ERROR(this->get_logger(), "Goal succeded");
         case rclcpp_action::ResultCode::ABORTED:
-            if(type == ShelfinoType::Pursuer){
-                pursuer.status = ShelfinoStatus::Idle;
-            }else{
-                evader.status = ShelfinoStatus::Idle;
-            }
+            RCLCPP_ERROR(this->get_logger(), "Goal aborted");
             if(this->compute_move()){
                 this->send_goal();
-                if(type == ShelfinoType::Pursuer){
-                   pursuer.status = ShelfinoStatus::Moving;
-                }else{
-                    evader.status = ShelfinoStatus::Moving;
-                }
             }
-            RCLCPP_ERROR(this->get_logger(), "Goal was aborted");
             return;
         case rclcpp_action::ResultCode::CANCELED:
-            RCLCPP_ERROR(this->get_logger(), "Goal was canceled");
+            RCLCPP_ERROR(this->get_logger(), "Goal canceled");
             return;
         default:
             RCLCPP_ERROR(this->get_logger(), "Unknown result code");
